@@ -111,7 +111,7 @@ TextureImporter:
       213: 2541372247020044534
     second: Numbers-02_35
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -132,6 +132,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -140,9 +141,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -170,6 +171,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -209,6 +211,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -988,6 +1014,43 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Numbers-02_6: -7543669199491627507
+      Numbers-02_20: -780276387987661467
+      Numbers-02_32: -1749362794921331829
+      Numbers-02_2: 710595723528115150
+      Numbers-02_30: -6588179839479628832
+      Numbers-02_3: -448668220859731041
+      Numbers-02_16: 5291734006865162896
+      Numbers-02_31: -4959560664241189953
+      Numbers-02_24: -6326733440934367631
+      Numbers-02_7: -7799755032989362717
+      Numbers-02_19: 5150204741730999827
+      Numbers-02_26: -8028198222611802961
+      Numbers-02_9: -3566458539058947771
+      Numbers-02_12: -7622444216734420724
+      Numbers-02_25: -4933335184987025711
+      Numbers-02_33: 1005938268757794817
+      Numbers-02_34: 4687211682577007407
+      Numbers-02_14: 3958309449619825686
+      Numbers-02_22: 290389159627191188
+      Numbers-02_13: -1232933734939403746
+      Numbers-02_11: -5004553901899490832
+      Numbers-02_1: 5571936385442702904
+      Numbers-02_0: 8465440263872079559
+      Numbers-02_18: -3517243468511128603
+      Numbers-02_23: -2813921480564750647
+      Numbers-02_21: -4875086677178639765
+      Numbers-02_35: 2541372247020044534
+      Numbers-02_10: -6833348954309117935
+      Numbers-02_5: 5551184251060851935
+      Numbers-02_4: 5734201419940467142
+      Numbers-02_8: 5258001865546508253
+      Numbers-02_28: 2295217352310280318
+      Numbers-02_27: -4697260839902432520
+      Numbers-02_17: -9193986362305462155
+      Numbers-02_29: 7338851286456995164
+      Numbers-02_15: -2533902892289058578
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

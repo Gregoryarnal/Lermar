@@ -46,30 +46,30 @@ namespace Commands
             characterTable.currentTableActive.Value = false; // Desactivete table buttons
             gameRoullete.OnRotate.OnNext(true);
 
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(.2f);
             gameRoullete.currentSpeed = 75f;
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(.1f);
             gameRoullete.currentSpeed = 145f;
             PlayerSound.Instance.gameSound.OnSound.OnNext(PlayerSound.Instance.gameSound.audioReferences[9]);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.05f);
             gameRoullete.currentSpeed = 240f;
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(.12f);
             gameRoullete.currentSpeed = 245f;
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(.2f);
             gameRoullete.currentSpeed = 265;
-            yield return new WaitForSeconds(3.8f);
+            yield return new WaitForSeconds(.38f);
             gameRoullete.currentSpeed = 245;
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(.15f);
             gameRoullete.currentSpeed = 240f;
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(.15f);
             // Ball position
             gameRoullete.currentSpeed = 145;
             gameRoullete.OnNumber.OnNext(num);
 
-            yield return new WaitForSeconds(1.8f);
+            yield return new WaitForSeconds(.18f);
             gameRoullete.currentSpeed = 75f;
    
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(.5f);
             // Finish round
             gameRoullete.currentSpeed = gameRoullete.defaultSpeed;
             characterTable.OnRound.OnNext(false); 
