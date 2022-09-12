@@ -1,3 +1,4 @@
+// using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace ViewModel
     public class CharacterTools : ScriptableObject
     {
         public StringReactiveProperty characterToolsView = new StringReactiveProperty();
+        // public List<Button> button_list = new List<Button>();
         
 
         public void ResetView(){
@@ -21,7 +23,9 @@ namespace ViewModel
         public void AddPermanence(string permanence)
         {
             // addButton(permanence);
-            string aux = characterToolsView.Value;
+            Debug.Log("AddPermanence : " +permanence);
+
+            // string aux = characterToolsView.Value;
             characterToolsView.Value = "\n" + permanence;
         }
 

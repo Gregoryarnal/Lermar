@@ -15,9 +15,11 @@ namespace Components
         // public CharacterTable characterTable;
         public CharacterTools characterTools;
         public Text textcontent;
-        // public GameObject prefabButton;
+        public GameObject ScrollViewContainer;
         public GameObject content;
         public List<Button> button_list = new List<Button>();
+        public GameObject templateBtn;
+        public Text templateBtnText;
         // public ScrollView scroll;
         // public Button button;
 
@@ -29,7 +31,8 @@ namespace Components
                 characterTools.characterToolsView
                     .Subscribe(OnLoadTools)
                     .AddTo(this);
-
+                RemoveButton();
+                button_list.Clear();  
             }
             catch (System.Exception)
             {
@@ -39,55 +42,63 @@ namespace Components
 
         public Button addButton(string permName)
         {
-            
-            GameObject newButton = new GameObject();
-            newButton.name = permName; //Optional
-            newButton.transform.localScale = new Vector3(200, 20, 0);
-            newButton.transform.position = new Vector2(65, 104);
+            permName = permName.Replace(" ", "");
+            permName = permName.Replace("\n", "");
+
+            GameObject newButton = Instantiate(templateBtn);
+            newButton.name = permName; 
+            newButton.transform.localScale = new Vector3(1, 1, 1);
+            newButton.transform.position = new Vector2(6, calculateYposition());
+            // newButton.transform.position = new Vector2(6, 12);
             newButton.transform.SetParent(content.transform, false);
-            // newButton.content = Resources.Load<Image>("PermanencesButton");
+            newButton.SetActive(true);
+            // Debug.Log("test = " + newButton.GetComponentInChildren<Text>().text);
+            Button tempButton = newButton.GetComponent<Button>();
 
-            //   myButtonImage = Resources.Load<Image>("switchCameraImg");
-            Button tempButton = newButton.AddComponent<Button>();
-            Text txtButton = newButton.AddComponent<Text>();
-            // txtButton.Value = "iiii";
-            tempButton.onClick.AddListener(() => ButtonClicked("permanence"));
-            // tempButton
+            // Text contentTxt = tempButton.GetComponent<Text>();
+            templateBtnText.text = permName;
+
+
+            tempButton.onClick.AddListener(() => ButtonClicked(permName));
+
             return tempButton;
-            // button_list.Add(newButton);
-
-            // button_list.Add(new GameObject ("ButtonName",typeof(Button)));
-            // $$
-
-            // Debug.Log("add  button");
-
-            // // GameObject permButton = Instantiate(prefabButton) as GameObject;
-
-            // permButton.transform.SetParent(content.transform, false);
-            // permButton.transform.localScale = new Vector3(100f, 100f, 100f);
-        
-            // Button tempButton = permButton.GetComponent<Button>();
-            // Debug.Log("On click");
-            // tempButton.onClick.AddListener(() => ButtonClicked("permanence"));
         }
 
-    
+        int calculateYposition(){
+            
+            var y = 0;
+            var ITEM_HEIGHT = 30;
+
+            var size = button_list.Count;
+            for (int i = 1; i<=size; i++){
+                y -= ITEM_HEIGHT + 12;
+            }
+
+            return y;
+        }
+
         void ButtonClicked(string permanence)
         {
             Debug.Log ("Button clicked = " + permanence);
         }
 
+        void RemoveButton(){
+            foreach (Button item in button_list)
+            {
+                Destroy(item.gameObject);
+            }
+        }
 
-        public void OnLoadTools(String value)
+        public void OnLoadTools(string value)
         {
             // public Button button;
-            
+            Debug.Log("OnLoadTools : " + value);
             if (value == ""){
-                textcontent.text = "";
+                // textcontent.text = "";
+                RemoveButton();
+                button_list.Clear();  
             }else{
-                textcontent.text += value.ToString();
                 button_list.Add(addButton(value));
-                // addButton(value);
             }
 
             

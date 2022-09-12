@@ -26,7 +26,7 @@ namespace Commands
 
         public PermanencesLoadCmd( CharacterTable characterTable, CharacterTools characterTools)
         {
-            Debug.Log($"PermanencesLoadCmd : " + characterTable);
+            // Debug.Log($"PermanencesLoadCmd : " + characterTable);
             this.characterTable = characterTable;
             this.characterTools = characterTools;
             // Debug.Log($"characterTable : " + characterTable);
@@ -36,7 +36,7 @@ namespace Commands
 
         public static string[] TraverseTree(string root)
         {
-            Debug.Log("root path : " + root); 
+            // Debug.Log("root path : " + root); 
             Stack<string> dirs = new Stack<string>(20);
             string[] files = null;
             // string[] foundFiles = null;
@@ -114,25 +114,11 @@ namespace Commands
 
             characterTools.ResetView();
 
-
-            // for(int i = 0; i < 5; i++)
-            //     {
-            //         GameObject goButton = (GameObject)Instantiate(prefabButton);
-            //         goButton.transform.SetParent(ParentPanel, false);
-            //         goButton.transform.localScale = new Vector3(1, 1, 1);
-                
-            //         Button tempButton = goButton.GetComponent<Button>();
-            //         int tempInt = i;
-                
-            //         tempButton.onClick.AddListener(() => ButtonClicked(tempInt));
-            //     }
-
             foreach (string el in filenames){
-                Debug.Log(el);
                 characterTools.AddPermanence(el);
             }
 
-            Debug.Log($"Read permanences file! : ");
+            // Debug.Log($"Read permanences file! : ");
         }
     }
 }
