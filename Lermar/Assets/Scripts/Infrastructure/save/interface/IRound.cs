@@ -9,6 +9,7 @@ namespace Infrastructure
     public interface IRound 
     {
         IObservable<Unit> PlayTurn();
-        public int randomNumber {get; set;}    
+        public int randomNumber {get; set;} 
+        public int index {get; set;} 
     }
 }

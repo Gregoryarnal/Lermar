@@ -11,13 +11,13 @@ namespace Components
         public static async Task CreatePlayer(CharacterTable characterTable, string tableName, string playerPath)
         {
             characterTable.tableName = tableName;
-            characterTable.characterMoney.characterMoney.Value = 10000;
+            characterTable.characterMoney.characterMoney.Value = 1000;
             
             if(!File.Exists(playerPath))
             {
                 characterTable.OnSaveGame.OnNext(true);
                 PlayerPrefs.SetString("LastRewardOpen", DateTime.Now.Ticks.ToString());
-                PlayerPrefs.SetFloat("SecondsToWaitReward", 120);
+                PlayerPrefs.SetFloat("SecondsToWaitReward", 12);
             }
 
             await Task.Run(() => File.Exists(playerPath)); 

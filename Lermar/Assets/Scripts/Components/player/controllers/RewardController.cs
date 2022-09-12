@@ -33,7 +33,7 @@ namespace Components
 
         async void RewardStart()
         {
-            await Task.Delay(TimeSpan.FromSeconds(2));
+            await Task.Delay(TimeSpan.FromSeconds(.2));
 
             secondsToWait = PlayerPrefs.GetFloat("SecondsToWaitReward");
             var lastChestOpen = ulong.Parse(PlayerPrefs.GetString("LastRewardOpen"));

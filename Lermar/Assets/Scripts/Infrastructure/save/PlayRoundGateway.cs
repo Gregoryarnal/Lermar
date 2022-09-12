@@ -15,6 +15,7 @@ namespace Infrastructure
     public class PlayRoundGateway : IRound
     {
         public int randomNumber { get; set; }
+        public int index { get; set; }
 
         public IObservable<Unit> PlayTurn()
         {

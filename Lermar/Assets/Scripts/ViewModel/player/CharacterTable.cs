@@ -15,9 +15,11 @@ namespace ViewModel
         public CharacterMoney characterMoney;
         public Chip[] chipData;
         
+        
         [Header("Runtime Execution")]
         // Current round
         public int currentTableCount;
+        public int lastIndex = 0 ;
         public List<ChipGame> currentTable = new List<ChipGame>();
         public List<TableChips> currentTableInGame = new List<TableChips>();
         public List<int> currentNumbers = new List<int>();
@@ -27,6 +29,7 @@ namespace ViewModel
         [Header("Last Execution")]
         // Last round
         public int lastNumber;
+        
         public List<TableChips> lastTable = new List<TableChips>();
 
         // Events observables

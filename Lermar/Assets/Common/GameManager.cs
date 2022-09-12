@@ -164,6 +164,7 @@ namespace Managers
 
             characterTable.currentNumbers.Clear();
             characterTable.currentTableInGame.Clear();
+            characterTable.lastIndex = 0;
         }
         public async Task OnGameOpened() 
         { 
@@ -176,6 +177,7 @@ namespace Managers
             characterTable.currentNumbers.Clear();
             characterTable.currentTableInGame.Clear();
             characterTable.lastNumber = 0;
+            characterTable.lastIndex = 0;
             characterTable.lastTable.Clear();
             
             await Task.Delay(TimeSpan.FromSeconds(2));

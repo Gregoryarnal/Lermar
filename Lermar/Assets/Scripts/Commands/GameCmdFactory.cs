@@ -24,6 +24,11 @@ namespace Commands
         {
             return new PlayTurnCmd(GameManager.Instance, characterTable, gameRoullete, new PlayRoundGateway(), new PaymnentGateway());
         }
+        public PermanencesLoadCmd PermanencesLoad(CharacterTable characterTable, CharacterTools characterTools)
+        {
+            return new PermanencesLoadCmd(characterTable, characterTools);
+        }
+        
 
         // Table events
         public MusicTurnCmd MusicTurnCmd(GameSound gameSound, bool isOn)

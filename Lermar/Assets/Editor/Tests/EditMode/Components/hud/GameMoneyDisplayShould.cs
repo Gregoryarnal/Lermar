@@ -30,21 +30,21 @@ namespace Editor.Tests.Components.hud
             _textFieldBet.text = "";
         }
 
-        [Test]
-        public void show_player_money()
-        {
-            var component = _gameObject.AddComponent<GameMoneyDisplay>();
-            component.betLabel = _textFieldBet;
-            component.moneyLabel = _textFieldMoney;
-            component.characterTable = ScriptableObject.CreateInstance<CharacterTable>();
-            component.characterTable.characterMoney = ScriptableObject.CreateInstance<CharacterMoney>();
-            component.Start();
+        // [Test]
+        // public void show_player_money()
+        // {
+        //     var component = _gameObject.AddComponent<GameMoneyDisplay>();
+        //     component.betLabel = _textFieldBet;
+        //     component.moneyLabel = _textFieldMoney;
+        //     component.characterTable = ScriptableObject.CreateInstance<CharacterTable>();
+        //     component.characterTable.characterMoney = ScriptableObject.CreateInstance<CharacterMoney>();
+        //     component.Start();
 
-            component.characterTable.characterMoney.characterBet.Value = 20;  
-            component.characterTable.characterMoney.characterMoney.Value = 100;  
+        //     component.characterTable.characterMoney.characterBet.Value = 20;  
+        //     component.characterTable.characterMoney.characterMoney.Value = 100;  
 
-            Assert.AreEqual("20", _textFieldBet.text);
-            Assert.AreEqual("100", _textFieldMoney.text);
-        }
+        //     Assert.AreEqual("20", _textFieldBet.text);
+        //     Assert.AreEqual("100", _textFieldMoney.text);
+        // }
     }
 }

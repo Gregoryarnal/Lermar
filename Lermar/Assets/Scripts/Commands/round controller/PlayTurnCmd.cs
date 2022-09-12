@@ -16,6 +16,9 @@ namespace Commands
         private GameRoullete gameRoullete;
         private IRound roundGateway;
         private IPayment paymentGateway;
+        private string permanencePath;
+        private bool readPermanence;
+        private bool firstRun = true;
 
         public PlayTurnCmd(MonoBehaviour monoBehaviour, CharacterTable characterTable, GameRoullete gameRoullete, IRound roundGateway, IPayment paymentGateway)
         {
@@ -24,24 +27,51 @@ namespace Commands
             this.gameRoullete = gameRoullete;
             this.roundGateway = roundGateway;
             this.paymentGateway = paymentGateway;
+            this.readPermanence = true;
         }
 
         public void Execute()
         {
-            if(characterTable.currentTableCount <= 0)
+            int cpt = 0;
+            if(characterTable.currentTableCount <= 0){
                 return;
+            }
             
             Debug.Log($"The game roullete is executing in {characterTable.tableName} with {characterTable.currentTableCount} chips in table!");
             PlayerSound.Instance.gameSound.OnSound.OnNext(PlayerSound.Instance.gameSound.audioReferences[7]);
+
+            // permanencePath = "Lermar/permanences/MC/MC01.TXT";
 
             roundGateway.PlayTurn()
                 .Do(_ => monoBehaviour.StartCoroutine(RoulleteGame(roundGateway.randomNumber)))
                 .Do(_ => characterTable.lastNumber = roundGateway.randomNumber)
                 .Subscribe();         
         }
-        
+
+        private int readNextPermanenceValue(int cpt){
+            Debug.Log("readNextPermanenceValue");
+            permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/MC01.TXT";
+            string[] lines = System.IO.File.ReadAllLines(permanencePath);
+            
+            return Int32.Parse(lines[cpt]); 
+
+        }
+
         IEnumerator RoulleteGame(int num)
         {
+            if (readPermanence){
+                if (firstRun){
+                    Debug.Log("firstRunb : " + firstRun);
+                    characterTable.lastNumber = 0;
+                    firstRun = false;
+                }
+                num =  readNextPermanenceValue(characterTable.lastIndex );
+                
+                roundGateway.randomNumber = num;
+                Debug.Log("characterTable.lastIndex : " + characterTable.lastIndex);
+                // roundGateway.index = roundGateway.index + 1;
+            }
+
             characterTable.OnRound.OnNext(true); // Initialize round
             characterTable.currentTableActive.Value = false; // Desactivete table buttons
             gameRoullete.OnRotate.OnNext(true);
@@ -76,9 +106,10 @@ namespace Commands
 
             // Intialize the payment system and display the news values
             paymentGateway.PaymentSystem(characterTable)
-                .Delay(TimeSpan.FromSeconds(3))
+                .Delay(TimeSpan.FromSeconds(.3))
                 .Do(_ => OnPayment(paymentGateway.PaymentValue))
                 .Do(_ => characterTable.OnWinButton.OnNext(num))
+                .Do(_ => characterTable.lastIndex = characterTable.lastIndex+1)
                 .Subscribe();
         }
 

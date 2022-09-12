@@ -26,7 +26,7 @@ namespace Components
             if(isRound)
                 return;
 
-            gameCmdFactory.ResetTableTurn(this, characterTable, 10).Execute();  
+            gameCmdFactory.ResetTableTurn(this, characterTable, 1).Execute();  
         }
     }
 }
