@@ -16,6 +16,8 @@ namespace Components
         public GameObject bottomAnchor;
         public GameObject leftAnchor;
         public GameObject rewardAnchor;
+        public GameObject RightAnchor;
+        public GameObject ToolsAnchor;
         
         // Shadow Background
         public Animator shadowGame;
@@ -38,6 +40,8 @@ namespace Components
             optionsAnchor.SetActive(display);
             bottomAnchor.SetActive(display);
             leftAnchor.SetActive(display);
+            RightAnchor.SetActive(display);
+            ToolsAnchor.SetActive(display);
             rewardAnchor.SetActive(display);
         }
 
@@ -51,7 +55,10 @@ namespace Components
             optionsAnchor.SetActive(!isRound);
             bottomAnchor.SetActive(!isRound);
             leftAnchor.SetActive(!isRound);
+            RightAnchor.SetActive(!isRound);
             rewardAnchor.SetActive(!isRound);
+            ToolsAnchor.SetActive(!isRound);
+
         }
     }
 }

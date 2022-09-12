@@ -23,15 +23,17 @@ namespace ViewModel
         public void AddPermanence(string permanence)
         {
             // addButton(permanence);
-            Debug.Log("AddPermanence : " +permanence);
-
-            // string aux = characterToolsView.Value;
-            characterToolsView.Value = "\n" + permanence;
+            var type = "permanence";
+            characterToolsView.Value = "\n" + permanence + "//" + type;
         }
 
 
-        private void LoadPermanenceFile(){
 
+        public void AddMethodes(string methode){
+            var type = "methode";
+
+            characterToolsView.Value = "\n" + methode + "//" + type;
+            // characterToolsView.Value = "\n" + permanence;
         }
     }
     

@@ -29,6 +29,8 @@ namespace ViewModel
         [Header("Last Execution")]
         // Last round
         public int lastNumber;
+        public string permFilePath;
+        public bool readPermanence = false;
         
         public List<TableChips> lastTable = new List<TableChips>();
 

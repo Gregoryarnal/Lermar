@@ -17,7 +17,7 @@ namespace Commands
         private IRound roundGateway;
         private IPayment paymentGateway;
         private string permanencePath;
-        private bool readPermanence;
+        // private bool readPermanence;
         private bool firstRun = true;
 
         public PlayTurnCmd(MonoBehaviour monoBehaviour, CharacterTable characterTable, GameRoullete gameRoullete, IRound roundGateway, IPayment paymentGateway)
@@ -27,7 +27,7 @@ namespace Commands
             this.gameRoullete = gameRoullete;
             this.roundGateway = roundGateway;
             this.paymentGateway = paymentGateway;
-            this.readPermanence = true;
+            // this.readPermanence = true;
         }
 
         public void Execute()
@@ -50,7 +50,7 @@ namespace Commands
 
         private int readNextPermanenceValue(int cpt){
             Debug.Log("readNextPermanenceValue");
-            permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/MC01.TXT";
+            permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/" + characterTable.permFilePath;
             string[] lines = System.IO.File.ReadAllLines(permanencePath);
             
             return Int32.Parse(lines[cpt]); 
@@ -59,17 +59,11 @@ namespace Commands
 
         IEnumerator RoulleteGame(int num)
         {
-            if (readPermanence){
-                if (firstRun){
-                    Debug.Log("firstRunb : " + firstRun);
-                    characterTable.lastNumber = 0;
-                    firstRun = false;
-                }
+            if (characterTable.readPermanence){
+
                 num =  readNextPermanenceValue(characterTable.lastIndex );
-                
                 roundGateway.randomNumber = num;
                 Debug.Log("characterTable.lastIndex : " + characterTable.lastIndex);
-                // roundGateway.index = roundGateway.index + 1;
             }
 
             characterTable.OnRound.OnNext(true); // Initialize round
