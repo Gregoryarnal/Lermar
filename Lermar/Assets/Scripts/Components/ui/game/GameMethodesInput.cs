@@ -24,8 +24,7 @@ namespace Components
             // var type = "methodes";
             foreach (string item in methodeName)
             {
-             characterTools.AddMethodes(item);
-                
+                characterTools.AddMethodes(item); 
             }
         }
     }
