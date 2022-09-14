@@ -20,6 +20,7 @@ namespace ViewModel
         // Current round
         public int currentTableCount;
         public int lastIndex = 0 ;
+        public int bilanGame = 0 ;
         public List<ChipGame> currentTable = new List<ChipGame>();
         public List<TableChips> currentTableInGame = new List<TableChips>();
         public List<int> currentNumbers = new List<int>();

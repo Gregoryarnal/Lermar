@@ -1,3 +1,4 @@
+// using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Commands
     {
         private readonly MonoBehaviour monoBehaviour;
         private CharacterTable characterTable;
+        private CharacterTools characterTools;
         private GameRoullete gameRoullete;
         private IRound roundGateway;
         private IPayment paymentGateway;
@@ -20,10 +22,11 @@ namespace Commands
         // private bool readPermanence;
         private bool firstRun = true;
 
-        public PlayTurnCmd(MonoBehaviour monoBehaviour, CharacterTable characterTable, GameRoullete gameRoullete, IRound roundGateway, IPayment paymentGateway)
+        public PlayTurnCmd(MonoBehaviour monoBehaviour, CharacterTable characterTable,CharacterTools characterTools, GameRoullete gameRoullete, IRound roundGateway, IPayment paymentGateway)
         {
             this.monoBehaviour = monoBehaviour;
             this.characterTable = characterTable;
+            this.characterTools = characterTools;
             this.gameRoullete = gameRoullete;
             this.roundGateway = roundGateway;
             this.paymentGateway = paymentGateway;
@@ -49,18 +52,15 @@ namespace Commands
         }
 
         private int readNextPermanenceValue(int cpt){
-            Debug.Log("readNextPermanenceValue");
             permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/" + characterTable.permFilePath;
             string[] lines = System.IO.File.ReadAllLines(permanencePath);
             
             return Int32.Parse(lines[cpt]); 
-
         }
 
         IEnumerator RoulleteGame(int num)
         {
             if (characterTable.readPermanence){
-
                 num =  readNextPermanenceValue(characterTable.lastIndex );
                 roundGateway.randomNumber = num;
                 Debug.Log("characterTable.lastIndex : " + characterTable.lastIndex);
@@ -98,13 +98,18 @@ namespace Commands
             gameRoullete.currentSpeed = gameRoullete.defaultSpeed;
             characterTable.OnRound.OnNext(false); 
 
+
+            
             // Intialize the payment system and display the news values
             paymentGateway.PaymentSystem(characterTable)
                 .Delay(TimeSpan.FromSeconds(.3))
+                .Do(_ => characterTable.bilanGame += paymentGateway.PaymentValue)
+                .Do(_ => characterTools.AddStatistics(characterTable.lastIndex, roundGateway.randomNumber, characterTable.characterMoney.characterBet.Value, paymentGateway.PaymentValue,characterTable.bilanGame))
                 .Do(_ => OnPayment(paymentGateway.PaymentValue))
                 .Do(_ => characterTable.OnWinButton.OnNext(num))
                 .Do(_ => characterTable.lastIndex = characterTable.lastIndex+1)
                 .Subscribe();
+
         }
 
         public void OnPayment(int value)

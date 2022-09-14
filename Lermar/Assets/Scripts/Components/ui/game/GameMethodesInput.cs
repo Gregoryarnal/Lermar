@@ -19,9 +19,7 @@ namespace Components
         
         public void OnClick()
         {
-            //  gameCmdFactory.MethodesLoad(characterTable,characterTools).Execute();
             characterTools.ResetView();
-            // var type = "methodes";
             foreach (string item in methodeName)
             {
                 characterTools.AddMethodes(item); 

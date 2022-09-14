@@ -20,11 +20,11 @@ namespace Components
         public Text textcontent;
         public GameObject ScrollViewContainer;
         public GameObject content;
+        public Text statcontent;
+        
         public List<Button> button_list = new List<Button>();
         public GameObject templateBtn;
         public Text templateBtnText;
-        // public ScrollView scroll;
-        // public Button button;
 
 
         public void Start()
@@ -34,6 +34,10 @@ namespace Components
                 characterTools.characterToolsView
                     .Subscribe(OnLoadTools)
                     .AddTo(this);
+
+                characterTools.characterStatisticsView
+                    .Subscribe(AddStatistics)
+                    .AddTo(this);
                 
             }
             catch (NullReferenceException e)
@@ -41,52 +45,37 @@ namespace Components
                  Debug.Log("Donothing : " + e);
             } 
             RemoveButton();
-            button_list.Clear();  
+            button_list.Clear(); 
+            
         }
 
         public Button addButton(string permName, string type)
-        {
-            // if (permName != null){
+        {            
+            permName = permName.Replace(" ", "");
+            permName = permName.Replace("\n", "");
 
-            
-                permName = permName.Replace(" ", "");
-                permName = permName.Replace("\n", "");
+            GameObject newButton = Instantiate(templateBtn);
+            newButton.name = permName; 
+            newButton.transform.localScale = new Vector3(1, 1, 1);
+            newButton.transform.position = new Vector2(6, calculateYposition());
+            newButton.transform.SetParent(content.transform, false);
+            newButton.SetActive(true);
 
-                GameObject newButton = Instantiate(templateBtn);
-                // GameObject newText = Instantiate(templateBtn);
-                newButton.name = permName; 
-                newButton.transform.localScale = new Vector3(1, 1, 1);
-                newButton.transform.position = new Vector2(6, calculateYposition());
-                // newButton.transform.position = new Vector2(6, 12);
-                newButton.transform.SetParent(content.transform, false);
-                newButton.SetActive(true);
-                // Debug.Log("test = " + newButton.GetComponentInChildren<Text>().text);
-                Button tempButton = newButton.GetComponent<Button>();
-                // Text tempTextButton = tempButton.GetComponent<Text>();
-                Debug.Log(permName);
-                Debug.Log(newButton);
-                Debug.Log(tempButton);
-                // Text contentTxt = tempButton.GetComponent<Text>();
-
-                // Text contentTxt = Instantiate(templateBtnText);
-                Text contentTxt = newButton.GetComponentsInChildren<Text>()[0];
+            Button tempButton = newButton.GetComponent<Button>();
+            Text contentTxt = newButton.GetComponentsInChildren<Text>()[0];
 
 
-                Debug.Log(contentTxt);
-                if (contentTxt != null){
-                    contentTxt.text = permName;
-                }
-               
-                // templateBtnText.text = newButton.name;
+            Debug.Log(contentTxt);
+            if (contentTxt != null){
+                contentTxt.text = permName;
+            }
 
-                if (type == "permanence")
-                    tempButton.onClick.AddListener(() => PermanenceButtonClicked(permName));
-                else if (type== "methode")
-                    tempButton.onClick.AddListener(() => MethodesButtonClicked(permName));
+            if (type == "permanence")
+                tempButton.onClick.AddListener(() => PermanenceButtonClicked(permName));
+            else if (type== "methode")
+                tempButton.onClick.AddListener(() => MethodesButtonClicked(permName));
 
-                return tempButton;
-            // }
-            // return null;
+            return tempButton;
         }
 
         int calculateYposition(){
@@ -107,14 +96,10 @@ namespace Components
             characterTable.permFilePath = permanence;
             characterTable.readPermanence = true;
             characterTable.lastIndex = 0;
-            // Debug.Log ("Button clicked = " + permanence);
         }
 
         void MethodesButtonClicked(string methodes)
         {
-            // characterTable.permFilePath = permanence;
-            // characterTable.readPermanence = true;
-            // characterTable.lastIndex = 0;
             Debug.Log ("Button clicked for methodes = " + methodes);
         }
 
@@ -124,6 +109,10 @@ namespace Components
             {
                 Destroy(item.gameObject);
             }
+        }
+
+        public void AddStatistics(string line){
+            statcontent.text += line;
         }
 
         public void OnLoadTools(string data)

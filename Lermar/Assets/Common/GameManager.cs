@@ -178,6 +178,8 @@ namespace Managers
             characterTable.currentTableInGame.Clear();
             characterTable.lastNumber = 0;
             characterTable.lastIndex = 0;
+            characterTable.bilanGame = 0;
+            characterTable.readPermanence = false;
             characterTable.lastTable.Clear();
             
             await Task.Delay(TimeSpan.FromSeconds(2));

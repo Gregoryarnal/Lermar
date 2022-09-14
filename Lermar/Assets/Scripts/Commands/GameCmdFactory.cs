@@ -20,9 +20,9 @@ namespace Commands
         {
             return new ChipSelectCmd(characterTable, arrayValue);
         }      
-        public PlayTurnCmd PlayTurn(CharacterTable characterTable, GameRoullete gameRoullete)
+        public PlayTurnCmd PlayTurn(CharacterTable characterTable, GameRoullete gameRoullete, CharacterTools characterTools)
         {
-            return new PlayTurnCmd(GameManager.Instance, characterTable, gameRoullete, new PlayRoundGateway(), new PaymnentGateway());
+            return new PlayTurnCmd(GameManager.Instance, characterTable, characterTools, gameRoullete, new PlayRoundGateway(), new PaymnentGateway());
         }
         public PermanencesLoadCmd PermanencesLoad(CharacterTable characterTable, CharacterTools characterTools)
         {
