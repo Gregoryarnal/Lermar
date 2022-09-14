@@ -20,6 +20,9 @@ namespace Components
         public Text textcontent;
         public GameObject ScrollViewContainer;
         public GameObject content;
+        public GameObject popUpView;
+        public Button popUpBackgroundBtn;
+        public GameObject parentPanel;
         public Text statcontent;
         
         public List<Button> button_list = new List<Button>();
@@ -46,7 +49,7 @@ namespace Components
             } 
             RemoveButton();
             button_list.Clear(); 
-            
+
         }
 
         public Button addButton(string permName, string type)
@@ -101,8 +104,21 @@ namespace Components
         void MethodesButtonClicked(string methodes)
         {
             Debug.Log ("Button clicked for methodes = " + methodes);
+
+            popUpView.SetActive(true);
+            // Button backgroundBtn = popUpBackgroundBtn.GetComponent<Button>();
+            popUpBackgroundBtn.onClick.AddListener(() => BackgroundButtonClicked());
+
+            popUpBackgroundBtn.gameObject.SetActive(true);
+
         }
 
+        void BackgroundButtonClicked(){
+            Debug.Log ("BBackgroundButtonClicked " );
+
+            popUpView.SetActive(false);
+            popUpBackgroundBtn.gameObject.SetActive(false);
+        }
 
         void RemoveButton(){
             foreach (Button item in button_list)

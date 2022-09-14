@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using Commands;
@@ -25,5 +26,7 @@ namespace Components
                 characterTools.AddMethodes(item); 
             }
         }
+
+
     }
 }
