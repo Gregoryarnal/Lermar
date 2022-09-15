@@ -12,7 +12,6 @@ namespace Components
     {
         public CharacterTable characterTable;
         public CharacterTools characterTools;
-        // public GameRoullete gameRoullete;
         public GameCmdFactory gameCmdFactory;
         // string[] methodeName = ["aaaa", "sqdcsqdcqs", "pppp"];
         string[] methodeName = new string[] { "Acoussur", "Osmose NAS", "Colonnes et douzaines", "Thaïlandaises", "Express 20/24", "Ad Libitum" };
@@ -26,6 +25,8 @@ namespace Components
                 characterTools.AddMethodes(item); 
             }
         }
+
+        
 
 
     }

@@ -1,3 +1,5 @@
+// using System.Diagnostics;
+using System.Transactions;
 using System.Data.Common;
 // using System.Diagnostics;
 // using System.Diagnostics;
@@ -20,12 +22,32 @@ namespace Components
         public Text textcontent;
         public GameObject ScrollViewContainer;
         public GameObject content;
+
+
         public GameObject popUpView;
+        public GameObject montantePopUpView;
+        public GameObject methodePopUpView;
+        public GameObject ScrollPopUpView;
+        public GameObject TemplateBtnPopUp;
+        public GameObject ContentPopUpScroll;
+        public Text TemplateTextPopUp;
         public Button popUpBackgroundBtn;
-        public GameObject parentPanel;
+
+        public GameObject toolNameTopPopUp;
+        public GameObject permanenceNameTop;
+
+
+        
+        // public GameObject parentPanel;
+
+
         public Text statcontent;
         
         public List<Button> button_list = new List<Button>();
+        public List<Button> button_list_popup = new List<Button>();
+        public List<string> button_permanence_list = new List<string>();
+        // public string[] button_permanence_list = new string[]();
+        
         public GameObject templateBtn;
         public Text templateBtnText;
 
@@ -49,6 +71,57 @@ namespace Components
             } 
             RemoveButton();
             button_list.Clear(); 
+            button_permanence_list.Clear(); 
+            
+
+        }
+
+        public void addPopUpButton()
+        {            
+            
+
+
+            // Button[] tempButton = content.GetComponentsInChildren<Button>();
+            for (int i = 0; i < button_permanence_list.Count; i++)
+            {
+                var value = button_permanence_list[i];
+                value = value.Replace(" ", "");
+                value = value.Replace("\n", "");
+
+                GameObject newButton = Instantiate(TemplateBtnPopUp);
+                newButton.name = value; 
+                newButton.transform.localScale = new Vector3(1, 1, 1);
+                newButton.transform.position = new Vector2(6, calculatePopUpYposition(i));
+                newButton.transform.SetParent(ContentPopUpScroll.transform, false);
+                newButton.SetActive(true);
+
+                Button tempPopUpButton = newButton.GetComponent<Button>();
+                Text contentTxt = newButton.GetComponentsInChildren<Text>()[0];
+
+
+                // Debug.Log(contentTxt);
+                if (contentTxt != null){
+                    contentTxt.text = value;
+                }
+
+                tempPopUpButton.onClick.AddListener(() => highLightButton(tempPopUpButton, new Color(0, 204, 102)));
+
+                button_list_popup.Add(tempPopUpButton);
+            }
+            
+        }
+
+        void highLightButton(Button btn, Color color){
+
+            foreach (Button item in button_list_popup)
+            {
+                if (item == btn){
+                    btn.GetComponent<Image>().color = color;
+                    permanenceNameTop.GetComponent<Text>().text =  btn.GetComponentsInChildren<Text>()[0].text;
+                }else{
+                    item.GetComponent<Image>().color = new Color(1, 1, 1);
+                }
+            }
 
         }
 
@@ -67,8 +140,6 @@ namespace Components
             Button tempButton = newButton.GetComponent<Button>();
             Text contentTxt = newButton.GetComponentsInChildren<Text>()[0];
 
-
-            Debug.Log(contentTxt);
             if (contentTxt != null){
                 contentTxt.text = permName;
             }
@@ -77,8 +148,22 @@ namespace Components
                 tempButton.onClick.AddListener(() => PermanenceButtonClicked(permName));
             else if (type== "methode")
                 tempButton.onClick.AddListener(() => MethodesButtonClicked(permName));
+            else if (type== "montante")
+                tempButton.onClick.AddListener(() => MontanteButtonClicked(permName));
 
             return tempButton;
+        }
+
+        int calculatePopUpYposition(int size){
+            
+            var y = 1;
+            var ITEM_HEIGHT = 68;
+
+            for (int i = 1; i<=size; i++){
+                y -= ITEM_HEIGHT + 12;
+            }
+
+            return y;
         }
 
         int calculateYposition(){
@@ -101,12 +186,36 @@ namespace Components
             characterTable.lastIndex = 0;
         }
 
+        void LoadPermanencesPopUp(){
+
+        }
+
         void MethodesButtonClicked(string methodes)
         {
             Debug.Log ("Button clicked for methodes = " + methodes);
+            addPopUpButton();
 
             popUpView.SetActive(true);
+            methodePopUpView.SetActive(true);
+            montantePopUpView.SetActive(false);
+            toolNameTopPopUp.GetComponent<Text>().text =  methodes;
             // Button backgroundBtn = popUpBackgroundBtn.GetComponent<Button>();
+            popUpBackgroundBtn.onClick.AddListener(() => BackgroundButtonClicked());
+
+            popUpBackgroundBtn.gameObject.SetActive(true);
+
+        }
+
+        void MontanteButtonClicked(string montante)
+        {
+            Debug.Log ("Button clicked for montante = " + montante);
+            addPopUpButton();
+            toolNameTopPopUp.GetComponent<Text>().text =  montante;
+
+            popUpView.SetActive(true);
+            methodePopUpView.SetActive(false);
+            montantePopUpView.SetActive(true);
+            Button backgroundBtn = popUpBackgroundBtn.GetComponent<Button>();
             popUpBackgroundBtn.onClick.AddListener(() => BackgroundButtonClicked());
 
             popUpBackgroundBtn.gameObject.SetActive(true);
@@ -115,8 +224,9 @@ namespace Components
 
         void BackgroundButtonClicked(){
             Debug.Log ("BBackgroundButtonClicked " );
-
             popUpView.SetActive(false);
+            montantePopUpView.SetActive(false);
+
             popUpBackgroundBtn.gameObject.SetActive(false);
         }
 
@@ -125,6 +235,10 @@ namespace Components
             {
                 Destroy(item.gameObject);
             }
+            // foreach (Button item in button_permanence_list)
+            // {
+            //     Destroy(item.gameObject);
+            // }
         }
 
         public void AddStatistics(string line){
@@ -141,15 +255,23 @@ namespace Components
                 var type = data.Split("//")[1];
                 Debug.Log("OnLoadTools : " + value);
 
-                
-                button_list.Add(addButton(value, type));
-                // ScrollViewContainer.SetActive(true);
-                
+
+                Button btn = addButton(value, type);
+                if (type=="permanence"){
+                    // if (!button_permanence_list.Contains(btn)){
+                    button_permanence_list.Add(value);
+                    // }
+                }
+                // else{
+                    button_list.Add(btn);
+
+                // }                
             }else{
                 if (data == ""){
                     // textcontent.text = "";
                     RemoveButton();
                     button_list.Clear();  
+                    // button_permanence_list.Clear();  
                 }else{
                     Debug.Log("ERROR : " + data);
 

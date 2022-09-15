@@ -20,7 +20,7 @@ namespace Commands
         private IPayment paymentGateway;
         private string permanencePath;
         // private bool readPermanence;
-        private bool firstRun = true;
+        // private bool firstRun = true;
 
         public PlayTurnCmd(MonoBehaviour monoBehaviour, CharacterTable characterTable,CharacterTools characterTools, GameRoullete gameRoullete, IRound roundGateway, IPayment paymentGateway)
         {

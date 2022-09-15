@@ -413,6 +413,7 @@
 "Assets/Scripts/Components/ui/game/GameControllerInput.cs"
 "Assets/Scripts/Components/ui/game/GameDeleteInput.cs"
 "Assets/Scripts/Components/ui/game/GameMethodesInput.cs"
+"Assets/Scripts/Components/ui/game/GameMontanteInput.cs"
 "Assets/Scripts/Components/ui/game/GameMusicImageDisplay.cs"
 "Assets/Scripts/Components/ui/game/GameMusicInput.cs"
 "Assets/Scripts/Components/ui/game/GamePermanencesInput.cs"

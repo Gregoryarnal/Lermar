@@ -44,6 +44,15 @@ namespace ViewModel
             characterToolsView.Value = "\n" + methode + "//" + type;
         }
 
+        public void AddMontantes(string montante){
+            var type = "montante";
+                string aux = characterToolsView.Value;
+
+            characterToolsView.Value = "\n" + montante + "//" + type;
+        }
+
+        
+
          public void AddStatistics(int lastIndex, int value, int mise, int result, int bilan){
 
             // if (!firstRun){
