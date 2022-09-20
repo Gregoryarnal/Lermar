@@ -134,7 +134,7 @@ namespace Components
             var maxReachTxt = maxReach.options[maxReach.value].text;
             var chanceTxt = chanceGame.options[chanceGame.value].text;
             var attaqueTxt = Attaque.options[Attaque.value].text;
-            var gainResearchTxt = gainResearch.GetComponent<InputField>().text;
+            var gainResearchInt = Int32.Parse(gainResearch.GetComponent<InputField>().text);
             var nbPalierInt = Int32.Parse(nbPalier.GetComponent<InputField>().text);
 
             var timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
@@ -160,15 +160,8 @@ namespace Components
                 // var playerMise = mise(simpleChance, doubleChance);
                 var playerMise = getPlayerMise(chanceTxt, attaqueTxt,value, win);
                 value = readPermanenceFile(permanenceSelectedTxt,i);
-                Debug.Log("New value : " + value);
-                mise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, playerMise);
-                if (mise>=maxMiseInt){
-                    if (ifMaxPalierTxt.StartsWith("Repartir")){
-                        mise = coinValueInt;
-                    }else{
-                        mise=maxMiseInt;
-                    }
-                }
+                mise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, playerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt);
+             
                 win = calculateGain(value, playerMise, mise,coinValueInt, gain);
                 if (win){
 
@@ -182,17 +175,30 @@ namespace Components
                     gain -= mise*coinValueInt;
                     bilanGame -= mise*coinValueInt;
                     bilanTotal -= mise*coinValueInt;
+  
                     coup += 1;
                 }
 
                 addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise );
                 setUpStat(bilanTotal,bilanGame,mise,coinValueInt);
                 if (win && bilanGame>0){
-
-                    Debug.Log("End");
+                    // Debug.Log("End");
                     gain = 0;
                     mise = miseInitial;
                     bilanGame = 0;
+                    coup = 0;
+                }
+                
+                Debug.Log("End test");
+                Debug.Log("End gainResearchInt" + gainResearchInt);
+                Debug.Log("End gain" + gain);
+
+                if (bilanTotal>=gainResearchInt && gainResearchInt!=0){
+                    Debug.Log("End gainResearchInt");
+                    break;
+                }
+                
+                if (playerMise==null){
                     coup = 0;
                 }
 
@@ -319,17 +325,32 @@ namespace Components
 
         }
 
-        private int calculateMise(int coup, int mise, int timePalier, int calculateMise, string playerMise){
+        private int calculateMise(int coup, int mise, int timePalier, int nbPalierInt, string playerMise, int coinValueInt, int maxMiseInt, string ifMaxPalierTxt,string maxReachTxt){
 
             if (playerMise != null){
                 Debug.Log(coup);
                 // mise = 1;
                 if (mise==0){
-                    mise =1;
+                    mise = 1;
                 }
-                Debug.Log(timePalier);
+
                 if (coup!= 0 && coup%timePalier==0){
-                    mise += 1;
+                    if (mise == nbPalierInt){
+                        if (ifMaxPalierTxt.StartsWith("Recommencer")){
+                            mise = 1;
+                        }
+                    }else{
+                        mise += 1;
+                    }
+                    
+                    if (mise*coinValueInt >= maxMiseInt){
+                        if (maxReachTxt.StartsWith("Repartir")){
+                            mise = 1;
+                        }else{
+                            mise = maxMiseInt/coinValueInt;
+                        }
+                    }
+                    
                 }
                 return mise;
             }
