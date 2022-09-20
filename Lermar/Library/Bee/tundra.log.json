@@ -427,4 +427,4 @@
 {"msg":"inputSignatureChanged","annotation":"CopyFiles Library/ScriptAssemblies/Scripts.dll","index":365,"changes":[{"key":"InputFileList","value":["Library/Bee/artifacts/200b0aEDbg.dag/Scripts.dll"],"oldvalue":[],"dependency":"explicit"}]}
 {"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Scripts.dll","index":365}
 {"msg":"noderesult","processed_node_count":414,"number_of_nodes_ever_queued":420,"annotation":"CopyFiles Library/ScriptAssemblies/Scripts.pdb","index":366,"exitcode":0,"outputfile":"Library/ScriptAssemblies/Scripts.pdb"}
-{"msg":"noderesult","processed_node_count":417,"number_of_nodes_ever_queued":420,"annotation":"CopyFiles Library/ScriptAssemblies/Scripts.dll","index":365,"exitcode":0,"outputfile":"Library/ScriptAssemblies/Scripts.dll"}
+{"msg":"noderesult","processed_node_count":415,"number_of_nodes_ever_queued":420,"annotation":"CopyFiles Library/ScriptAssemblies/Scripts.dll","index":365,"exitcode":0,"outputfile":"Library/ScriptAssemblies/Scripts.dll"}

@@ -1,4 +1,5 @@
 // using System.Diagnostics;
+// using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -150,16 +151,18 @@ namespace Components
             var bilanTotal = 0;
             var bilanGame = 0;
             var coup = 0;
+            var win = true;
+            var value = -1;
             lineGameObject.Clear();
             int last = readPermanenceFile(permanenceSelectedTxt, -1);
             for (int i = fromBallInt-1; i < toBallInt; i++)
             {
                 // var playerMise = mise(simpleChance, doubleChance);
-                var playerMise = chanceTxt;
-                var value = readPermanenceFile(permanenceSelectedTxt,i);
+                var playerMise = getPlayerMise(chanceTxt, attaqueTxt,value, win);
+                value = readPermanenceFile(permanenceSelectedTxt,i);
                 Debug.Log("New value : " + value);
-                mise = calculateMise(coup, mise,  timePalierInt, nbPalierInt);
-                var win = calculateGain(value, playerMise, mise,coinValueInt, gain);
+                mise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, playerMise);
+                win = calculateGain(value, playerMise, mise,coinValueInt, gain);
                 if (win){
 
                     gain += mise*coinValueInt;
@@ -175,7 +178,7 @@ namespace Components
                     coup += 1;
                 }
 
-                addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal );
+                addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise );
                 setUpStat(bilanTotal,bilanGame,mise,coinValueInt);
                 if (win && bilanGame>0){
 
@@ -191,6 +194,70 @@ namespace Components
             }
 
         }
+
+
+        string getPlayerMise(string chanceTxt, string attaqueTxt, int lastValue, bool lastWin){
+            var lastColor = valueChance(lastValue, "Rouge");
+            if (attaqueTxt=="Série"){
+                return chanceTxt;
+            }else  if (attaqueTxt=="Sortante" && lastValue > -1){
+                if (chanceTxt=="Noir" || chanceTxt=="Rouge"){
+                    return lastColor;
+                }else if (chanceTxt=="Pair" || chanceTxt=="Impair"){
+                    if (lastValue%2==0){
+                        return "Pair";
+                    }else {
+                        return "Impair";
+                    }
+                }else if (chanceTxt=="Passe" || chanceTxt=="Manque"){
+                    if (lastValue<=18){
+                        return "Manque";
+                    }else {
+                        return "Passe";
+                    }
+                }
+            }else  if (attaqueTxt=="Perdante" && lastValue > -1){
+                if (chanceTxt=="Noir" || chanceTxt=="Rouge"){
+                    if (lastColor=="Rouge"){
+                        return "Noir";
+                    }else if (lastColor=="Noir"){
+                        return "Rouge";
+                    }
+                }else if (chanceTxt=="Pair" || chanceTxt=="Impair"){
+                    if (lastValue%2==0){
+                        return "Impair";
+                    }else {
+                        return "Pair";
+                    }
+                }else if (chanceTxt=="Passe" || chanceTxt=="Manque"){
+                    if (lastValue<=18){
+                        return "Passe";
+                    }else {
+                        return "Manque";
+                    }
+                }
+            return null;
+                
+                
+            }else  if (attaqueTxt=="Av. derniere"){
+            return null;
+                
+            }else  if (attaqueTxt=="C.A.derniere"){
+            return null;
+                
+            }else  if (attaqueTxt=="Sauteuse"){
+            return null;
+                
+            }else  if (attaqueTxt=="Differentielle directe"){
+            return null;
+                
+            }else  if (attaqueTxt=="Differentielle composé"){
+            return null;
+                
+            }
+            return null;
+        }
+
         void setUpResultView(){
             resultView.SetActive(true);
             rightView.SetActive(false);
@@ -205,7 +272,7 @@ namespace Components
             rightView.SetActive(true);
             leftView.SetActive(true);
         }
-        private void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal){
+        private void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise){
             
             var color = valueChance(value, "Rouge");
             GameObject template;
@@ -227,7 +294,7 @@ namespace Components
             tempText[0].text = (index+1).ToString();
             tempText[1].text = coup.ToString();
             tempText[2].text = value.ToString();
-            tempText[3].text = (mise*coinValueInt).ToString();
+            tempText[3].text = (mise*coinValueInt).ToString() + " " + playerMise;
             tempText[4].text = bilanGame.ToString();
             tempText[5].text = bilanTotal.ToString(); 
 
@@ -245,12 +312,22 @@ namespace Components
 
         }
 
-        private int calculateMise(int coup, int mise, int timePalier, int calculateMise){
+        private int calculateMise(int coup, int mise, int timePalier, int calculateMise, string playerMise){
 
-            if (coup!= 0 && coup%timePalier==0){
-                mise += 1;
+            if (playerMise != null){
+                Debug.Log(coup);
+                // mise = 1;
+                if (mise==0){
+                    mise =1;
+                }
+                Debug.Log(timePalier);
+                if (coup!= 0 && coup%timePalier==0){
+                    mise += 1;
+                }
+                return mise;
             }
-            return mise;
+            return 0;
+            
         }
 
         private bool calculateGain(int value, string playerMise,int mise,int coinValueInt, int gain){
