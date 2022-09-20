@@ -109,7 +109,7 @@ namespace Components
             var delaiBetweenBallTxt = delaiBetweenBall.GetComponent<InputField>().text;
             var fileNameTxt = fileName.GetComponent<InputField>().text;
             var coinValueInt = Int32.Parse(coinValue.GetComponent<InputField>().text);
-            var maxMiseTxt = maxMise.GetComponent<InputField>().text;
+            var maxMiseInt = Int32.Parse(maxMise.GetComponent<InputField>().text);
             var permanenceSelectedTxt = permanenceSelected.GetComponent<Text>().text;
             var montanteSelectedTxt = montanteSelected.GetComponent<Text>().text;
 
@@ -120,7 +120,7 @@ namespace Components
                 case "Apaliers":
                     Debug.Log("palier");
                     setUpResultView();
-                    ApalierCmd(fromBallInt, toBallInt, showEachTxt, stopBetweenEachTxt, delaiBetweenBallTxt, fileNameTxt, coinValueInt, maxMiseTxt, permanenceSelectedTxt);
+                    ApalierCmd(fromBallInt, toBallInt, showEachTxt, stopBetweenEachTxt, delaiBetweenBallTxt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
                     break;
                 default:
                     Debug.Log("non");
@@ -129,7 +129,7 @@ namespace Components
             }
         }
 
-        public void ApalierCmd(int fromBallInt, int toBallInt, string showEachTxt, string stopBetweenEachTxt, string delaiBetweenBallTxt, string fileNameTxt, int coinValueInt, string maxMiseTxt,string permanenceSelectedTxt){
+        public void ApalierCmd(int fromBallInt, int toBallInt, string showEachTxt, string stopBetweenEachTxt, string delaiBetweenBallTxt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt){
             
             var maxReachTxt = maxReach.options[maxReach.value].text;
             var chanceTxt = chanceGame.options[chanceGame.value].text;
@@ -162,6 +162,13 @@ namespace Components
                 value = readPermanenceFile(permanenceSelectedTxt,i);
                 Debug.Log("New value : " + value);
                 mise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, playerMise);
+                if (mise>=maxMiseInt){
+                    if (ifMaxPalierTxt.StartsWith("Repartir")){
+                        mise = coinValueInt;
+                    }else{
+                        mise=maxMiseInt;
+                    }
+                }
                 win = calculateGain(value, playerMise, mise,coinValueInt, gain);
                 if (win){
 
