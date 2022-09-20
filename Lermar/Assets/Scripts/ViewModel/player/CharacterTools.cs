@@ -56,12 +56,10 @@ namespace ViewModel
          public void AddStatistics(int lastIndex, int value, int mise, int result, int bilan){
 
             // if (!firstRun){
-                string aux = characterStatisticsView.Value;
+                // string aux = characterStatisticsView.Value;
 
-                var tempResult = 0;
-                var tempBilan = 0;
-                characterStatisticsView.Value = "\n" + lastIndex.ToString() + "     |       " + value.ToString() 
-                        + "     |        "+ mise.ToString() + "     |        "+ result.ToString()+ "     |        "+  bilan.ToString();
+                characterStatisticsView.Value = lastIndex.ToString() + "//" + value.ToString() 
+                        + "//"+ mise.ToString() + "//"+ result.ToString()+ "//"+  bilan.ToString();
             // }
         }
 

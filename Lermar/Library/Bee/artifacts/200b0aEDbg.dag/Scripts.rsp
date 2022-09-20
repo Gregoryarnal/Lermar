@@ -390,6 +390,7 @@
 "Assets/Scripts/Components/hud/GameMoneyDisplay.cs"
 "Assets/Scripts/Components/hud/LastNumber.cs"
 "Assets/Scripts/Components/hud/LastTableNumberDisplay.cs"
+"Assets/Scripts/Components/hud/MontanteViewDisplay.cs"
 "Assets/Scripts/Components/hud/NewNumberRoulleteDisplay.cs"
 "Assets/Scripts/Components/hud/ToolsDisplay.cs"
 "Assets/Scripts/Components/player/controllers/IRewardTimer.cs"

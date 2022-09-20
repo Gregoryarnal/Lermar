@@ -120,5 +120,7 @@ namespace Commands
 
             // Debug.Log($"Read permanences file! : ");
         }
+
+        
     }
 }

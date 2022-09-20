@@ -29,6 +29,11 @@ namespace Commands
             return new PermanencesLoadCmd(characterTable, characterTools);
         }
         
+        // public ApalierCmd Apalier(string fromBallTxt, string toBallTxt, string showEachTxt, string stopBetweenEachTxt, string delaiBetweenBallTxt, string fileNameTxt, string coinValueTxt, string maxMiseTxt, string changeGameTxt, string AttaqueTxt, string gainResearchTxt, string permanenceSelectedTxt)
+        // {
+        //     return new ApalierCmd(romBallTxt, toBallTxt, showEachTxt, stopBetweenEachTxt, delaiBetweenBallTxt, fileNameTxt, coinValueTxt, maxMiseTxt, changeGameTxt, AttaqueTxt, gainResearchTxt, permanenceSelectedTxt);
+        // }
+        
 
         // Table events
         public MusicTurnCmd MusicTurnCmd(GameSound gameSound, bool isOn)

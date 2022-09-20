@@ -1,3 +1,7 @@
+// using System.Reflection.PortableExecutable;
+// using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 // using System.Diagnostics;
 using System.Transactions;
 using System.Data.Common;
@@ -19,13 +23,18 @@ namespace Components
 
         public CharacterTable characterTable;
         public CharacterTools characterTools;
+        
         public Text textcontent;
         public GameObject ScrollViewContainer;
         public GameObject content;
 
 
         public GameObject popUpView;
+
         public GameObject montantePopUpView;
+        public GameObject palierView;
+
+
         public GameObject methodePopUpView;
         public GameObject ScrollPopUpView;
         public GameObject TemplateBtnPopUp;
@@ -37,19 +46,22 @@ namespace Components
         public GameObject permanenceNameTop;
 
 
-        
-        // public GameObject parentPanel;
-
-
-        public Text statcontent;
+        // template line stats
+        public GameObject template;
+        public GameObject statcontent;
         
         public List<Button> button_list = new List<Button>();
         public List<Button> button_list_popup = new List<Button>();
         public List<string> button_permanence_list = new List<string>();
+        List<GameObject> lineGameObject = new List<GameObject>();
         // public string[] button_permanence_list = new string[]();
         
         public GameObject templateBtn;
         public Text templateBtnText;
+
+
+        public GameObject toBall;
+
 
 
         public void Start()
@@ -78,10 +90,6 @@ namespace Components
 
         public void addPopUpButton()
         {            
-            
-
-
-            // Button[] tempButton = content.GetComponentsInChildren<Button>();
             for (int i = 0; i < button_permanence_list.Count; i++)
             {
                 var value = button_permanence_list[i];
@@ -99,7 +107,6 @@ namespace Components
                 Text contentTxt = newButton.GetComponentsInChildren<Text>()[0];
 
 
-                // Debug.Log(contentTxt);
                 if (contentTxt != null){
                     contentTxt.text = value;
                 }
@@ -118,11 +125,22 @@ namespace Components
                 if (item == btn){
                     btn.GetComponent<Image>().color = color;
                     permanenceNameTop.GetComponent<Text>().text =  btn.GetComponentsInChildren<Text>()[0].text;
+                    int last = readPermanenceFile(btn.GetComponentsInChildren<Text>()[0].text, -1);
+                    toBall.GetComponent<InputField>().text = last.ToString();
                 }else{
                     item.GetComponent<Image>().color = new Color(1, 1, 1);
                 }
             }
 
+        }
+
+        private int readPermanenceFile(string nameFile, int index){
+            var permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/" + nameFile;
+            string[] lines = System.IO.File.ReadAllLines(permanencePath);
+            if (index == -1){
+                return lines.Length;
+            }
+            return Int32.Parse(lines[index]);
         }
 
         public Button addButton(string permName, string type)
@@ -179,6 +197,16 @@ namespace Components
             return y;
         }
 
+        int calculateYposition(int index){
+            
+            var y = -24;
+            var ITEM_HEIGHT = 30;
+
+            y -= ITEM_HEIGHT*index+50;
+
+            return y;
+        }
+
         void PermanenceButtonClicked(string permanence)
         {
             characterTable.permFilePath = permanence;
@@ -211,6 +239,20 @@ namespace Components
             Debug.Log ("Button clicked for montante = " + montante);
             addPopUpButton();
             toolNameTopPopUp.GetComponent<Text>().text =  montante;
+            
+            switch (montante)
+            {
+                case "Apaliers":
+                    Debug.Log("palierView.SetActive(true);");
+                    palierView.SetActive(true);
+                    // MontanteApalier(fromBallTxt, toBallTxt);
+                    break;
+                default:
+                    Debug.Log("palierView.SetActive(false);");
+                    break;
+
+            }
+        // }
 
             popUpView.SetActive(true);
             methodePopUpView.SetActive(false);
@@ -235,19 +277,44 @@ namespace Components
             {
                 Destroy(item.gameObject);
             }
-            // foreach (Button item in button_permanence_list)
-            // {
-            //     Destroy(item.gameObject);
-            // }
         }
 
-        public void AddStatistics(string line){
-            statcontent.text += line;
+        public void AddStatistics(string valuestat){
+            // GameObject template;
+ 
+            Debug.Log("AddStatistics");
+            Debug.Log(valuestat);
+            string[] data = valuestat.Split("//");
+            string coup = data[0];
+            string value = data[1];
+            string mise = data[2];
+            string result = data[3];
+            string bilan = data[4];
+
+            if (coup!="0"){
+                GameObject newLine = Instantiate(template);
+
+                newLine.transform.localScale = new Vector3(1, 1, 1);
+                newLine.transform.position = new Vector2(0, calculateYposition(lineGameObject.Count));
+                newLine.transform.SetParent(statcontent.transform, false);
+                newLine.SetActive(true);
+
+                Text[] tempText = newLine.GetComponentsInChildren<Text>();
+                
+                // tempText[0].text = (index+1).ToString();
+                tempText[0].text = coup.ToString();
+                tempText[1].text = value.ToString();
+                tempText[2].text = mise.ToString();
+                tempText[3].text = result.ToString();
+                tempText[4].text = bilan.ToString(); 
+
+                lineGameObject.Add(newLine);
+            }
+            
         }
 
         public void OnLoadTools(string data)
         {
-            // public Button button;
             Debug.Log("OnLoadTools : " + data);
             var datasplit = data.Split("//");
             if (datasplit.Length == 2){
