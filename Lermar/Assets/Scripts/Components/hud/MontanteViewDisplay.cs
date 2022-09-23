@@ -1,4 +1,8 @@
 
+// using System.Runtime.CompilerServices;
+// using System.Diagnostics;
+using System.IO;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -304,8 +308,38 @@ namespace Components
                     index+=1;
                 }
             }
+            if (fileNameTxt!=""){
+            saveResult(fileNameTxt);
+
+            }
         }
 
+        void saveResult(string filename){
+            // resultContent
+            
+
+            var csv = new StringBuilder();
+            var filePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/" + filename+".csv";
+            // GameObject[] lines = resultContent.GetComponentsInChildren<GameObject>();
+            // Component[] components = resultContent.GetComponentsInChildren<Component>(false);
+            foreach (GameObject line in lineGameObject)
+            {
+                Text[] contents = line.GetComponentsInChildren<Text>();
+                var newLine ="";
+                Debug.Log(contents.Length);
+
+                foreach (Text item in contents)
+                {
+                    // Debug.Log(item.text);
+                    // newLine += string.Format("{0},", item.text);
+                    newLine +=  item.text+",";
+                }
+                Debug.Log(newLine);
+
+                csv.AppendLine(newLine);  
+            }
+            File.AppendAllText(filePath, csv.ToString());
+        }
 
         string getPlayerMise(string chanceTxt, string attaqueTxt, int value, bool lastWin, int index, string permanenceSelectedTxt, int lastValue){
             var color = valueChance(value, "Rouge");

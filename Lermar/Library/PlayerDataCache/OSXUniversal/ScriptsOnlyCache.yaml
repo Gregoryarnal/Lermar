@@ -16,7 +16,9 @@ ScriptsOnlyBuild:
     - Components.ChipSelectInput
     - Components.ChipSelected
     - Components.GameDeleteInput
+    - Components.GameMethodesInput
     - Components.GameMoneyDisplay
+    - Components.GameMontanteInput
     - Components.GameMusicImageDisplay
     - Components.GameMusicInput
     - Components.GamePermanencesInput
@@ -29,6 +31,7 @@ ScriptsOnlyBuild:
     - Components.LastTableNumberDisplay
     - Components.MagnetDestroyerDisplay
     - Components.MagnetDestroyerInput
+    - Components.MontanteViewDisplay
     - Components.NewNumberRoulleteDisplay
     - Components.PlayerRoundInput
     - Components.PlayerSaveInput
@@ -70,10 +73,12 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.GridLayoutGroup
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
     - UnityEngine.UI.Mask
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
@@ -81,8 +86,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
   serializedClasses:
-    Scripts:
-    - ViewModel.TableChips
     UniRx:
     - UniRx.BoolReactiveProperty
     - UniRx.IntReactiveProperty
@@ -120,7 +123,13 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.AnimationTriggers
     - UnityEngine.UI.Button/ButtonClickedEvent
     - UnityEngine.UI.ColorBlock
+    - UnityEngine.UI.Dropdown/DropdownEvent
+    - UnityEngine.UI.Dropdown/OptionData
+    - UnityEngine.UI.Dropdown/OptionDataList
     - UnityEngine.UI.FontData
+    - UnityEngine.UI.InputField/EndEditEvent
+    - UnityEngine.UI.InputField/OnChangeEvent
+    - UnityEngine.UI.InputField/SubmitEvent
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
     - UnityEngine.UI.ScrollRect/ScrollRectEvent
@@ -128,6 +137,9 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.SpriteState
     - UnityEngine.UI.Toggle/ToggleEvent
   methodsToPreserve:
+  - assembly: Scripts
+    fullTypeName: Components.GameMontanteInput
+    methodName: OnClick
   - assembly: Scripts
     fullTypeName: Components.GamePermanencesInput
     methodName: OnClick
@@ -146,6 +158,12 @@ ScriptsOnlyBuild:
   - assembly: Scripts
     fullTypeName: Components.GameRestoreInput
     methodName: OnClick
+  - assembly: Scripts
+    fullTypeName: Components.GameMethodesInput
+    methodName: OnClick
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.Object
+    methodName: set_name
   - assembly: Scripts
     fullTypeName: Components.GamePlayInput
     methodName: OnClick
@@ -205,129 +223,139 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1710}
     - Class: 114
-      Script: {instanceID: 2220}
+      Script: {instanceID: 1934}
     - Class: 114
-      Script: {instanceID: 2246}
+      Script: {instanceID: 2222}
     - Class: 114
-      Script: {instanceID: 2414}
+      Script: {instanceID: 2248}
     - Class: 114
-      Script: {instanceID: 2632}
+      Script: {instanceID: 2416}
     - Class: 114
-      Script: {instanceID: 2718}
+      Script: {instanceID: 2634}
     - Class: 114
-      Script: {instanceID: 2730}
+      Script: {instanceID: 2720}
     - Class: 114
-      Script: {instanceID: 2900}
+      Script: {instanceID: 2732}
     - Class: 114
-      Script: {instanceID: 2964}
+      Script: {instanceID: 2902}
     - Class: 114
-      Script: {instanceID: 3462}
+      Script: {instanceID: 2966}
     - Class: 114
-      Script: {instanceID: 3654}
+      Script: {instanceID: 2996}
     - Class: 114
-      Script: {instanceID: 3830}
+      Script: {instanceID: 3464}
     - Class: 114
-      Script: {instanceID: 3930}
+      Script: {instanceID: 3656}
     - Class: 114
-      Script: {instanceID: 4098}
+      Script: {instanceID: 3832}
     - Class: 114
-      Script: {instanceID: 4390}
+      Script: {instanceID: 3932}
     - Class: 114
-      Script: {instanceID: 4654}
+      Script: {instanceID: 4100}
     - Class: 114
-      Script: {instanceID: 4690}
+      Script: {instanceID: 4392}
     - Class: 114
-      Script: {instanceID: 4850}
+      Script: {instanceID: 4656}
     - Class: 114
-      Script: {instanceID: 4936}
+      Script: {instanceID: 4692}
     - Class: 114
-      Script: {instanceID: 5004}
+      Script: {instanceID: 4852}
+    - Class: 114
+      Script: {instanceID: 4938}
     - Class: 114
       Script: {instanceID: 5006}
     - Class: 114
-      Script: {instanceID: 5124}
+      Script: {instanceID: 5008}
     - Class: 114
-      Script: {instanceID: 5184}
+      Script: {instanceID: 5126}
     - Class: 114
-      Script: {instanceID: 5232}
+      Script: {instanceID: 5186}
     - Class: 114
-      Script: {instanceID: 5258}
+      Script: {instanceID: 5234}
     - Class: 114
-      Script: {instanceID: 5270}
+      Script: {instanceID: 5260}
     - Class: 114
-      Script: {instanceID: 5340}
+      Script: {instanceID: 5272}
     - Class: 114
-      Script: {instanceID: 5360}
+      Script: {instanceID: 5342}
     - Class: 114
-      Script: {instanceID: 5370}
+      Script: {instanceID: 5362}
     - Class: 114
-      Script: {instanceID: 5384}
+      Script: {instanceID: 5372}
     - Class: 114
-      Script: {instanceID: 5392}
+      Script: {instanceID: 5386}
     - Class: 114
-      Script: {instanceID: 5442}
+      Script: {instanceID: 5394}
     - Class: 114
-      Script: {instanceID: 5526}
+      Script: {instanceID: 5444}
     - Class: 114
-      Script: {instanceID: 5634}
+      Script: {instanceID: 5528}
     - Class: 114
-      Script: {instanceID: 5666}
+      Script: {instanceID: 5636}
     - Class: 114
-      Script: {instanceID: 5764}
+      Script: {instanceID: 5668}
     - Class: 114
-      Script: {instanceID: 5804}
+      Script: {instanceID: 5766}
     - Class: 114
-      Script: {instanceID: 5822}
+      Script: {instanceID: 5806}
     - Class: 114
-      Script: {instanceID: 6020}
+      Script: {instanceID: 5824}
     - Class: 114
-      Script: {instanceID: 6124}
+      Script: {instanceID: 6022}
     - Class: 114
-      Script: {instanceID: 6160}
+      Script: {instanceID: 6126}
     - Class: 114
-      Script: {instanceID: 6170}
+      Script: {instanceID: 6162}
     - Class: 114
-      Script: {instanceID: 6180}
+      Script: {instanceID: 6172}
     - Class: 114
-      Script: {instanceID: 6256}
+      Script: {instanceID: 6182}
     - Class: 114
-      Script: {instanceID: 6340}
+      Script: {instanceID: 6258}
     - Class: 114
-      Script: {instanceID: 6702}
+      Script: {instanceID: 6342}
     - Class: 114
-      Script: {instanceID: 6714}
+      Script: {instanceID: 6704}
     - Class: 114
-      Script: {instanceID: 6968}
+      Script: {instanceID: 6716}
     - Class: 114
-      Script: {instanceID: 6992}
+      Script: {instanceID: 6858}
     - Class: 114
-      Script: {instanceID: 7026}
+      Script: {instanceID: 6972}
     - Class: 114
-      Script: {instanceID: 7194}
+      Script: {instanceID: 6996}
     - Class: 114
-      Script: {instanceID: 7220}
+      Script: {instanceID: 7030}
     - Class: 114
-      Script: {instanceID: 7328}
+      Script: {instanceID: 7076}
     - Class: 114
-      Script: {instanceID: 7418}
+      Script: {instanceID: 7200}
     - Class: 114
-      Script: {instanceID: 7916}
+      Script: {instanceID: 7226}
     - Class: 114
-      Script: {instanceID: 7932}
+      Script: {instanceID: 7334}
     - Class: 114
-      Script: {instanceID: 7970}
+      Script: {instanceID: 7424}
     - Class: 114
-      Script: {instanceID: 8106}
+      Script: {instanceID: 7622}
     - Class: 114
-      Script: {instanceID: 8280}
+      Script: {instanceID: 7922}
     - Class: 114
-      Script: {instanceID: 8354}
+      Script: {instanceID: 7938}
     - Class: 114
-      Script: {instanceID: 8378}
+      Script: {instanceID: 7976}
     - Class: 114
-      Script: {instanceID: 8466}
+      Script: {instanceID: 8112}
     - Class: 114
-      Script: {instanceID: 8708}
+      Script: {instanceID: 8286}
+    - Class: 114
+      Script: {instanceID: 8360}
+    - Class: 114
+      Script: {instanceID: 8384}
+    - Class: 114
+      Script: {instanceID: 8472}
+    - Class: 114
+      Script: {instanceID: 8714}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -467,6 +495,12 @@ ScriptsOnlyBuild:
     className: UnityOnMouseExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 431215d18cf0db7310c4eadccef0b481
+    assemblyName: Scripts.dll
+    namespaceName: Components
+    className: GameMontanteInput
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UniRx.dll
     namespaceName: UniRx.Triggers
@@ -479,7 +513,7 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerEnterMessageListener
   - hash:
       serializedVersion: 2
-      Hash: a78d555084155e7551222f2a8f875881
+      Hash: ccc482004b79955946367048fb2aa491
     assemblyName: Scripts.dll
     namespaceName: ViewModel
     className: CharacterTools
@@ -1019,7 +1053,7 @@ ScriptsOnlyBuild:
     className: Chip
   - hash:
       serializedVersion: 2
-      Hash: b7bdc462ab0e23e0877fbaae9f84ccd1
+      Hash: 3599609c1654da8aa8b0dae8dd1b26a3
     assemblyName: Scripts.dll
     namespaceName: Components
     className: GamePlayInput
@@ -1127,7 +1161,7 @@ ScriptsOnlyBuild:
     className: NewNumberRoulleteDisplay
   - hash:
       serializedVersion: 2
-      Hash: bf852a340caeb8557fda51622d81d58c
+      Hash: 5e7c324a412fc949bce1086bf4767b4b
     assemblyName: Scripts.dll
     namespaceName: Components
     className: InterfaceDisplay
@@ -1253,7 +1287,7 @@ ScriptsOnlyBuild:
     className: ButtonTableInteractable
   - hash:
       serializedVersion: 2
-      Hash: b1cc097706fa077f7c97d5315416cd66
+      Hash: 680a619d2da2eb5f2a825f1c6c822b43
     assemblyName: Scripts.dll
     namespaceName: Components
     className: ToolsDisplay
@@ -1361,6 +1395,12 @@ ScriptsOnlyBuild:
     className: ButtonTableFxLongPressDisplay
   - hash:
       serializedVersion: 2
+      Hash: 431215d18cf0db7310c4eadccef0b481
+    assemblyName: Scripts.dll
+    namespaceName: Components
+    className: GameMethodesInput
+  - hash:
+      serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -1389,6 +1429,12 @@ ScriptsOnlyBuild:
     assemblyName: Scripts.dll
     namespaceName: Components
     className: GameRestoreInput
+  - hash:
+      serializedVersion: 2
+      Hash: 122ab83572587db62df7d064ea9a0a9f
+    assemblyName: Scripts.dll
+    namespaceName: Components
+    className: MontanteViewDisplay
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1691,7 +1737,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 8f8cd49e9fe67bc97830720450923c3f
+      Hash: 7e9071ec276b0d6de322be67c38ffe32
     assemblyName: Scripts.dll
     namespaceName: ViewModel
     className: CharacterTable
