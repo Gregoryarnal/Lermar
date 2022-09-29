@@ -12,7 +12,6 @@ namespace Components
         public void OnClick()
         {
              Application.Quit();
-            // gameCmdFactory.PlayTurn(chartacterTable, gameRoullete).Execute();
         }
     }
 }

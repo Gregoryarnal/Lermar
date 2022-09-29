@@ -12,13 +12,10 @@ namespace Components
         public GameRoullete gameRoullete;
         public GameCmdFactory gameCmdFactory;
         public CharacterTools characterTools;
-        // private int cpt = 0;
-
         
         public void OnClick()
         {
             gameCmdFactory.PlayTurn(characterTable, gameRoullete, characterTools).Execute();
-            // cpt += 1;
         }
     }
 }

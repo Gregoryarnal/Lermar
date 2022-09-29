@@ -12,12 +12,10 @@ namespace Components
     {
         public CharacterTable characterTable;
         public CharacterTools characterTools;
-        // public GameRoullete gameRoullete;
         public GameCmdFactory gameCmdFactory;
-        // string[] methodeName = ["aaaa", "sqdcsqdcqs", "pppp"];
+
         string[] montanteName = new string[] { "NAS", "D'Alembert", "Contre d'Alembert", "Hollandaise", "Americaine", "Piquemouche", "Wells", "Contre Wells", "MIDAS", "A paliers", "Pascal" };
 
-        
         public void OnClick()
         {
             characterTools.ResetView();
@@ -26,16 +24,5 @@ namespace Components
                 characterTools.AddMontantes(item); 
             }
         }
-
-        // public void OnClickTest()
-        // {
-        //     characterTools.ResetView();
-        //     foreach (string item in methodeName)
-        //     {
-        //         characterTools.AddMethodes(item); 
-        //     }
-        // }
-
-
     }
 }

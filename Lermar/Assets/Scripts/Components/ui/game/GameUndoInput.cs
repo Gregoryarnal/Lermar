@@ -11,6 +11,7 @@ namespace Components
     {
         public CharacterTable characterTable;
         public GameCmdFactory gameCmdFactory;
+        
         public void OnClick() 
         {
             gameCmdFactory.UndoTableTurn(characterTable).Execute();

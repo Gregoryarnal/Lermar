@@ -15,6 +15,7 @@ using UniRx;
 using ViewModel;
 using System;
 using Controllers;
+using Montante;
 
 namespace Components
 {
@@ -23,6 +24,7 @@ namespace Components
 
         public CharacterTable characterTable;
         public CharacterTools characterTools;
+        // public GameCmdFactory gameCmdFactory;
         
         public Text textcontent;
         public GameObject ScrollViewContainer;
@@ -63,6 +65,9 @@ namespace Components
         public GameObject toBall;
 
 
+        public Button ExecuteButton;
+
+
 
         public void Start()
         {
@@ -84,7 +89,9 @@ namespace Components
             RemoveButton();
             button_list.Clear(); 
             button_permanence_list.Clear(); 
-            
+            lineGameObject.Clear();
+
+
 
         }
 
@@ -186,12 +193,13 @@ namespace Components
 
         int calculateYposition(){
             
-            var y = 125;
+            // var y = 125;
+            var y = 0;
             var ITEM_HEIGHT = 30;
 
             var size = button_list.Count;
             for (int i = 1; i<=size; i++){
-                y -= ITEM_HEIGHT + 12;
+                y -= ITEM_HEIGHT + 30;
             }
 
             return y;
@@ -220,14 +228,13 @@ namespace Components
 
         void MethodesButtonClicked(string methodes)
         {
-            Debug.Log ("Button clicked for methodes = " + methodes);
             addPopUpButton();
 
             popUpView.SetActive(true);
             methodePopUpView.SetActive(true);
             montantePopUpView.SetActive(false);
             toolNameTopPopUp.GetComponent<Text>().text =  methodes;
-            // Button backgroundBtn = popUpBackgroundBtn.GetComponent<Button>();
+
             popUpBackgroundBtn.onClick.AddListener(() => BackgroundButtonClicked());
 
             popUpBackgroundBtn.gameObject.SetActive(true);
@@ -236,23 +243,23 @@ namespace Components
 
         void MontanteButtonClicked(string montante)
         {
-            Debug.Log ("Button clicked for montante = " + montante);
             addPopUpButton();
             toolNameTopPopUp.GetComponent<Text>().text =  montante;
             
             switch (montante)
             {
                 case "Apaliers":
-                    Debug.Log("palierView.SetActive(true);");
                     palierView.SetActive(true);
-                    // MontanteApalier(fromBallTxt, toBallTxt);
+                    // ExecuteButton.onClick.AddListener(() => characterTools.APalier());
+                    // APalierCmd sn = gameObject.GetComponent<APalierCmd>();
+                    // sn.DoSomething();
+                    // ExecuteButton.onClick.AddListener(() => new APalierCmd());
                     break;
                 default:
                     Debug.Log("palierView.SetActive(false);");
                     break;
 
             }
-        // }
 
             popUpView.SetActive(true);
             methodePopUpView.SetActive(false);
@@ -265,7 +272,6 @@ namespace Components
         }
 
         void BackgroundButtonClicked(){
-            Debug.Log ("BBackgroundButtonClicked " );
             popUpView.SetActive(false);
             montantePopUpView.SetActive(false);
 
@@ -282,8 +288,8 @@ namespace Components
         public void AddStatistics(string valuestat){
             // GameObject template;
  
-            Debug.Log("AddStatistics");
-            Debug.Log(valuestat);
+            // Debug.Log("AddStatistics");
+            // Debug.Log(valuestat);
             string[] data = valuestat.Split("//");
             string coup = data[0];
             string value = data[1];
@@ -315,39 +321,25 @@ namespace Components
 
         public void OnLoadTools(string data)
         {
-            Debug.Log("OnLoadTools : " + data);
+            // Debug.Log("OnLoadTools : " + data);
             var datasplit = data.Split("//");
             if (datasplit.Length == 2){
                 var value = data.Split("//")[0];
                 var type = data.Split("//")[1];
-                Debug.Log("OnLoadTools : " + value);
-
 
                 Button btn = addButton(value, type);
                 if (type=="permanence"){
-                    // if (!button_permanence_list.Contains(btn)){
                     button_permanence_list.Add(value);
-                    // }
                 }
-                // else{
-                    button_list.Add(btn);
-
-                // }                
+                button_list.Add(btn);
             }else{
                 if (data == ""){
-                    // textcontent.text = "";
                     RemoveButton();
                     button_list.Clear();  
-                    // button_permanence_list.Clear();  
                 }else{
                     Debug.Log("ERROR : " + data);
-
                 }
-                
             }
-            
-
-            
         }
     }
 }

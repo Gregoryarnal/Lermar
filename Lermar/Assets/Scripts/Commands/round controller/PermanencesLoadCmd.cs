@@ -115,7 +115,8 @@ namespace Commands
             characterTools.ResetView();
 
             foreach (string el in filenames){
-                characterTools.AddPermanence(el);
+                if (!el.StartsWith("."))
+                    characterTools.AddPermanence(el);
             }
 
             // Debug.Log($"Read permanences file! : ");

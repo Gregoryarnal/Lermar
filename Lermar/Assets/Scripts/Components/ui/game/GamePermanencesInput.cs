@@ -10,12 +10,12 @@ namespace Components
     {
         public CharacterTable characterTable;
         public CharacterTools characterTools;
-        // public GameRoullete gameRoullete;
+
         public GameCmdFactory gameCmdFactory;
         
         public void OnClick()
         {
-             gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute();
+            gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute();
         }
     }
 }

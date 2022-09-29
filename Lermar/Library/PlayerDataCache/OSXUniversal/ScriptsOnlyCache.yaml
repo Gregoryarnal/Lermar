@@ -217,55 +217,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1550}
     - Class: 114
-      Script: {instanceID: 1594}
+      Script: {instanceID: 1592}
     - Class: 114
-      Script: {instanceID: 1622}
+      Script: {instanceID: 1620}
     - Class: 114
-      Script: {instanceID: 1710}
+      Script: {instanceID: 1708}
     - Class: 114
-      Script: {instanceID: 1934}
+      Script: {instanceID: 1932}
     - Class: 114
-      Script: {instanceID: 2222}
+      Script: {instanceID: 2220}
     - Class: 114
-      Script: {instanceID: 2248}
+      Script: {instanceID: 2246}
     - Class: 114
-      Script: {instanceID: 2416}
+      Script: {instanceID: 2414}
     - Class: 114
-      Script: {instanceID: 2634}
+      Script: {instanceID: 2632}
     - Class: 114
-      Script: {instanceID: 2720}
+      Script: {instanceID: 2718}
     - Class: 114
-      Script: {instanceID: 2732}
+      Script: {instanceID: 2730}
     - Class: 114
-      Script: {instanceID: 2902}
+      Script: {instanceID: 2900}
     - Class: 114
-      Script: {instanceID: 2966}
+      Script: {instanceID: 2964}
     - Class: 114
-      Script: {instanceID: 2996}
+      Script: {instanceID: 2994}
     - Class: 114
-      Script: {instanceID: 3464}
+      Script: {instanceID: 3462}
     - Class: 114
-      Script: {instanceID: 3656}
+      Script: {instanceID: 3654}
     - Class: 114
-      Script: {instanceID: 3832}
+      Script: {instanceID: 3830}
     - Class: 114
-      Script: {instanceID: 3932}
+      Script: {instanceID: 3930}
     - Class: 114
-      Script: {instanceID: 4100}
+      Script: {instanceID: 4098}
     - Class: 114
-      Script: {instanceID: 4392}
+      Script: {instanceID: 4390}
     - Class: 114
-      Script: {instanceID: 4656}
+      Script: {instanceID: 4654}
     - Class: 114
-      Script: {instanceID: 4692}
+      Script: {instanceID: 4690}
     - Class: 114
-      Script: {instanceID: 4852}
+      Script: {instanceID: 4850}
     - Class: 114
-      Script: {instanceID: 4938}
+      Script: {instanceID: 4936}
+    - Class: 114
+      Script: {instanceID: 5004}
     - Class: 114
       Script: {instanceID: 5006}
-    - Class: 114
-      Script: {instanceID: 5008}
     - Class: 114
       Script: {instanceID: 5126}
     - Class: 114
@@ -355,7 +355,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 8472}
     - Class: 114
-      Script: {instanceID: 8714}
+      Script: {instanceID: 8716}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1287,7 +1287,7 @@ ScriptsOnlyBuild:
     className: ButtonTableInteractable
   - hash:
       serializedVersion: 2
-      Hash: 680a619d2da2eb5f2a825f1c6c822b43
+      Hash: 0cf4ab18df6f7d1b5ba779201ded0479
     assemblyName: Scripts.dll
     namespaceName: Components
     className: ToolsDisplay
@@ -1431,7 +1431,7 @@ ScriptsOnlyBuild:
     className: GameRestoreInput
   - hash:
       serializedVersion: 2
-      Hash: 122ab83572587db62df7d064ea9a0a9f
+      Hash: 9386575f89e50df958652f2b92e2d1d3
     assemblyName: Scripts.dll
     namespaceName: Components
     className: MontanteViewDisplay

@@ -104,7 +104,7 @@ namespace Commands
             paymentGateway.PaymentSystem(characterTable)
                 .Delay(TimeSpan.FromSeconds(.3))
                 .Do(_ => characterTable.bilanGame += paymentGateway.PaymentValue)
-                .Do(_ => characterTools.AddStatistics(characterTable.lastIndex, roundGateway.randomNumber, characterTable.characterMoney.characterBet.Value, paymentGateway.PaymentValue,characterTable.bilanGame))
+                .Do(_ => characterTools.AddStatistics(characterTable.lastIndex+1, roundGateway.randomNumber, characterTable.characterMoney.characterBet.Value, paymentGateway.PaymentValue,characterTable.bilanGame))
                 .Do(_ => OnPayment(paymentGateway.PaymentValue))
                 .Do(_ => characterTable.OnWinButton.OnNext(num))
                 .Do(_ => characterTable.lastIndex = characterTable.lastIndex+1)

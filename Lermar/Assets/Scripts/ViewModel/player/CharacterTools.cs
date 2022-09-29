@@ -1,3 +1,4 @@
+// using System.Diagnostics;
 using System;
 using System.Collections.ObjectModel;
 // using System.Diagnostics;
@@ -17,12 +18,8 @@ namespace ViewModel
         public StringReactiveProperty characterToolsView = new StringReactiveProperty();
         public StringReactiveProperty characterStatisticsView = new StringReactiveProperty();
         public bool firstRun = true;
-        // public List<Button> button_list = new List<Button>();
-        
 
         public void ResetView(){
-            // string aux = characterStatisticsView.Value;
-            // int aux = characterToolsView.Value;
             characterToolsView.Value = "";
             characterStatisticsView.Value = "";
         }
@@ -32,6 +29,7 @@ namespace ViewModel
         {
             string aux = characterToolsView.Value;
             var type = "permanence";
+
             characterToolsView.Value = "\n" + permanence + "//" + type;
         }
 
@@ -39,29 +37,34 @@ namespace ViewModel
 
         public void AddMethodes(string methode){
             var type = "methode";
-                string aux = characterToolsView.Value;
+            string aux = characterToolsView.Value;
 
             characterToolsView.Value = "\n" + methode + "//" + type;
         }
 
         public void AddMontantes(string montante){
             var type = "montante";
-                string aux = characterToolsView.Value;
+            string aux = characterToolsView.Value;
 
             characterToolsView.Value = "\n" + montante + "//" + type;
         }
 
+
+        public void APalier(){
+            // APalierCmd palier = new APalierCmd();
+        }
         
 
          public void AddStatistics(int lastIndex, int value, int mise, int result, int bilan){
 
             // if (!firstRun){
-                // string aux = characterStatisticsView.Value;
-
+                string aux = characterStatisticsView.Value;
+                
                 characterStatisticsView.Value = lastIndex.ToString() + "//" + value.ToString() 
                         + "//"+ mise.ToString() + "//"+ result.ToString()+ "//"+  bilan.ToString();
             // }
         }
+
 
     }
     
