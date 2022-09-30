@@ -87,9 +87,7 @@ namespace Components
             header.SetActive(true);
             headerFictive.SetActive(false);
         }
-
-        // public MontanteViewDisplay(){}
-
+        
         public void Start()
         {
             reset();

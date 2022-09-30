@@ -88,17 +88,30 @@ namespace Components
                  Debug.Log("Donothing : " + e);
             } 
             RemoveButton();
-            button_list.Clear(); 
-            button_permanence_list.Clear(); 
-            ResetStat();
+            ExecuteButton.interactable = false;
+            // ExecuteButton.gameObject.SetActive(true);
+           
+
+            
+            Reset();
             // lineGame.Clear();
 
         }
 
-        
+        public void RemovePopUpBtn(){
+            
+            foreach (Button item in button_list_popup)
+            {
+                Destroy(item.gameObject);
+            }
+            button_list_popup.Clear();
+        }
 
         public void addPopUpButton()
-        {            
+        {          
+            button_permanence_list.Clear();
+            RemovePopUpBtn();
+
             if (button_permanence_list.Count==0){
                 gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute();
             }
@@ -131,7 +144,7 @@ namespace Components
         }
 
         void highLightButton(Button btn, Color color){
-
+            ExecuteButton.interactable = true;
             foreach (Button item in button_list_popup)
             {
                 if (item == btn){
@@ -159,6 +172,7 @@ namespace Components
         {            
             permName = permName.Replace(" ", "");
             permName = permName.Replace("\n", "");
+
 
             GameObject newButton = Instantiate(templateBtn);
             newButton.name = permName; 
@@ -221,6 +235,7 @@ namespace Components
 
         void PermanenceButtonClicked(string permanence)
         {
+            RemoveButton();
             characterTable.permFilePath = permanence;
             characterTable.readPermanence = true;
             characterTable.lastIndex = 0;
@@ -232,6 +247,8 @@ namespace Components
 
         void MethodesButtonClicked(string methodes)
         {
+            RemoveButton();
+            
             addPopUpButton();
 
             popUpView.SetActive(true);
@@ -247,6 +264,8 @@ namespace Components
 
         void MontanteButtonClicked(string montante)
         {
+            RemoveButton();
+
             addPopUpButton();
             toolNameTopPopUp.GetComponent<Text>().text =  montante;
             
@@ -286,14 +305,25 @@ namespace Components
             {
                 Destroy(item.gameObject);
             }
+            button_list.Clear(); 
+
         }
 
-        void ResetStat(){
+        void Reset(){
             foreach (GameObject item in lineGame)
             {
                 Destroy(item);
             }
             lineGame.Clear();
+
+            foreach (Button item in button_list)
+            {
+                Destroy(item.gameObject);
+            }
+            button_list.Clear(); 
+            
+            button_permanence_list.Clear(); 
+
         }
 
         public void AddStatistics(string valuestat){
@@ -334,6 +364,7 @@ namespace Components
 
         public void OnLoadTools(string data)
         {
+
             // Debug.Log("OnLoadTools : " + data);
             var datasplit = data.Split("//");
             if (datasplit.Length == 2){
@@ -342,12 +373,13 @@ namespace Components
                 Button btn = null;
 
                 if (type=="permanence"){
-                    if (!button_permanence_list.Contains(value)){
-                        btn  = addButton(value, type);
+                     btn  = addButton(value, type);
+                    // if (!button_permanence_list.Contains(value)){
+                       
 
                         button_permanence_list.Add(value);
                         button_list.Add(btn);
-                    }
+                    // }
                 }else{
                     btn = addButton(value, type);
                     button_list.Add(btn);
