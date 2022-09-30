@@ -16,6 +16,7 @@ using ViewModel;
 using System;
 using Controllers;
 using Montante;
+using Commands;
 
 namespace Components
 {
@@ -24,7 +25,7 @@ namespace Components
 
         public CharacterTable characterTable;
         public CharacterTools characterTools;
-        // public GameCmdFactory gameCmdFactory;
+        public GameCmdFactory gameCmdFactory;
         
         public Text textcontent;
         public GameObject ScrollViewContainer;
@@ -55,7 +56,7 @@ namespace Components
         public List<Button> button_list = new List<Button>();
         public List<Button> button_list_popup = new List<Button>();
         public List<string> button_permanence_list = new List<string>();
-        List<GameObject> lineGameObject = new List<GameObject>();
+        List<GameObject> lineGame = new List<GameObject>();
         // public string[] button_permanence_list = new string[]();
         
         public GameObject templateBtn;
@@ -89,7 +90,7 @@ namespace Components
             RemoveButton();
             button_list.Clear(); 
             button_permanence_list.Clear(); 
-            lineGameObject.Clear();
+            lineGame.Clear();
 
 
 
@@ -97,6 +98,9 @@ namespace Components
 
         public void addPopUpButton()
         {            
+            if (button_permanence_list.Count==0){
+                gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute();
+            }
             for (int i = 0; i < button_permanence_list.Count; i++)
             {
                 var value = button_permanence_list[i];
@@ -193,7 +197,6 @@ namespace Components
 
         int calculateYposition(){
             
-            // var y = 125;
             var y = 0;
             var ITEM_HEIGHT = 30;
 
@@ -210,7 +213,7 @@ namespace Components
             var y = -24;
             var ITEM_HEIGHT = 30;
 
-            y -= ITEM_HEIGHT*index+50;
+            y -= ITEM_HEIGHT*index+100;
 
             return y;
         }
@@ -250,13 +253,12 @@ namespace Components
             {
                 case "Apaliers":
                     palierView.SetActive(true);
-                    // ExecuteButton.onClick.AddListener(() => characterTools.APalier());
-                    // APalierCmd sn = gameObject.GetComponent<APalierCmd>();
-                    // sn.DoSomething();
-                    // ExecuteButton.onClick.AddListener(() => new APalierCmd());
+                    break;
+                case "Pascal":
+                    palierView.SetActive(true);
                     break;
                 default:
-                    Debug.Log("palierView.SetActive(false);");
+                    // Debug.Log("palierView.SetActive(false);");
                     break;
 
             }
@@ -286,22 +288,21 @@ namespace Components
         }
 
         public void AddStatistics(string valuestat){
-            // GameObject template;
- 
-            // Debug.Log("AddStatistics");
-            // Debug.Log(valuestat);
-            string[] data = valuestat.Split("//");
-            string coup = data[0];
-            string value = data[1];
-            string mise = data[2];
-            string result = data[3];
-            string bilan = data[4];
 
-            if (coup!="0"){
+            
+            string[] data = valuestat.Split("//");
+            if (data.Length==5){
+                string coup = data[0];
+                string value = data[1];
+                string mise = data[2];
+                string result = data[3];
+                string bilan = data[4];
+
+                // if (coup!="0"){
                 GameObject newLine = Instantiate(template);
 
                 newLine.transform.localScale = new Vector3(1, 1, 1);
-                newLine.transform.position = new Vector2(0, calculateYposition(lineGameObject.Count));
+                newLine.transform.position = new Vector2(0, calculateYposition(lineGame.Count));
                 newLine.transform.SetParent(statcontent.transform, false);
                 newLine.SetActive(true);
 
@@ -314,8 +315,11 @@ namespace Components
                 tempText[3].text = result.ToString();
                 tempText[4].text = bilan.ToString(); 
 
-                lineGameObject.Add(newLine);
+                lineGame.Add(newLine);
             }
+                
+
+            // }
             
         }
 
@@ -326,12 +330,21 @@ namespace Components
             if (datasplit.Length == 2){
                 var value = data.Split("//")[0];
                 var type = data.Split("//")[1];
+                Button btn = null;
 
-                Button btn = addButton(value, type);
                 if (type=="permanence"){
-                    button_permanence_list.Add(value);
+                    if (!button_permanence_list.Contains(value)){
+                        btn  = addButton(value, type);
+
+                        button_permanence_list.Add(value);
+                        button_list.Add(btn);
+                    }
+                }else{
+                    btn = addButton(value, type);
+                    button_list.Add(btn);
                 }
-                button_list.Add(btn);
+
+                
             }else{
                 if (data == ""){
                     RemoveButton();

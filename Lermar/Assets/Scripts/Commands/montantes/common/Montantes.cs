@@ -36,7 +36,7 @@ namespace Montante
         public string permanenceSelectedTxt;
 
         public List<string> sauteuseValue = new List<string>();
-        public string[,] result ;
+        public string[,] result = null;
         public string[,] fictivec = null;
         public List<string[,]> fictiveList = new List<string[,]>();
         // public List<string> sauteuseValue = new List<string>();
@@ -49,6 +49,11 @@ namespace Montante
         public string[,] getLines(){
             return result;
         }
+
+        public void resetResult(){
+            result = null;
+        }
+
 
         public string[,] getFictive(int index){
             return fictiveList[index];
@@ -171,6 +176,22 @@ namespace Montante
             
         }
 
+        public string inverse(string chance){
+            if (chance=="Noir"){
+                return "Rouge";
+            }else if (chance=="Rouge"){
+                return "Noir";
+            }else if (chance=="Pair"){
+                return "Impair";
+            }else if (chance=="Impair"){
+                return "Pair";
+            }else if (chance=="Passe"){
+                return "Manque";
+            }else if (chance=="Manque"){
+                return "Passe";
+            }
+            return null;
+        }
         public (string[,], int) calculateFictive(string chanceTxt, string attaqueTxt, int value, bool win, int index, string permanenceSelectedTxt, int mise,  int timePalierInt,int  nbPalierInt,int  coinValueInt, int maxMiseInt,string  ifMaxPalierTxt,string  maxReachTxt, int gain){
 
             if (attaqueTxt.StartsWith("différentielle")){
@@ -187,15 +208,10 @@ namespace Montante
                     fictivec[0,3] = "0"; // coup
                     fictivec[1,3] = "0";// coup
                 }
-                (var newPlayerMise1, var newValue1, var newMise1,var newWin1 ) = play("Noir", attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[0,3]), Int32.Parse(fictivec[0,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false);
-                Debug.Log("newPlayerMise1");
-                Debug.Log(newPlayerMise1);
-                (var newPlayerMise2, var newValue2, var newMise2,var newWin2 ) = play("Rouge", attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[1,3]), Int32.Parse(fictivec[1,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false);
-                Debug.Log("newPlayerMise2");
-                Debug.Log(newPlayerMise2);
+                (var newPlayerMise1, var newValue1, var newMise1,var newWin1 ) = play(chanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[0,3]), Int32.Parse(fictivec[0,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false);
+                var inverseChanceTxt = inverse(chanceTxt);
+                (var newPlayerMise2, var newValue2, var newMise2,var newWin2 ) = play(inverseChanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[1,3]), Int32.Parse(fictivec[1,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false);
 
-                // Debug.Log("newMise1");
-                // Debug.Log(newMise1);
                 fictivec[0,0] = newMise1.ToString();
                 fictivec[1,0] = newMise2.ToString();
     

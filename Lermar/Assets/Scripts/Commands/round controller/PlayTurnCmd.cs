@@ -45,6 +45,7 @@ namespace Commands
 
             // permanencePath = "Lermar/permanences/MC/MC01.TXT";
 
+            
             roundGateway.PlayTurn()
                 .Do(_ => monoBehaviour.StartCoroutine(RoulleteGame(roundGateway.randomNumber)))
                 .Do(_ => characterTable.lastNumber = roundGateway.randomNumber)
@@ -63,7 +64,7 @@ namespace Commands
             if (characterTable.readPermanence){
                 num =  readNextPermanenceValue(characterTable.lastIndex );
                 roundGateway.randomNumber = num;
-                Debug.Log("characterTable.lastIndex : " + characterTable.lastIndex);
+                // Debug.Log("characterTable.lastIndex : " + characterTable.lastIndex);
             }
 
             characterTable.OnRound.OnNext(true); // Initialize round
@@ -98,7 +99,9 @@ namespace Commands
             gameRoullete.currentSpeed = gameRoullete.defaultSpeed;
             characterTable.OnRound.OnNext(false); 
 
-
+            if (characterTable.lastIndex==0){
+                characterTools.ResetView();
+            }
             
             // Intialize the payment system and display the news values
             paymentGateway.PaymentSystem(characterTable)

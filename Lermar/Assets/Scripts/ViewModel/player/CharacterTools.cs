@@ -1,4 +1,5 @@
 // using System.Diagnostics;
+// using System.Diagnostics;
 using System;
 using System.Collections.ObjectModel;
 // using System.Diagnostics;
@@ -49,15 +50,10 @@ namespace ViewModel
             characterToolsView.Value = "\n" + montante + "//" + type;
         }
 
-
-        public void APalier(){
-            // APalierCmd palier = new APalierCmd();
-        }
-        
-
          public void AddStatistics(int lastIndex, int value, int mise, int result, int bilan){
 
             // if (!firstRun){
+                // Debug.Log("AddStatistics");
                 string aux = characterStatisticsView.Value;
                 
                 characterStatisticsView.Value = lastIndex.ToString() + "//" + value.ToString() 

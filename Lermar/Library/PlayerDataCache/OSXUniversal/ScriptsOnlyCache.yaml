@@ -15,6 +15,7 @@ ScriptsOnlyBuild:
     - Components.ChipRuntime
     - Components.ChipSelectInput
     - Components.ChipSelected
+    - Components.GameControllerInput
     - Components.GameDeleteInput
     - Components.GameMethodesInput
     - Components.GameMoneyDisplay
@@ -170,6 +171,9 @@ ScriptsOnlyBuild:
   - assembly: Scripts
     fullTypeName: Components.GameDeleteInput
     methodName: OnClick
+  - assembly: Scripts
+    fullTypeName: Components.GameControllerInput
+    methodName: OnClick
   sceneClasses:
     Assets/Scenes/Game.unity:
     - Class: 1
@@ -221,6 +225,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1620}
     - Class: 114
+      Script: {instanceID: 1638}
+    - Class: 114
       Script: {instanceID: 1708}
     - Class: 114
       Script: {instanceID: 1932}
@@ -241,121 +247,121 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2964}
     - Class: 114
-      Script: {instanceID: 2994}
+      Script: {instanceID: 2996}
     - Class: 114
-      Script: {instanceID: 3462}
+      Script: {instanceID: 3464}
     - Class: 114
-      Script: {instanceID: 3654}
+      Script: {instanceID: 3656}
     - Class: 114
-      Script: {instanceID: 3830}
+      Script: {instanceID: 3832}
     - Class: 114
-      Script: {instanceID: 3930}
+      Script: {instanceID: 3932}
     - Class: 114
-      Script: {instanceID: 4098}
+      Script: {instanceID: 4100}
     - Class: 114
-      Script: {instanceID: 4390}
+      Script: {instanceID: 4392}
     - Class: 114
-      Script: {instanceID: 4654}
+      Script: {instanceID: 4656}
     - Class: 114
-      Script: {instanceID: 4690}
+      Script: {instanceID: 4692}
     - Class: 114
-      Script: {instanceID: 4850}
+      Script: {instanceID: 4852}
     - Class: 114
-      Script: {instanceID: 4936}
-    - Class: 114
-      Script: {instanceID: 5004}
+      Script: {instanceID: 4938}
     - Class: 114
       Script: {instanceID: 5006}
     - Class: 114
-      Script: {instanceID: 5126}
+      Script: {instanceID: 5008}
     - Class: 114
-      Script: {instanceID: 5186}
+      Script: {instanceID: 5128}
     - Class: 114
-      Script: {instanceID: 5234}
+      Script: {instanceID: 5188}
     - Class: 114
-      Script: {instanceID: 5260}
+      Script: {instanceID: 5236}
     - Class: 114
-      Script: {instanceID: 5272}
+      Script: {instanceID: 5262}
     - Class: 114
-      Script: {instanceID: 5342}
+      Script: {instanceID: 5274}
     - Class: 114
-      Script: {instanceID: 5362}
+      Script: {instanceID: 5344}
     - Class: 114
-      Script: {instanceID: 5372}
+      Script: {instanceID: 5364}
     - Class: 114
-      Script: {instanceID: 5386}
+      Script: {instanceID: 5374}
     - Class: 114
-      Script: {instanceID: 5394}
+      Script: {instanceID: 5388}
     - Class: 114
-      Script: {instanceID: 5444}
+      Script: {instanceID: 5396}
     - Class: 114
-      Script: {instanceID: 5528}
+      Script: {instanceID: 5446}
     - Class: 114
-      Script: {instanceID: 5636}
+      Script: {instanceID: 5530}
     - Class: 114
-      Script: {instanceID: 5668}
+      Script: {instanceID: 5638}
     - Class: 114
-      Script: {instanceID: 5766}
+      Script: {instanceID: 5670}
     - Class: 114
-      Script: {instanceID: 5806}
+      Script: {instanceID: 5768}
     - Class: 114
-      Script: {instanceID: 5824}
+      Script: {instanceID: 5808}
     - Class: 114
-      Script: {instanceID: 6022}
+      Script: {instanceID: 5826}
     - Class: 114
-      Script: {instanceID: 6126}
+      Script: {instanceID: 6024}
     - Class: 114
-      Script: {instanceID: 6162}
+      Script: {instanceID: 6128}
     - Class: 114
-      Script: {instanceID: 6172}
+      Script: {instanceID: 6164}
     - Class: 114
-      Script: {instanceID: 6182}
+      Script: {instanceID: 6174}
     - Class: 114
-      Script: {instanceID: 6258}
+      Script: {instanceID: 6184}
     - Class: 114
-      Script: {instanceID: 6342}
+      Script: {instanceID: 6260}
     - Class: 114
-      Script: {instanceID: 6704}
+      Script: {instanceID: 6344}
     - Class: 114
-      Script: {instanceID: 6716}
+      Script: {instanceID: 6706}
     - Class: 114
-      Script: {instanceID: 6858}
+      Script: {instanceID: 6718}
     - Class: 114
-      Script: {instanceID: 6972}
+      Script: {instanceID: 6860}
     - Class: 114
-      Script: {instanceID: 6996}
+      Script: {instanceID: 6974}
     - Class: 114
-      Script: {instanceID: 7030}
+      Script: {instanceID: 6998}
     - Class: 114
-      Script: {instanceID: 7076}
+      Script: {instanceID: 7032}
     - Class: 114
-      Script: {instanceID: 7200}
+      Script: {instanceID: 7078}
     - Class: 114
-      Script: {instanceID: 7226}
+      Script: {instanceID: 7202}
     - Class: 114
-      Script: {instanceID: 7334}
+      Script: {instanceID: 7228}
     - Class: 114
-      Script: {instanceID: 7424}
+      Script: {instanceID: 7336}
     - Class: 114
-      Script: {instanceID: 7622}
+      Script: {instanceID: 7426}
     - Class: 114
-      Script: {instanceID: 7922}
+      Script: {instanceID: 7624}
     - Class: 114
-      Script: {instanceID: 7938}
+      Script: {instanceID: 7924}
     - Class: 114
-      Script: {instanceID: 7976}
+      Script: {instanceID: 7940}
     - Class: 114
-      Script: {instanceID: 8112}
+      Script: {instanceID: 7978}
     - Class: 114
-      Script: {instanceID: 8286}
+      Script: {instanceID: 8114}
     - Class: 114
-      Script: {instanceID: 8360}
+      Script: {instanceID: 8288}
     - Class: 114
-      Script: {instanceID: 8384}
+      Script: {instanceID: 8362}
     - Class: 114
-      Script: {instanceID: 8472}
+      Script: {instanceID: 8386}
     - Class: 114
-      Script: {instanceID: 8716}
+      Script: {instanceID: 8474}
+    - Class: 114
+      Script: {instanceID: 8718}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1287,7 +1293,7 @@ ScriptsOnlyBuild:
     className: ButtonTableInteractable
   - hash:
       serializedVersion: 2
-      Hash: 0cf4ab18df6f7d1b5ba779201ded0479
+      Hash: f04a39da3eac8591fcc3440335d2501b
     assemblyName: Scripts.dll
     namespaceName: Components
     className: ToolsDisplay

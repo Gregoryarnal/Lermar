@@ -1,10 +1,4 @@
 
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Runtime.CompilerServices;
-// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -105,16 +99,14 @@ namespace Components
             // Load();
         }
 
-        
         public void reset(){
             foreach (GameObject item in lineGameObject)
             {
+                Debug.Log("DESTROY gameobject");
                  Destroy(item);
             }
             sauteuseValue = null;
             lineGameObject.Clear();
-            Debug.Log("reset sauteuseValue");
-                    Debug.Log(sauteuseValue);
         }
 
         void setUpStat(int bilan, int parti, int mise, int coinValueInt){
@@ -146,15 +138,14 @@ namespace Components
             var gainResearchInt = Int32.Parse(gainResearch.GetComponent<InputField>().text);
             lauchGame = true;
 
-            lineGameObject = new List<GameObject>();
+            // lineGameObject = new List<GameObject>();
 
-            
+
             switch (montanteSelectedTxt)
             {
                 case "Apaliers":
                     setUpResultView();
                     
-
                     var nbPalierInt = Int32.Parse(nbPalier.GetComponent<InputField>().text);
                     var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
                     var  ifMaxPalierTxt= ifMaxPalier.options[ifMaxPalier.value].text;
@@ -185,7 +176,6 @@ namespace Components
 
                         for (int i = 0; i < last; i++)
                         {
-                            
                             addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                             Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8], result);
                         }
@@ -194,6 +184,10 @@ namespace Components
                     // lauchGame = true;
                    
                     break;
+                // case "Pascal":
+                //     PascalCmd pascal = new PascalCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue);
+                //     montanteManager = pascal.getMontanteManager();
+                //     pascal.run();
                 default:
                     Debug.Log("non");
                     break;
