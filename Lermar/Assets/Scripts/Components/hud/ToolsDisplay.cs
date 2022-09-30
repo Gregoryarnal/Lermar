@@ -90,11 +90,12 @@ namespace Components
             RemoveButton();
             button_list.Clear(); 
             button_permanence_list.Clear(); 
-            lineGame.Clear();
-
-
+            ResetStat();
+            // lineGame.Clear();
 
         }
+
+        
 
         public void addPopUpButton()
         {            
@@ -285,6 +286,14 @@ namespace Components
             {
                 Destroy(item.gameObject);
             }
+        }
+
+        void ResetStat(){
+            foreach (GameObject item in lineGame)
+            {
+                Destroy(item);
+            }
+            lineGame.Clear();
         }
 
         public void AddStatistics(string valuestat){

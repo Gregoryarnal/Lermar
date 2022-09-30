@@ -1,4 +1,5 @@
 // using System.Diagnostics;
+// using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -98,6 +99,9 @@ namespace Commands
             // Finish round
             gameRoullete.currentSpeed = gameRoullete.defaultSpeed;
             characterTable.OnRound.OnNext(false); 
+
+            Debug.Log("characterTable.lastIndex");
+            Debug.Log(characterTable.lastIndex);
 
             if (characterTable.lastIndex==0){
                 characterTools.ResetView();
