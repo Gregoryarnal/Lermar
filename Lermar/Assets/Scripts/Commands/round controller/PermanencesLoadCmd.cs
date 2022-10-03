@@ -6,6 +6,7 @@ using ViewModel;
 using Controllers;
 using Infrastructure;
 using System;
+using System.IO;
 
 // using System.Collections;
 // using System.Collections.Generic;
@@ -22,11 +23,13 @@ namespace Commands
         private IPayment paymentGateway;
          public Text tools;
 
-        public string path = "permanences/MC";
-        // public string path = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC";
+        // public string path = "permanences/MC";
+        public string path = Path.GetDirectoryName(Application.dataPath) +"/permanences/MC";
 
         public PermanencesLoadCmd( CharacterTable characterTable, CharacterTools characterTools)
         {
+            Debug.Log(path);
+
             // Debug.Log($"PermanencesLoadCmd : " + characterTable);
             this.characterTable = characterTable;
             this.characterTools = characterTools;
@@ -111,14 +114,18 @@ namespace Commands
 
         public void Execute()
         {
-		    string[] filenames = TraverseTree(path);
 
             characterTools.ResetView();
+		    
+            string[] filenames = TraverseTree(path);
 
             foreach (string el in filenames){
                 if (!el.StartsWith("."))
                     characterTools.AddPermanence(el);
             }
+
+            characterTools.AddPermanenceBtn("Ajouter");
+
 
             // Debug.Log($"Read permanences file! : ");
         }

@@ -34,6 +34,13 @@ namespace ViewModel
             characterToolsView.Value = "\n" + permanence + "//" + type;
         }
 
+        public void AddPermanenceBtn(string permanence)
+        {
+            string aux = characterToolsView.Value;
+            var type = "permanenceAdd";
+
+            characterToolsView.Value = "\n" + permanence + "//" + type;
+        }
 
 
         public void AddMethodes(string methode){

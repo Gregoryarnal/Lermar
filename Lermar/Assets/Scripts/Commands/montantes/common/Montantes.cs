@@ -321,12 +321,15 @@ namespace Montante
             var  m_Path = Application.dataPath;
 
             //Output the Game data path to the console
-            Debug.Log("dataPath : " + m_Path);
-            var permanencePath = "permanences/MC/" + nameFile;
+            var permanencePath = Path.GetDirectoryName(Application.dataPath) +"/permanences/MC/" + nameFile;
+            Debug.Log("index : " + index);
+
             string[] lines = System.IO.File.ReadAllLines(permanencePath);
             if (index == -1){
                 return lines.Length;
             }
+            Debug.Log("lines[index] : " + lines[index]);
+
             return Int32.Parse(lines[index]);
         }
 

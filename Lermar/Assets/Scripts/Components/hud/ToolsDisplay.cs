@@ -1,3 +1,5 @@
+// using System.Diagnostics;
+// using System.Diagnostics;
 // using System.Reflection.PortableExecutable;
 // using System.Diagnostics;
 using System.Threading.Tasks;
@@ -17,6 +19,8 @@ using System;
 using Controllers;
 using Montante;
 using Commands;
+// using windows;
+using System.IO;
 
 namespace Components
 {
@@ -73,10 +77,7 @@ namespace Components
         public void Start()
         {
 
-            var  m_Path = Application.dataPath;
 
-            //Output the Game data path to the console
-            Debug.Log("dataPath : " + m_Path);
             try
             {
                 characterTools.characterToolsView
@@ -165,7 +166,9 @@ namespace Components
         }
 
         private int readPermanenceFile(string nameFile, int index){
-            var permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/" + nameFile;
+            // var permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/" + nameFile;
+            var permanencePath = Path.GetDirectoryName(Application.dataPath) +"/permanences/MC/" + nameFile;
+
             string[] lines = System.IO.File.ReadAllLines(permanencePath);
             if (index == -1){
                 return lines.Length;
@@ -199,8 +202,15 @@ namespace Components
                 tempButton.onClick.AddListener(() => MethodesButtonClicked(permName));
             else if (type== "montante")
                 tempButton.onClick.AddListener(() => MontanteButtonClicked(permName));
+            else if (type== "permanenceAdd")
+                tempButton.onClick.AddListener(() => MontanteAddButtonClicked());
 
             return tempButton;
+        }
+
+        public void MontanteAddButtonClicked(){
+            Debug.Log("MontanteAddButtonClicked");
+            // new EditorWindows(gameCmdFactory,characterTable,characterTools);
         }
 
         int calculatePopUpYposition(int size){
@@ -240,7 +250,7 @@ namespace Components
 
         void PermanenceButtonClicked(string permanence)
         {
-            RemoveButton();
+            // RemoveButton();
             characterTable.permFilePath = permanence;
             characterTable.readPermanence = true;
             characterTable.lastIndex = 0;
@@ -252,7 +262,7 @@ namespace Components
 
         void MethodesButtonClicked(string methodes)
         {
-            RemoveButton();
+            // RemoveButton();
             
             addPopUpButton();
 
@@ -269,7 +279,7 @@ namespace Components
 
         void MontanteButtonClicked(string montante)
         {
-            RemoveButton();
+            // RemoveButton();
 
             addPopUpButton();
             toolNameTopPopUp.GetComponent<Text>().text =  montante;
@@ -376,8 +386,9 @@ namespace Components
                 var value = data.Split("//")[0];
                 var type = data.Split("//")[1];
                 Button btn = null;
-
-                if (type=="permanence"){
+                
+                
+                 if (type=="permanence"){
                      btn  = addButton(value, type);
                     // if (!button_permanence_list.Contains(value)){
                        

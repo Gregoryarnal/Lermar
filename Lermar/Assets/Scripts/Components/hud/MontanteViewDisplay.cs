@@ -1,5 +1,9 @@
 
 // using System.Diagnostics;
+// using System.Diagnostics;
+// using System.Diagnostics;
+// using System.Diagnostics;
+// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -99,8 +103,6 @@ namespace Components
             reset();
 
             ExecuteButton.onClick.AddListener(() => run(true));
-            
-            // Load();
         }
 
         public void reset(){
@@ -160,8 +162,6 @@ namespace Components
                     if (!first){
                         sauteuseValue= null;
                     }
-                    Debug.Log("sauteuseValue");
-                    Debug.Log(sauteuseValue);
 
                     if (attaqueTxt=="Sauteuse"){
                         if(sauteuseValue==null){
@@ -172,14 +172,17 @@ namespace Components
 
                     if (lauchGame){
                         APalierCmd palier = new APalierCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue);
+                        
                         montanteManager = palier.getMontanteManager();
                         palier.run();
 
                         string[,] result = palier.getLines();
-                        int last = montanteManager.readPermanenceFile(permanenceSelectedTxt, -1);
+                        // int last = montanteManager.readPermanenceFile(permanenceSelectedTxt, -1);
+                        Debug.Log("toBallInt : " + toBallInt);
+                        // Debug.Log();
 
-                        for (int i = 0; i < last; i++)
-                        {
+                        for (int i = 0; i < toBallInt; i++)
+                        {   
                             addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                             Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8], result);
                         }
@@ -188,16 +191,25 @@ namespace Components
                     // lauchGame = true;
                    
                     break;
-                // case "Pascal":
-                //     PascalCmd pascal = new PascalCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue);
-                //     montanteManager = pascal.getMontanteManager();
-                //     pascal.run();
+
                 default:
                     Debug.Log("non");
                     break;
             }
         }
 
+        // public (bool, string) setSauteuse(bool first){
+        //     if (!first){
+        //         sauteuseValue= null;
+        //     }
+
+        //     if (attaqueTxt=="Sauteuse"){
+        //         if(sauteuseValue==null){
+        //             getSauteuseValue(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
+        //             lauchGame = false;
+        //         }
+        //     }
+        // }
 
         void getSauteuseValue(int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt){
             resultView.SetActive(false);
@@ -236,6 +248,8 @@ namespace Components
             rightView.SetActive(false);
             leftView.SetActive(false);
             sauteuseView.SetActive(false);
+            CancelButton.onClick.RemoveAllListeners();
+
             CancelButton.onClick.AddListener(() => setUpParamsView());
 
         }
@@ -246,6 +260,9 @@ namespace Components
             rightView.SetActive(true);
             leftView.SetActive(true);
             sauteuseView.SetActive(false);
+            ExecuteButton.onClick.RemoveAllListeners();
+            // ExecuteButton.onClick.RemoveRedundancies();
+            // RemoveRedundancies
             ExecuteButton.onClick.AddListener(() => run(false));
 
         }
@@ -266,7 +283,7 @@ namespace Components
         }
 
         private void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise,string attaqueTxt, string[,] fictive  ){
-            
+            // Debug.Log("addResult");
             var color = montanteManager.valueChance(value, "Rouge");
             GameObject template;
 
@@ -279,7 +296,7 @@ namespace Components
             int bilanGame2 = 0;
 
             if (attaqueTxt.StartsWith("différentielle")){
-
+                Debug.Log("différentielle");
                 changeHeaderFictive();
                 if (color == "Rouge"){
                     template = templateLineRedFictive;
@@ -338,7 +355,8 @@ namespace Components
         
 
         private int calculateYposition(int index){
-            var y = 10;
+            // var y = 10;
+            var y = -220;
             var ITEM_HEIGHT = 115;
 
             y -= ITEM_HEIGHT*index;

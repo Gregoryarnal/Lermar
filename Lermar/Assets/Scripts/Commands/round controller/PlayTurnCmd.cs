@@ -8,6 +8,8 @@ using ViewModel;
 using Controllers;
 using Infrastructure;
 using System;
+using System.IO;
+
 
 namespace Commands
 {    
@@ -54,7 +56,8 @@ namespace Commands
         }
 
         private int readNextPermanenceValue(int cpt){
-            permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/" + characterTable.permFilePath;
+            // permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/" + characterTable.permFilePath;
+            permanencePath = Path.GetDirectoryName(Application.dataPath) +"/permanences/MC/" + characterTable.permFilePath;
             string[] lines = System.IO.File.ReadAllLines(permanencePath);
             
             return Int32.Parse(lines[cpt]); 

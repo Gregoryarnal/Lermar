@@ -44,7 +44,7 @@ namespace Montante
             var win = true;
             var value = -1;
             // lineGameObject.Clear();
-            int last = readPermanenceFile(permanenceSelectedTxt, -1);
+            // int last = readPermanenceFile(permanenceSelectedTxt, -1);
             bool lauchGame = true;
             var playerMise = "";
             
