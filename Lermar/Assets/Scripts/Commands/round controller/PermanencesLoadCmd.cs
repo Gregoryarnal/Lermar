@@ -22,7 +22,8 @@ namespace Commands
         private IPayment paymentGateway;
          public Text tools;
 
-        public string path = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC";
+        public string path = "permanences/MC";
+        // public string path = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC";
 
         public PermanencesLoadCmd( CharacterTable characterTable, CharacterTools characterTools)
         {

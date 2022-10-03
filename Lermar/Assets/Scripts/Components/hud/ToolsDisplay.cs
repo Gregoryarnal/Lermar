@@ -72,6 +72,11 @@ namespace Components
 
         public void Start()
         {
+
+            var  m_Path = Application.dataPath;
+
+            //Output the Game data path to the console
+            Debug.Log("dataPath : " + m_Path);
             try
             {
                 characterTools.characterToolsView

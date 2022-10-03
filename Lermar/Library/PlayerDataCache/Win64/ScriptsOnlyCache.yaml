@@ -1756,4 +1756,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/Game.unity
-  playerPath: /Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/LermarW/Lermar.exe
+  playerPath: /Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/lermarw/Lermar.exe

@@ -1,4 +1,5 @@
 
+// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -52,6 +53,7 @@ namespace Components
         public GameObject templateLineBlackFictive;
         public GameObject header;
         public GameObject headerFictive;
+        public GameObject headerContent;
         public GameObject templateLineStat;
         
 
@@ -80,14 +82,18 @@ namespace Components
 
         public void changeHeaderFictive(){
             header.SetActive(false);
+            headerContent.SetActive(true);
+
             headerFictive.SetActive(true);
         }
 
         public void changeHeader(){
+            // Debug.Log("hearder");
+            headerContent.SetActive(true);
             header.SetActive(true);
             headerFictive.SetActive(false);
         }
-        
+
         public void Start()
         {
             reset();

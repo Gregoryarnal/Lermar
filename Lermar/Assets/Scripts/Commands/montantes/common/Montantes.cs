@@ -317,7 +317,12 @@ namespace Montante
         public int readPermanenceFile(string nameFile, int index){
             // Debug.Log("permanenceSelectedTxt");
             // Debug.Log(permanenceSelectedTxt);
-            var permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/" + nameFile;
+            // var permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/" + nameFile;
+            var  m_Path = Application.dataPath;
+
+            //Output the Game data path to the console
+            Debug.Log("dataPath : " + m_Path);
+            var permanencePath = "permanences/MC/" + nameFile;
             string[] lines = System.IO.File.ReadAllLines(permanencePath);
             if (index == -1){
                 return lines.Length;
