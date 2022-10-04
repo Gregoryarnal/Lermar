@@ -185,6 +185,7 @@ namespace Components
                         {   
                             addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                             Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8], result);
+                            setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
                         }
                     }
                     
@@ -249,7 +250,6 @@ namespace Components
             leftView.SetActive(false);
             sauteuseView.SetActive(false);
             CancelButton.onClick.RemoveAllListeners();
-
             CancelButton.onClick.AddListener(() => setUpParamsView());
 
         }
@@ -261,8 +261,6 @@ namespace Components
             leftView.SetActive(true);
             sauteuseView.SetActive(false);
             ExecuteButton.onClick.RemoveAllListeners();
-            // ExecuteButton.onClick.RemoveRedundancies();
-            // RemoveRedundancies
             ExecuteButton.onClick.AddListener(() => run(false));
 
         }

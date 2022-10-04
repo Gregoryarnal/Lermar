@@ -1,5 +1,6 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
 // using System.Reflection.PortableExecutable;
 // using System.Diagnostics;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ using Montante;
 using Commands;
 // using windows;
 using System.IO;
+// using System.Windows.Forms;
 
 namespace Components
 {
@@ -72,7 +74,7 @@ namespace Components
 
         public Button ExecuteButton;
 
-
+        // private OpenFileDialog openFileDialog1;
 
         public void Start()
         {
@@ -207,10 +209,30 @@ namespace Components
 
             return tempButton;
         }
+        // [DllImport("user32.dll")]
+        // private static extern void OpenFileDialog();
 
         public void MontanteAddButtonClicked(){
             Debug.Log("MontanteAddButtonClicked");
-            // new EditorWindows(gameCmdFactory,characterTable,characterTools);
+
+            // var inspWndType = typeof(UnityEditor.SceneView);
+            // var window = EditorWindow.GetWindow<EditorWindows>(inspWndType);
+
+            // windows.EditorWindows.Apply();
+            // windows.EditorWindows.play(gameCmdFactory,characterTable,characterTools);
+//  System.Windows.Forms.SaveFileDialog sfd = new System.Windows.Forms.SaveFileDialog();
+
+            // using (System.Windows.Forms.OpenFileDialog upload = new System.Windows.Forms.OpenFileDialog())
+            //     {
+            //         upload.Filter = "Txt Files|*.txt";
+            //         upload.Title = "Select File";
+            //         if (upload.ShowDialog() != DialogResult.OK)
+            //             return;
+            //         string filePath= upload.FileName;
+            //         var fileName = Path.GetFileName(fileName);
+            //         Debug.Log(fileName);
+            //     }
+
         }
 
         int calculatePopUpYposition(int size){
