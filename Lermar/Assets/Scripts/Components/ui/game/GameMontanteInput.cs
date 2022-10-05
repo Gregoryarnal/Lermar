@@ -14,7 +14,7 @@ namespace Components
         public CharacterTools characterTools;
         public GameCmdFactory gameCmdFactory;
 
-        string[] montanteName = new string[] { "A paliers" };
+        string[] montanteName = new string[] { "A paliers", "D'Alembert" };
         // string[] montanteName = new string[] { "NAS", "D'Alembert", "Contre d'Alembert", "Hollandaise", "Americaine", "Piquemouche", "Wells", "Contre Wells", "MIDAS", "A paliers", "Pascal" };
 
         public void OnClick()

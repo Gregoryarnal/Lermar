@@ -352,7 +352,6 @@
 "Assets/Scripts/Components/fortune/FortuneInput.cs"
 "Assets/Scripts/Components/fortune/FortunePlayInput.cs"
 "Assets/Scripts/Components/fortune/FortuneRewardDisplay.cs"
-"Assets/Scripts/Components/hud/EditorWindows.cs"
 "Assets/Scripts/Components/hud/GameMoneyDisplay.cs"
 "Assets/Scripts/Components/hud/LastNumber.cs"
 "Assets/Scripts/Components/hud/LastTableNumberDisplay.cs"

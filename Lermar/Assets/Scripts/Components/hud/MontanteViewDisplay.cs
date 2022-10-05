@@ -71,7 +71,6 @@ namespace Components
         public GameObject sauteuseView;
 
         public string maxReachTxt = "";
-        // public int chocolat = "";
 
         Montantes montanteManager;
 
@@ -87,12 +86,10 @@ namespace Components
         public void changeHeaderFictive(){
             header.SetActive(false);
             headerContent.SetActive(true);
-
             headerFictive.SetActive(true);
         }
 
         public void changeHeader(){
-            // Debug.Log("hearder");
             headerContent.SetActive(true);
             header.SetActive(true);
             headerFictive.SetActive(false);
@@ -101,15 +98,13 @@ namespace Components
         public void Start()
         {
             reset();
-
             ExecuteButton.onClick.AddListener(() => run(true));
         }
 
         public void reset(){
             foreach (GameObject item in lineGameObject)
             {
-                Debug.Log("DESTROY gameobject");
-                 Destroy(item);
+                Destroy(item);
             }
             sauteuseValue = null;
             lineGameObject.Clear();
@@ -144,7 +139,12 @@ namespace Components
             var gainResearchInt = Int32.Parse(gainResearch.GetComponent<InputField>().text);
             lauchGame = true;
 
-            // lineGameObject = new List<GameObject>();
+             var nbPalierInt = Int32.Parse(nbPalier.GetComponent<InputField>().text);
+                    var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
+                    var  ifMaxPalierTxt= ifMaxPalier.options[ifMaxPalier.value].text;
+                    var  maxReachTxt= maxReach.options[maxReach.value].text;
+                    var chanceTxt = chanceGame.options[chanceGame.value].text;
+                    var attaqueTxt = Attaque.options[Attaque.value].text;
 
 
             switch (montanteSelectedTxt)
@@ -152,12 +152,7 @@ namespace Components
                 case "Apaliers":
                     setUpResultView();
                     
-                    var nbPalierInt = Int32.Parse(nbPalier.GetComponent<InputField>().text);
-                    var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
-                    var  ifMaxPalierTxt= ifMaxPalier.options[ifMaxPalier.value].text;
-                    var  maxReachTxt= maxReach.options[maxReach.value].text;
-                    var chanceTxt = chanceGame.options[chanceGame.value].text;
-                    var attaqueTxt = Attaque.options[Attaque.value].text;
+                   
 
                     if (!first){
                         sauteuseValue= null;
@@ -177,9 +172,6 @@ namespace Components
                         palier.run();
 
                         string[,] result = palier.getLines();
-                        // int last = montanteManager.readPermanenceFile(permanenceSelectedTxt, -1);
-                        Debug.Log("toBallInt : " + toBallInt);
-                        // Debug.Log();
 
                         for (int i = 0; i < toBallInt; i++)
                         {   
@@ -188,11 +180,45 @@ namespace Components
                             setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
                         }
                     }
-                    
-                    // lauchGame = true;
-                   
-                    break;
 
+                    break;
+                case "D'Alembert":
+                    setUpResultView();
+                    
+                    // var nbPalierInt = Int32.Parse(nbPalier.GetComponent<InputField>().text);
+                    // var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
+                    // var  ifMaxPalierTxt= ifMaxPalier.options[ifMaxPalier.value].text;
+                    // var  maxReachTxt= maxReach.options[maxReach.value].text;
+                    // var chanceTxt = chanceGame.options[chanceGame.value].text;
+                    // var attaqueTxt = Attaque.options[Attaque.value].text;
+
+                    if (!first){
+                        sauteuseValue= null;
+                    }
+
+                    if (attaqueTxt=="Sauteuse"){
+                        if(sauteuseValue==null){
+                            getSauteuseValue(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
+                            lauchGame = false;
+                        }
+                    }
+
+                    if (lauchGame){
+                        AlembertCmd palier = new AlembertCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue);
+                        
+                        montanteManager = palier.getMontanteManager();
+                        palier.run();
+
+                        string[,] result = palier.getLines();
+
+                        for (int i = 0; i < toBallInt; i++)
+                        {   
+                            addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
+                            Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8], result);
+                            setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
+                        }
+                    }
+                    break;
                 default:
                     Debug.Log("non");
                     break;
@@ -221,7 +247,6 @@ namespace Components
             ExecuteButton.onClick.AddListener(() => setUpSauteuseSequence(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt));
         }
 
-
         void saveResult(string filename){
 
             var csv = new StringBuilder();
@@ -236,13 +261,10 @@ namespace Components
                 {
                     newLine +=  item.text+",";
                 }
-
                 csv.AppendLine(newLine);  
             }
             File.AppendAllText(filePath, csv.ToString());
         }
-
-        
 
         public void setUpResultView(){
             resultView.SetActive(true);
@@ -251,7 +273,6 @@ namespace Components
             sauteuseView.SetActive(false);
             CancelButton.onClick.RemoveAllListeners();
             CancelButton.onClick.AddListener(() => setUpParamsView());
-
         }
 
         public void setUpParamsView(){
@@ -262,7 +283,6 @@ namespace Components
             sauteuseView.SetActive(false);
             ExecuteButton.onClick.RemoveAllListeners();
             ExecuteButton.onClick.AddListener(() => run(false));
-
         }
 
         void setUpSauteuseSequence(int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt){
@@ -272,16 +292,11 @@ namespace Components
             {
                 sauteuseValue.Add(item.options[item.value].text);
             }
-            
-            // setUpResultView();
-            Debug.Log("Run with sauteuse");
             run(true);
-
-            // APalier(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
         }
 
         private void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise,string attaqueTxt, string[,] fictive  ){
-            // Debug.Log("addResult");
+ 
             var color = montanteManager.valueChance(value, "Rouge");
             GameObject template;
 
@@ -294,7 +309,6 @@ namespace Components
             int bilanGame2 = 0;
 
             if (attaqueTxt.StartsWith("différentielle")){
-                Debug.Log("différentielle");
                 changeHeaderFictive();
                 if (color == "Rouge"){
                     template = templateLineRedFictive;
@@ -341,13 +355,10 @@ namespace Components
                 tempText[8].text = bilanGame.ToString();
                 tempText[9].text = bilanTotal.ToString(); 
             }else{
-                
                 tempText[3].text = (mise*coinValueInt).ToString() + " " + playerMise;
                 tempText[4].text = bilanGame.ToString();
                 tempText[5].text = bilanTotal.ToString(); 
             }
-            
-
             lineGameObject.Add(newLine);
         }
         
@@ -360,13 +371,6 @@ namespace Components
             y -= ITEM_HEIGHT*index;
 
             return y;
-
         }
-
-
-
     }
-       
-
-
 }

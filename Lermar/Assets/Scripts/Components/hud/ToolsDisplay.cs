@@ -73,6 +73,7 @@ namespace Components
 
 
         public Button ExecuteButton;
+        public Button CancelButton;
 
         // private OpenFileDialog openFileDialog1;
 
@@ -291,11 +292,14 @@ namespace Components
             popUpView.SetActive(true);
             methodePopUpView.SetActive(true);
             montantePopUpView.SetActive(false);
+;
             toolNameTopPopUp.GetComponent<Text>().text =  methodes;
 
             popUpBackgroundBtn.onClick.AddListener(() => BackgroundButtonClicked());
 
             popUpBackgroundBtn.gameObject.SetActive(true);
+            
+            // CancelButton.onClick.AddListener(() => BackgroundButtonClicked());
 
         }
 
@@ -305,14 +309,15 @@ namespace Components
 
             addPopUpButton();
             toolNameTopPopUp.GetComponent<Text>().text =  montante;
+            // toolNameTopPopUp.GetComponent<Text>().text =  Path.GetDirectoryName(Application.dataPath) +"/permanences/MC";
             
             switch (montante)
             {
                 case "Apaliers":
                     palierView.SetActive(true);
                     break;
-                case "Pascal":
-                    palierView.SetActive(true);
+                case "D'Alembert":
+                    // alembertView.SetActive(true);
                     break;
                 default:
                     // Debug.Log("palierView.SetActive(false);");

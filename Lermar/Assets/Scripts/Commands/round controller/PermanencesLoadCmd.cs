@@ -124,10 +124,9 @@ namespace Commands
                     characterTools.AddPermanence(el);
             }
 
+
             characterTools.AddPermanenceBtn("Ajouter");
 
-
-            // Debug.Log($"Read permanences file! : ");
         }
 
         

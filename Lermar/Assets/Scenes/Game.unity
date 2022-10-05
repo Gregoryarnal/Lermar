@@ -11020,7 +11020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00010681152, y: 7.121196}
+  m_AnchoredPosition: {x: -0.00010681152, y: -0.00016403198}
   m_SizeDelta: {x: 0, y: 327.658}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &401731267
@@ -31480,7 +31480,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 852525768}
   m_Direction: 3
   m_Value: 0
-  m_Size: 0.59444416
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -37485,6 +37485,7 @@ MonoBehaviour:
   templateBtnText: {fileID: 430430708}
   toBall: {fileID: 2057271593}
   ExecuteButton: {fileID: 1272499867}
+  CancelButton: {fileID: 720435584}
 --- !u!1 &1274877127
 GameObject:
   m_ObjectHideFlags: 0
