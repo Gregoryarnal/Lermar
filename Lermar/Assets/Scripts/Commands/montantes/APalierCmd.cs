@@ -96,9 +96,9 @@ namespace Montante
                             }else{
                                 ret =mise*coinValueInt/2+1;
                             }
-                            gain += ret;
-                            bilanGame += ret;
-                            bilanTotal += ret;
+                            gain -= ret;
+                            bilanGame -= ret;
+                            bilanTotal -= ret;
                         }else{
                             gain -= mise*coinValueInt;
                             bilanGame -= mise*coinValueInt;
