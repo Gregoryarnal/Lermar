@@ -145,12 +145,12 @@ namespace Components
             var gainResearchInt = Int32.Parse(gainResearch.GetComponent<InputField>().text);
             lauchGame = true;
 
-             var nbPalierInt = Int32.Parse(nbPalier.GetComponent<InputField>().text);
-                    var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
-                    var  ifMaxPalierTxt= ifMaxPalier.options[ifMaxPalier.value].text;
-                    var  maxReachTxt= maxReach.options[maxReach.value].text;
-                    var chanceTxt = chanceGame.options[chanceGame.value].text;
-                    var attaqueTxt = Attaque.options[Attaque.value].text;
+            var nbPalierInt = Int32.Parse(nbPalier.GetComponent<InputField>().text);
+            var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
+            var  ifMaxPalierTxt= ifMaxPalier.options[ifMaxPalier.value].text;
+            var  maxReachTxt= maxReach.options[maxReach.value].text;
+            var chanceTxt = chanceGame.options[chanceGame.value].text;
+            var attaqueTxt = Attaque.options[Attaque.value].text;
 
 
             switch (montanteSelectedTxt)
@@ -192,13 +192,6 @@ namespace Components
                 case "D'Alembert":
                     setUpResultView();
                     
-                    // var nbPalierInt = Int32.Parse(nbPalier.GetComponent<InputField>().text);
-                    // var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
-                    // var  ifMaxPalierTxt= ifMaxPalier.options[ifMaxPalier.value].text;
-                    // var  maxReachTxt= maxReach.options[maxReach.value].text;
-                    // var chanceTxt = chanceGame.options[chanceGame.value].text;
-                    // var attaqueTxt = Attaque.options[Attaque.value].text;
-
                     if (!first){
                         sauteuseValue= null;
                     }

@@ -118,7 +118,7 @@ namespace Montante
                         if (fictive!=null && attaqueTxt == "différentielle directe"){
                             bilanGame = 0;
                         }else if(attaqueTxt == "différentielle compensée"){
-                            coup = 0;
+                            // coup = 0;
                             bilanGame = 0;
                             fictive = new string[0,0];
                         }else if(!attaqueTxt.StartsWith("différentielle")){
@@ -134,7 +134,7 @@ namespace Montante
                     }
                     
                     if (playerMise==null){
-                        if(attaqueTxt!="différentielle directe"){        
+                        if(!attaqueTxt.StartsWith("différentielle")){        
                             coup = 0;
                         }
                     }
