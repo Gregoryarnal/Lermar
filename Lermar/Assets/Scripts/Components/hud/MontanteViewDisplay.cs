@@ -55,6 +55,12 @@ namespace Components
         public GameObject templateLineBlack;
         public GameObject templateLineRedFictive;
         public GameObject templateLineBlackFictive;
+
+        public GameObject templateLineRedLoose;
+        public GameObject templateLineBlackLoose;
+        public GameObject templateLineRedFictiveLoose;
+        public GameObject templateLineBlackFictiveLoose;
+
         public GameObject header;
         public GameObject headerFictive;
         public GameObject headerContent;
@@ -176,7 +182,8 @@ namespace Components
                         for (int i = 0; i < toBallInt; i++)
                         {   
                             addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
-                            Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8], result);
+                            Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7], result[i, 8],result[i, 9], result);
+
                             setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
                         }
                     }
@@ -214,7 +221,7 @@ namespace Components
                         for (int i = 0; i < toBallInt; i++)
                         {   
                             addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
-                            Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8], result);
+                            Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
                             setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
                         }
                     }
@@ -295,7 +302,7 @@ namespace Components
             run(true);
         }
 
-        private void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise,string attaqueTxt, string[,] fictive  ){
+        private void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise,string attaqueTxt,string win, string[,] fictive  ){
  
             var color = montanteManager.valueChance(value, "Rouge");
             GameObject template;
@@ -311,26 +318,48 @@ namespace Components
             if (attaqueTxt.StartsWith("différentielle")){
                 changeHeaderFictive();
                 if (color == "Rouge"){
-                    template = templateLineRedFictive;
+                     if (Convert.ToBoolean(win)){
+                        template = templateLineRedFictive;
+                    }
+                    else{
+                        template = templateLineRedFictiveLoose;   
+                    }
+                    // template = templateLineRedFictive;
                 }else{
-                    template = templateLineBlackFictive;
+                    if (Convert.ToBoolean(win)){
+                        template = templateLineBlackFictive;
+                    }
+                    else{
+                        template = templateLineBlackFictiveLoose;   
+                    }
+                    // template = templateLineBlackFictive;
                 }
 
-                 mise1 = Int32.Parse(fictive[index,9]);
-                 player1Mise = fictive[index,10];
-                 bilanGame1 = Int32.Parse(fictive[index,11]);
+                 mise1 = Int32.Parse(fictive[index,10]);
+                 player1Mise = fictive[index,11];
+                 bilanGame1 = Int32.Parse(fictive[index,12]);
 
 
-                 mise2 = Int32.Parse(fictive[index,12]);
-                 player2Mise = fictive[index,13];
-                 bilanGame2 = Int32.Parse(fictive[index,14]);
+                 mise2 = Int32.Parse(fictive[index,13]);
+                 player2Mise = fictive[index,14];
+                 bilanGame2 = Int32.Parse(fictive[index,15]);
 
             }else{
                 changeHeader();
                 if (color == "Rouge"){
-                    template = templateLineRed;
+                    if (Convert.ToBoolean(win)){
+                        template = templateLineRed;
+                    }
+                    else{
+                        template = templateLineRedLoose;   
+                    }
                 }else{
-                    template = templateLineBlack;
+                    if (Convert.ToBoolean(win)){
+                        template = templateLineBlack;
+                    }
+                    else{
+                        template = templateLineBlackLoose;   
+                    }
                 }
             }
 

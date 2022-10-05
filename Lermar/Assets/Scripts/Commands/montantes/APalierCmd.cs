@@ -108,7 +108,7 @@ namespace Montante
                         coup += 1;
                     }
 
-                    addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,fictive);
+                    addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
                     // setUpStat(bilanTotal,bilanGame,mise,coinValueInt);
 
                     if (win && bilanGame>0){

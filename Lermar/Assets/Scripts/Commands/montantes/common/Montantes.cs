@@ -82,10 +82,10 @@ namespace Montante
             sauteuseValue=sauteuseValuen;
 
             if (attaqueTxt.StartsWith("")){
-            result = new string[readPermanenceFile(permanenceSelectedTxt, -1),15];
+                result = new string[readPermanenceFile(permanenceSelectedTxt, -1),16];
 
             }else{
-            result = new string[readPermanenceFile(permanenceSelectedTxt, -1),9];
+                result = new string[readPermanenceFile(permanenceSelectedTxt, -1),10];
 
             }
         }
@@ -290,7 +290,7 @@ namespace Montante
             }
         }
 
-        public void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise,string attaqueTxt, string[,] fictive ){
+        public void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise,string attaqueTxt, bool win, string[,] fictive ){
 
             result[index, 0] = index.ToString();
             result[index, 1] = coup.ToString();
@@ -301,16 +301,19 @@ namespace Montante
             result[index, 6] = bilanTotal.ToString();
             result[index, 7] = playerMise;
             result[index, 8] = attaqueTxt;
+            result[index, 9] = win.ToString();
             if (fictive != null){
-                result[index, 9] = fictive[0,0];
-                result[index, 10] =  fictive[0,1];
-                result[index, 11] = fictive[0,2];
+                result[index, 10] = fictive[0,0];
+                result[index, 11] =  fictive[0,1];
+                result[index, 12] = fictive[0,2];
 
-                result[index, 12] = fictive[1,0];
-                result[index, 13] = fictive[1,1];
-                result[index, 14] = fictive[1,2];
+                result[index, 13] = fictive[1,0];
+                result[index, 14] = fictive[1,1];
+                result[index, 15] = fictive[1,2];
 
             }
+            // result[index, 8] = a\ttaqueTxt;
+
             // result[result.Length, 9] = fictive;
         }
 
