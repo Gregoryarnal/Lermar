@@ -357,6 +357,7 @@
 "Assets/Scripts/Commands/montantes/AlembertCmd.cs"
 "Assets/Scripts/Commands/montantes/APalierCmd.cs"
 "Assets/Scripts/Commands/montantes/common/Montantes.cs"
+"Assets/Scripts/Commands/montantes/FibonaciCmd.cs"
 "Assets/Scripts/Commands/payment system/FortunePaymentCmd.cs"
 "Assets/Scripts/Commands/payment system/SaveCashTurnCmd.cs"
 "Assets/Scripts/Commands/reward system/FortunePlayCmd.cs"

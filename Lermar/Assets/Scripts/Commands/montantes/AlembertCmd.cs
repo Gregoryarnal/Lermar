@@ -56,7 +56,7 @@ namespace Montante
                     timePalierInt = 1;
                     nbPalierInt=1;
                     if (attaqueTxt.StartsWith("différentielle")){
-                        (fictive, value) = calculateFictive(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain);
+                        (fictive, value) = calculateFictive(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, "D'Alembert");
                         setFictiveLine(fictive);
                     }
 

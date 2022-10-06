@@ -183,28 +183,7 @@ namespace Components
                         
                         montanteManager = palier.getMontanteManager();
                         palier.run();
-
-                        string[,] result = palier.getLines();
-
-                        StatButton.onClick.AddListener(() => LoadStat(result));
-
-                        for (int i = 0; i < toBallInt; i++)
-                        {   
-                                // waitKeypress();
-                            // StartCoroutine(waitKeypress());
-                            // StartCoroutine(WaitForAnswer());
-                        //    if (Int32.Parse(result[i, 1]) == 1 && Int32.Parse(result[i, 0])!= 1)
-                        //     {
-                        //         Debug.Log("wait");
-
-                        //         waitKeypress();
-                        //     }
-
-                            addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
-                            Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7], result[i, 8],result[i, 9], result);
-
-                            setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
-                        }
+                        setUpResult(montanteManager,toBallInt);
                     }
 
                     break;
@@ -223,28 +202,56 @@ namespace Components
                     }
 
                     if (lauchGame){
-                        AlembertCmd palier = new AlembertCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue);
+                        AlembertCmd alembert = new AlembertCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue);
+                        montanteManager = alembert.getMontanteManager();
+                        alembert.run();
+                        setUpResult(montanteManager,toBallInt);
                         
-                        montanteManager = palier.getMontanteManager();
-                        palier.run();
+                    }
+                    break;
+                
+                case "Fibonaci":
+                    setUpResultView();
+                    
+                    if (!first){
+                        sauteuseValue= null;
+                    }
 
-                        string[,] result = palier.getLines();
-
-                        for (int i = 0; i < toBallInt; i++)
-                        {   
- 
-                            addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
-                            Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
-
-                            setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
-
-                            
+                    if (attaqueTxt=="Sauteuse"){
+                        if(sauteuseValue==null){
+                            getSauteuseValue(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
+                            lauchGame = false;
                         }
+                    }
+
+                    if (lauchGame){
+                        FibonaciCmd fibo = new FibonaciCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue);
+                        montanteManager = fibo.getMontanteManager();
+                        fibo.run();
+                        setUpResult(montanteManager,toBallInt);
                     }
                     break;
                 default:
                     Debug.Log("non");
                     break;
+            }
+        }
+
+        void setUpResult(Montantes montante, int toBallInt){
+            // montanteManager = montante.getMontanteManager();
+            // montante.run();
+
+            string[,] result = montante.getLines();
+
+            for (int i = 0; i < toBallInt; i++)
+            {   
+
+                addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
+                Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
+
+                setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
+
+                
             }
         }
 
