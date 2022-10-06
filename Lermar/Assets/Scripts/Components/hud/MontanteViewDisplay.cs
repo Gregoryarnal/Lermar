@@ -4,6 +4,7 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -15,6 +16,7 @@ using ViewModel;
 using System;
 using Controllers;
 using Montante;
+using System.Threading;
 
 namespace Components
 {
@@ -39,6 +41,7 @@ namespace Components
 
         public Button ExecuteButton;
         public Button CancelButton;
+        public Button StatButton;
 
 
         public GameObject permanenceSelected;
@@ -133,6 +136,10 @@ namespace Components
             gameInputStat.GetComponent<Text>().text = parti.ToString();
         }
 
+        void LoadStat(string[,] result){
+            
+        }
+
         void run(bool first){
             var fromBallInt = Int32.Parse(fromBall.GetComponent<InputField>().text);
             var toBallInt = Int32.Parse(toBall.GetComponent<InputField>().text);
@@ -179,8 +186,20 @@ namespace Components
 
                         string[,] result = palier.getLines();
 
+                        StatButton.onClick.AddListener(() => LoadStat(result));
+
                         for (int i = 0; i < toBallInt; i++)
                         {   
+                                // waitKeypress();
+                            // StartCoroutine(waitKeypress());
+                            // StartCoroutine(WaitForAnswer());
+                        //    if (Int32.Parse(result[i, 1]) == 1 && Int32.Parse(result[i, 0])!= 1)
+                        //     {
+                        //         Debug.Log("wait");
+
+                        //         waitKeypress();
+                        //     }
+
                             addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                             Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7], result[i, 8],result[i, 9], result);
 
@@ -213,9 +232,13 @@ namespace Components
 
                         for (int i = 0; i < toBallInt; i++)
                         {   
+ 
                             addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                             Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
+
                             setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
+
+                            
                         }
                     }
                     break;
@@ -225,6 +248,24 @@ namespace Components
             }
         }
 
+        IEnumerator waitKeypress(){
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        }
+        
+
+        IEnumerator WaitForAnswer()
+        {
+            for (;;)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    break;
+                }
+
+                yield return null;
+            }
+            yield return null;
+        }
         // public (bool, string) setSauteuse(bool first){
         //     if (!first){
         //         sauteuseValue= null;

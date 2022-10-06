@@ -1,3 +1,4 @@
+// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -52,13 +53,15 @@ namespace Montante
 
                 for (int i = fromBallInt-1; i < toBallInt; i++)
                 {
+                    timePalierInt = 1;
+                    nbPalierInt=1;
                     if (attaqueTxt.StartsWith("différentielle")){
                         (fictive, value) = calculateFictive(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain);
                         setFictiveLine(fictive);
                     }
 
                     if (fictive==null){
-                        ( playerMise,value,mise,win ) = play(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false);
+                        ( playerMise,value,mise,win ) = play(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, false);
                     }else{
                         if (Int32.Parse(fictive[0,0])==Int32.Parse(fictive[1,0])){
                             mise = 0;
@@ -69,12 +72,12 @@ namespace Montante
                             if (Int32.Parse(fictive[0,0])>Int32.Parse(fictive[1,0])){ //mise1 suppe
                                 mise = Int32.Parse(fictive[0,0])-Int32.Parse(fictive[1,0]);
                                 chanceTxt = fictive[0,1];
-                                ( playerMise,value,mise,win ) = play(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true);
+                                ( playerMise,value,mise,win ) = play(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
                             }else{//mise2 suppe
                             
                                 mise = Int32.Parse(fictive[1,0])-Int32.Parse(fictive[0,0]);
                                 chanceTxt = fictive[1,1];
-                                ( playerMise,value,mise,win ) = play(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true);
+                                ( playerMise,value,mise,win ) = play(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
                             }
                         }
                     }
@@ -107,8 +110,9 @@ namespace Montante
                     }
 
                     addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
-                    // setUpStat(bilanTotal,bilanGame,mise,coinValueInt);
-
+                    if (coup == 10 || coup == 11 ){
+                        Debug.Log("Coup before : " + coup + " : " + mise);
+                    }
                     if (win && bilanGame>0){
                         gain = 0;
                         mise = miseInitial;
@@ -116,16 +120,22 @@ namespace Montante
                         if (fictive!=null && attaqueTxt == "différentielle directe"){
                             bilanGame = 0;
                         }else if(attaqueTxt == "différentielle compensée"){
-                            coup = 0;
                             bilanGame = 0;
                             fictive = new string[0,0];
                         }else if(!attaqueTxt.StartsWith("différentielle")){
                             coup = 0;
                             bilanGame = 0;
+                            // bilanTotal= 0;
                         }
                     }else if (win) {
+                         if (coup == 10 || coup == 11 ){
+                            Debug.Log("Coup win : " + coup + " : " + mise);
+                        }
                         mise -= 1;
                     }else{
+                         if (coup == 10 || coup == 11 ){
+                            Debug.Log("Coup pas win : " + coup + " : " + mise);
+                        }
                         mise += 1;
                     }
             
@@ -148,18 +158,6 @@ namespace Montante
 
             // }
         }
-
-
-        // void setUpSauteuseSequence(int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt){
-        //     Dropdown[] tempDropdown = sauteuseView.GetComponentsInChildren<Dropdown>();
-        //     foreach (Dropdown item in tempDropdown)
-        //     {
-        //         sauteuseValue.Add(item.options[item.value].text);
-        //     }
-            
-        //     setUpResultView();
-        //     // ApalierCmd(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
-        // }
 
        
         
