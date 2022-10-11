@@ -110,9 +110,11 @@ namespace Commands
             }
             return foundFiles.ToArray();
         }
-
-
+        
         public void Execute()
+        {}
+
+        public void Execute(bool show)
         {
 
             characterTools.ResetView();
@@ -121,11 +123,17 @@ namespace Commands
 
             foreach (string el in filenames){
                 if (!el.StartsWith("."))
-                    characterTools.AddPermanence(el);
+                    if(show){
+                        characterTools.AddPermanence(el);
+                    }else{
+                        characterTools.LoadPermanence(el);
+                    }
             }
 
-
-            characterTools.AddPermanenceBtn("Ajouter");
+            if (show)
+            {
+                characterTools.AddPermanenceBtn("Ajouter");
+            }            
 
         }
 

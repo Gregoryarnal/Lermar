@@ -15,7 +15,7 @@ namespace Components
         
         public void OnClick()
         {
-            gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute();
+            gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute(true);
         }
     }
 }

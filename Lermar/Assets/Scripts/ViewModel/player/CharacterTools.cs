@@ -26,7 +26,12 @@ namespace ViewModel
             characterStatisticsView.Value = "";
         }
 
+        public void LoadPermanence(string permanence){
+            string aux = characterToolsView.Value;
+            var type = "load";
 
+            characterToolsView.Value = "\n" + permanence + "//" + type;
+        }
         public void AddPermanence(string permanence)
         {
             string aux = characterToolsView.Value;

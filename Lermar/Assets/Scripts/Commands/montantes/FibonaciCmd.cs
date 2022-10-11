@@ -63,7 +63,7 @@ namespace Montante
                     mise = calculateFibonacci(fiboCpt);
 
                     if (attaqueTxt.StartsWith("différentielle")){
-                        (fictive, value) = calculateFictive(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, "Fibonaci");
+                        (fictive, value) = calculateFictive(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, "Fibonaci", null);
                         setFictiveLine(fictive);
                     }
 

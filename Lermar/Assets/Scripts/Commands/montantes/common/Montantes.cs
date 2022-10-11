@@ -210,7 +210,7 @@ namespace Montante
             return a;
         }
         
-        public (string[,], int) calculateFictive(string chanceTxt, string attaqueTxt, int value, bool win, int index, string permanenceSelectedTxt, int mise,  int timePalierInt,int  nbPalierInt,int  coinValueInt, int maxMiseInt,string  ifMaxPalierTxt,string  maxReachTxt, int gain,bool calculMise, string montantetype){
+        public (string[,], int) calculateFictive(string chanceTxt, string attaqueTxt, int value, bool win, int index, string permanenceSelectedTxt, int mise,  int timePalierInt,int  nbPalierInt,int  coinValueInt, int maxMiseInt,string  ifMaxPalierTxt,string  maxReachTxt, int gain,bool calculMise, string montantetype, string[,] fictiv){
 
             if (attaqueTxt.StartsWith("différentielle")){
                 if (fictivec==null){
@@ -226,11 +226,14 @@ namespace Montante
                     fictivec[1,3] = "0";// coup
                 }
 
-                    Debug.Log("attaqueTxt 1 : " + attaqueTxt);
+                if (fictiv!=null){
+                    fictivec = fictiv;
+                }
+                    // Debug.Log("attaqueTxt 1 : " + attaqueTxt);
 
                 if (montantetype=="Fibonaci"){
                     fictivec[0,0] = calculateFibonacci(fiboCpt1).ToString();
-                    Debug.Log("fibo 1 : " + fictivec[0,0]);
+                    // Debug.Log("fibo 1 : " + fictivec[0,0]);
                 }
 
                 (var newPlayerMise1, var newValue1, var newMise1,var newWin1 ) = play(chanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[0,3]), Int32.Parse(fictivec[0,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);
@@ -242,11 +245,8 @@ namespace Montante
                     }else if (newPlayerMise1!=null){
                         fiboCpt1 += 1;
                     }
-                }
 
-                if (montantetype=="Fibonaci"){
                     fictivec[1,0] = calculateFibonacci(fiboCpt2).ToString();
-                    Debug.Log("fibo 2 : " + fictivec[1,0]);
 
                 }
 

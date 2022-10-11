@@ -25,7 +25,9 @@ namespace Components
     {
 
         public CharacterTools characterTools;
-
+        public GameObject popUpView;
+        public GameObject montantePopUpView;
+        public GameObject popUpBackgroundBtn;
 
         //common
         public GameObject fromBall;
@@ -156,6 +158,7 @@ namespace Components
         }
 
         void run(bool first){
+            setUpParamsView();
             var fromBallInt = Int32.Parse(fromBall.GetComponent<InputField>().text);
             var toBallInt = Int32.Parse(toBall.GetComponent<InputField>().text);
             // var fileNameTxt = fileName.GetComponent<InputField>().text;
@@ -181,8 +184,6 @@ namespace Components
                 case "Apaliers":
                     setUpResultView();
                     
-                   
-
                     if (!first){
                         sauteuseValue= null;
                     }
@@ -358,6 +359,12 @@ namespace Components
             CancelButton.onClick.RemoveAllListeners();
             CancelButton.onClick.AddListener(() => setUpParamsView());
         }
+        void ClosePopUp(){
+            // Debug.Log("BackgroundButtonClicked");
+            popUpView.SetActive(false);
+            montantePopUpView.SetActive(false);
+            popUpBackgroundBtn.gameObject.SetActive(false);
+        }
 
         public void setUpParamsView(){
             reset();
@@ -366,6 +373,9 @@ namespace Components
             leftView.SetActive(true);
             sauteuseView.SetActive(false);
             ExecuteButton.onClick.RemoveAllListeners();
+            CancelButton.onClick.RemoveAllListeners();
+
+            CancelButton.onClick.AddListener(() => ClosePopUp());
             ExecuteButton.onClick.AddListener(() => run(false));
         }
 

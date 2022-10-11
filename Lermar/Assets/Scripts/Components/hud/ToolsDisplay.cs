@@ -2,6 +2,7 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
 // using System.Reflection.PortableExecutable;
 // using System.Diagnostics;
 using System.Threading.Tasks;
@@ -91,8 +92,6 @@ namespace Components
                 characterTools.characterStatisticsView
                     .Subscribe(AddStatistics)
                     .AddTo(this);
-
-                
             }
             catch (NullReferenceException e)
             {
@@ -100,13 +99,8 @@ namespace Components
             } 
             RemoveButton();
             ExecuteButton.interactable = false;
-            // ExecuteButton.gameObject.SetActive(true);
-           
-
-            
+   
             Reset();
-            // lineGame.Clear();
-
         }
 
         public void RemovePopUpBtn(){
@@ -120,12 +114,13 @@ namespace Components
 
         public void addPopUpButton()
         {          
-            button_permanence_list.Clear();
-            RemovePopUpBtn();
 
             if (button_permanence_list.Count==0){
-                gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute();
-            }
+                gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute(false);
+            }    
+        
+            RemovePopUpBtn();
+
             for (int i = 0; i < button_permanence_list.Count; i++)
             {
                 var value = button_permanence_list[i];
@@ -217,8 +212,8 @@ namespace Components
         public void MontanteAddButtonClicked(){
             Debug.Log("MontanteAddButtonClicked");
             var extensions = new [] {
-    new ExtensionFilter("Text Files", "txt" )
-};
+                new ExtensionFilter("Text Files", "txt" )
+            };
 
             var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", extensions, false);
 
@@ -230,7 +225,7 @@ namespace Components
                 // Debug.Log(file);
             }
 
-            gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute();
+            gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute(false);
             
 
         }
@@ -272,7 +267,6 @@ namespace Components
 
         void PermanenceButtonClicked(string permanence)
         {
-            // RemoveButton();
             characterTable.permFilePath = permanence;
             characterTable.readPermanence = true;
             characterTable.lastIndex = 0;
@@ -283,9 +277,7 @@ namespace Components
         }
 
         void MethodesButtonClicked(string methodes)
-        {
-            // RemoveButton();
-            
+        {            
             addPopUpButton();
 
             popUpView.SetActive(true);
@@ -298,17 +290,14 @@ namespace Components
 
             popUpBackgroundBtn.gameObject.SetActive(true);
             
-            // CancelButton.onClick.AddListener(() => BackgroundButtonClicked());
+            CancelButton.onClick.AddListener(() => BackgroundButtonClicked());
 
         }
 
         void MontanteButtonClicked(string montante)
         {
-            // RemoveButton();
-
             addPopUpButton();
             toolNameTopPopUp.GetComponent<Text>().text =  montante;
-            // toolNameTopPopUp.GetComponent<Text>().text =  Path.GetDirectoryName(Application.dataPath) +"/permanences/MC";
             
             switch (montante)
             {
@@ -327,14 +316,16 @@ namespace Components
             popUpView.SetActive(true);
             methodePopUpView.SetActive(false);
             montantePopUpView.SetActive(true);
-            Button backgroundBtn = popUpBackgroundBtn.GetComponent<Button>();
+
             popUpBackgroundBtn.onClick.AddListener(() => BackgroundButtonClicked());
+            CancelButton.onClick.AddListener(() => BackgroundButtonClicked());
 
             popUpBackgroundBtn.gameObject.SetActive(true);
 
         }
 
         void BackgroundButtonClicked(){
+            Debug.Log("BackgroundButtonClicked");
             popUpView.SetActive(false);
             montantePopUpView.SetActive(false);
 
@@ -347,6 +338,7 @@ namespace Components
                 Destroy(item.gameObject);
             }
             button_list.Clear(); 
+            button_permanence_list.Clear();
 
         }
 
@@ -397,16 +389,10 @@ namespace Components
 
                 lineGame.Add(newLine);
             }
-                
-
-            // }
-            
         }
 
         public void OnLoadTools(string data)
         {
-
-            // Debug.Log("OnLoadTools : " + data);
             var datasplit = data.Split("//");
             if (datasplit.Length == 2){
                 var value = data.Split("//")[0];
@@ -414,24 +400,19 @@ namespace Components
                 Button btn = null;
                 
                 
-                 if (type=="permanence"){
-                     btn  = addButton(value, type);
-                    // if (!button_permanence_list.Contains(value)){
-                       
-
-                        button_permanence_list.Add(value);
-                        button_list.Add(btn);
-                    // }
+                if (type=="permanence"){
+                    btn  = addButton(value, type);
+                    button_permanence_list.Add(value);
+                    button_list.Add(btn);
+                }else if(type=="load"){
+                    button_permanence_list.Add(value);
                 }else{
                     btn = addButton(value, type);
                     button_list.Add(btn);
                 }
-
-                
             }else{
                 if (data == ""){
                     RemoveButton();
-                    button_list.Clear();  
                 }else{
                     Debug.Log("ERROR : " + data);
                 }
