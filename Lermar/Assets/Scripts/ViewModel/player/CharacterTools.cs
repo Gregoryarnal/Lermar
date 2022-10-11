@@ -18,6 +18,7 @@ namespace ViewModel
     {
         public StringReactiveProperty characterToolsView = new StringReactiveProperty();
         public StringReactiveProperty characterStatisticsView = new StringReactiveProperty();
+        public StringReactiveProperty characterSavePath = new StringReactiveProperty();
         public bool firstRun = true;
 
         public void ResetView(){
@@ -66,6 +67,13 @@ namespace ViewModel
                 characterStatisticsView.Value = lastIndex.ToString() + "//" + value.ToString() 
                         + "//"+ mise.ToString() + "//"+ result.ToString()+ "//"+  bilan.ToString();
             // }
+        }
+
+        public void AddSavePath(string path){
+
+ string aux = characterSavePath.Value;
+                
+                characterSavePath.Value = path;
         }
 
 

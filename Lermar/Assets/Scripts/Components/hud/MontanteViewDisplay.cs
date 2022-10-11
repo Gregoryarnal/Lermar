@@ -5,6 +5,7 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -22,6 +23,10 @@ namespace Components
 {
     public class MontanteViewDisplay : MonoBehaviour
     {
+
+        public CharacterTools characterTools;
+
+
         //common
         public GameObject fromBall;
         public GameObject toBall;
@@ -92,6 +97,8 @@ namespace Components
 
         bool lauchGame = true;
 
+        public string SavePath = "";
+
         public void changeHeaderFictive(){
             header.SetActive(false);
             headerContent.SetActive(true);
@@ -108,6 +115,14 @@ namespace Components
         {
             reset();
             ExecuteButton.onClick.AddListener(() => run(true));
+
+            characterTools.characterSavePath
+                .Subscribe(AddSavePath)
+                .AddTo(this);
+        }
+
+        public void AddSavePath(string file){
+            SavePath = file;
         }
 
         public void reset(){
@@ -143,7 +158,8 @@ namespace Components
         void run(bool first){
             var fromBallInt = Int32.Parse(fromBall.GetComponent<InputField>().text);
             var toBallInt = Int32.Parse(toBall.GetComponent<InputField>().text);
-            var fileNameTxt = fileName.GetComponent<InputField>().text;
+            // var fileNameTxt = fileName.GetComponent<InputField>().text;
+            var fileNameTxt = "";
             var coinValueInt = Int32.Parse(coinValue.GetComponent<InputField>().text);
             var maxMiseInt = Int32.Parse(maxMise.GetComponent<InputField>().text);
             var permanenceSelectedTxt = permanenceSelected.GetComponent<Text>().text;
@@ -234,7 +250,16 @@ namespace Components
                 default:
                     Debug.Log("non");
                     break;
+
+                
             }
+            Debug.Log("SavePath : " + SavePath);
+                if (SavePath!= ""){
+                    Debug.Log("save ");
+
+                    saveResult(SavePath);
+                }
+
         }
 
         void setUpResult(Montantes montante, int toBallInt){
@@ -295,16 +320,27 @@ namespace Components
             ExecuteButton.onClick.AddListener(() => setUpSauteuseSequence(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt));
         }
 
-        void saveResult(string filename){
+        public void saveResult(string filename){
 
             var csv = new StringBuilder();
-            var filePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/" + filename+".csv";
+            var filePath = filename+".csv";
+            var newLine ="";
+
+            var headerSize = lineGameObject[0].GetComponentsInChildren<Text>().Length;
+            if (headerSize == 6){
+                newLine = "Boule num, Coup, Num, Mise, Bilan, Bilan Total";
+            }else{
+                newLine = "Boule num, Coup, Num, Mise1, Bilan1, Mise2, Bilan2, Mise, Bilan, Total";
+
+            }
+            csv.AppendLine(newLine);  
 
             foreach (GameObject line in lineGameObject)
             {
                 Text[] contents = line.GetComponentsInChildren<Text>();
-                var newLine ="";
+                newLine ="";
 
+                
                 foreach (Text item in contents)
                 {
                     newLine +=  item.text+",";

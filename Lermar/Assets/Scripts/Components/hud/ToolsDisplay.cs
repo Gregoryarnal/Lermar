@@ -1,6 +1,7 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
 // using System.Reflection.PortableExecutable;
 // using System.Diagnostics;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ using Commands;
 // using windows;
 using System.IO;
 // using System.Windows.Forms;
-
+using SFB;
 namespace Components
 {
     public class ToolsDisplay : MonoBehaviour
@@ -31,7 +32,7 @@ namespace Components
 
         public CharacterTable characterTable;
         public CharacterTools characterTools;
-        public GameCmdFactory gameCmdFactory;
+        public GameCmdFactory gameCmdFactory;        
         
         public Text textcontent;
         public GameObject ScrollViewContainer;
@@ -90,6 +91,7 @@ namespace Components
                 characterTools.characterStatisticsView
                     .Subscribe(AddStatistics)
                     .AddTo(this);
+
                 
             }
             catch (NullReferenceException e)
@@ -210,29 +212,26 @@ namespace Components
 
             return tempButton;
         }
-        // [DllImport("user32.dll")]
-        // private static extern void OpenFileDialog();
+
 
         public void MontanteAddButtonClicked(){
             Debug.Log("MontanteAddButtonClicked");
+            var extensions = new [] {
+    new ExtensionFilter("Text Files", "txt" )
+};
 
-            // var inspWndType = typeof(UnityEditor.SceneView);
-            // var window = EditorWindow.GetWindow<EditorWindows>(inspWndType);
+            var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", extensions, false);
 
-            // windows.EditorWindows.Apply();
-            // windows.EditorWindows.play(gameCmdFactory,characterTable,characterTools);
-//  System.Windows.Forms.SaveFileDialog sfd = new System.Windows.Forms.SaveFileDialog();
+            var permanencePath = Path.GetDirectoryName(Application.dataPath) +"/permanences/MC/";
 
-            // using (System.Windows.Forms.OpenFileDialog upload = new System.Windows.Forms.OpenFileDialog())
-            //     {
-            //         upload.Filter = "Txt Files|*.txt";
-            //         upload.Title = "Select File";
-            //         if (upload.ShowDialog() != DialogResult.OK)
-            //             return;
-            //         string filePath= upload.FileName;
-            //         var fileName = Path.GetFileName(fileName);
-            //         Debug.Log(fileName);
-            //     }
+            foreach (var file in paths)
+            {
+                File.Copy(file, Path.Combine(permanencePath, Path.GetFileName(file)), true );
+                // Debug.Log(file);
+            }
+
+            gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute();
+            
 
         }
 
