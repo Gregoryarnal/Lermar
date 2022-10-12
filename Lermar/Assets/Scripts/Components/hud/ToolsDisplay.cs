@@ -1,10 +1,4 @@
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Reflection.PortableExecutable;
-// using System.Diagnostics;
+
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 // using System.Diagnostics;
@@ -220,9 +214,10 @@ namespace Components
             var permanencePath = Path.GetDirectoryName(Application.dataPath) +"/permanences/MC/";
 
             foreach (var file in paths)
-            {
-                File.Copy(file, Path.Combine(permanencePath, Path.GetFileName(file)), true );
-                // Debug.Log(file);
+            {   
+                if (file.Length != 0){
+                    File.Copy(file, Path.Combine(permanencePath, Path.GetFileName(file)), true );
+                }
             }
 
             gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute(false);

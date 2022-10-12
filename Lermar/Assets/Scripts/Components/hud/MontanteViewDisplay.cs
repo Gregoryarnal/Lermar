@@ -41,6 +41,10 @@ namespace Components
         public Dropdown Attaque;
         public Dropdown maxReach;
         public Dropdown ifMaxPalier;
+
+        public Dropdown SecurityInput;
+        public Dropdown gainOrLoos;
+
         public GameObject gainResearch;
         public GameObject nbPalier;
         public GameObject timePalier;
@@ -178,6 +182,10 @@ namespace Components
             var chanceTxt = chanceGame.options[chanceGame.value].text;
             var attaqueTxt = Attaque.options[Attaque.value].text;
 
+            var security = SecurityInput.options[SecurityInput.value].text;
+            var typeOfMise = gainOrLoos.options[gainOrLoos.value].text;
+
+
 
             switch (montanteSelectedTxt)
             {
@@ -196,7 +204,7 @@ namespace Components
                     }
 
                     if (lauchGame){
-                        APalierCmd palier = new APalierCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue);
+                        APalierCmd palier = new APalierCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security, typeOfMise);
                         
                         montanteManager = palier.getMontanteManager();
                         palier.run();
@@ -219,7 +227,7 @@ namespace Components
                     }
 
                     if (lauchGame){
-                        AlembertCmd alembert = new AlembertCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue);
+                        AlembertCmd alembert = new AlembertCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security, typeOfMise);
                         montanteManager = alembert.getMontanteManager();
                         alembert.run();
                         setUpResult(montanteManager,toBallInt);
@@ -242,7 +250,7 @@ namespace Components
                     }
 
                     if (lauchGame){
-                        FibonaciCmd fibo = new FibonaciCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue);
+                        FibonaciCmd fibo = new FibonaciCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security, typeOfMise);
                         montanteManager = fibo.getMontanteManager();
                         fibo.run();
                         setUpResult(montanteManager,toBallInt);

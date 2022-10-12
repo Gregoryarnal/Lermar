@@ -36,7 +36,9 @@ namespace Montante
         public int coinValueInt;
         public int maxMiseInt;
         public string permanenceSelectedTxt;
-
+             
+        public string security;
+        public string typeOfMise;
         public List<string> sauteuseValue = new List<string>();
         public string[,] result = null;
         public string[,] fictivec = null;
@@ -73,7 +75,7 @@ namespace Montante
 
         }
 
-        public Montantes(int gainResearchIntn, string maxReachTxtn, string chanceTxtn, string attaqueTxtn, int fromBallIntn, int toBallIntn, string fileNameTxtn, int coinValueIntn, int maxMiseIntn,string permanenceSelectedTxtn, List<string> sauteuseValuen){
+        public Montantes(int gainResearchIntn, string maxReachTxtn, string chanceTxtn, string attaqueTxtn, int fromBallIntn, int toBallIntn, string fileNameTxtn, int coinValueIntn, int maxMiseIntn,string permanenceSelectedTxtn, List<string> sauteuseValuen, string securityn,string typeOfMisen){
             gainResearchInt=gainResearchIntn;
             maxReachTxt=maxReachTxtn;
             chanceTxt=chanceTxtn;
@@ -85,6 +87,9 @@ namespace Montante
             maxMiseInt=maxMiseIntn;
             permanenceSelectedTxt=permanenceSelectedTxtn;
             sauteuseValue=sauteuseValuen;
+            security=securityn;
+            typeOfMise=typeOfMisen;
+
 
             if (attaqueTxt.StartsWith("")){
                 result = new string[readPermanenceFile(permanenceSelectedTxt, -1),16];
@@ -123,12 +128,13 @@ namespace Montante
                     mise = 1;
                 }
 
-                if (coup!= 0 && coup%timePalier==0 && !diff){
+                if (coup!= 0 && coup%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
                     if (mise == nbPalierInt){
                         if (ifMaxPalierTxt.StartsWith("Recommencer")){
                             mise = 1;
                         }
                     }else{
+                        
                         mise += 1;
                     }
                     
@@ -140,6 +146,23 @@ namespace Montante
                         }
                     }   
                 }
+                // else if (coup!= 0 && typeOfMise== "En gain"){
+                //     if (mise == nbPalierInt){
+                //         if (ifMaxPalierTxt.StartsWith("Recommencer")){
+                //             mise = 1;
+                //         }
+                //     }else{
+                //         mise += 1;
+                //     }
+                //                         if (mise*coinValueInt >= maxMiseInt){
+                //         if (maxReachTxt.StartsWith("Repartir")){
+                //             mise = 1;
+                //         }else{
+                //             mise = maxMiseInt/coinValueInt;
+                //         }
+                //     }   
+                // }
+                
                 return mise;
             }
             return 0;

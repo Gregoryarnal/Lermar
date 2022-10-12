@@ -21,8 +21,8 @@ namespace Montante
          
 
 
-        public APalierCmd(int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue) 
-        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue)
+        public APalierCmd(int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, string security,string typeOfMise) 
+        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue, security, typeOfMise)
         {
             nbPalierInt=nbPalierIntn;
             timePalierInt=timePalierIntn;
@@ -118,12 +118,15 @@ namespace Montante
                         if (fictive!=null && attaqueTxt == "différentielle directe"){
                             bilanGame = 0;
                         }else if(attaqueTxt == "différentielle compensée"){
-                            // coup = 0;
                             bilanGame = 0;
                             fictive = new string[0,0];
                         }else if(!attaqueTxt.StartsWith("différentielle")){
                             coup = 0;
                             bilanGame = 0;
+                        }
+                    }else if (win) {
+                        if (typeOfMise=="En gain"){
+                            mise += 1;
                         }
                     }
             
