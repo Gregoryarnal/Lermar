@@ -23,8 +23,8 @@ namespace Montante
          
 
 
-        public AlembertCmd(int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, string security,string typeOfMise) 
-        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security, typeOfMise)
+        public AlembertCmd(int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security,int securityValue,string typeOfMise) 
+        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise)
         {
             nbPalierInt=nbPalierIntn;
             timePalierInt=timePalierIntn;
@@ -128,13 +128,13 @@ namespace Montante
                         if (typeOfMise=="En gain"){
                             mise += 1;
                         }else{
-                            if (mise != 1){
+                            if (mise > 1){
                                 mise -= 1;
                             }
                         }
                     }else{
                         if (typeOfMise=="En gain"){
-                            if (mise != 1){
+                            if (mise > 1){
                                 mise -= 1;
                             }
                         }else{
@@ -167,6 +167,10 @@ namespace Montante
                         if(attaqueTxt!="différentielle directe"){        
                             coup = 0;
                         }
+                    }
+
+                    if (security){
+                        mise = calculateSecurity(mise,bilanGame);
                     }
                     index+=1;
                 }

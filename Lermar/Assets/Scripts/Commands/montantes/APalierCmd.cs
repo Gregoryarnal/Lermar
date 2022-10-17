@@ -21,8 +21,8 @@ namespace Montante
          
 
 
-        public APalierCmd(int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, string security,string typeOfMise) 
-        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue, security, typeOfMise)
+        public APalierCmd(int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security,int securityValue,string typeOfMise) 
+        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise)
         {
             nbPalierInt=nbPalierIntn;
             timePalierInt=timePalierIntn;
@@ -111,6 +111,7 @@ namespace Montante
                     addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
                     // setUpStat(bilanTotal,bilanGame,mise,coinValueInt);
 
+
                     if (win && bilanGame>0){
                         gain = 0;
                         mise = miseInitial;
@@ -141,6 +142,11 @@ namespace Montante
                             coup = 0;
                         }
                     }
+
+                    if (security){
+                        mise = calculateSecurity(mise,bilanGame);
+                    }
+
                     index+=1;
                 }
             // }

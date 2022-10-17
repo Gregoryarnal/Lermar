@@ -1,6 +1,8 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
+// using System.Diagnostics;
 
 using System.ComponentModel;
 
@@ -37,7 +39,8 @@ namespace Montante
         public int maxMiseInt;
         public string permanenceSelectedTxt;
              
-        public string security;
+        public bool security;
+        public int securityValue;
         public string typeOfMise;
         public List<string> sauteuseValue = new List<string>();
         public string[,] result = null;
@@ -75,7 +78,7 @@ namespace Montante
 
         }
 
-        public Montantes(int gainResearchIntn, string maxReachTxtn, string chanceTxtn, string attaqueTxtn, int fromBallIntn, int toBallIntn, string fileNameTxtn, int coinValueIntn, int maxMiseIntn,string permanenceSelectedTxtn, List<string> sauteuseValuen, string securityn,string typeOfMisen){
+        public Montantes(int gainResearchIntn, string maxReachTxtn, string chanceTxtn, string attaqueTxtn, int fromBallIntn, int toBallIntn, string fileNameTxtn, int coinValueIntn, int maxMiseIntn,string permanenceSelectedTxtn, List<string> sauteuseValuen, bool securityn,int securityValuen, string typeOfMisen){
             gainResearchInt=gainResearchIntn;
             maxReachTxt=maxReachTxtn;
             chanceTxt=chanceTxtn;
@@ -88,6 +91,7 @@ namespace Montante
             permanenceSelectedTxt=permanenceSelectedTxtn;
             sauteuseValue=sauteuseValuen;
             security=securityn;
+            securityValue=securityValuen;
             typeOfMise=typeOfMisen;
 
 
@@ -111,13 +115,29 @@ namespace Montante
             var newPlayerMise = getPlayerMise(chanceTxt, newValue, win, index,  lastValue);
             
             var newMise = mise;
+            Debug.Log("old mise : " + newMise);
+
             if (misecalc || newPlayerMise == null){
                 newMise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, newPlayerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, diff);
             }
+            Debug.Log("new mise : " + newMise);
 
             var newWin = calculateGain(newValue, newPlayerMise, newMise,coinValueInt, gain);
             
             return (newPlayerMise, newValue, newMise, newWin);
+        }
+
+        public int calculateSecurity(int mise, int bilan){
+            Debug.Log("mise : " + mise);
+            Debug.Log("bilan : " + bilan);
+            Debug.Log("securityValue : " + securityValue);
+            if (mise>Math.Abs(bilan)){
+                if (Math.Abs(bilan-mise)>securityValue){
+                    return Math.Abs(bilan);
+                }
+            }
+            
+            return mise;
         }
 
         private int calculateMise(int coup, int mise, int timePalier, int nbPalierInt, string playerMise, int coinValueInt, int maxMiseInt, string ifMaxPalierTxt,string maxReachTxt, bool diff){
