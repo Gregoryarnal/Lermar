@@ -6,6 +6,7 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -317,19 +318,44 @@ namespace Components
             // montante.run();
 
             string[,] result = montante.getLines();
-
-            for (int i = 0; i < toBallInt; i++)
+            
+            int start =0;
+            for (int i = start; i < toBallInt; i++)
             {   
-
+                if (Int32.Parse(result[i, 1])==1 && i>1){
+                    ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i));
+                    break;
+                    // wait(i, );
+                }
                 addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                 Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
 
-            setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
+                setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));        
+            }
 
+        }
+
+        void setUpResult( string[,] result, int toBallInt, int start){
+
+            for (int i = start; i < toBallInt; i++)
+            {   
+                if (Int32.Parse(result[i, 1])==1 && i!=start){
+                    ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i));
+                    break;
+                }
+                addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
+                Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
+
+                setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));        
+            }
+
+            if (start-1==toBallInt){
+                ExecuteButton.interactable = false;
                 
             }
 
         }
+
 
         IEnumerator waitKeypress(){
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
