@@ -3,6 +3,7 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
 
 using System.ComponentModel;
 
@@ -115,12 +116,12 @@ namespace Montante
             var newPlayerMise = getPlayerMise(chanceTxt, newValue, win, index,  lastValue);
             
             var newMise = mise;
-            Debug.Log("old mise : " + newMise);
 
             if (misecalc || newPlayerMise == null){
                 newMise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, newPlayerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, diff);
+                newMise = checkMaxMise(newMise, coinValueInt,maxReachTxt,maxMiseInt);
+
             }
-            Debug.Log("new mise : " + newMise);
 
             var newWin = calculateGain(newValue, newPlayerMise, newMise,coinValueInt, gain);
             
@@ -128,15 +129,35 @@ namespace Montante
         }
 
         public int calculateSecurity(int mise, int bilan){
-            Debug.Log("mise : " + mise);
-            Debug.Log("bilan : " + bilan);
-            Debug.Log("securityValue : " + securityValue);
+
             if (mise>Math.Abs(bilan)){
                 if (Math.Abs(bilan-mise)>securityValue){
+                    if (Math.Abs(bilan)==0){
+                        return 1;
+                    } 
                     return Math.Abs(bilan);
                 }
             }
             
+            return mise;
+        }
+
+        public int checkMaxMise(int mise, int coinValueInt, string maxReachTxt, int maxMiseInt){
+            Debug.Log("mise*coinValueInt : " + mise*coinValueInt);
+            Debug.Log("coinValueInt : " + coinValueInt);
+            Debug.Log("mise : " + mise);
+            Debug.Log("maxMiseInt : " + maxMiseInt);
+            Debug.Log("maxReachTxt : " + maxReachTxt);
+            if ((mise*coinValueInt) >= maxMiseInt){
+                if (maxReachTxt.StartsWith("Repartir")){
+                    mise = 1;
+                }
+                else{
+                    mise = maxMiseInt;
+                }
+            }
+            Debug.Log("mise : " + mise);
+
             return mise;
         }
 
@@ -157,32 +178,7 @@ namespace Montante
                         
                         mise += 1;
                     }
-                    
-                    if (mise*coinValueInt >= maxMiseInt){
-                        if (maxReachTxt.StartsWith("Repartir")){
-                            mise = 1;
-                        }else{
-                            mise = maxMiseInt/coinValueInt;
-                        }
-                    }   
                 }
-                // else if (coup!= 0 && typeOfMise== "En gain"){
-                //     if (mise == nbPalierInt){
-                //         if (ifMaxPalierTxt.StartsWith("Recommencer")){
-                //             mise = 1;
-                //         }
-                //     }else{
-                //         mise += 1;
-                //     }
-                //                         if (mise*coinValueInt >= maxMiseInt){
-                //         if (maxReachTxt.StartsWith("Repartir")){
-                //             mise = 1;
-                //         }else{
-                //             mise = maxMiseInt/coinValueInt;
-                //         }
-                //     }   
-                // }
-                
                 return mise;
             }
             return 0;
@@ -240,13 +236,11 @@ namespace Montante
             return null;
         }
 
-            int calculateFibonacci(int len){
-            // Debug.Log("fibo : " +len);
-             int a = 0, b = 1, c = 0;
-             for (int i = 2; i < len; i++)  
+        int calculateFibonacci(int len){
+            int a = 0, b = 1, c = 0;
+            for (int i = 2; i < len; i++)  
             {  
                 c= a + b;  
-                Console.Write(" {0}", c);  
                 a= b;  
                 b= c;  
             } 
@@ -272,11 +266,9 @@ namespace Montante
                 if (fictiv!=null){
                     fictivec = fictiv;
                 }
-                    // Debug.Log("attaqueTxt 1 : " + attaqueTxt);
 
                 if (montantetype=="Fibonaci"){
                     fictivec[0,0] = calculateFibonacci(fiboCpt1).ToString();
-                    // Debug.Log("fibo 1 : " + fictivec[0,0]);
                 }
 
                 (var newPlayerMise1, var newValue1, var newMise1,var newWin1 ) = play(chanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[0,3]), Int32.Parse(fictivec[0,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);

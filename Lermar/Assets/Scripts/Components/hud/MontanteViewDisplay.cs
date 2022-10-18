@@ -91,6 +91,11 @@ namespace Components
        //sauteuse
         public GameObject sauteuseView;
 
+        // fibonaci
+        public Dropdown fiboStartValue;
+        public Dropdown fiboScheme;
+
+
         public string maxReachTxt = "";
 
         Montantes montanteManager;
@@ -255,9 +260,13 @@ namespace Components
                             lauchGame = false;
                         }
                     }
+                    var fiboStartValueTxt = fiboStartValue.options[fiboStartValue.value].text;
+                    var fiboSchemeTxt = fiboScheme.options[fiboScheme.value].text;
+                    // fiboStartValue
+                    // fiboScheme
 
                     if (lauchGame){
-                        FibonaciCmd fibo = new FibonaciCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
+                        FibonaciCmd fibo = new FibonaciCmd( fiboStartValueTxt, fiboSchemeTxt, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = fibo.getMontanteManager();
                         fibo.run();
                         setUpResult(montanteManager,toBallInt);

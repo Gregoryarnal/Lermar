@@ -1,4 +1,5 @@
 
+// using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 // using System.Diagnostics;
@@ -38,6 +39,7 @@ namespace Components
 
         public GameObject montantePopUpView;
         public GameObject palierView;
+        public GameObject fiboView;
 
 
         public GameObject methodePopUpView;
@@ -191,7 +193,7 @@ namespace Components
             }
 
             if (type == "permanence")
-                tempButton.onClick.AddListener(() => PermanenceButtonClicked(permName));
+                tempButton.onClick.AddListener(() => PermanenceButtonClicked(tempButton,permName));
             else if (type== "methode")
                 tempButton.onClick.AddListener(() => MethodesButtonClicked(permName));
             else if (type== "montante")
@@ -260,8 +262,10 @@ namespace Components
             return y;
         }
 
-        void PermanenceButtonClicked(string permanence)
+        void PermanenceButtonClicked(Button btn, string permanence)
         {
+            // Debug.Log("clicked");
+            // highLightButton(btn, new Color(0, 204, 102));
             characterTable.permFilePath = permanence;
             characterTable.readPermanence = true;
             characterTable.lastIndex = 0;
@@ -298,9 +302,16 @@ namespace Components
             {
                 case "Apaliers":
                     palierView.SetActive(true);
+                    fiboView.SetActive(false);
+
                     break;
                 case "D'Alembert":
                     // alembertView.SetActive(true);
+                    fiboView.SetActive(false);
+
+                    break;
+                case "Fibonaci":
+                    fiboView.SetActive(true);
                     break;
                 default:
                     // Debug.Log("palierView.SetActive(false);");

@@ -1,6 +1,7 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -20,16 +21,26 @@ namespace Montante
         public int nbPalierInt;
         public int timePalierInt;
         public string ifMaxPalierTxt;
-
+        public int startvalue;
+        public string scheme;
+        int fiboCpt  ; 
          
 
 
-        public FibonaciCmd(int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
+        public FibonaciCmd(string startvaluen, string schemen, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
         : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise)
         {
             nbPalierInt=nbPalierIntn;
             timePalierInt=timePalierIntn;
             ifMaxPalierTxt=ifMaxPalierTxtn;
+            if (startvaluen=="{1,1,2..}"){
+                fiboCpt= 3;
+                startvalue=3;
+            }else{
+                fiboCpt=4;
+                startvalue=4;
+            }
+            scheme=schemen;
         }
 
         public void run(){
@@ -61,6 +72,7 @@ namespace Montante
                 for (int i = fromBallInt-1; i < toBallInt; i++)
                 {
                     mise = calculateFibonacci(fiboCpt);
+                   (mise,fiboCpt) = checkMaxMise(mise,fiboCpt);
 
                     if (attaqueTxt.StartsWith("différentielle")){
                         (fictive, value) = calculateFictive(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, "Fibonaci", null);
@@ -116,10 +128,30 @@ namespace Montante
 
                     addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
 
+
+                    if (win){
+
+                        if (typeOfMise=="En gain"){
+                            fiboCpt += 1;
+                            // Debug.Log("win en gain : " + fiboCpt);
+
+                        }
+                    }else{
+                        if (typeOfMise!="En gain"){
+                            fiboCpt += 1;
+                        }
+                    }
+
+
                     if (win && bilanGame>0){
                         gain = 0;
                         mise = miseInitial;
+                        // if (scheme.StartsWith("Reprise")){
 
+                            fiboCpt = startvalue;
+                            // Debug.Log("remise initial : " + fiboCpt);
+
+                        // }
                         if (fictive!=null && attaqueTxt == "différentielle directe"){
                             bilanGame = 0;
                         }else if(attaqueTxt == "différentielle compensée"){
@@ -131,13 +163,9 @@ namespace Montante
                         }
                     }
 
-                    if (win && playerMise!=null){
-                        fiboCpt = 4;
-                    }else if (playerMise!=null){
-                        fiboCpt += 1;
-                    }
+                    
             
-
+                    
                     if (bilanTotal>=gainResearchInt && gainResearchInt!=0){
                         Debug.Log("End gainResearchInt");
                         break;
@@ -148,25 +176,69 @@ namespace Montante
                             coup = 0;
                         }
                     }
+
+                    if (security){
+                        fiboCpt = calculateSecurity(mise,bilanGame,fiboCpt );
+                    }
+
+
                     index+=1;
                 }
-            // }
-            // if (fileNameTxt!=""){
-            // saveResult(fileNameTxt);
+        }
 
-            // }
+         public (int, int) checkMaxMise(int mise, int fiboCpt){
+           
+            if ((mise*coinValueInt) >= maxMiseInt){
+                if (maxReachTxt.StartsWith("Repartir")){
+                    fiboCpt = 4;
+                }
+                else{
+                    fiboCpt -= 1;
+                }
+            }
+            // DebugLog("mise : " + mise);
+            
+            mise = calculateFibonacci(fiboCpt);
+
+            return (mise,fiboCpt);
+        }
+
+
+        public int calculateSecurity(int mise, int bilan,int fibo){
+                        // Debug.Log("calculateFibonacci in calculateSecurity");
+            
+             if (mise>Math.Abs(bilan)){
+                        // Debug.Log("fisrt if in calculateSecurity");
+
+                if (Math.Abs(bilan-mise)>securityValue){
+                        // Debug.Log("second if  in calculateSecurity");
+
+                    int cpt = fibo;
+                    while (calculateFibonacci(cpt)>Math.Abs(bilan-mise)){
+                        // Debug.Log("calculateFibonacci in while");
+
+                        cpt -=1;
+                    }
+
+            // Debug.Log("return cpt " + cpt);
+
+                    return cpt;
+                }
+            }
+            // Debug.Log("return fibo " + fibo);
+            
+            return fibo;
         }
 
         int calculateFibonacci(int len){
-            // Debug.Log("fibo : " +len);
              int a = 0, b = 1, c = 0;
              for (int i = 2; i < len; i++)  
             {  
                 c= a + b;  
-                Console.Write(" {0}", c);  
                 a= b;  
                 b= c;  
             } 
+
             return a;
         }
 
