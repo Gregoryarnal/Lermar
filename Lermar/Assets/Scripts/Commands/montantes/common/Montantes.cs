@@ -48,8 +48,8 @@ namespace Montante
         public string[,] fictivec = null;
         public List<string[,]> fictiveList = new List<string[,]>();
 
-            int fiboCpt1 = 4;
-            int fiboCpt2 = 4;
+        int fiboCpt1 = 4;
+        int fiboCpt2 = 4;
         // public List<string> sauteuseValue = new List<string>();
 
 
@@ -119,7 +119,8 @@ namespace Montante
 
             if (misecalc || newPlayerMise == null){
                 newMise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, newPlayerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, diff);
-                newMise = checkMaxMise(newMise, coinValueInt,maxReachTxt,maxMiseInt);
+                // newMise = checkMaxMise(newMise, coinValueInt,maxReachTxt,maxMiseInt);
+                newMise = checkMaxMise(newMise);
 
             }
 
@@ -133,30 +134,25 @@ namespace Montante
             if (mise>Math.Abs(bilan)){
                 if (Math.Abs(bilan-mise)>securityValue){
                     if (Math.Abs(bilan)==0){
-                        return 1;
+                        return (1*coinValueInt);
                     } 
-                    return Math.Abs(bilan);
+                    return Math.Abs(bilan)+1;
                 }
             }
             
             return mise;
         }
 
-        public int checkMaxMise(int mise, int coinValueInt, string maxReachTxt, int maxMiseInt){
-            Debug.Log("mise*coinValueInt : " + mise*coinValueInt);
-            Debug.Log("coinValueInt : " + coinValueInt);
-            Debug.Log("mise : " + mise);
-            Debug.Log("maxMiseInt : " + maxMiseInt);
-            Debug.Log("maxReachTxt : " + maxReachTxt);
-            if ((mise*coinValueInt) >= maxMiseInt){
+        // public int checkMaxMise(int mise, int coinValueInt, string maxReachTxt, int maxMiseInt){
+        public int checkMaxMise(int mise){
+            if ((mise) >= maxMiseInt){
                 if (maxReachTxt.StartsWith("Repartir")){
-                    mise = 1;
+                    mise = 1*coinValueInt;
                 }
                 else{
                     mise = maxMiseInt;
                 }
             }
-            Debug.Log("mise : " + mise);
 
             return mise;
         }
@@ -172,17 +168,15 @@ namespace Montante
                 if (coup!= 0 && coup%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
                     if (mise == nbPalierInt){
                         if (ifMaxPalierTxt.StartsWith("Recommencer")){
-                            mise = 1;
+                            mise = 1 ;
                         }
                     }else{
-                        
                         mise += 1;
                     }
                 }
                 return mise;
             }
             return 0;
-            
         }
         
         public string valueChance(int value, string playerMise){
@@ -365,10 +359,10 @@ namespace Montante
         private bool calculateGain(int value, string playerMise,int mise,int coinValueInt, int gain){
             var result = valueChance(value, playerMise);
             if (string.Compare(result,playerMise)==0){
-                gain +=mise*coinValueInt;
+                gain +=mise;
                 return true;
             }else{
-                gain -= mise*coinValueInt;
+                gain -= mise;
                 return false;
             }
         }

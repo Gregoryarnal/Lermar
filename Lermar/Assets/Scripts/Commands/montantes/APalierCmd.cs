@@ -31,8 +31,8 @@ namespace Montante
 
         public void run(){
 
-            var miseInitial = 1;
-            var mise = 1;
+            var miseInitial = 1*coinValueInt;
+            var mise = 1*coinValueInt;
             var gain = 0;
 
 
@@ -82,35 +82,33 @@ namespace Montante
                     }
                     
                     if (win){
-                        gain += mise*coinValueInt;
-                        bilanGame += mise*coinValueInt;
-                        bilanTotal += mise*coinValueInt;
+                        gain += mise;
+                        bilanGame += mise;
+                        bilanTotal += mise;
                         // Debug.Log("Add coup");
 
                         coup += 1;
                     }else{
                         if (value == 0){
                             var ret = 0;
-                            if ((mise*coinValueInt)%2==0){
-                                ret =mise*coinValueInt/2;
+                            if ((mise)%2==0){
+                                ret =mise/2;
                             }else{
-                                ret =mise*coinValueInt/2+1;
+                                ret =mise/2+1;
                             }
                             gain -= ret;
                             bilanGame -= ret;
                             bilanTotal -= ret;
                         }else{
-                            gain -= mise*coinValueInt;
-                            bilanGame -= mise*coinValueInt;
-                            bilanTotal -= mise*coinValueInt;
+                            gain -= mise;
+                            bilanGame -= mise;
+                            bilanTotal -= mise;
                         }
 
                         coup += 1;
                     }
 
                     addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
-                    // setUpStat(bilanTotal,bilanGame,mise,coinValueInt);
-
 
                     if (win && bilanGame>0){
                         gain = 0;

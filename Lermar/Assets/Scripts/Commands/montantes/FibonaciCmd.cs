@@ -146,12 +146,8 @@ namespace Montante
                     if (win && bilanGame>0){
                         gain = 0;
                         mise = miseInitial;
-                        // if (scheme.StartsWith("Reprise")){
+                        fiboCpt = startvalue;
 
-                            fiboCpt = startvalue;
-                            // Debug.Log("remise initial : " + fiboCpt);
-
-                        // }
                         if (fictive!=null && attaqueTxt == "différentielle directe"){
                             bilanGame = 0;
                         }else if(attaqueTxt == "différentielle compensée"){

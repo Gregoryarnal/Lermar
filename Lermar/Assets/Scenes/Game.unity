@@ -12613,7 +12613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00010681152, y: 0.09977301}
+  m_AnchoredPosition: {x: -0.00010681152, y: -0.00013542175}
   m_SizeDelta: {x: 0, y: 327.658}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &398493160
@@ -30437,7 +30437,7 @@ GameObject:
   - component: {fileID: 958338849}
   m_Layer: 5
   m_Name: MaxBetInput
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30527,7 +30527,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 20000
+  m_Text: 20
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -35522,7 +35522,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 852525768}
   m_Direction: 3
   m_Value: 0
-  m_Size: 0.98850965
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -42436,6 +42436,7 @@ MonoBehaviour:
   templateBtn: {fileID: 1998633494}
   templateBtnText: {fileID: 430430708}
   toBall: {fileID: 2057271593}
+  coinValueInput: {fileID: 2075942880}
   ExecuteButton: {fileID: 1272499867}
   CancelButton: {fileID: 720435584}
 --- !u!1 &1274877127
@@ -68202,7 +68203,7 @@ GameObject:
   - component: {fileID: 2075942882}
   m_Layer: 5
   m_Name: CoinValueInput
-  m_TagString: Untagged
+  m_TagString: test
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

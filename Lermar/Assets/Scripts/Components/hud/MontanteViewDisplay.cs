@@ -149,8 +149,8 @@ namespace Components
         void setUpStat(int bilan, int parti, int mise, int coinValueInt){
 
             var Oldmise = Int32.Parse(miseInputStat.GetComponent<Text>().text);
-            if (mise*coinValueInt>Oldmise){
-                miseInputStat.GetComponent<Text>().text = (mise*coinValueInt).ToString();
+            if (mise>Oldmise){
+                miseInputStat.GetComponent<Text>().text = (mise).ToString();
             }
             if (parti<0){
                 var OldDecouvert = Int32.Parse(decouvertInputStat.GetComponent<Text>().text);
@@ -272,6 +272,31 @@ namespace Components
                         setUpResult(montanteManager,toBallInt);
                     }
                     break;
+                case "50/20":
+                    setUpResultView();
+                    
+                    if (!first){
+                        sauteuseValue= null;
+                    }
+
+                    if (attaqueTxt=="Sauteuse"){
+                        if(sauteuseValue==null){
+                            getSauteuseValue(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
+                            lauchGame = false;
+                        }
+                    }
+                    // var fiboStartValueTxt = fiboStartValue.options[fiboStartValue.value].text;
+                    // var fiboSchemeTxt = fiboScheme.options[fiboScheme.value].text;
+                    // fiboStartValue
+                    // fiboScheme
+
+                    if (lauchGame){
+                        FiftyTwentyCmd fiftyTwenty = new FiftyTwentyCmd( nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
+                        montanteManager = fiftyTwenty.getMontanteManager();
+                        fiftyTwenty.run();
+                        setUpResult(montanteManager,toBallInt);
+                    }
+                    break;
                 default:
                     Debug.Log("non");
                     break;
@@ -299,10 +324,11 @@ namespace Components
                 addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                 Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
 
-                setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
+            setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));
 
                 
             }
+
         }
 
         IEnumerator waitKeypress(){
@@ -491,11 +517,11 @@ namespace Components
                 tempText[4].text = bilanGame1.ToString();
                 tempText[5].text = (mise2*coinValueInt).ToString() + " " + player2Mise;
                 tempText[6].text = bilanGame2.ToString();
-                tempText[7].text = (mise*coinValueInt).ToString() + " " + playerMise;
+                tempText[7].text = (mise).ToString() + " " + playerMise;
                 tempText[8].text = bilanGame.ToString();
                 tempText[9].text = bilanTotal.ToString(); 
             }else{
-                tempText[3].text = (mise*coinValueInt).ToString() + " " + playerMise;
+                tempText[3].text = (mise).ToString() + " " + playerMise;
                 tempText[4].text = bilanGame.ToString();
                 tempText[5].text = bilanTotal.ToString(); 
             }

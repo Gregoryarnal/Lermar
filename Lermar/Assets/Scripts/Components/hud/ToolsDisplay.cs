@@ -1,5 +1,5 @@
 
-// using System.Diagnostics;
+
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 // using System.Diagnostics;
@@ -68,6 +68,9 @@ namespace Components
 
 
         public GameObject toBall;
+
+        public GameObject coinValueInput;
+        // public GameObject toBall;
 
 
         public Button ExecuteButton;
@@ -303,18 +306,31 @@ namespace Components
                 case "Apaliers":
                     palierView.SetActive(true);
                     fiboView.SetActive(false);
+                    coinValueInput.GetComponent<InputField>().text = "1";
 
                     break;
                 case "D'Alembert":
                     // alembertView.SetActive(true);
                     fiboView.SetActive(false);
+                    coinValueInput.GetComponent<InputField>().text = "1";
 
                     break;
                 case "Fibonaci":
                     fiboView.SetActive(true);
+                    coinValueInput.GetComponent<InputField>().text = "1";
+
                     break;
+
+                case "50/20":
+                    fiboView.SetActive(true);
+                    Debug.Log("here bef");
+                    coinValueInput.GetComponent<InputField>().text = "10";
+                    // .GetComponent<InputField>().text = "10";
+                    Debug.Log("here aft");
+                    
+                    break;
+
                 default:
-                    // Debug.Log("palierView.SetActive(false);");
                     break;
 
             }

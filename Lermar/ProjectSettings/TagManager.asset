@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ChipSelectUI
+  - ChipContainer
+  - Chip
+  - Button
+  - AnchorRoullete
+  - test
   layers:
   - Default
   - TransparentFX
