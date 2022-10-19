@@ -41,6 +41,7 @@ ScriptsOnlyBuild:
     - Components.RewardToActionMotionDisplay
     - Components.RoulleteBallDisplay
     - Components.RoulleteRotateDisplay
+    - Components.SaveControlerInput
     - Components.TableController
     - Components.ToolsDisplay
     - Components.WinLostDisplay
@@ -166,6 +167,9 @@ ScriptsOnlyBuild:
     fullTypeName: UnityEngine.Object
     methodName: set_name
   - assembly: Scripts
+    fullTypeName: Components.SaveControlerInput
+    methodName: OnClick
+  - assembly: Scripts
     fullTypeName: Components.GamePlayInput
     methodName: OnClick
   - assembly: Scripts
@@ -211,157 +215,159 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1544}
+      Script: {instanceID: 1554}
     - Class: 114
-      Script: {instanceID: 1546}
+      Script: {instanceID: 1556}
     - Class: 114
-      Script: {instanceID: 1548}
+      Script: {instanceID: 1558}
     - Class: 114
-      Script: {instanceID: 1550}
+      Script: {instanceID: 1560}
     - Class: 114
-      Script: {instanceID: 1552}
+      Script: {instanceID: 1562}
     - Class: 114
-      Script: {instanceID: 1594}
+      Script: {instanceID: 1604}
     - Class: 114
-      Script: {instanceID: 1622}
+      Script: {instanceID: 1632}
     - Class: 114
-      Script: {instanceID: 1640}
+      Script: {instanceID: 1650}
     - Class: 114
-      Script: {instanceID: 1710}
+      Script: {instanceID: 1720}
     - Class: 114
-      Script: {instanceID: 1934}
+      Script: {instanceID: 1944}
     - Class: 114
-      Script: {instanceID: 2222}
+      Script: {instanceID: 2234}
     - Class: 114
-      Script: {instanceID: 2248}
+      Script: {instanceID: 2260}
     - Class: 114
-      Script: {instanceID: 2416}
+      Script: {instanceID: 2430}
     - Class: 114
-      Script: {instanceID: 2634}
+      Script: {instanceID: 2652}
     - Class: 114
-      Script: {instanceID: 2720}
+      Script: {instanceID: 2738}
     - Class: 114
-      Script: {instanceID: 2732}
+      Script: {instanceID: 2750}
     - Class: 114
-      Script: {instanceID: 2902}
+      Script: {instanceID: 2922}
     - Class: 114
-      Script: {instanceID: 2966}
+      Script: {instanceID: 2986}
     - Class: 114
-      Script: {instanceID: 2996}
+      Script: {instanceID: 3016}
     - Class: 114
-      Script: {instanceID: 3466}
+      Script: {instanceID: 3488}
     - Class: 114
-      Script: {instanceID: 3658}
+      Script: {instanceID: 3682}
     - Class: 114
-      Script: {instanceID: 3834}
+      Script: {instanceID: 3860}
     - Class: 114
-      Script: {instanceID: 3934}
+      Script: {instanceID: 3962}
     - Class: 114
-      Script: {instanceID: 4102}
+      Script: {instanceID: 4130}
     - Class: 114
-      Script: {instanceID: 4394}
+      Script: {instanceID: 4422}
     - Class: 114
-      Script: {instanceID: 4658}
+      Script: {instanceID: 4688}
     - Class: 114
-      Script: {instanceID: 4694}
+      Script: {instanceID: 4724}
     - Class: 114
-      Script: {instanceID: 4854}
+      Script: {instanceID: 4884}
     - Class: 114
-      Script: {instanceID: 4940}
+      Script: {instanceID: 4970}
     - Class: 114
-      Script: {instanceID: 5008}
+      Script: {instanceID: 5038}
     - Class: 114
-      Script: {instanceID: 5010}
+      Script: {instanceID: 5040}
     - Class: 114
-      Script: {instanceID: 5130}
+      Script: {instanceID: 5160}
     - Class: 114
-      Script: {instanceID: 5192}
+      Script: {instanceID: 5194}
     - Class: 114
-      Script: {instanceID: 5240}
+      Script: {instanceID: 5224}
     - Class: 114
-      Script: {instanceID: 5266}
+      Script: {instanceID: 5272}
     - Class: 114
-      Script: {instanceID: 5278}
+      Script: {instanceID: 5298}
     - Class: 114
-      Script: {instanceID: 5348}
+      Script: {instanceID: 5310}
     - Class: 114
-      Script: {instanceID: 5368}
-    - Class: 114
-      Script: {instanceID: 5378}
-    - Class: 114
-      Script: {instanceID: 5392}
+      Script: {instanceID: 5380}
     - Class: 114
       Script: {instanceID: 5400}
     - Class: 114
-      Script: {instanceID: 5450}
+      Script: {instanceID: 5410}
     - Class: 114
-      Script: {instanceID: 5534}
+      Script: {instanceID: 5424}
     - Class: 114
-      Script: {instanceID: 5642}
+      Script: {instanceID: 5432}
+    - Class: 114
+      Script: {instanceID: 5482}
+    - Class: 114
+      Script: {instanceID: 5566}
     - Class: 114
       Script: {instanceID: 5674}
     - Class: 114
-      Script: {instanceID: 5772}
+      Script: {instanceID: 5706}
     - Class: 114
-      Script: {instanceID: 5812}
+      Script: {instanceID: 5808}
     - Class: 114
-      Script: {instanceID: 5830}
+      Script: {instanceID: 5848}
     - Class: 114
-      Script: {instanceID: 6028}
+      Script: {instanceID: 5866}
     - Class: 114
-      Script: {instanceID: 6132}
+      Script: {instanceID: 6064}
     - Class: 114
       Script: {instanceID: 6168}
     - Class: 114
-      Script: {instanceID: 6178}
+      Script: {instanceID: 6204}
     - Class: 114
-      Script: {instanceID: 6188}
+      Script: {instanceID: 6214}
     - Class: 114
-      Script: {instanceID: 6264}
+      Script: {instanceID: 6224}
     - Class: 114
-      Script: {instanceID: 6348}
+      Script: {instanceID: 6300}
     - Class: 114
-      Script: {instanceID: 6710}
+      Script: {instanceID: 6384}
     - Class: 114
-      Script: {instanceID: 6722}
+      Script: {instanceID: 6748}
     - Class: 114
-      Script: {instanceID: 6864}
+      Script: {instanceID: 6760}
     - Class: 114
-      Script: {instanceID: 6978}
+      Script: {instanceID: 6902}
     - Class: 114
-      Script: {instanceID: 7002}
+      Script: {instanceID: 7018}
     - Class: 114
-      Script: {instanceID: 7036}
+      Script: {instanceID: 7042}
     - Class: 114
-      Script: {instanceID: 7082}
+      Script: {instanceID: 7076}
     - Class: 114
-      Script: {instanceID: 7206}
+      Script: {instanceID: 7122}
     - Class: 114
-      Script: {instanceID: 7232}
+      Script: {instanceID: 7246}
     - Class: 114
-      Script: {instanceID: 7340}
+      Script: {instanceID: 7272}
     - Class: 114
-      Script: {instanceID: 7430}
+      Script: {instanceID: 7382}
     - Class: 114
-      Script: {instanceID: 7630}
+      Script: {instanceID: 7472}
     - Class: 114
-      Script: {instanceID: 7930}
+      Script: {instanceID: 7674}
     - Class: 114
-      Script: {instanceID: 7946}
+      Script: {instanceID: 7976}
     - Class: 114
-      Script: {instanceID: 7984}
+      Script: {instanceID: 7992}
     - Class: 114
-      Script: {instanceID: 8120}
+      Script: {instanceID: 8030}
     - Class: 114
-      Script: {instanceID: 8294}
+      Script: {instanceID: 8166}
     - Class: 114
-      Script: {instanceID: 8368}
+      Script: {instanceID: 8340}
     - Class: 114
-      Script: {instanceID: 8392}
+      Script: {instanceID: 8414}
     - Class: 114
-      Script: {instanceID: 8480}
+      Script: {instanceID: 8438}
     - Class: 114
-      Script: {instanceID: 8724}
+      Script: {instanceID: 8526}
+    - Class: 114
+      Script: {instanceID: 8770}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -514,12 +520,18 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Scripts.dll
+    namespaceName: 
+    className: BasicSample
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnTriggerEnterMessageListener
   - hash:
       serializedVersion: 2
-      Hash: ccc482004b79955946367048fb2aa491
+      Hash: cdf4ee7b7bffb87b64cced0dde442906
     assemblyName: Scripts.dll
     namespaceName: ViewModel
     className: CharacterTools
@@ -577,6 +589,12 @@ ScriptsOnlyBuild:
     assemblyName: Scripts.dll
     namespaceName: Components
     className: PlayerRoundInput
+  - hash:
+      serializedVersion: 2
+      Hash: 6650a204d51a53926852c34131b2f830
+    assemblyName: Scripts.dll
+    namespaceName: 
+    className: CanvasSampleOpenFileTextMultiple
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -637,6 +655,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 6650a204d51a53926852c34131b2f830
+    assemblyName: Scripts.dll
+    namespaceName: 
+    className: CanvasSampleOpenFileText
   - hash:
       serializedVersion: 2
       Hash: 3906516ee09162edf26fd8650afff4c8
@@ -721,6 +745,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnDropdownValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 6650a204d51a53926852c34131b2f830
+    assemblyName: Scripts.dll
+    namespaceName: 
+    className: CanvasSampleSaveFileText
   - hash:
       serializedVersion: 2
       Hash: 0fd6822f6177297bd0eb4d83cc7a9030
@@ -859,6 +889,12 @@ ScriptsOnlyBuild:
     assemblyName: Scripts.dll
     namespaceName: Components
     className: FortuneInput
+  - hash:
+      serializedVersion: 2
+      Hash: e686f3c1011429b41e0a20f13c16d626
+    assemblyName: Scripts.dll
+    namespaceName: 
+    className: CanvasSampleOpenFileImage
   - hash:
       serializedVersion: 2
       Hash: 2574ac7d50617d23cdefe4ad22f5e1ad
@@ -1095,6 +1131,12 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 07164c8b654b690b73247191227f62c2
+    assemblyName: Scripts.dll
+    namespaceName: Components
+    className: SaveControlerInput
+  - hash:
+      serializedVersion: 2
       Hash: d5d8a2ff1a1866e7f8d0654a94b601fc
     assemblyName: Scripts.dll
     namespaceName: Components
@@ -1293,7 +1335,7 @@ ScriptsOnlyBuild:
     className: ButtonTableInteractable
   - hash:
       serializedVersion: 2
-      Hash: a1a33ed010a6b621a8ba898929a033cc
+      Hash: bfd84b3380d1d744f885066e60c7e730
     assemblyName: Scripts.dll
     namespaceName: Components
     className: ToolsDisplay
@@ -1437,7 +1479,7 @@ ScriptsOnlyBuild:
     className: GameRestoreInput
   - hash:
       serializedVersion: 2
-      Hash: 647c6ec859836348d0a54465a4508a0e
+      Hash: 6b4ac9351896c9034cc90f5b341fc3c6
     assemblyName: Scripts.dll
     namespaceName: Components
     className: MontanteViewDisplay
@@ -1495,6 +1537,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnCollisionExitMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 6650a204d51a53926852c34131b2f830
+    assemblyName: Scripts.dll
+    namespaceName: 
+    className: CanvasSampleSaveFileImage
   - hash:
       serializedVersion: 2
       Hash: ea2a0f9f38fcf1c8af572a030437fad1
@@ -1753,42 +1801,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: BasicSample
-  - hash:
-      serializedVersion: 2
-      Hash: 6650a204d51a53926852c34131b2f830
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CanvasSampleOpenFileTextMultiple
-  - hash:
-      serializedVersion: 2
-      Hash: e686f3c1011429b41e0a20f13c16d626
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CanvasSampleOpenFileImage
-  - hash:
-      serializedVersion: 2
-      Hash: 6650a204d51a53926852c34131b2f830
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CanvasSampleSaveFileImage
-  - hash:
-      serializedVersion: 2
-      Hash: 6650a204d51a53926852c34131b2f830
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CanvasSampleOpenFileText
-  - hash:
-      serializedVersion: 2
-      Hash: 6650a204d51a53926852c34131b2f830
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CanvasSampleSaveFileText
   platform: 19
   scenePathNames:
   - Assets/Scenes/Game.unity

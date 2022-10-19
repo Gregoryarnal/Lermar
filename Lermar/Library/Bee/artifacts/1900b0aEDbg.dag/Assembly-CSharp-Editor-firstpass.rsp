@@ -367,8 +367,6 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.TestRunner.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
--analyzer:"Assets/Scripts/Components/hud/StandaloneFileBrowser/Plugins/Ookii.Dialogs.dll"
--analyzer:"Assets/Scripts/Components/hud/StandaloneFileBrowser/Plugins/System.Windows.Forms.dll"
 "Assets/Plugins/External Pack/Simple Scroll-Snap/Scripts/Editor/SimpleScrollSnapEditor.cs"
 -langversion:9.0
 

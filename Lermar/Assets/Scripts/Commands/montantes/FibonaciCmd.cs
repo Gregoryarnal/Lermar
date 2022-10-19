@@ -1,7 +1,4 @@
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
+
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -23,7 +20,9 @@ namespace Montante
         public string ifMaxPalierTxt;
         public int startvalue;
         public string scheme;
-        int fiboCpt  ; 
+        int fiboCpt  ;
+        List<int> cumulValue;
+        // int[] cumulValue;
          
 
 
@@ -41,6 +40,10 @@ namespace Montante
                 startvalue=4;
             }
             scheme=schemen;
+
+            if (scheme.StartsWith("Cumul")){
+                cumulValue = new List<int>();
+            }
         }
 
         public void run(){
@@ -70,9 +73,12 @@ namespace Montante
 
             // if (lauchGame){
                 for (int i = fromBallInt-1; i < toBallInt; i++)
-                {
-                    mise = calculateFibonacci(fiboCpt);
-                   (mise,fiboCpt) = checkMaxMise(mise,fiboCpt);
+                {   
+                    if (!scheme.StartsWith("Cumul")){
+                        mise = calculateFibonacci(fiboCpt);
+                        (mise,fiboCpt) = checkMaxMise(mise,fiboCpt);
+
+                    }
 
                     if (attaqueTxt.StartsWith("différentielle")){
                         (fictive, value) = calculateFictive(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, "Fibonaci", null);
@@ -133,12 +139,75 @@ namespace Montante
 
                         if (typeOfMise=="En gain"){
                             fiboCpt += 1;
-                            // Debug.Log("win en gain : " + fiboCpt);
 
+                            if (scheme.StartsWith("Cumul")){
+                                cumulValue.Add(calculateFibonacci(fiboCpt));
+                                if (cumulValue.Count>=2){
+                                    mise = cumulValue[cumulValue.Count-2]+cumulValue[cumulValue.Count-1];
+                                }else{
+                                    mise = cumulValue[cumulValue.Count-1];
+                                }
+                            }
+                        }else{
+                            if (scheme.StartsWith("Cumul")){
+                                if (cumulValue.Count!=0){
+                                    if (cumulValue.Count==1){
+                                        mise = cumulValue[cumulValue.Count-1];
+                                    }else{
+                                        Debug.Log("old mise : " + mise);
+                                        Debug.Log("cumulValue.Count : " + cumulValue.Count);
+
+                                        cumulValue.RemoveAt(cumulValue.Count-1);
+                                        cumulValue.RemoveAt(cumulValue.Count-1);
+                                        if (cumulValue.Count==0){
+                                            mise = calculateFibonacci(fiboCpt);
+                                        }else if (cumulValue.Count>=2){
+                                            mise = cumulValue[cumulValue.Count-2]+cumulValue[cumulValue.Count-1];
+
+                                        }else{
+                                            mise = cumulValue[cumulValue.Count-1];
+                                        }
+                                    }
+                                }
+                            }
                         }
+                        
                     }else{
+                         
+                        
                         if (typeOfMise!="En gain"){
                             fiboCpt += 1;
+
+                            if (scheme.StartsWith("Cumul")){
+                                cumulValue.Add(calculateFibonacci(fiboCpt));
+                                if (cumulValue.Count>=2){
+                                    mise = cumulValue[cumulValue.Count-2]+cumulValue[cumulValue.Count-1];
+                                }else{
+                                    mise = cumulValue[cumulValue.Count-1];
+                                }
+                            }
+                        }else{
+                            if (scheme.StartsWith("Cumul")){
+                                if (cumulValue.Count!=0){
+                                    if (cumulValue.Count==1){
+                                        mise = cumulValue[cumulValue.Count-1];
+                                    }else{
+                                        Debug.Log("old mise : " + mise);
+                                        Debug.Log("cumulValue.Count : " + cumulValue.Count);
+
+                                        cumulValue.RemoveAt(cumulValue.Count-1);
+                                        cumulValue.RemoveAt(cumulValue.Count-1);
+                                        if (cumulValue.Count==0){
+                                            mise = calculateFibonacci(fiboCpt);
+                                        }else if (cumulValue.Count>=2){
+                                            mise = cumulValue[cumulValue.Count-2]+cumulValue[cumulValue.Count-1];
+
+                                        }else{
+                                            mise = cumulValue[cumulValue.Count-1];
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -147,6 +216,8 @@ namespace Montante
                         gain = 0;
                         mise = miseInitial;
                         fiboCpt = startvalue;
+                        cumulValue = new List<int>();
+
 
                         if (fictive!=null && attaqueTxt == "différentielle directe"){
                             bilanGame = 0;
@@ -201,40 +272,29 @@ namespace Montante
 
 
         public int calculateSecurity(int mise, int bilan,int fibo){
-                        // Debug.Log("calculateFibonacci in calculateSecurity");
-            
+
              if (mise>Math.Abs(bilan)){
-                        // Debug.Log("fisrt if in calculateSecurity");
-
                 if (Math.Abs(bilan-mise)>securityValue){
-                        // Debug.Log("second if  in calculateSecurity");
-
                     int cpt = fibo;
                     while (calculateFibonacci(cpt)>Math.Abs(bilan-mise)){
-                        // Debug.Log("calculateFibonacci in while");
-
                         cpt -=1;
                     }
-
-            // Debug.Log("return cpt " + cpt);
-
                     return cpt;
                 }
             }
-            // Debug.Log("return fibo " + fibo);
-            
             return fibo;
         }
 
         int calculateFibonacci(int len){
              int a = 0, b = 1, c = 0;
+            
+
              for (int i = 2; i < len; i++)  
             {  
                 c= a + b;  
                 a= b;  
                 b= c;  
             } 
-
             return a;
         }
 

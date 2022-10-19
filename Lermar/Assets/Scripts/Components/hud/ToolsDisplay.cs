@@ -322,11 +322,8 @@ namespace Components
                     break;
 
                 case "50/20":
-                    fiboView.SetActive(true);
-                    Debug.Log("here bef");
+                    fiboView.SetActive(false);
                     coinValueInput.GetComponent<InputField>().text = "10";
-                    // .GetComponent<InputField>().text = "10";
-                    Debug.Log("here aft");
                     
                     break;
 
