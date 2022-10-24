@@ -130,20 +130,30 @@ namespace Montante
                     if (mise==3){
                         mise +=1;
                     }
-                    // if (typeOfMise=="En gain"){
-                    //     mise = mise + Convert.ToInt32(Math.Ceiling(mise*0.2));
-                    // }else{
-                        mise = mise - Convert.ToInt32(Math.Floor(mise*0.2));
-                    // }
+                    if (typeOfMise=="En gain"){
+                        mise = mise + Convert.ToInt32(Math.Ceiling(mise*0.5));
+                    }else{
+                        if (mise>miseInitial){
+                            mise = mise - Convert.ToInt32(Math.Ceiling(mise*0.2)); 
+                            if (mise<miseInitial){
+                                mise=miseInitial;
+                            }
+                        }
+                    }
                 }else{
                     if (mise==3){
                         mise +=1;
                     }
-                    // if (typeOfMise=="En gain"){
-                    //     mise = mise - Convert.ToInt32(Math.Ceiling(mise*0.5));
-                    // }else{
-                        mise = mise + Convert.ToInt32(Math.Floor(mise*0.5));
-                    // }
+                    if (typeOfMise=="En gain"){
+                        if (mise>miseInitial){
+                            mise = mise - Convert.ToInt32(Math.Ceiling(mise*0.2)); 
+                            if (mise<miseInitial){
+                                mise=miseInitial;
+                            }
+                        }
+                    }else{
+                        mise = mise + Convert.ToInt32(Math.Ceiling(mise*0.5));
+                    }
                 }
                 if (mise == 1){
                     mise +=1;

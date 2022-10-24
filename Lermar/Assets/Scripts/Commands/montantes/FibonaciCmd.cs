@@ -43,6 +43,8 @@ namespace Montante
 
             if (scheme.StartsWith("Cumul")){
                 cumulValue = new List<int>();
+                        cumulValue.Add(1);
+
             }
         }
 
@@ -128,7 +130,6 @@ namespace Montante
                             bilanGame -= mise*coinValueInt;
                             bilanTotal -= mise*coinValueInt;
                         }
-
                         coup += 1;
                     }
 
@@ -136,17 +137,21 @@ namespace Montante
 
 
                     if (win){
-
                         if (typeOfMise=="En gain"){
-                            fiboCpt += 1;
 
                             if (scheme.StartsWith("Cumul")){
-                                cumulValue.Add(calculateFibonacci(fiboCpt));
                                 if (cumulValue.Count>=2){
                                     mise = cumulValue[cumulValue.Count-2]+cumulValue[cumulValue.Count-1];
-                                }else{
+                                    cumulValue.Add(mise);
+                                }else if(cumulValue.Count==1){
                                     mise = cumulValue[cumulValue.Count-1];
+                                    if (mise==1 && startvalue==4){
+                                        mise +=1;
+                                    }
+                                    cumulValue.Add(mise);
                                 }
+                            }else{
+                                fiboCpt += 1;
                             }
                         }else{
                             if (scheme.StartsWith("Cumul")){
@@ -154,37 +159,43 @@ namespace Montante
                                     if (cumulValue.Count==1){
                                         mise = cumulValue[cumulValue.Count-1];
                                     }else{
-                                        Debug.Log("old mise : " + mise);
-                                        Debug.Log("cumulValue.Count : " + cumulValue.Count);
+                                        if (cumulValue.Count>=3){
+                                            cumulValue.RemoveAt(cumulValue.Count-1);  
+                                        }
 
                                         cumulValue.RemoveAt(cumulValue.Count-1);
                                         cumulValue.RemoveAt(cumulValue.Count-1);
+
                                         if (cumulValue.Count==0){
+                                            fiboCpt = startvalue;
                                             mise = calculateFibonacci(fiboCpt);
                                         }else if (cumulValue.Count>=2){
                                             mise = cumulValue[cumulValue.Count-2]+cumulValue[cumulValue.Count-1];
-
                                         }else{
                                             mise = cumulValue[cumulValue.Count-1];
                                         }
+                                        cumulValue.Add(mise);
+
                                     }
                                 }
                             }
                         }
-                        
                     }else{
-                         
-                        
                         if (typeOfMise!="En gain"){
-                            fiboCpt += 1;
 
                             if (scheme.StartsWith("Cumul")){
-                                cumulValue.Add(calculateFibonacci(fiboCpt));
                                 if (cumulValue.Count>=2){
                                     mise = cumulValue[cumulValue.Count-2]+cumulValue[cumulValue.Count-1];
-                                }else{
+                                    cumulValue.Add(mise);
+                                }else if(cumulValue.Count==1){
                                     mise = cumulValue[cumulValue.Count-1];
+                                    if (mise==1 && startvalue==4){
+                                        mise +=1;
+                                    }
+                                    cumulValue.Add(mise);
                                 }
+                            }else{
+                                fiboCpt += 1;
                             }
                         }else{
                             if (scheme.StartsWith("Cumul")){
@@ -192,32 +203,36 @@ namespace Montante
                                     if (cumulValue.Count==1){
                                         mise = cumulValue[cumulValue.Count-1];
                                     }else{
-                                        Debug.Log("old mise : " + mise);
-                                        Debug.Log("cumulValue.Count : " + cumulValue.Count);
+                                        if (cumulValue.Count>=3){
+                                            cumulValue.RemoveAt(cumulValue.Count-1);  
+                                        }
 
                                         cumulValue.RemoveAt(cumulValue.Count-1);
                                         cumulValue.RemoveAt(cumulValue.Count-1);
+
                                         if (cumulValue.Count==0){
+                                            fiboCpt = startvalue;
                                             mise = calculateFibonacci(fiboCpt);
                                         }else if (cumulValue.Count>=2){
                                             mise = cumulValue[cumulValue.Count-2]+cumulValue[cumulValue.Count-1];
-
                                         }else{
                                             mise = cumulValue[cumulValue.Count-1];
                                         }
+                                        cumulValue.Add(mise);
+
                                     }
                                 }
                             }
                         }
                     }
 
-
                     if (win && bilanGame>0){
                         gain = 0;
                         mise = miseInitial;
                         fiboCpt = startvalue;
+                         
                         cumulValue = new List<int>();
-
+                        cumulValue.Add(1);
 
                         if (fictive!=null && attaqueTxt == "différentielle directe"){
                             bilanGame = 0;
@@ -230,9 +245,6 @@ namespace Montante
                         }
                     }
 
-                    
-            
-                    
                     if (bilanTotal>=gainResearchInt && gainResearchInt!=0){
                         Debug.Log("End gainResearchInt");
                         break;
@@ -244,10 +256,9 @@ namespace Montante
                         }
                     }
 
-                    if (security){
-                        fiboCpt = calculateSecurity(mise,bilanGame,fiboCpt );
-                    }
-
+                    // if (security){
+                    //     fiboCpt = calculateSecurity(mise,bilanGame,fiboCpt );
+                    // }
 
                     index+=1;
                 }
