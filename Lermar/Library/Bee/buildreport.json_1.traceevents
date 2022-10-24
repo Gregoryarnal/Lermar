@@ -1,403 +1,404 @@
 { "pid": 0, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "BeeDriver" } },
 { "pid": 0, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-2" } },
 { "pid": 0, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
-{ "pid": 0, "tid": 1, "ts": 1666361872470866, "dur": 250528, "ph": "X", "name": "Build Player", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1666361872472705, "dur": 12678, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1666361872485391, "dur": 234535, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1666361872719940, "dur": 1450, "ph": "X", "name": "Finish", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1666361872723003, "dur": 82, "ph": "X", "name": "", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1666631962771410, "dur": 229557, "ph": "X", "name": "Build Player", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1666631962772413, "dur": 8700, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1666631962781118, "dur": 211273, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1666631962992410, "dur": 8554, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1666631963011313, "dur": 41, "ph": "X", "name": "", "args": {} },
 { "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
-,{ "pid":12345, "tid":0, "ts":1666361872584159, "dur":9763, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872593999, "dur":2368, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
-,{ "pid":12345, "tid":0, "ts":1666361872596492, "dur":102, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
-,{ "pid":12345, "tid":0, "ts":1666361872596594, "dur":413, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
-,{ "pid":12345, "tid":0, "ts":1666361872597035, "dur":1548, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872598583, "dur":2, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872668036, "dur":32, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872668068, "dur":315, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872668383, "dur":76, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872668459, "dur":363, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872668823, "dur":12, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872668835, "dur":268, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872669103, "dur":12, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872669115, "dur":273, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872669389, "dur":12, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872669401, "dur":290, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872669691, "dur":11, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872669703, "dur":266, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872669969, "dur":12, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872669981, "dur":265, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872670246, "dur":11, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872670257, "dur":292, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872670550, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872670566, "dur":5, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872670580, "dur":12850, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
-,{ "pid":12345, "tid":1, "ts":1666361872596807, "dur":1842, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872598650, "dur":37318, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872635970, "dur":300, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
-,{ "pid":12345, "tid":1, "ts":1666361872636271, "dur":668, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872636942, "dur":164, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
-,{ "pid":12345, "tid":1, "ts":1666361872637106, "dur":292, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872637400, "dur":155, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/config" }}
-,{ "pid":12345, "tid":1, "ts":1666361872637556, "dur":353, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872637912, "dur":396, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Web.ApplicationServices.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872638308, "dur":1344, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872639654, "dur":269, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Drawing.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872639923, "dur":427, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872640352, "dur":93, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.WindModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872640446, "dur":462, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872640911, "dur":775, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872641686, "dur":374, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872642063, "dur":197, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Mono.Security.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872642260, "dur":222, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872642483, "dur":498, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Assembly-CSharp-firstpass.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872642981, "dur":366, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872643350, "dur":151, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.SubstanceModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872643502, "dur":610, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872644114, "dur":1447, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UniRx.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872645561, "dur":136, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872645700, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.InputModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872645738, "dur":152, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872645892, "dur":71, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872645964, "dur":4754, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872650719, "dur":405, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AnimationModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872651124, "dur":388, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872651513, "dur":355, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872651869, "dur":442, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872652314, "dur":253, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872652567, "dur":421, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872652990, "dur":298, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/netstandard.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872653288, "dur":389, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872653680, "dur":358, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Mono.Posix.dll" }}
-,{ "pid":12345, "tid":1, "ts":1666361872654039, "dur":381, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872654424, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/level0" }}
-,{ "pid":12345, "tid":1, "ts":1666361872654528, "dur":34, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1666361872660170, "dur":6029, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/level0" }}
-,{ "pid":12345, "tid":1, "ts":1666361872666214, "dur":1688, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872596807, "dur":1804, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872598616, "dur":37290, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872635937, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
-,{ "pid":12345, "tid":2, "ts":1666361872635948, "dur":1180, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872637131, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/app.info" }}
-,{ "pid":12345, "tid":2, "ts":1666361872637250, "dur":414, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872637666, "dur":332, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/UnityPlayer.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872637998, "dur":332, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872638333, "dur":344, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.ComponentModel.DataAnnotations.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872638678, "dur":752, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872639431, "dur":435, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UNETModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872639866, "dur":383, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872640251, "dur":149, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.ComponentModel.Composition.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872640401, "dur":366, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872640769, "dur":759, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Threading.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872641529, "dur":423, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872641954, "dur":234, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Data.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872642188, "dur":333, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872642524, "dur":197, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Web.Services.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872642722, "dur":288, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872643013, "dur":788, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Internal.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872643802, "dur":515, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872644320, "dur":256, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872644576, "dur":296, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872644874, "dur":145, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872645019, "dur":283, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872645304, "dur":23, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/mscorlib.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872645328, "dur":663, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872645993, "dur":4394, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872650388, "dur":576, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872650967, "dur":378, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.IO.Compression.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872651346, "dur":444, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872651791, "dur":349, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872652141, "dur":396, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872652539, "dur":267, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Configuration.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872652807, "dur":351, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872653162, "dur":379, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872653542, "dur":355, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872653900, "dur":293, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1666361872654193, "dur":177, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872654372, "dur":25, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/globalgamemanagers.assets" }}
-,{ "pid":12345, "tid":2, "ts":1666361872654505, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1666361872658161, "dur":5453, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/globalgamemanagers.assets" }}
-,{ "pid":12345, "tid":2, "ts":1666361872663637, "dur":4325, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872596839, "dur":1839, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872598679, "dur":37287, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872635966, "dur":126, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":3, "ts":1666361872636093, "dur":954, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872637050, "dur":261, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":3, "ts":1666361872637311, "dur":281, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872637595, "dur":281, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872637877, "dur":517, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872638396, "dur":361, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Core.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872638757, "dur":302, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872639061, "dur":292, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Security.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872639354, "dur":373, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872639729, "dur":299, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872640029, "dur":709, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872640741, "dur":96, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Numerics.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872640838, "dur":371, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872641211, "dur":220, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872641432, "dur":345, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872641780, "dur":152, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Ookii.Dialogs.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872641932, "dur":811, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872642745, "dur":104, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Transactions.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872642850, "dur":414, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872643267, "dur":644, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Configuration.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872643912, "dur":450, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872644364, "dur":237, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872644602, "dur":356, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872644960, "dur":193, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Runtime.Serialization.Formatters.Soap.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872645154, "dur":250, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872645406, "dur":5514, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.TextMeshPro.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872650921, "dur":468, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872651392, "dur":231, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Runtime.Serialization.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872651624, "dur":435, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872652062, "dur":293, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Mono.WebBrowser.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872652355, "dur":309, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872652666, "dur":235, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872652901, "dur":426, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872653330, "dur":383, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ProfilerModule.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872653714, "dur":426, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872654141, "dur":184, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Web.dll" }}
-,{ "pid":12345, "tid":3, "ts":1666361872654325, "dur":221, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872654549, "dur":30, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/sharedassets0.assets" }}
-,{ "pid":12345, "tid":3, "ts":1666361872654598, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1666361872661377, "dur":5569, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/sharedassets0.assets" }}
-,{ "pid":12345, "tid":3, "ts":1666361872666962, "dur":970, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872596860, "dur":1831, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872598691, "dur":37241, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872635954, "dur":160, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":4, "ts":1666361872636114, "dur":856, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872636974, "dur":256, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/web.config" }}
-,{ "pid":12345, "tid":4, "ts":1666361872637230, "dur":388, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872637619, "dur":258, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/UnityCrashHandler64.exe" }}
-,{ "pid":12345, "tid":4, "ts":1666361872637877, "dur":394, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872638274, "dur":339, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.VideoModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872638614, "dur":420, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872639036, "dur":237, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AIModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872639273, "dur":438, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872639714, "dur":282, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872639996, "dur":762, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872640760, "dur":207, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872640968, "dur":287, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872641256, "dur":157, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.VehiclesModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872641413, "dur":320, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872641735, "dur":841, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Timeline.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872642577, "dur":353, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872642932, "dur":168, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.ServiceModel.Internals.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872643101, "dur":349, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872643452, "dur":573, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Windows.Forms.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872644025, "dur":365, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872644393, "dur":237, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872644630, "dur":272, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872644904, "dur":202, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.EnterpriseServices.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872645106, "dur":255, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872645364, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.DirectoryServices.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872645392, "dur":163, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872645557, "dur":479, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Analytics.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872646036, "dur":4630, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872650670, "dur":370, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.XRModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872651040, "dur":431, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872651472, "dur":347, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872651819, "dur":425, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872652248, "dur":247, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872652496, "dur":329, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872652827, "dur":270, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872653098, "dur":386, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872653488, "dur":3545, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.VisualScripting.Core.dll" }}
-,{ "pid":12345, "tid":4, "ts":1666361872657034, "dur":241, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872657280, "dur":334, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/RuntimeInitializeOnLoads.json" }}
-,{ "pid":12345, "tid":4, "ts":1666361872657615, "dur":122, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872657739, "dur":394, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/boot.config" }}
-,{ "pid":12345, "tid":4, "ts":1666361872658134, "dur":156, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872658293, "dur":19, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/globalgamemanagers" }}
-,{ "pid":12345, "tid":4, "ts":1666361872658327, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1666361872658337, "dur":5175, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/globalgamemanagers" }}
-,{ "pid":12345, "tid":4, "ts":1666361872663542, "dur":4334, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872596917, "dur":1785, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872598703, "dur":37237, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872635965, "dur":180, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
-,{ "pid":12345, "tid":5, "ts":1666361872636145, "dur":763, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872636911, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":5, "ts":1666361872636957, "dur":322, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872637281, "dur":226, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/browscap.ini" }}
-,{ "pid":12345, "tid":5, "ts":1666361872637508, "dur":341, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872637850, "dur":402, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":5, "ts":1666361872638253, "dur":446, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872638702, "dur":386, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TLSModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872639088, "dur":305, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872639395, "dur":434, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ClothModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872639829, "dur":399, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872640231, "dur":755, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872640986, "dur":318, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872641305, "dur":799, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Networking.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872642104, "dur":287, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872642393, "dur":25, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872642419, "dur":227, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872642649, "dur":245, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.GridModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872642894, "dur":471, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872643366, "dur":202, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872643569, "dur":668, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872644239, "dur":1107, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/LeanTween.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872645347, "dur":210, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872645559, "dur":484, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Registration.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872646044, "dur":4651, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872650697, "dur":370, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AudioModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872651068, "dur":369, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872651441, "dur":254, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Accessibility.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872651695, "dur":460, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872652156, "dur":236, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Net.Http.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872652393, "dur":360, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872652755, "dur":213, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ARModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872652969, "dur":416, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872653387, "dur":345, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.IO.Compression.FileSystem.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872653732, "dur":353, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872654089, "dur":984, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.VisualScripting.Flow.dll" }}
-,{ "pid":12345, "tid":5, "ts":1666361872655074, "dur":113, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872655189, "dur":348, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/ScriptingAssemblies.json" }}
-,{ "pid":12345, "tid":5, "ts":1666361872655538, "dur":133, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872655673, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/resources.assets" }}
-,{ "pid":12345, "tid":5, "ts":1666361872655706, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1666361872664622, "dur":3193, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/resources.assets" }}
-,{ "pid":12345, "tid":5, "ts":1666361872667833, "dur":3, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
-,{ "pid":12345, "tid":5, "ts":1666361872667837, "dur":1, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872596975, "dur":1739, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872598714, "dur":37211, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872635943, "dur":225, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":6, "ts":1666361872636168, "dur":1018, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872637187, "dur":240, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
-,{ "pid":12345, "tid":6, "ts":1666361872637428, "dur":391, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872637821, "dur":375, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Resources/unity default resources" }}
-,{ "pid":12345, "tid":6, "ts":1666361872638197, "dur":431, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872638630, "dur":384, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.IMGUIModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872639015, "dur":356, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872639374, "dur":415, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872639790, "dur":342, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872640135, "dur":159, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Novell.Directory.Ldap.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872640295, "dur":139, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872640436, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Xml.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872640463, "dur":616, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872641081, "dur":214, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.PhysicsModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872641295, "dur":246, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872641543, "dur":90, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872641633, "dur":279, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872641915, "dur":218, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872642134, "dur":293, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872642429, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.VRModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872642457, "dur":235, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872642694, "dur":218, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Newtonsoft.Json.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872642912, "dur":413, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872643328, "dur":198, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.HotReloadModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872643527, "dur":600, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872644129, "dur":85, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UIElementsModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872644215, "dur":304, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872644521, "dur":213, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.StreamingModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872644735, "dur":264, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872645001, "dur":196, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Mono.Data.Sqlite.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872645198, "dur":242, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872645441, "dur":23, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.DirectorModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872645464, "dur":180, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872645646, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872645674, "dur":252, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872645928, "dur":164, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.VFXModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872646093, "dur":4772, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872650872, "dur":493, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Data.DataSetExtensions.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872651366, "dur":407, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872651775, "dur":342, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Drawing.Design.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872652118, "dur":287, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872652406, "dur":237, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.GIModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872652644, "dur":377, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872653022, "dur":283, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UmbraModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872653305, "dur":522, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872653830, "dur":290, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Xml.Linq.dll" }}
-,{ "pid":12345, "tid":6, "ts":1666361872654121, "dur":281, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872654406, "dur":62, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/resources.assets.resS" }}
-,{ "pid":12345, "tid":6, "ts":1666361872654547, "dur":6, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1666361872659119, "dur":4413, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/resources.assets.resS" }}
-,{ "pid":12345, "tid":6, "ts":1666361872663557, "dur":4357, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872596992, "dur":1747, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872598740, "dur":37288, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872636029, "dur":426, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
-,{ "pid":12345, "tid":7, "ts":1666361872636456, "dur":419, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872636886, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
-,{ "pid":12345, "tid":7, "ts":1666361872636924, "dur":280, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872637206, "dur":255, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/web.config" }}
-,{ "pid":12345, "tid":7, "ts":1666361872637462, "dur":229, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872637694, "dur":2240, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar.exe" }}
-,{ "pid":12345, "tid":7, "ts":1666361872639935, "dur":272, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872640209, "dur":126, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872640335, "dur":550, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872640887, "dur":262, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.CoreModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872641149, "dur":323, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872641474, "dur":146, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TilemapModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872641621, "dur":355, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872641977, "dur":798, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872642776, "dur":280, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872643057, "dur":239, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872643297, "dur":671, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872643971, "dur":140, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UIModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872644112, "dur":300, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872644414, "dur":266, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.Physics2DModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872644681, "dur":399, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872645082, "dur":681, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Environments.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872645763, "dur":289, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872646054, "dur":5230, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.VisualScripting.State.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872651284, "dur":519, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872651804, "dur":889, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Device.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872652694, "dur":311, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872653006, "dur":260, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872653267, "dur":341, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872653610, "dur":346, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
-,{ "pid":12345, "tid":7, "ts":1666361872653956, "dur":254, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872654212, "dur":509, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
-,{ "pid":12345, "tid":7, "ts":1666361872654722, "dur":184, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872654908, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/sharedassets0.assets.resS" }}
-,{ "pid":12345, "tid":7, "ts":1666361872654939, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1666361872662779, "dur":4916, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/sharedassets0.assets.resS" }}
-,{ "pid":12345, "tid":7, "ts":1666361872667710, "dur":208, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872597022, "dur":1761, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872598783, "dur":37196, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872635980, "dur":232, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/web.config" }}
-,{ "pid":12345, "tid":8, "ts":1666361872636213, "dur":813, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872637028, "dur":239, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
-,{ "pid":12345, "tid":8, "ts":1666361872637267, "dur":262, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872637531, "dur":262, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872637794, "dur":426, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872638222, "dur":1415, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Scripts.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872639637, "dur":311, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872639951, "dur":208, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872640159, "dur":636, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872640796, "dur":250, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872641047, "dur":312, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872641360, "dur":217, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872641577, "dur":248, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872641826, "dur":174, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872642000, "dur":312, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872642314, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872642353, "dur":271, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872642627, "dur":198, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TerrainModule.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872642826, "dur":572, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872643400, "dur":1337, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UI.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872644737, "dur":320, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872645059, "dur":177, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.GameCenterModule.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872645236, "dur":302, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872645540, "dur":482, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872646022, "dur":4617, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872650645, "dur":361, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872651007, "dur":549, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872651558, "dur":416, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.LocalizationModule.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872651975, "dur":358, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872652336, "dur":243, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Design.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872652580, "dur":338, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872652919, "dur":280, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872653200, "dur":426, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872653627, "dur":359, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
-,{ "pid":12345, "tid":8, "ts":1666361872653987, "dur":309, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872654298, "dur":65, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Resources/unity_builtin_extra" }}
-,{ "pid":12345, "tid":8, "ts":1666361872654490, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872657190, "dur":2345, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/Resources/unity_builtin_extra" }}
-,{ "pid":12345, "tid":8, "ts":1666361872659552, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/sharedassets0.resource" }}
-,{ "pid":12345, "tid":8, "ts":1666361872659579, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1666361872659588, "dur":4514, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/sharedassets0.resource" }}
-,{ "pid":12345, "tid":8, "ts":1666361872664127, "dur":3779, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1666361872691071, "dur":2025, "ph":"X", "name": "ProfilerWriteOutput" }
-,{ "pid": 0, "tid": 1, "ts": 1666361872723539, "dur": 2498, "ph": "X", "name": "backend_profiler0.traceevents", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1666361872722920, "dur": 3173, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+,{ "pid":12345, "tid":0, "ts":1666631962865151, "dur":5302, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962870558, "dur":22295, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1666631962892928, "dur":3996, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1666631962896924, "dur":377, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1666631962897314, "dur":838, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962898152, "dur":1, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962934219, "dur":9, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962934228, "dur":245, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962934473, "dur":39, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962934512, "dur":149, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962934661, "dur":7, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962934668, "dur":169, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962934837, "dur":10, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962934847, "dur":207, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962935054, "dur":10, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962935064, "dur":182, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962935246, "dur":8, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962935254, "dur":199, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962935453, "dur":9, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962935462, "dur":206, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962935668, "dur":8, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962935676, "dur":197, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962935873, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962935883, "dur":3, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962935893, "dur":6224, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1666631962897151, "dur":1016, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962898169, "dur":21840, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920073, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920118, "dur":122, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920283, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920337, "dur":92, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920430, "dur":95, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920525, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920586, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920636, "dur":43, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920679, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920711, "dur":95, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920806, "dur":84, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Web.ApplicationServices.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962920891, "dur":108, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962921000, "dur":95, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962921095, "dur":74, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962921170, "dur":83, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962921253, "dur":84, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962921338, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962921379, "dur":130, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962921510, "dur":68, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962921579, "dur":87, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962921667, "dur":106, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962921773, "dur":84, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962921858, "dur":170, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922028, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922058, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922068, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922090, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922101, "dur":41, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922143, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Ookii.Dialogs.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922159, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922188, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922199, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922221, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922230, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922252, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922261, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962922283, "dur":1230, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962923514, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962923550, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962923618, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962923647, "dur":64, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962923711, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962923750, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962923765, "dur":99, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962923864, "dur":147, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962924012, "dur":106, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962924119, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Mono.Data.Sqlite.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962924193, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962924300, "dur":85, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.DirectoryServices.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962924385, "dur":68, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962924454, "dur":1942, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962926397, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962926432, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Mono.WebBrowser.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962926444, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962926468, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962926478, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962926505, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962926515, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962926538, "dur":696, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927235, "dur":222, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927459, "dur":71, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927531, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927564, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927575, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927599, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927610, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927636, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927648, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927672, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927684, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927707, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927718, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927740, "dur":20, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927760, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927783, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927793, "dur":45, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927840, "dur":19, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Mono.Posix.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927860, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927894, "dur":7, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927902, "dur":16, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962927918, "dur":1133, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":1, "ts":1666631962929051, "dur":53, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962929106, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":1, "ts":1666631962929127, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1666631962929132, "dur":4275, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":1, "ts":1666631962933443, "dur":675, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962897180, "dur":1021, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962898201, "dur":21882, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962920089, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":2, "ts":1666631962920150, "dur":140, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962920292, "dur":95, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":2, "ts":1666631962920387, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962920495, "dur":195, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":2, "ts":1666631962920690, "dur":91, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962920782, "dur":113, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":2, "ts":1666631962920895, "dur":115, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962921011, "dur":96, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1666631962921107, "dur":96, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962921204, "dur":106, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1666631962921310, "dur":50, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962921361, "dur":94, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1666631962921455, "dur":135, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962921591, "dur":107, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":2, "ts":1666631962921698, "dur":101, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962921800, "dur":1242, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":2, "ts":1666631962923043, "dur":65, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962923110, "dur":2157, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":2, "ts":1666631962925268, "dur":344, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962925613, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1666631962925627, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962925653, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1666631962925663, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962925686, "dur":3943, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":2, "ts":1666631962929630, "dur":72, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962929704, "dur":369, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":2, "ts":1666631962930074, "dur":45, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962930121, "dur":208, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":2, "ts":1666631962930329, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962930364, "dur":227, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/boot.config" }}
+,{ "pid":12345, "tid":2, "ts":1666631962930592, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962930622, "dur":8, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":2, "ts":1666631962930684, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1666631962930690, "dur":3396, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":2, "ts":1666631962934095, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":2, "ts":1666631962934097, "dur":0, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962897188, "dur":1026, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962898214, "dur":21908, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962920129, "dur":106, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1666631962920235, "dur":122, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962920359, "dur":332, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":3, "ts":1666631962920691, "dur":68, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962920760, "dur":2192, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar.exe" }}
+,{ "pid":12345, "tid":3, "ts":1666631962922953, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962922988, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1666631962923002, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962923028, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1666631962923039, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962923063, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1666631962923074, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962923130, "dur":222, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Windows.Forms.dll" }}
+,{ "pid":12345, "tid":3, "ts":1666631962923352, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962923394, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1666631962923407, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962923436, "dur":4654, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UniRx.dll" }}
+,{ "pid":12345, "tid":3, "ts":1666631962928090, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962928128, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":3, "ts":1666631962928155, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962928188, "dur":1788, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":3, "ts":1666631962929986, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/resources.assets" }}
+,{ "pid":12345, "tid":3, "ts":1666631962930001, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1666631962930006, "dur":3970, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/resources.assets" }}
+,{ "pid":12345, "tid":3, "ts":1666631962933984, "dur":161, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1666631962897208, "dur":1012, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1666631962898220, "dur":21915, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1666631962920138, "dur":520, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":4, "ts":1666631962920659, "dur":44, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1666631962920704, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":4, "ts":1666631962920741, "dur":119, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1666631962920861, "dur":1662, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Scripts.dll" }}
+,{ "pid":12345, "tid":4, "ts":1666631962922613, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1666631962924020, "dur":5198, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/Managed/Scripts.dll" }}
+,{ "pid":12345, "tid":4, "ts":1666631962929232, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":4, "ts":1666631962929287, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1666631962929293, "dur":4123, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":4, "ts":1666631962933481, "dur":663, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962897252, "dur":974, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962898226, "dur":21929, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962920156, "dur":504, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":5, "ts":1666631962920660, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962920700, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962920738, "dur":166, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962920904, "dur":94, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962920998, "dur":121, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921120, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921160, "dur":77, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921238, "dur":76, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921315, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921371, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Novell.Directory.Ldap.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921445, "dur":106, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921551, "dur":98, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921649, "dur":98, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921748, "dur":70, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921819, "dur":81, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921902, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921951, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962921984, "dur":679, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922663, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922701, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922714, "dur":58, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922773, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922789, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922818, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922828, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922853, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922864, "dur":41, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922906, "dur":26, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922932, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962922964, "dur":797, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962923761, "dur":80, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962923842, "dur":134, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962923976, "dur":114, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962924091, "dur":81, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Runtime.Serialization.Formatters.Soap.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962924173, "dur":97, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962924271, "dur":502, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962924773, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962924813, "dur":4185, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":5, "ts":1666631962928999, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962929031, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/level0" }}
+,{ "pid":12345, "tid":5, "ts":1666631962929051, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1666631962929055, "dur":4407, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/level0" }}
+,{ "pid":12345, "tid":5, "ts":1666631962933474, "dur":665, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962897271, "dur":966, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962898237, "dur":21872, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962920115, "dur":107, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":6, "ts":1666631962920223, "dur":120, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962920344, "dur":325, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":6, "ts":1666631962920669, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962920707, "dur":229, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962920937, "dur":82, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962921019, "dur":90, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962921110, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962921216, "dur":77, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962921293, "dur":106, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962921400, "dur":1130, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962922531, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962922564, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962922575, "dur":150, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962922726, "dur":934, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Assembly-CSharp-firstpass.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962923660, "dur":47, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962923708, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962923725, "dur":73, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962923799, "dur":117, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962923916, "dur":155, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962924072, "dur":70, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962924143, "dur":100, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962924244, "dur":101, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962924345, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962924401, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962924411, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962924434, "dur":906, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925340, "dur":193, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925535, "dur":20, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925555, "dur":77, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925633, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925647, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925677, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925688, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925710, "dur":104, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925815, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925845, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925857, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925879, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925890, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925913, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925924, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925946, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925956, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925977, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962925987, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926008, "dur":20, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926028, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926051, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Accessibility.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926062, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926083, "dur":19, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926102, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926125, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926135, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926157, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926167, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926187, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Drawing.Design.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926196, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926217, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926228, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962926250, "dur":2528, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":6, "ts":1666631962928778, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962928818, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":6, "ts":1666631962928842, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1666631962928850, "dur":4308, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":6, "ts":1666631962933168, "dur":945, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962897291, "dur":958, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962898249, "dur":21847, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962920102, "dur":70, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":7, "ts":1666631962920172, "dur":130, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962920303, "dur":107, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":7, "ts":1666631962920410, "dur":101, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962920512, "dur":303, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":7, "ts":1666631962920815, "dur":134, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962920950, "dur":368, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.ComponentModel.DataAnnotations.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962921319, "dur":99, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962921419, "dur":113, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962921532, "dur":93, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962921626, "dur":1008, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922635, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922671, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922683, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922707, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922721, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922773, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Web.Services.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922784, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922806, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922817, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922839, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922849, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962922872, "dur":1286, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962924158, "dur":99, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962924279, "dur":87, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962924366, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962924399, "dur":3464, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962927864, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962927899, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962927910, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962927932, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Web.dll" }}
+,{ "pid":12345, "tid":7, "ts":1666631962927942, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962927963, "dur":914, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":7, "ts":1666631962928877, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962928930, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":7, "ts":1666631962928953, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1666631962928959, "dur":4401, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":7, "ts":1666631962933372, "dur":754, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962897317, "dur":940, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962898257, "dur":21885, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962920147, "dur":122, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":8, "ts":1666631962920269, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962920375, "dur":87, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":8, "ts":1666631962920462, "dur":85, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962920548, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":8, "ts":1666631962920614, "dur":155, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962920770, "dur":144, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":8, "ts":1666631962920914, "dur":112, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962921027, "dur":108, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962921135, "dur":46, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962921182, "dur":106, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962921288, "dur":100, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962921389, "dur":100, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962921490, "dur":121, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962921611, "dur":115, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962921727, "dur":108, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962921836, "dur":84, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962921920, "dur":82, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962922003, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962922043, "dur":79, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962922123, "dur":1466, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962923590, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962923630, "dur":2602, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/LeanTween.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962926232, "dur":605, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962926838, "dur":348, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Design.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927187, "dur":282, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927470, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927516, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927551, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927563, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927589, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927600, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927621, "dur":8, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927629, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927651, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927661, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927683, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927693, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962927716, "dur":3363, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":8, "ts":1666631962931079, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962931118, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles lermarw/Lermar_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":8, "ts":1666631962931139, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1666631962931145, "dur":2882, "ph":"X", "name": "CopyFiles",  "args": { "detail":"lermarw/Lermar_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":8, "ts":1666631962934033, "dur":132, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1666631962949976, "dur":972, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid": 0, "tid": 1, "ts": 1666631963011883, "dur": 1781, "ph": "X", "name": "backend_profiler0.traceevents", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1666631963011256, "dur": 2453, "ph": "X", "name": "Write chrome-trace events", "args": {} },

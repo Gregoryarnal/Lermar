@@ -145,8 +145,17 @@ namespace Components
             }
             sauteuseValue = null;
             lineGameObject.Clear();
+            resetStat();
         }
+        
+        void resetStat(){
+                miseInputStat.GetComponent<Text>().text = "0";
+                bilanInputStat.GetComponent<Text>().text = "0";
+            gameInputStat.GetComponent<Text>().text = "0";
+                    decouvertInputStat.GetComponent<Text>().text =  "0";
 
+
+        }
         void setUpStat(int bilan, int parti, int mise, int coinValueInt){
 
             var Oldmise = Int32.Parse(miseInputStat.GetComponent<Text>().text);
