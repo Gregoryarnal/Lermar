@@ -115,9 +115,11 @@ namespace Components
         {          
 
             if (button_permanence_list.Count==0){
-                gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute(false);
+                gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute(false,false);
             }    
-        
+            
+            // button_permanence_list.Clear();
+            
             RemovePopUpBtn();
 
             for (int i = 0; i < button_permanence_list.Count; i++)
@@ -225,7 +227,7 @@ namespace Components
                 }
             }
 
-            gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute(false);
+            gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute(false, true);
             
 
         }

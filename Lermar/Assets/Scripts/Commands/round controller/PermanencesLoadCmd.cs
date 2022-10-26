@@ -114,10 +114,13 @@ namespace Commands
         public void Execute()
         {}
 
-        public void Execute(bool show)
+        public void Execute(bool show, bool resetView)
         {
+            
+            if (resetView){
 
             characterTools.ResetView();
+            }
 		    
             string[] filenames = TraverseTree(path);
 
