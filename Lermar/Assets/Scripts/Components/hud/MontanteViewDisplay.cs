@@ -1,12 +1,4 @@
 
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -81,6 +73,10 @@ namespace Components
         public GameObject headerFictive;
         public GameObject headerContent;
         public GameObject templateLineStat;
+
+        public GameObject AttaqueNameUI;
+        public GameObject ChanceNameUI;
+
         
 
         //stat
@@ -198,9 +194,12 @@ namespace Components
             var chanceTxt = chanceGame.options[chanceGame.value].text;
             var attaqueTxt = Attaque.options[Attaque.value].text;
             var security = false;
+
+            AttaqueNameUI.GetComponent<Text>().text = attaqueTxt;
+            ChanceNameUI.GetComponent<Text>().text = chanceTxt;
+            
             if (SecurityInput.options[SecurityInput.value].text == "Oui"){
                 security = true;
-
             }else{
                 security =false;
             }
@@ -295,10 +294,6 @@ namespace Components
                             lauchGame = false;
                         }
                     }
-                    // var fiboStartValueTxt = fiboStartValue.options[fiboStartValue.value].text;
-                    // var fiboSchemeTxt = fiboScheme.options[fiboScheme.value].text;
-                    // fiboStartValue
-                    // fiboScheme
 
                     if (lauchGame){
                         FiftyTwentyCmd fiftyTwenty = new FiftyTwentyCmd( nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
@@ -313,13 +308,10 @@ namespace Components
 
                 
             }
-            Debug.Log("SavePath : " + SavePath);
-                if (SavePath!= ""){
-                    Debug.Log("save ");
 
-                    saveResult(SavePath);
-                }
-
+            if (SavePath!= ""){
+                saveResult(SavePath,montanteManager,toBallInt);
+            }
         }
 
         void setUpResult(Montantes montante, int toBallInt){
@@ -338,6 +330,7 @@ namespace Components
                 }
                 addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                 Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
+        // private void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise,string attaqueTxt,string win, string[,] fictive  ){
 
                 setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));        
             }
@@ -406,33 +399,33 @@ namespace Components
             ExecuteButton.onClick.AddListener(() => setUpSauteuseSequence(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt));
         }
 
-        public void saveResult(string filename){
+        public void saveResult(string filename, Montantes montante, int toBallInt){
 
             var csv = new StringBuilder();
             var filePath = filename+".csv";
             var newLine ="";
 
             var headerSize = lineGameObject[0].GetComponentsInChildren<Text>().Length;
+            string[,] result = montante.getLines();
             if (headerSize == 6){
                 newLine = "Boule num, Coup, Num, Mise, Bilan, Bilan Total";
             }else{
                 newLine = "Boule num, Coup, Num, Mise1, Bilan1, Mise2, Bilan2, Mise, Bilan, Total";
-
             }
+
             csv.AppendLine(newLine);  
 
-            foreach (GameObject line in lineGameObject)
+            for (int i = 0; i < toBallInt; i++)
             {
-                Text[] contents = line.GetComponentsInChildren<Text>();
-                newLine ="";
-
+                if (headerSize == 6){
+                    newLine = result[i,0]+","+result[i,1]+","+result[i,2]+","+result[i,3]+","+result[i,4]+","+result[i,5];
+                }else{
+                    newLine = result[i,0]+","+result[i,1]+","+result[i,2]+","+result[i,10]+" "+result[i,11]+","+result[i,12]+","+result[i,13]+" "+result[i,14]+","+result[i,15]+","+result[i,3]+","+result[i,4]+","+result[i,5];
+                } 
+                csv.AppendLine(newLine);
                 
-                foreach (Text item in contents)
-                {
-                    newLine +=  item.text+",";
-                }
-                csv.AppendLine(newLine);  
             }
+
             File.AppendAllText(filePath, csv.ToString());
         }
 
@@ -548,9 +541,9 @@ namespace Components
             tempText[1].text = coup.ToString();
             tempText[2].text = value.ToString();
             if (attaqueTxt.StartsWith("différentielle")){
-                tempText[3].text = (mise1*coinValueInt).ToString() + " " + player1Mise;
+                tempText[3].text = (mise1).ToString() + " " + player1Mise;
                 tempText[4].text = bilanGame1.ToString();
-                tempText[5].text = (mise2*coinValueInt).ToString() + " " + player2Mise;
+                tempText[5].text = (mise2).ToString() + " " + player2Mise;
                 tempText[6].text = bilanGame2.ToString();
                 tempText[7].text = (mise).ToString() + " " + playerMise;
                 tempText[8].text = bilanGame.ToString();

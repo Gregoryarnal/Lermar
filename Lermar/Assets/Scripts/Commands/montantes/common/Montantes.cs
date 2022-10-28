@@ -241,12 +241,12 @@ namespace Montante
             return a;
         }
         
-        public (string[,], int) calculateFictive(string chanceTxt, string attaqueTxt, int value, bool win, int index, string permanenceSelectedTxt, int mise,  int timePalierInt,int  nbPalierInt,int  coinValueInt, int maxMiseInt,string  ifMaxPalierTxt,string  maxReachTxt, int gain,bool calculMise, string montantetype, string[,] fictiv){
+        public (string[,], int) calculateFictive(object child, string chanceTxt, string attaqueTxt, int value, bool win, int index, string permanenceSelectedTxt, int mise,  int timePalierInt,int  nbPalierInt,int  coinValueInt, int maxMiseInt,string  ifMaxPalierTxt,string  maxReachTxt, int gain,bool calculMise, string montantetype, string[,] fictiv   ){
 
             if (attaqueTxt.StartsWith("différentielle")){
-                if (fictivec==null){
+                if (fictivec==null || fictiv == null){
                     
-                    fictivec = new string[2,4];
+                    fictivec = new string[2,5];
                     fictivec[0,0] = mise.ToString(); //mise
                     fictivec[1,0] = mise.ToString(); //mise
 
@@ -255,39 +255,21 @@ namespace Montante
 
                     fictivec[0,3] = "0"; // coup
                     fictivec[1,3] = "0";// coup
+
+                     fictivec[0,4] = "false"; // win
+                    fictivec[1,4] = "false";// win
                 }
 
                 if (fictiv!=null){
                     fictivec = fictiv;
                 }
 
-                if (montantetype=="Fibonaci"){
-                    fictivec[0,0] = calculateFibonacci(fiboCpt1).ToString();
-                }
-
                 (var newPlayerMise1, var newValue1, var newMise1,var newWin1 ) = play(chanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[0,3]), Int32.Parse(fictivec[0,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);
                 var inverseChanceTxt = inverse(chanceTxt);
-
-                if (montantetype=="Fibonaci"){
-                    if (newWin1 && newPlayerMise1!=null){
-                        fiboCpt1 = 4;
-                    }else if (newPlayerMise1!=null){
-                        fiboCpt1 += 1;
-                    }
-
-                    fictivec[1,0] = calculateFibonacci(fiboCpt2).ToString();
-
-                }
+                fictivec[0,4] = newWin1.ToString();
 
                 (var newPlayerMise2, var newValue2, var newMise2,var newWin2 ) = play(inverseChanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[1,3]), Int32.Parse(fictivec[1,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);
-
-                if (montantetype=="Fibonaci"){
-                    if (newWin2 && newPlayerMise2!=null){
-                        fiboCpt2 = 4;
-                    }else if (newPlayerMise2!=null){
-                        fiboCpt2 += 1;
-                    }
-                }
+                fictivec[1,4] = newWin2.ToString();
                 
                 fictivec[0,0] = newMise1.ToString();
                 fictivec[1,0] = newMise2.ToString();

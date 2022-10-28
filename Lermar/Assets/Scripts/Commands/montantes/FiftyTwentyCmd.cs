@@ -75,7 +75,7 @@ namespace Montante
                 mise = checkMaxMise(mise);
 
                 if (attaqueTxt.StartsWith("différentielle")){
-                    (fictive, value) = calculateFictive(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, null, null);
+                    (fictive, value) = calculateFictive(this, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, null, null);
                     setFictiveLine(fictive);
                 }
 

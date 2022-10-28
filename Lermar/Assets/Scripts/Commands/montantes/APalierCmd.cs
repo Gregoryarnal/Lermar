@@ -55,7 +55,7 @@ namespace Montante
                 for (int i = fromBallInt-1; i < toBallInt; i++)
                 {
                     if (attaqueTxt.StartsWith("différentielle")){
-                        (fictive, value) = calculateFictive(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, "A paliers", null);
+                        (fictive, value) = calculateFictive(this, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, "A paliers", null);
                         setFictiveLine(fictive);
                     }
 
