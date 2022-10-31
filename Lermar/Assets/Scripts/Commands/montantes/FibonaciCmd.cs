@@ -30,7 +30,28 @@ namespace Montante
         // int[] cumulValue;
          
 
-
+        /// <summary>
+        /// Create Fibonaci method
+        /// </summary>
+        /// <param name="startvaluen"></param>
+        /// <param name="schemen"></param>
+        /// <param name="nbPalierIntn"></param>
+        /// <param name="timePalierIntn"></param>
+        /// <param name="ifMaxPalierTxtn"></param>
+        /// <param name="gainResearchInt"></param>
+        /// <param name="maxReachTxt"></param>
+        /// <param name="chanceTxt"></param>
+        /// <param name="attaqueTxt"></param>
+        /// <param name="fromBallInt"></param>
+        /// <param name="toBallInt"></param>
+        /// <param name="fileNameTxt"></param>
+        /// <param name="coinValueInt"></param>
+        /// <param name="maxMiseInt"></param>
+        /// <param name="permanenceSelectedTxt"></param>
+        /// <param name="sauteuseValue"></param>
+        /// <param name="security"></param>
+        /// <param name="securityValue"></param>
+        /// <param name="typeOfMise"></param>
         public FibonaciCmd(string startvaluen, string schemen, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
         : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise)
         {
@@ -95,8 +116,8 @@ namespace Montante
                     }
 
                     if (attaqueTxt.StartsWith("différentielle")){
-                        Debug.Log("fictive before calcul fictive");
-                        Debug.Log(fictive);
+                        // Debug.Log("fictive before calcul fictive");
+                        // Debug.Log(fictive);
                         if (fictive!=null){
                             int fmise;
                             (fmise,fiboCpt1,cumulValue1) = calculMise(Convert.ToBoolean(fictive[0,4]), Int32.Parse(fictive[0,0]),  fiboCpt1, cumulValue1);
@@ -213,9 +234,20 @@ namespace Montante
                     // }
 
                     index+=1;
+
+                    
                 }
         }
-
+        
+        /// <summary>
+        /// test 
+        /// </summary>
+        /// <param name="win"></param>
+        /// <param name="mise"></param>
+        /// <param name="fiboCpt"></param>
+        /// <param name="cumulValue"></param>
+        /// <returns></returns>
+        
         (int, int, List<int>) calculMise(bool win,int mise, int fiboCpt, List<int> cumulValue){
             if (win){
                 // Debug.Log("win");
@@ -267,6 +299,9 @@ namespace Montante
                     }else if (scheme.StartsWith("Jean")){
                         fiboCpt = startvalue;
                     }
+                    // else{
+                    //     fiboCpt += 1;
+                    // }
                 }
             }else{
                 if (typeOfMise!="En gain"){
@@ -282,6 +317,8 @@ namespace Montante
                             }
                             cumulValue.Add(mise);
                         }
+                    }else if (scheme.StartsWith("Jean")){
+                        fiboCpt = startvalue;
                     }else{
                         fiboCpt += 1;
                     }
@@ -309,6 +346,8 @@ namespace Montante
                                 cumulValue.Add(mise);
                             }
                         }
+                    }else{
+                        fiboCpt += 1;
                     }
                 }
             }

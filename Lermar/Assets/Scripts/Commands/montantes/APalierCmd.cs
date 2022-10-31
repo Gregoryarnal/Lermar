@@ -29,6 +29,8 @@ namespace Montante
             ifMaxPalierTxt=ifMaxPalierTxtn;
         }
 
+
+
         public void run(){
 
             var miseInitial = 1*coinValueInt;
@@ -55,12 +57,20 @@ namespace Montante
                 for (int i = fromBallInt-1; i < toBallInt; i++)
                 {
                     if (attaqueTxt.StartsWith("différentielle")){
-                        (fictive, value) = calculateFictive(this, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, "A paliers", null);
+                        (fictive, value) = calculateFictive(this, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, "A paliers", fictive);
+                        if (Int32.Parse(fictive[0,2])>0){
+                            fictive[0,2]="0";
+                            fictive[0,0] = "1"; // mise
+                        }
+                        if (Int32.Parse(fictive[1,2])>0){
+                            fictive[1,2]="0";
+                            fictive[1,0] = "1"; // mise
+                        }   
                         setFictiveLine(fictive);
                     }
 
                     if (fictive==null){
-                        ( playerMise,value,mise,win ) = play(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, true);
+                        ( playerMise,value,mise,win ) = play( chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, true);
                     }else{
                         if (Int32.Parse(fictive[0,0])==Int32.Parse(fictive[1,0])){
                             mise = 0;
@@ -71,12 +81,12 @@ namespace Montante
                             if (Int32.Parse(fictive[0,0])>Int32.Parse(fictive[1,0])){ //mise1 suppe
                                 mise = Int32.Parse(fictive[0,0])-Int32.Parse(fictive[1,0]);
                                 var chanceTxtf = fictive[0,1];
-                                ( playerMise,value,mise,win ) = play(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, true);
+                                ( playerMise,value,mise,win ) = play(chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, true);
                             }else{//mise2 suppe
                             
                                 mise = Int32.Parse(fictive[1,0])-Int32.Parse(fictive[0,0]);
                                 var chanceTxtf = fictive[1,1];
-                                ( playerMise,value,mise,win ) = play(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, true);
+                                ( playerMise,value,mise,win ) = play(chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, true);
                             }
                         }
                     }
@@ -118,16 +128,23 @@ namespace Montante
                             bilanGame = 0;
                         }else if(attaqueTxt == "différentielle compensée"){
                             bilanGame = 0;
-                            fictive = new string[0,0];
+                            fictive = null;
+                            // fictive = new string[0,0];
                         }else if(!attaqueTxt.StartsWith("différentielle")){
                             coup = 0;
                             bilanGame = 0;
                         }
-                    }else if (win) {
-                        if (typeOfMise=="En gain"){
-                            mise += 1;
-                        }
                     }
+                    // else if (win) {
+                    //     if (typeOfMise=="En gain"){
+                    //         mise += 1;
+                    //     }
+                    // }
+                    // else if (!win){
+                    //     if (typeOfMise=="En perte"){
+                    //         mise += 1;
+                    //     }
+                    // }
             
 
                     if (bilanTotal>=gainResearchInt && gainResearchInt!=0){
@@ -141,9 +158,9 @@ namespace Montante
                         }
                     }
 
-                    if (security){
-                        mise = calculateSecurity(mise,bilanGame);
-                    }
+                    // if (security){
+                    //     mise = calculateSecurity(mise,bilanGame);
+                    // }
 
                     index+=1;
                 }

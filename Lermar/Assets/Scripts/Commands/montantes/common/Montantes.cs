@@ -1,9 +1,4 @@
 // using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
 
 using System.ComponentModel;
 
@@ -116,9 +111,14 @@ namespace Montante
             var newPlayerMise = getPlayerMise(chanceTxt, newValue, win, index,  lastValue);
             
             var newMise = mise;
+                Debug.Log("misecalc  : " + misecalc);
+                Debug.Log("newPlayerMise  : " + newPlayerMise);
 
-            if (misecalc || newPlayerMise == null){
+            if (misecalc && newPlayerMise != null){
+                // Debug.Log("calculateMise");
                 newMise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, newPlayerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, diff);
+                Debug.Log("calculateMise  : " + newMise);
+
                 // newMise = checkMaxMise(newMise, coinValueInt,maxReachTxt,maxMiseInt);
                 newMise = checkMaxMise(newMise);
 
@@ -136,7 +136,7 @@ namespace Montante
                     if (Math.Abs(bilan)==0){
                         return (1*coinValueInt);
                     } 
-                    return Math.Abs(bilan)+1;
+                    return Math.Abs(bilan)+1v;
                 }
             }
             
@@ -157,15 +157,16 @@ namespace Montante
             return mise;
         }
 
-        private int calculateMise(int coup, int mise, int timePalier, int nbPalierInt, string playerMise, int coinValueInt, int maxMiseInt, string ifMaxPalierTxt,string maxReachTxt, bool diff){
-
+        public  int calculateMise(int coup, int mise, int timePalier, int nbPalierInt, string playerMise, int coinValueInt, int maxMiseInt, string ifMaxPalierTxt,string maxReachTxt, bool diff){
+            // Debug.Log("need to be declare in child");
             if (playerMise != null){
 
                 if (mise==0){
                     mise = 1;
                 }
 
-                if (coup!= 0 && coup%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
+                // if (coup!= 0 && coup%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
+                if (coup!= 0 && coup%timePalier==0 && (!diff)){
                     if (mise == nbPalierInt){
                         if (ifMaxPalierTxt.StartsWith("Recommencer")){
                             mise = 1 ;
@@ -265,6 +266,8 @@ namespace Montante
                 }
 
                 (var newPlayerMise1, var newValue1, var newMise1,var newWin1 ) = play(chanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[0,3]), Int32.Parse(fictivec[0,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);
+                // Debug.Log("NewMise1 fictive : " +newMise1 );
+                
                 var inverseChanceTxt = inverse(chanceTxt);
                 fictivec[0,4] = newWin1.ToString();
 
@@ -280,43 +283,36 @@ namespace Montante
                 var  bilanGame1 =0;
                 var  bilanGame2 =0;
                 
-                if (Int32.Parse(fictivec[0,2])>0){
-                    fictivec[0,2]="0";
-                    fictivec[0,0] = "1"; // mise
-                }
-                if (Int32.Parse(fictivec[1,2])>0){
-                    fictivec[1,2]="0";
-                    fictivec[1,0] = "1"; // mise
-                }   
+                
                 if (newWin1){
-                    bilanGame1 += newMise1*coinValueInt;
+                    bilanGame1 += newMise1;
                 }else{
                     if (newValue1 == 0){
                         var ret = 0;
-                        if ((newMise1*coinValueInt)%2==0){
-                            ret =newMise1*coinValueInt/2;
+                        if ((newMise1)%2==0){
+                            ret =newMise1/2;
                         }else{
-                            ret =newMise1*coinValueInt/2+1;
+                            ret =newMise1/2+1;
                         }
                         bilanGame1 += ret;
                     }else{
-                        bilanGame1 -= newMise1*coinValueInt;
+                        bilanGame1 -= newMise1;
                     }
                 }
 
                 if (newWin2){
-                    bilanGame2 += newMise2*coinValueInt;
+                    bilanGame2 += newMise2;
                 }else{
                     if (newValue2 == 0){
                         var ret = 0;
-                        if ((newMise2*coinValueInt)%2==0){
-                            ret =newMise2*coinValueInt/2;
+                        if ((newMise2)%2==0){
+                            ret =newMise2/2;
                         }else{
-                            ret =newMise2*coinValueInt/2+1;
+                            ret =newMise2/2+1;
                         }
                         bilanGame2 += ret;
                     }else{
-                        bilanGame2 -= newMise2*coinValueInt;
+                        bilanGame2 -= newMise2;
                     }
                 }
 
