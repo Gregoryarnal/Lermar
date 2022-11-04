@@ -541,7 +541,7 @@ namespace Components
 
         private int calculateYposition(int index){
             // var y = 10;
-            var y = -220;
+            var y = 365;
             var ITEM_HEIGHT = 115;
 
             y -= ITEM_HEIGHT*index;
