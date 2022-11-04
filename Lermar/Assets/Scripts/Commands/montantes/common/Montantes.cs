@@ -136,7 +136,7 @@ namespace Montante
                     if (Math.Abs(bilan)==0){
                         return (1*coinValueInt);
                     } 
-                    return Math.Abs(bilan)+1v;
+                    return Math.Abs(bilan)+1;
                 }
             }
             

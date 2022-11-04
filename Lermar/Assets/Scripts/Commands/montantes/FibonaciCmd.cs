@@ -27,8 +27,7 @@ namespace Montante
         List<int> cumulValue;
         List<int> cumulValue1;
         List<int> cumulValue2;
-        // int[] cumulValue;
-         
+
 
         /// <summary>
         /// Create Fibonaci method
@@ -79,6 +78,9 @@ namespace Montante
             }
         }
 
+        /// <summary>
+        /// Play fibonaci method 
+        /// </summary>
         public void run(){
 
             var miseInitial = 1;
@@ -229,9 +231,9 @@ namespace Montante
                         }
                     }
 
-                    // if (security){
-                    //     fiboCpt = calculateSecurity(mise,bilanGame,fiboCpt );
-                    // }
+                    if (security){
+                        fiboCpt = calculateSecurity(mise,bilanGame,fiboCpt );
+                    }
 
                     index+=1;
 
@@ -240,14 +242,13 @@ namespace Montante
         }
         
         /// <summary>
-        /// test 
+        /// Calcul specific mise for fibonaci, 3 methodes : Greg, classique, jean compta
         /// </summary>
         /// <param name="win"></param>
         /// <param name="mise"></param>
         /// <param name="fiboCpt"></param>
         /// <param name="cumulValue"></param>
-        /// <returns></returns>
-        
+        /// <returns>int</returns>
         (int, int, List<int>) calculMise(bool win,int mise, int fiboCpt, List<int> cumulValue){
             if (win){
                 // Debug.Log("win");

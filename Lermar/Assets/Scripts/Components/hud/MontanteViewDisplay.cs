@@ -1,4 +1,5 @@
 
+// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -20,7 +21,7 @@ namespace Components
         public CharacterTools characterTools;
         public GameObject popUpView;
         public GameObject montantePopUpView;
-        public GameObject popUpBackgroundBtn;
+        public Button popUpBackgroundBtn;
 
         //common
         public GameObject fromBall;
@@ -45,8 +46,10 @@ namespace Components
         
 
         public Button ExecuteButton;
+        public Button AllExecuteButton;
         public Button CancelButton;
         public Button StatButton;
+        // public Button popUpBackgroundBtn;
 
 
         public GameObject permanenceSelected;
@@ -76,8 +79,6 @@ namespace Components
 
         public GameObject AttaqueNameUI;
         public GameObject ChanceNameUI;
-
-        
 
         //stat
         public GameObject bilanInputStat;
@@ -124,6 +125,9 @@ namespace Components
         {
             reset();
             ExecuteButton.onClick.AddListener(() => run(true));
+            popUpBackgroundBtn.onClick.AddListener(() => setUpParamsView());
+
+            AllExecuteButton.gameObject.SetActive(false);
 
             characterTools.characterSavePath
                 .Subscribe(AddSavePath)
@@ -132,6 +136,7 @@ namespace Components
 
         public void AddSavePath(string file){
             SavePath = file;
+
         }
 
         public void reset(){
@@ -145,12 +150,10 @@ namespace Components
         }
         
         void resetStat(){
-                miseInputStat.GetComponent<Text>().text = "0";
-                bilanInputStat.GetComponent<Text>().text = "0";
+            miseInputStat.GetComponent<Text>().text = "0";
+            bilanInputStat.GetComponent<Text>().text = "0";
             gameInputStat.GetComponent<Text>().text = "0";
-                    decouvertInputStat.GetComponent<Text>().text =  "0";
-
-
+            decouvertInputStat.GetComponent<Text>().text =  "0";
         }
         void setUpStat(int bilan, int parti, int mise, int coinValueInt){
 
@@ -229,7 +232,7 @@ namespace Components
                         
                         montanteManager = palier.getMontanteManager();
                         palier.run();
-                        setUpResult(montanteManager,toBallInt);
+                        // setUpResult(montanteManager,toBallInt);
                     }
 
                     break;
@@ -251,7 +254,7 @@ namespace Components
                         AlembertCmd alembert = new AlembertCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = alembert.getMontanteManager();
                         alembert.run();
-                        setUpResult(montanteManager,toBallInt);
+                        // setUpResult(montanteManager,toBallInt);
                         
                     }
                     break;
@@ -278,7 +281,7 @@ namespace Components
                         FibonaciCmd fibo = new FibonaciCmd( fiboStartValueTxt, fiboSchemeTxt, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = fibo.getMontanteManager();
                         fibo.run();
-                        setUpResult(montanteManager,toBallInt);
+                        // setUpResult(montanteManager,toBallInt);
                     }
                     break;
                 case "50/20":
@@ -299,84 +302,59 @@ namespace Components
                         FiftyTwentyCmd fiftyTwenty = new FiftyTwentyCmd( nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = fiftyTwenty.getMontanteManager();
                         fiftyTwenty.run();
-                        setUpResult(montanteManager,toBallInt);
                     }
                     break;
                 default:
                     Debug.Log("non");
                     break;
 
+            
                 
             }
+            bool stop = true;
+            AllExecuteButton.gameObject.SetActive(true);
+            string[,] result  = montanteManager.getLines();
+                ExecuteButton.interactable = true;
+                AllExecuteButton.interactable = true;
+
+            setUpResult(result,toBallInt,-1, stop);
 
             if (SavePath!= ""){
                 saveResult(SavePath,montanteManager,toBallInt);
             }
         }
 
-        void setUpResult(Montantes montante, int toBallInt){
-            // montanteManager = montante.getMontanteManager();
-            // montante.run();
+        void setUpResult(string[,] result, int toBallInt, int start, bool stop){
 
-            string[,] result = montante.getLines();
-            
-            int start =0;
-            for (int i = start; i < toBallInt; i++)
-            {   
-                if (Int32.Parse(result[i, 1])==1 && i>1){
-                    ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i));
-                    break;
-                    // wait(i, );
-                }
-                addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
-                Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
-        // private void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise,string attaqueTxt,string win, string[,] fictive  ){
-
-                setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));        
+            if (start < 0){
+                start=0;
             }
 
-        }
-
-        void setUpResult( string[,] result, int toBallInt, int start){
-
             for (int i = start; i < toBallInt; i++)
             {   
-                if (Int32.Parse(result[i, 1])==1 && i!=start){
-                    ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i));
-                    break;
-                }
+                start=i;
                 addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                 Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
 
                 setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));        
-            }
+                if (stop){
+                    ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, stop));
+                    AllExecuteButton.onClick.RemoveAllListeners();
+                    AllExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, false));
+                    break;
+                }
 
-            if (start-1==toBallInt){
-                ExecuteButton.interactable = false;
                 
             }
 
-        }
+            if (start+1==toBallInt){
+                ExecuteButton.interactable = false;
+                AllExecuteButton.interactable = false;
 
-
-        IEnumerator waitKeypress(){
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
-        }
-        
-
-        IEnumerator WaitForAnswer()
-        {
-            for (;;)
-            {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    break;
-                }
-
-                yield return null;
             }
-            yield return null;
+
         }
+
         // public (bool, string) setSauteuse(bool first){
         //     if (!first){
         //         sauteuseValue= null;
@@ -397,6 +375,7 @@ namespace Components
             sauteuseView.SetActive(true);
             CancelButton.onClick.AddListener(() => setUpParamsView());
             ExecuteButton.onClick.AddListener(() => setUpSauteuseSequence(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt));
+
         }
 
         public void saveResult(string filename, Montantes montante, int toBallInt){
@@ -438,10 +417,11 @@ namespace Components
             CancelButton.onClick.AddListener(() => setUpParamsView());
         }
         void ClosePopUp(){
-            // Debug.Log("BackgroundButtonClicked");
+            Debug.Log("BackgroundButtonClicked");
             popUpView.SetActive(false);
             montantePopUpView.SetActive(false);
             popUpBackgroundBtn.gameObject.SetActive(false);
+            setUpParamsView();
         }
 
         public void setUpParamsView(){
@@ -451,8 +431,10 @@ namespace Components
             leftView.SetActive(true);
             sauteuseView.SetActive(false);
             ExecuteButton.onClick.RemoveAllListeners();
+            ExecuteButton.interactable = false;
+            AllExecuteButton.onClick.RemoveAllListeners();
+            AllExecuteButton.gameObject.SetActive(false);
             CancelButton.onClick.RemoveAllListeners();
-
             CancelButton.onClick.AddListener(() => ClosePopUp());
             ExecuteButton.onClick.AddListener(() => run(false));
         }

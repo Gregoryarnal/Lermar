@@ -24,6 +24,7 @@ namespace ViewModel
         public void ResetView(){
             characterToolsView.Value = "";
             characterStatisticsView.Value = "";
+            characterSavePath.Value = "";
         }
 
         public void LoadPermanence(string permanence){

@@ -1,0 +1,135 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/Tests.csproj": {}
+  },
+  "projects": {
+    "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/LeanTween.csproj": {
+      "restore": {
+        "projectUniqueName": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/LeanTween.csproj",
+        "projectName": "LeanTween",
+        "projectPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/LeanTween.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Scripts.csproj": {
+      "restore": {
+        "projectUniqueName": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Scripts.csproj",
+        "projectName": "Scripts",
+        "projectPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Scripts.csproj",
+        "frameworks": {
+          "net70": {
+            "projectReferences": {
+              "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/LeanTween.csproj": {
+                "projectPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/LeanTween.csproj"
+              },
+              "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/UniRx.csproj": {
+                "projectPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/UniRx.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net70": {}
+      }
+    },
+    "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/Tests.csproj",
+        "projectName": "Tests",
+        "projectPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/Tests.csproj",
+        "packagesPath": "/Users/gregoryarnal/.nuget/packages/",
+        "outputPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/gregoryarnal/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Scripts.csproj": {
+                "projectPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Scripts.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.1.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100-rc.2.22477.23/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/UniRx.csproj": {
+      "restore": {
+        "projectUniqueName": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/UniRx.csproj",
+        "projectName": "UniRx",
+        "projectPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/UniRx.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    }
+  }
+}

@@ -158,9 +158,9 @@ namespace Montante
                         }
                     }
 
-                    // if (security){
-                    //     mise = calculateSecurity(mise,bilanGame);
-                    // }
+                    if (security){
+                        mise = calculateSecurity(mise,bilanGame);
+                    }
 
                     index+=1;
                 }

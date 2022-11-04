@@ -1,5 +1,6 @@
 
 
+// using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 // using System.Diagnostics;
@@ -48,6 +49,8 @@ namespace Components
         public GameObject ContentPopUpScroll;
         public Text TemplateTextPopUp;
         public Button popUpBackgroundBtn;
+
+        // public GameObject resultView;
 
         public GameObject toolNameTopPopUp;
         public GameObject permanenceNameTop;
@@ -101,6 +104,17 @@ namespace Components
    
             Reset();
         }
+
+        void Update(){
+            Debug.Log("update");
+        }
+        
+        void Reload(){
+            Debug.Log("Reload");
+
+        }
+
+
 
         public void RemovePopUpBtn(){
             
@@ -302,6 +316,7 @@ namespace Components
         {
             addPopUpButton();
             toolNameTopPopUp.GetComponent<Text>().text =  montante;
+            ExecuteButton.interactable = false;
             
             switch (montante)
             {
@@ -346,8 +361,10 @@ namespace Components
         }
 
         void BackgroundButtonClicked(){
-            Debug.Log("BackgroundButtonClicked");
+            // Debug.Log("BackgroundButtonClicked");
             popUpView.SetActive(false);
+            // resultView.SetActive(false);
+
             montantePopUpView.SetActive(false);
 
             popUpBackgroundBtn.gameObject.SetActive(false);
