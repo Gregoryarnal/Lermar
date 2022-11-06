@@ -1,5 +1,6 @@
 
 // using System.Diagnostics;
+// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -314,10 +315,10 @@ namespace Components
             bool stop = true;
             AllExecuteButton.gameObject.SetActive(true);
             string[,] result  = montanteManager.getLines();
-                ExecuteButton.interactable = true;
-                AllExecuteButton.interactable = true;
+            ExecuteButton.interactable = true;
+            AllExecuteButton.interactable = true;
 
-            setUpResult(result,toBallInt,-1, stop);
+            setUpResult(result,toBallInt,fromBallInt, stop);
 
             if (SavePath!= ""){
                 saveResult(SavePath,montanteManager,toBallInt);
@@ -326,13 +327,10 @@ namespace Components
 
         void setUpResult(string[,] result, int toBallInt, int start, bool stop){
 
-            if (start < 0){
-                start=0;
-            }
-
-            for (int i = start; i < toBallInt; i++)
+            for (int i = start-1; i < toBallInt; i++)
             {   
                 start=i;
+
                 addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                 Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
 

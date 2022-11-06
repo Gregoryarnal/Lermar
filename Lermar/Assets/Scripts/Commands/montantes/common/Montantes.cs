@@ -1,4 +1,5 @@
 // using System.Diagnostics;
+// using System.Diagnostics;
 
 using System.ComponentModel;
 
@@ -111,15 +112,11 @@ namespace Montante
             var newPlayerMise = getPlayerMise(chanceTxt, newValue, win, index,  lastValue);
             
             var newMise = mise;
-                Debug.Log("misecalc  : " + misecalc);
-                Debug.Log("newPlayerMise  : " + newPlayerMise);
 
             if (misecalc && newPlayerMise != null){
                 // Debug.Log("calculateMise");
                 newMise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, newPlayerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, diff);
-                Debug.Log("calculateMise  : " + newMise);
 
-                // newMise = checkMaxMise(newMise, coinValueInt,maxReachTxt,maxMiseInt);
                 newMise = checkMaxMise(newMise);
 
             }
@@ -367,26 +364,17 @@ namespace Montante
                 result[index, 15] = fictive[1,2];
 
             }
-            // result[index, 8] = a\ttaqueTxt;
-
-            // result[result.Length, 9] = fictive;
         }
 
         public int readPermanenceFile(string nameFile, int index){
-            // Debug.Log("permanenceSelectedTxt");
-            // Debug.Log(permanenceSelectedTxt);
-            // var permanencePath = "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/permanences/MC/" + nameFile;
             var  m_Path = Application.dataPath;
 
-            //Output the Game data path to the console
             var permanencePath = Path.GetDirectoryName(Application.dataPath) +"/permanences/MC/" + nameFile;
-            // Debug.Log("index : " + index);
 
             string[] lines = System.IO.File.ReadAllLines(permanencePath);
             if (index == -1){
                 return lines.Length;
             }
-            // Debug.Log("lines[index] : " + lines[index]);
 
             return Int32.Parse(lines[index]);
         }

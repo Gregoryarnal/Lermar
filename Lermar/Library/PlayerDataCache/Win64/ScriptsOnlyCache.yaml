@@ -1479,7 +1479,7 @@ ScriptsOnlyBuild:
     className: GameRestoreInput
   - hash:
       serializedVersion: 2
-      Hash: 6b4ac9351896c9034cc90f5b341fc3c6
+      Hash: 8d7066887c340fdd0ff4fa6f62600c72
     assemblyName: Scripts.dll
     namespaceName: Components
     className: MontanteViewDisplay
@@ -1804,4 +1804,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/Game.unity
-  playerPath: /Volumes/Public/lermarw/Lermar.exe
+  playerPath: /Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/lermarw/Lermar.exe

@@ -164,11 +164,6 @@ namespace Montante
 
                     index+=1;
                 }
-            // }
-            // if (fileNameTxt!=""){
-            // saveResult(fileNameTxt);
-
-            // }
         }
 
 
