@@ -93,6 +93,9 @@ namespace Components
         // fibonaci
         public Dropdown fiboStartValue;
         public Dropdown fiboScheme;
+        
+        //TODO need to change
+        public ScrollRect scrollRect;
 
 
         public string maxReachTxt = "";
@@ -318,7 +321,7 @@ namespace Components
             ExecuteButton.interactable = true;
             AllExecuteButton.interactable = true;
 
-            setUpResult(result,toBallInt,fromBallInt, stop);
+            setUpResult(result,toBallInt,fromBallInt-1, stop);
 
             if (SavePath!= ""){
                 saveResult(SavePath,montanteManager,toBallInt);
@@ -327,7 +330,7 @@ namespace Components
 
         void setUpResult(string[,] result, int toBallInt, int start, bool stop){
 
-            for (int i = start-1; i < toBallInt; i++)
+            for (int i = start; i < toBallInt; i++)
             {   
                 start=i;
 
@@ -515,6 +518,24 @@ namespace Components
             newLine.transform.SetParent(resultContent.transform, false);
             newLine.SetActive(true);
 
+
+            /// <summary>
+            /// TODO
+            /// </summary>
+            /// <typeparam name="ScrollRect"></typeparam>
+            /// <returns></returns>
+
+            // if ( scrollRect.verticalNormalizedPosition != 0 )
+            // {   
+                // Debug.Log("bottom");
+                Canvas.ForceUpdateCanvases();
+                scrollRect.content.GetComponent<VerticalLayoutGroup>().CalculateLayoutInputVertical() ;
+                scrollRect.content.GetComponent<ContentSizeFitter>().SetLayoutVertical() ;
+                scrollRect.verticalNormalizedPosition = 0 ;
+            // }
+
+            
+
             Text[] tempText = newLine.GetComponentsInChildren<Text>();
             
             tempText[0].text = (index+1).ToString();
@@ -539,10 +560,14 @@ namespace Components
 
         private int calculateYposition(int index){
             // var y = 10;
-            var y = 365;
+            var y = -100;
+            // var y = 365;
             var ITEM_HEIGHT = 115;
 
             y -= ITEM_HEIGHT*index;
+
+
+
 
             return y;
         }
