@@ -75,6 +75,7 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.GridLayoutGroup
@@ -252,6 +253,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 2988}
     - Class: 114
       Script: {instanceID: 3018}
+    - Class: 114
+      Script: {instanceID: 3478}
     - Class: 114
       Script: {instanceID: 3490}
     - Class: 114
@@ -1479,7 +1482,7 @@ ScriptsOnlyBuild:
     className: GameRestoreInput
   - hash:
       serializedVersion: 2
-      Hash: 61bc001bd4a45e1dfdfabec4f2828e49
+      Hash: 95220eba0cc601a5121dc72a25dfffb6
     assemblyName: Scripts.dll
     namespaceName: Components
     className: MontanteViewDisplay

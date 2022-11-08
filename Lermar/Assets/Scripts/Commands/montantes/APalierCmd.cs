@@ -58,14 +58,7 @@ namespace Montante
                 {
                     if (attaqueTxt.StartsWith("différentielle")){
                         (fictive, value) = calculateFictive(this, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, "A paliers", fictive);
-                        if (Int32.Parse(fictive[0,2])>0){
-                            fictive[0,2]="0";
-                            fictive[0,0] = "1"; // mise
-                        }
-                        if (Int32.Parse(fictive[1,2])>0){
-                            fictive[1,2]="0";
-                            fictive[1,0] = "1"; // mise
-                        }   
+
                         setFictiveLine(fictive);
                     }
 
@@ -90,6 +83,9 @@ namespace Montante
                             }
                         }
                     }
+                    
+
+                     
                     
                     if (win){
                         gain += mise;
@@ -119,7 +115,17 @@ namespace Montante
                     }
 
                     addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
-
+                    if (fictive!=null){
+                        if (Int32.Parse(fictive[0,2])>0){
+                                fictive[0,2]="0";
+                                fictive[0,0] = "1"; // mise
+                            }
+                        if (Int32.Parse(fictive[1,2])>0){
+                            fictive[1,2]="0";
+                            fictive[1,0] = "1"; // mise
+                        }   
+                    }
+                    
                     if (win && bilanGame>0){
                         gain = 0;
                         mise = miseInitial;
@@ -129,23 +135,11 @@ namespace Montante
                         }else if(attaqueTxt == "différentielle compensée"){
                             bilanGame = 0;
                             fictive = null;
-                            // fictive = new string[0,0];
                         }else if(!attaqueTxt.StartsWith("différentielle")){
                             coup = 0;
                             bilanGame = 0;
                         }
-                    }
-                    // else if (win) {
-                    //     if (typeOfMise=="En gain"){
-                    //         mise += 1;
-                    //     }
-                    // }
-                    // else if (!win){
-                    //     if (typeOfMise=="En perte"){
-                    //         mise += 1;
-                    //     }
-                    // }
-            
+                    }            
 
                     if (bilanTotal>=gainResearchInt && gainResearchInt!=0){
                         Debug.Log("End gainResearchInt");
@@ -177,9 +171,6 @@ namespace Montante
         //     setUpResultView();
         //     // ApalierCmd(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
         // }
-
-       
-        
 
         private int calculateYposition(int index){
             var y = 10;

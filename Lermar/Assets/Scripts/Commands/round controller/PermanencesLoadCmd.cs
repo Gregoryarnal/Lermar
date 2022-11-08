@@ -122,6 +122,11 @@ namespace Commands
             characterTools.ResetView();
             }
 		    
+            if (show)
+            {
+                characterTools.AddPermanenceBtn("Ajouter");
+            }  
+            
             string[] filenames = TraverseTree(path);
 
             foreach (string el in filenames){
@@ -133,10 +138,7 @@ namespace Commands
                     }
             }
 
-            if (show)
-            {
-                characterTools.AddPermanenceBtn("Ajouter");
-            }            
+                      
 
         }
 

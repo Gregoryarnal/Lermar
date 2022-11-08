@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
+    "net6.0": {
       "coverlet.collector/3.1.2": {
         "type": "package",
         "build": {
@@ -6374,7 +6374,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net7.0": [
+    "net6.0": [
       "MSTest.TestAdapter >= 2.2.8",
       "MSTest.TestFramework >= 2.2.8",
       "Microsoft.NET.Test.Sdk >= 17.1.0",
@@ -6388,9 +6388,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/Tests.csproj",
-      "projectName": "Tests",
-      "projectPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/Tests.csproj",
+      "projectUniqueName": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/LermarTests.csproj",
+      "projectName": "LermarTests",
+      "projectPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/LermarTests.csproj",
       "packagesPath": "/Users/gregoryarnal/.nuget/packages/",
       "outputPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/obj/",
       "projectStyle": "PackageReference",
@@ -6398,14 +6398,14 @@
         "/Users/gregoryarnal/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net6.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {
             "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Scripts.csproj": {
               "projectPath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Scripts.csproj"
@@ -6420,8 +6420,8 @@
       }
     },
     "frameworks": {
-      "net7.0": {
-        "targetAlias": "net7.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "dependencies": {
           "MSTest.TestAdapter": {
             "target": "Package",
@@ -6456,7 +6456,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100-rc.2.22477.23/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
       }
     }
   }

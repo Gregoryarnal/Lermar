@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P+fuAQR/foolbHKHItW1Pq2JyhSB+hb0zc6hzb8RYc1WnFiFmWV0tcUTvS1SNw5GHmdF/LdMvusH+xvli2kSsQ==",
+  "dgSpecHash": "1x8sJH2p3raFcl+hYcSGihYn9JNm+VpgL1mQHlh3Y2m2f3vn61W+TpUW1zivQN9bUea1WTxyhTDN1TWMUpD8sw==",
   "success": true,
-  "projectFilePath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/Tests.csproj",
+  "projectFilePath": "/Users/gregoryarnal/dev/FreeLance/Lermar/Lermar/Tests/LermarTests.csproj",
   "expectedPackageFiles": [
     "/Users/gregoryarnal/.nuget/packages/coverlet.collector/3.1.2/coverlet.collector.3.1.2.nupkg.sha512",
     "/Users/gregoryarnal/.nuget/packages/microsoft.codecoverage/17.1.0/microsoft.codecoverage.17.1.0.nupkg.sha512",

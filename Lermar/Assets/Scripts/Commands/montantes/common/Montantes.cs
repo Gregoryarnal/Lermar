@@ -1,5 +1,6 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
 
 using System.ComponentModel;
 
@@ -110,11 +111,12 @@ namespace Montante
                 lastValue = readPermanenceFile(permanenceSelectedTxt,index-1);
             }
             var newPlayerMise = getPlayerMise(chanceTxt, newValue, win, index,  lastValue);
-            
-            var newMise = mise;
+
+                int newMise = 0;
 
             if (misecalc && newPlayerMise != null){
                 // Debug.Log("calculateMise");
+
                 newMise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, newPlayerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, diff);
 
                 newMise = checkMaxMise(newMise);
@@ -142,7 +144,7 @@ namespace Montante
 
         // public int checkMaxMise(int mise, int coinValueInt, string maxReachTxt, int maxMiseInt){
         public int checkMaxMise(int mise){
-            if ((mise) >= maxMiseInt){
+            if ((mise) >= maxMiseInt && mise!=0){
                 if (maxReachTxt.StartsWith("Repartir")){
                     mise = 1*coinValueInt;
                 }

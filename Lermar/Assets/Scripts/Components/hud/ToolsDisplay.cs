@@ -1,6 +1,7 @@
 
 
 // using System.Diagnostics;
+// using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 // using System.Diagnostics;
@@ -150,7 +151,10 @@ namespace Components
                 newButton.SetActive(true);
 
                 Button tempPopUpButton = newButton.GetComponent<Button>();
+                // Debug.Log("value : " + value);
+                // Debug.Log("newButton.GetComponentsInChildren<Text>() : " + newButton.GetComponentsInChildren<Text>()[0]);
                 Text contentTxt = newButton.GetComponentsInChildren<Text>()[0];
+                // Text contentTxt = newButton.GetComponentInChildren(Text);
 
 
                 if (contentTxt != null){

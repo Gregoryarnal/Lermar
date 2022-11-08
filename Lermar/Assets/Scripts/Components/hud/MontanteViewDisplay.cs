@@ -1,6 +1,8 @@
 
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
+// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -128,7 +130,7 @@ namespace Components
         public void Start()
         {
             reset();
-            ExecuteButton.onClick.AddListener(() => run(true));
+            ExecuteButton.onClick.AddListener(() => run(true, null));
             popUpBackgroundBtn.onClick.AddListener(() => setUpParamsView());
 
             AllExecuteButton.gameObject.SetActive(false);
@@ -180,7 +182,7 @@ namespace Components
             
         }
 
-        void run(bool first){
+        void run(bool first, List<String> sauteuseValue){
             setUpParamsView();
             var fromBallInt = Int32.Parse(fromBall.GetComponent<InputField>().text);
             var toBallInt = Int32.Parse(toBall.GetComponent<InputField>().text);
@@ -221,16 +223,23 @@ namespace Components
                     setUpResultView();
                     
                     if (!first){
+                    Debug.Log("reset : " + first);
+
                         sauteuseValue= null;
                     }
+                    Debug.Log("lauchGame : " + lauchGame);
 
                     if (attaqueTxt=="Sauteuse"){
+                        lauchGame = true;
+
+                        Debug.Log("sauteuseValue : " + sauteuseValue);
+
                         if(sauteuseValue==null){
                             getSauteuseValue(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
                             lauchGame = false;
                         }
                     }
-
+                    Debug.Log("lauchGame : " + lauchGame);
                     if (lauchGame){
                         APalierCmd palier = new APalierCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security, securityValue, typeOfMise);
                         
@@ -248,6 +257,8 @@ namespace Components
                     }
 
                     if (attaqueTxt=="Sauteuse"){
+                        lauchGame = true;
+
                         if(sauteuseValue==null){
                             getSauteuseValue(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
                             lauchGame = false;
@@ -258,8 +269,6 @@ namespace Components
                         AlembertCmd alembert = new AlembertCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = alembert.getMontanteManager();
                         alembert.run();
-                        // setUpResult(montanteManager,toBallInt);
-                        
                     }
                     break;
                 
@@ -271,6 +280,8 @@ namespace Components
                     }
 
                     if (attaqueTxt=="Sauteuse"){
+                        lauchGame = true;
+
                         if(sauteuseValue==null){
                             getSauteuseValue(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
                             lauchGame = false;
@@ -278,8 +289,7 @@ namespace Components
                     }
                     var fiboStartValueTxt = fiboStartValue.options[fiboStartValue.value].text;
                     var fiboSchemeTxt = fiboScheme.options[fiboScheme.value].text;
-                    // fiboStartValue
-                    // fiboScheme
+
 
                     if (lauchGame){
                         FibonaciCmd fibo = new FibonaciCmd( fiboStartValueTxt, fiboSchemeTxt, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
@@ -296,6 +306,8 @@ namespace Components
                     }
 
                     if (attaqueTxt=="Sauteuse"){
+                        lauchGame = true;
+
                         if(sauteuseValue==null){
                             getSauteuseValue(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
                             lauchGame = false;
@@ -315,16 +327,19 @@ namespace Components
             
                 
             }
-            bool stop = true;
-            AllExecuteButton.gameObject.SetActive(true);
-            string[,] result  = montanteManager.getLines();
-            ExecuteButton.interactable = true;
-            AllExecuteButton.interactable = true;
+            if (lauchGame){
+                bool stop = true;
+                AllExecuteButton.gameObject.SetActive(true);
+                string[,] result  = montanteManager.getLines();
+                ExecuteButton.onClick.RemoveAllListeners();
+                ExecuteButton.interactable = true;
+                AllExecuteButton.interactable = true;
 
-            setUpResult(result,toBallInt,fromBallInt-1, stop);
+                setUpResult(result,toBallInt,fromBallInt-1, stop);
 
-            if (SavePath!= ""){
-                saveResult(SavePath,montanteManager,toBallInt);
+                if (SavePath!= ""){
+                    saveResult(SavePath,montanteManager,toBallInt);
+                }
             }
         }
 
@@ -339,6 +354,7 @@ namespace Components
 
                 setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));        
                 if (stop){
+                    ExecuteButton.onClick.RemoveAllListeners();
                     ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, stop));
                     AllExecuteButton.onClick.RemoveAllListeners();
                     AllExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, false));
@@ -351,7 +367,6 @@ namespace Components
             if (start+1==toBallInt){
                 ExecuteButton.interactable = false;
                 AllExecuteButton.interactable = false;
-
             }
 
         }
@@ -374,6 +389,7 @@ namespace Components
             rightView.SetActive(false);
             leftView.SetActive(false);
             sauteuseView.SetActive(true);
+            ExecuteButton.interactable = true;
             CancelButton.onClick.AddListener(() => setUpParamsView());
             ExecuteButton.onClick.AddListener(() => setUpSauteuseSequence(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt));
 
@@ -437,7 +453,7 @@ namespace Components
             AllExecuteButton.gameObject.SetActive(false);
             CancelButton.onClick.RemoveAllListeners();
             CancelButton.onClick.AddListener(() => ClosePopUp());
-            ExecuteButton.onClick.AddListener(() => run(false));
+            ExecuteButton.onClick.AddListener(() => run(false, null));
         }
 
         void setUpSauteuseSequence(int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt){
@@ -447,7 +463,10 @@ namespace Components
             {
                 sauteuseValue.Add(item.options[item.value].text);
             }
-            run(true);
+            Debug.Log("Run");
+            Debug.Log("sauteuseValue  len : " + sauteuseValue.Count);
+
+            run(true, sauteuseValue);
         }
 
         private void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise,string attaqueTxt,string win, string[,] fictive  ){
