@@ -1,6 +1,4 @@
 // using System.Diagnostics;
-// using System.Diagnostics;
-// using System.Diagnostics;
 
 using System.IO;
 using System.Text;
@@ -51,6 +49,7 @@ namespace Montante
         /// <param name="security"></param>
         /// <param name="securityValue"></param>
         /// <param name="typeOfMise"></param>
+        
         public FibonaciCmd(string startvaluen, string schemen, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
         : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise)
         {
@@ -120,17 +119,32 @@ namespace Montante
                     if (attaqueTxt.StartsWith("différentielle")){
                         // Debug.Log("fictive before calcul fictive");
                         // Debug.Log(fictive);
+                        
                         if (fictive!=null){
                             int fmise;
-                            (fmise,fiboCpt1,cumulValue1) = calculMise(Convert.ToBoolean(fictive[0,4]), Int32.Parse(fictive[0,0]),  fiboCpt1, cumulValue1);
+                            int fbilan;
+                            // Debug.Log(" bef fiboCpt1 = " + fiboCpt1 + " bef win = " + fictive[0,4]);
+                            // Debug.Log(" );
+                            // Debug.Log(" bef fiboCpt1 = " + fiboCpt1);
+                            (fmise,fiboCpt1,cumulValue1,fbilan) = calculMise(Convert.ToBoolean(fictive[0,4]), Int32.Parse(fictive[0,0]),  fiboCpt1, cumulValue1, Int32.Parse(fictive[0,2]));
+                            // Debug.Log(" af fiboCpt1 = " + fiboCpt1);
+                            
                             fictive[0,0] = fmise.ToString();
-                            (fmise,fiboCpt2,cumulValue2) = calculMise(Convert.ToBoolean(fictive[1,4]), Int32.Parse(fictive[1,0]),  fiboCpt2, cumulValue2);
+                            fictive[0,2] = fbilan.ToString();
+                            // Debug.Log(" bef fiboCpt2 = " + fiboCpt2);
+
+                            (fmise,fiboCpt2,cumulValue2,fbilan) = calculMise(Convert.ToBoolean(fictive[1,4]), Int32.Parse(fictive[1,0]),  fiboCpt2, cumulValue2, Int32.Parse(fictive[1,2]));
+                            // Debug.Log(" af fiboCpt2 = " + fiboCpt2);
+                            
                             fictive[1,0] = fmise.ToString();
+                            fictive[1,2] = fbilan.ToString();
                             value= -1;
                         }
-                        
+
                         (fictive, value) = calculateFictive(this, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, "Fibonaci", fictive);
                         setFictiveLine(fictive);
+
+                        
                     }
 
                     if (fictive==null){
@@ -181,10 +195,13 @@ namespace Montante
                     addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
 
 
-                    (mise,fiboCpt,cumulValue) = calculMise(win, mise,fiboCpt, cumulValue);
+                    (mise,fiboCpt,cumulValue, _) = calculMise(win, mise,fiboCpt, cumulValue, bilanGame);
                     // mise = nmise;
-
-                    if (win && bilanGame>0){
+                    Debug.Log("gainResearchInt : " + gainResearchInt+", bilanGame : " + bilanGame+", win : " + win);
+                    // Debug.Log("bilanGame : " + bilanGame);
+                    // Debug.Log();
+                    if (win && bilanGame>0 && gainResearchInt==0){
+                        Debug.Log("nogainResearchInt");
                         gain = 0;
                         mise = miseInitial;
                         fiboCpt = startvalue;
@@ -195,15 +212,9 @@ namespace Montante
                         if (fictive!=null && attaqueTxt == "différentielle directe"){
                             bilanGame = 0;
                         }else if(attaqueTxt == "différentielle compensée"){
-                            bilanGame = 0;
-                            // Debug.Log(fictive);
-
+                            // bilanGame = 0;
                             fictive = null;
-                            // Debug.Log(fictive);
-                            Debug.Log("reset fictive au coup : " + coup);
-                            // Debug.Log("reset fictive");
-
-                            fiboCpt1 =startvalue;
+                            fiboCpt1 = startvalue;
                             cumulValue1 = new List<int>();
                             cumulValue1.Add(1);
 
@@ -213,16 +224,29 @@ namespace Montante
 
                             coup = 0;
                             bilanGame = 0;
-                            // fictive = new string[0,0];
                         }else if(!attaqueTxt.StartsWith("différentielle")){
                             coup = 0;
                             bilanGame = 0;
                         }
-                    }
+                    }else if (win && bilanGame>=gainResearchInt && gainResearchInt!=0){
+                        
+                        if(!attaqueTxt.StartsWith("différentielle")){
 
-                    if (bilanTotal>=gainResearchInt && gainResearchInt!=0){
-                        Debug.Log("End gainResearchInt");
-                        break;
+                        }
+                        fictive = null;
+                        fiboCpt1 = startvalue;
+                        cumulValue1 = new List<int>();
+                        cumulValue1.Add(1);
+
+                        fiboCpt2 = startvalue;
+                        cumulValue2 = new List<int>();
+                        cumulValue2.Add(1);
+                        fiboCpt=startvalue;
+
+                        coup = 0;
+                        // bilanTotal = 0;
+                        bilanGame = 0;
+
                     }
                     
                     if (playerMise==null){
@@ -249,13 +273,13 @@ namespace Montante
         /// <param name="fiboCpt"></param>
         /// <param name="cumulValue"></param>
         /// <returns>int</returns>
-        (int, int, List<int>) calculMise(bool win,int mise, int fiboCpt, List<int> cumulValue){
+        (int, int, List<int> ,int) calculMise(bool win,int mise, int cpt, List<int> cumulValue, int bilan){
             if (win){
                 // Debug.Log("win");
                 // Debug.Log(typeOfMise);
 
                 if (typeOfMise=="En gain"){
-
+                    // Debug.Log("start : " + scheme);
                     if (scheme.StartsWith("Cumul")){
                         if (cumulValue.Count>=2){
                             mise = cumulValue[cumulValue.Count-2]+cumulValue[cumulValue.Count-1];
@@ -268,9 +292,16 @@ namespace Montante
                             cumulValue.Add(mise);
                         }
                     }else if (scheme.StartsWith("Jean")){
-                        fiboCpt = startvalue;
+                        if (bilan > 0){
+                            bilan = 0;
+                        }
+                        cpt = startvalue;
+                        mise = calculateFibonacci(cpt);
+
                     }else{
-                        fiboCpt += 1;
+                        cpt += 1;
+                        mise = calculateFibonacci(cpt);
+
                     }
                 }else{
                     if (scheme.StartsWith("Cumul")){
@@ -298,14 +329,17 @@ namespace Montante
                             }   
                         }
                     }else if (scheme.StartsWith("Jean")){
-                        fiboCpt = startvalue;
+                        cpt = startvalue;
+                        if (bilan > 0){
+                            bilan = 0;
+                        }
+                        mise = calculateFibonacci(cpt);
+
                     }
-                    // else{
-                    //     fiboCpt += 1;
-                    // }
+
                 }
             }else{
-                if (typeOfMise!="En gain"){
+                if (typeOfMise=="En perte"){
 
                     if (scheme.StartsWith("Cumul")){
                         if (cumulValue.Count>=2){
@@ -318,10 +352,13 @@ namespace Montante
                             }
                             cumulValue.Add(mise);
                         }
-                    }else if (scheme.StartsWith("Jean")){
-                        fiboCpt = startvalue;
                     }else{
-                        fiboCpt += 1;
+                        // Debug.Log("Update cpt = " + cpt);
+                        cpt += 1;
+                        mise = calculateFibonacci(cpt);
+
+                        // Debug.Log("Update cpt = " + cpt);
+
                     }
                 }else{
                     if (scheme.StartsWith("Cumul")){
@@ -337,7 +374,7 @@ namespace Montante
                                 cumulValue.RemoveAt(cumulValue.Count-1);
 
                                 if (cumulValue.Count==0){
-                                    fiboCpt = startvalue;
+                                    cpt = startvalue;
                                     mise = calculateFibonacci(fiboCpt);
                                 }else if (cumulValue.Count>=2){
                                     mise = cumulValue[cumulValue.Count-2]+cumulValue[cumulValue.Count-1];
@@ -348,16 +385,18 @@ namespace Montante
                             }
                         }
                     }else{
-                        fiboCpt += 1;
+                        cpt += 1;
+                        mise = calculateFibonacci(cpt);
+
                     }
                 }
             }
-            return (mise,fiboCpt,cumulValue);
+            return (mise,cpt,cumulValue, bilan);
         }
 
          public (int, int) checkMaxMise(int mise, int fiboCpt){
            
-            if ((mise*coinValueInt) >= maxMiseInt){
+            if ((mise*coinValueInt) > maxMiseInt){
                 if (maxReachTxt.StartsWith("Repartir")){
                     fiboCpt = 4;
                 }

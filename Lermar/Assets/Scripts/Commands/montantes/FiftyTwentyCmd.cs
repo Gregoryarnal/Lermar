@@ -172,9 +172,9 @@ namespace Montante
                     }
                 }
 
-                // if (security){
-                //     fiboCpt = calculateSecurity(mise,bilanGame,fiboCpt );
-                // }
+                if (security){
+                    fiboCpt = calculateSecurity(mise,bilanGame );
+                }
 
                 index+=1;
             }

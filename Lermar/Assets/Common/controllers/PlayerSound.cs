@@ -62,7 +62,7 @@ namespace Controllers
         void OnGameOpened()
         {
             gameSound.isFxOn.Value = true;
-            gameSound.OnMusic.OnNext(gameSound.audioReferences[0]);
+            // gameSound.OnMusic.OnNext(gameSound.audioReferences[0]);
         }
     }
 }

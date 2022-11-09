@@ -91,8 +91,6 @@ namespace Montante
                         gain += mise;
                         bilanGame += mise;
                         bilanTotal += mise;
-                        // Debug.Log("Add coup");
-
                         coup += 1;
                     }else{
                         if (value == 0){
@@ -115,6 +113,7 @@ namespace Montante
                     }
 
                     addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
+                    
                     if (fictive!=null){
                         if (Int32.Parse(fictive[0,2])>0){
                                 fictive[0,2]="0";

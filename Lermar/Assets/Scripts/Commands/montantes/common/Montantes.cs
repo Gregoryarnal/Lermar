@@ -106,21 +106,20 @@ namespace Montante
         public (string, int, int, bool) play(string chanceTxt, string attaqueTxt, int value, bool win, int index, string permanenceSelectedTxt, int coup,int mise,  int timePalierInt,int  nbPalierInt,int  coinValueInt, int maxMiseInt,string  ifMaxPalierTxt,string  maxReachTxt, int gain, bool diff, bool misecalc){
             var newValue = readPermanenceFile(permanenceSelectedTxt,index);
             var lastValue = -1;
+            int newMise = 0;
 
             if (index > 0){
                 lastValue = readPermanenceFile(permanenceSelectedTxt,index-1);
             }
             var newPlayerMise = getPlayerMise(chanceTxt, newValue, win, index,  lastValue);
 
-                int newMise = 0;
+            if (!misecalc){
+                newMise = mise;
+            }
 
             if (misecalc && newPlayerMise != null){
-                // Debug.Log("calculateMise");
-
                 newMise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, newPlayerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, diff);
-
                 newMise = checkMaxMise(newMise);
-
             }
 
             var newWin = calculateGain(newValue, newPlayerMise, newMise,coinValueInt, gain);
@@ -144,7 +143,7 @@ namespace Montante
 
         // public int checkMaxMise(int mise, int coinValueInt, string maxReachTxt, int maxMiseInt){
         public int checkMaxMise(int mise){
-            if ((mise) >= maxMiseInt && mise!=0){
+            if ((mise) > maxMiseInt && mise!=0){
                 if (maxReachTxt.StartsWith("Repartir")){
                     mise = 1*coinValueInt;
                 }

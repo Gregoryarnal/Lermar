@@ -88,6 +88,8 @@ namespace Components
         public GameObject gameInputStat;
         public GameObject miseInputStat;
         public GameObject decouvertInputStat;
+        public GameObject decouvertTotalInputStat;
+        
 
        //sauteuse
         public GameObject sauteuseView;
@@ -169,13 +171,17 @@ namespace Components
             }
             if (parti<0){
                 var OldDecouvert = Int32.Parse(decouvertInputStat.GetComponent<Text>().text);
+                var OldDecouvertTotal = Int32.Parse(decouvertTotalInputStat.GetComponent<Text>().text);
                 if (parti<OldDecouvert){
                     decouvertInputStat.GetComponent<Text>().text = parti.ToString();
                 }
+                decouvertTotalInputStat.GetComponent<Text>().text = (OldDecouvertTotal+parti).ToString();
+
             }
 
             bilanInputStat.GetComponent<Text>().text = bilan.ToString();
             gameInputStat.GetComponent<Text>().text = parti.ToString();
+            // decouvert.GetComponent<Text>().text = parti.ToString();
         }
 
         void LoadStat(string[,] result){
@@ -463,8 +469,6 @@ namespace Components
             {
                 sauteuseValue.Add(item.options[item.value].text);
             }
-            Debug.Log("Run");
-            Debug.Log("sauteuseValue  len : " + sauteuseValue.Count);
 
             run(true, sauteuseValue);
         }
@@ -491,7 +495,6 @@ namespace Components
                     else{
                         template = templateLineRedFictiveLoose;   
                     }
-                    // template = templateLineRedFictive;
                 }else{
                     if (Convert.ToBoolean(win)){
                         template = templateLineBlackFictive;
@@ -499,7 +502,6 @@ namespace Components
                     else{
                         template = templateLineBlackFictiveLoose;   
                     }
-                    // template = templateLineBlackFictive;
                 }
 
                  mise1 = Int32.Parse(fictive[index,10]);
@@ -568,10 +570,12 @@ namespace Components
                 tempText[7].text = (mise).ToString() + " " + playerMise;
                 tempText[8].text = bilanGame.ToString();
                 tempText[9].text = bilanTotal.ToString(); 
+                // tempText[10].text = bilanTotal.ToString(); 
             }else{
                 tempText[3].text = (mise).ToString() + " " + playerMise;
                 tempText[4].text = bilanGame.ToString();
                 tempText[5].text = bilanTotal.ToString(); 
+                // tempText[6].text = bilanTotal.ToString(); 
             }
             lineGameObject.Add(newLine);
         }
