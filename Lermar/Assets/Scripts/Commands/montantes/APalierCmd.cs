@@ -116,9 +116,9 @@ namespace Montante
                     
                     if (fictive!=null){
                         if (Int32.Parse(fictive[0,2])>0){
-                                fictive[0,2]="0";
-                                fictive[0,0] = "1"; // mise
-                            }
+                            fictive[0,2]="0";
+                            fictive[0,0] = "1"; // mise
+                        }
                         if (Int32.Parse(fictive[1,2])>0){
                             fictive[1,2]="0";
                             fictive[1,0] = "1"; // mise

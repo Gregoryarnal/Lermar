@@ -267,9 +267,10 @@ namespace Montante
                 // Debug.Log("NewMise1 fictive : " +newMise1 );
                 
                 var inverseChanceTxt = inverse(chanceTxt);
-                fictivec[0,4] = newWin1.ToString();
 
                 (var newPlayerMise2, var newValue2, var newMise2,var newWin2 ) = play(inverseChanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[1,3]), Int32.Parse(fictivec[1,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);
+                
+                fictivec[0,4] = newWin1.ToString();
                 fictivec[1,4] = newWin2.ToString();
                 
                 fictivec[0,0] = newMise1.ToString();
