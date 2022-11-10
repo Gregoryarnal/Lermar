@@ -3,6 +3,7 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -165,7 +166,7 @@ namespace Components
             decouvertTotalInputStat.GetComponent<Text>().text =  "0";
             
         }
-        void setUpStat(int bilan, int parti, int mise, int coinValueInt){
+        void setUpStat(int bilan, int parti, int mise, int nextMise, int coinValueInt){
 
             var Oldmise = Int32.Parse(miseInputStat.GetComponent<Text>().text);
             if (mise>Oldmise){
@@ -176,8 +177,17 @@ namespace Components
                 var OldDecouvertTotal = Int32.Parse(decouvertTotalInputStat.GetComponent<Text>().text);
                 if (parti<OldDecouvert){
                     decouvertInputStat.GetComponent<Text>().text = parti.ToString();
+                    if (nextMise>-1){
+                        Debug.Log("OldDecouvertTotal : " + OldDecouvertTotal);
+                            Debug.Log("nextMise : " + nextMise);
+                            Debug.Log("OldDecouvert : " + OldDecouvert);
+                        // if (OldDecouvertTotal==0){
+                            // decouvertTotalInputStat.GetComponent<Text>().text = (Math.Abs(OldDecouvert)+nextMise).ToString();
+                        // }else if (OldDecouvertTotal+nextMise > OldDecouvertTotal){
+                            decouvertTotalInputStat.GetComponent<Text>().text = (Math.Abs(parti)+nextMise).ToString();
+                        // }
+                    }
                 }
-                decouvertTotalInputStat.GetComponent<Text>().text = (OldDecouvertTotal+parti).ToString();
 
             }
 
@@ -356,11 +366,14 @@ namespace Components
             for (int i = start; i < toBallInt; i++)
             {   
                 start=i;
-
+                int nextMise = -1;
                 addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                 Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
 
-                setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),Int32.Parse(result[i, 4]));        
+                if (i< toBallInt-1){
+                    nextMise = Int32.Parse(result[i+1, 3]);
+                }
+                setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),nextMise,Int32.Parse(result[i, 4]));        
                 if (stop){
                     ExecuteButton.onClick.RemoveAllListeners();
                     ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, stop));
@@ -400,7 +413,6 @@ namespace Components
             ExecuteButton.interactable = true;
             CancelButton.onClick.AddListener(() => setUpParamsView());
             ExecuteButton.onClick.AddListener(() => setUpSauteuseSequence(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt));
-
         }
 
         public void saveResult(string filename, Montantes montante, int toBallInt){
@@ -456,7 +468,7 @@ namespace Components
             leftView.SetActive(true);
             sauteuseView.SetActive(false);
             ExecuteButton.onClick.RemoveAllListeners();
-            ExecuteButton.interactable = false;
+            ExecuteButton.interactable = true;
             AllExecuteButton.onClick.RemoveAllListeners();
             AllExecuteButton.gameObject.SetActive(false);
             CancelButton.onClick.RemoveAllListeners();

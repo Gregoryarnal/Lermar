@@ -125,18 +125,18 @@ namespace Montante
                             fictive[0,0] = fmise.ToString();
                             fictive[0,2] = fbilan.ToString();
                             
-                            Debug.Log("bef 2 " + i);
+                            // Debug.Log("bef 2 " + i);
                             (fmise,fiboCpt2,cumulValue2,fbilan) = calculMise(Convert.ToBoolean(fictive[1,4]), Int32.Parse(fictive[1,0]),  fiboCpt2, cumulValue2, Int32.Parse(fictive[1,2]));
-                            Debug.Log("after calcukl mise : " + fmise);
+                            // Debug.Log("after calcukl mise : " + fmise);
                             fictive[1,0] = fmise.ToString();
                             fictive[1,2] = fbilan.ToString();
-                            Debug.Log("after 2 " + i);
+                            // Debug.Log("after 2 " + i);
 
                             value= -1;
                         }
 
                         (fictive, value) = calculateFictive(this, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, "Fibonaci", fictive);
-                        Debug.Log("after calculateFictive 2 " + fictive[1,0] + " at " + i);
+                        // Debug.Log("after calculateFictive 2 " + fictive[1,0] + " at " + i);
                         setFictiveLine(fictive);  
                     }
 
@@ -212,7 +212,18 @@ namespace Montante
                         cumulValue.Add(1);
 
                         if (fictive!=null && attaqueTxt == "différentielle directe"){
+                            //  fictive = null;
+                            // fiboCpt1 = startvalue;
+                            // cumulValue1 = new List<int>();
+                            // cumulValue1.Add(1);
+
+                            // fiboCpt2 = startvalue;
+                            // cumulValue2 = new List<int>();
+                            // cumulValue2.Add(1);
+
+                            coup = 0;
                             bilanGame = 0;
+
                         }else if(attaqueTxt == "différentielle compensée"){
                             fictive = null;
                             fiboCpt1 = startvalue;

@@ -107,11 +107,20 @@ namespace Montante
             var newValue = readPermanenceFile(permanenceSelectedTxt,index);
             var lastValue = -1;
             int newMise = 0;
+            var secu = false;
+            if (mise<0){
+                mise = Math.Abs(mise);
+                secu = true;
+            }
 
             if (index > 0){
                 lastValue = readPermanenceFile(permanenceSelectedTxt,index-1);
             }
             var newPlayerMise = getPlayerMise(chanceTxt, newValue, win, index,  lastValue);
+
+            if (secu){
+                newPlayerMise = newPlayerMise + " (sécu)";
+            }
 
             if (!misecalc){
                 newMise = mise;
@@ -134,7 +143,7 @@ namespace Montante
                     if (Math.Abs(bilan)==0){
                         return (1*coinValueInt);
                     } 
-                    return Math.Abs(bilan)+1;
+                    return -(Math.Abs(bilan)+1);
                 }
             }
             
@@ -163,8 +172,8 @@ namespace Montante
                     mise = 1;
                 }
 
-                // if (coup!= 0 && coup%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
-                if (coup!= 0 && coup%timePalier==0 && (!diff)){
+                if (coup!= 0 && coup%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
+                // if (coup!= 0 && coup%timePalier==0 && (!diff)){
                     if (mise == nbPalierInt){
                         if (ifMaxPalierTxt.StartsWith("Recommencer")){
                             mise = 1 ;

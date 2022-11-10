@@ -58,7 +58,6 @@ namespace Montante
                 {
                     if (attaqueTxt.StartsWith("différentielle")){
                         (fictive, value) = calculateFictive(this, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, "A paliers", fictive);
-
                         setFictiveLine(fictive);
                     }
 
@@ -115,16 +114,36 @@ namespace Montante
                     addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
                     
                     if (fictive!=null){
-                        if (Int32.Parse(fictive[0,2])>0){
-                            fictive[0,2]="0";
+           
+
+                        if(Convert.ToBoolean(fictive[0,4]) && typeOfMise=="En gain"){
+                           fictive[0,0] = (Int32.Parse(fictive[0,0]) + 1).ToString();
+                        }
+
+
+                        if( Convert.ToBoolean(fictive[1,4]) && typeOfMise=="En gain"){
+                            fictive[1,0] = (Int32.Parse(fictive[1,0]) + 1).ToString();
+                        }
+
+                                     if (Int32.Parse(fictive[0,2])>0){
+                            fictive[0,2] = "0";
                             fictive[0,0] = "1"; // mise
                         }
                         if (Int32.Parse(fictive[1,2])>0){
                             fictive[1,2]="0";
                             fictive[1,0] = "1"; // mise
-                        }   
+                        }  
+                        
                     }
-                    
+
+                    if(win && typeOfMise=="En gain"){
+                        mise += 1;
+                    }
+
+                    if (fictive != null){
+                        
+                    }
+                   
                     if (win && bilanGame>0){
                         gain = 0;
                         mise = miseInitial;
