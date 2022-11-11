@@ -173,7 +173,7 @@ namespace Montante
                 }
 
                 if (security){
-                    fiboCpt = calculateSecurity(mise,bilanGame );
+                    fiboCpt = calculateSecurity(mise,bilanGame, coup );
                 }
 
                 index+=1;

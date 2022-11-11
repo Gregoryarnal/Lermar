@@ -125,7 +125,7 @@ namespace Montante
                             fictive[1,0] = (Int32.Parse(fictive[1,0]) + 1).ToString();
                         }
 
-                                     if (Int32.Parse(fictive[0,2])>0){
+                        if (Int32.Parse(fictive[0,2])>0){
                             fictive[0,2] = "0";
                             fictive[0,0] = "1"; // mise
                         }
@@ -153,16 +153,18 @@ namespace Montante
                         }else if(attaqueTxt == "différentielle compensée"){
                             bilanGame = 0;
                             fictive = null;
+                            coup = 0;
+
                         }else if(!attaqueTxt.StartsWith("différentielle")){
                             coup = 0;
                             bilanGame = 0;
                         }
                     }            
 
-                    if (bilanTotal>=gainResearchInt && gainResearchInt!=0){
-                        Debug.Log("End gainResearchInt");
-                        break;
-                    }
+                    // if (bilanTotal>=gainResearchInt && gainResearchInt!=0){
+                    //     Debug.Log("End gainResearchInt");
+                    //     break;
+                    // }
                     
                     if (playerMise==null){
                         if(!attaqueTxt.StartsWith("différentielle")){        
@@ -171,7 +173,7 @@ namespace Montante
                     }
 
                     if (security){
-                        mise = calculateSecurity(mise,bilanGame);
+                        mise = calculateSecurity(mise,bilanGame, coup);
                     }
 
                     index+=1;

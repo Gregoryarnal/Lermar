@@ -434,7 +434,7 @@ namespace Components
             for (int i = 0; i < toBallInt; i++)
             {
                 if (headerSize == 6){
-                    newLine = result[i,0]+","+result[i,1]+","+result[i,2]+","+result[i,3]+","+result[i,5]+","+result[i,6];
+                    newLine = result[i,0]+","+result[i,1]+","+result[i,2]+","+result[i,3]+" "+result[i,7]+","+result[i,5]+","+result[i,6];
                 }else{
                     newLine = result[i,0]+","+result[i,1]+","+result[i,2]+","+result[i,10]+" "+result[i,11]+","+result[i,12]+","+result[i,13]+" "+result[i,14]+","+result[i,15]+","+result[i,3]+","+result[i,5]+","+result[i,6];
                 } 

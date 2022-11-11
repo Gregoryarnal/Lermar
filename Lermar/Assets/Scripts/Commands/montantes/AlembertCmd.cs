@@ -169,7 +169,7 @@ namespace Montante
                     }
 
                     if (security){
-                        mise = calculateSecurity(mise,bilanGame);
+                        mise = calculateSecurity(mise,bilanGame, coup);
                     }
                     index+=1;
                 }

@@ -1,6 +1,7 @@
 // using System.Diagnostics;
 // using System.Diagnostics;
 // using System.Diagnostics;
+// using System.Diagnostics;
 
 using System.ComponentModel;
 
@@ -108,6 +109,7 @@ namespace Montante
             var lastValue = -1;
             int newMise = 0;
             var secu = false;
+
             if (mise<0){
                 mise = Math.Abs(mise);
                 secu = true;
@@ -116,6 +118,7 @@ namespace Montante
             if (index > 0){
                 lastValue = readPermanenceFile(permanenceSelectedTxt,index-1);
             }
+
             var newPlayerMise = getPlayerMise(chanceTxt, newValue, win, index,  lastValue);
 
             if (secu){
@@ -136,16 +139,16 @@ namespace Montante
             return (newPlayerMise, newValue, newMise, newWin);
         }
 
-        public int calculateSecurity(int mise, int bilan){
+        public int calculateSecurity(int mise, int bilan, int coup){
 
             if (mise>Math.Abs(bilan)){
                 if (Math.Abs(bilan-mise)>securityValue){
-                    if (Math.Abs(bilan)==0){
-                        return (1*coinValueInt);
-                    } 
                     return -(Math.Abs(bilan)+1);
                 }
             }
+            if (bilan==0 && coup != 0){
+                return -1;
+            } 
             
             return mise;
         }
@@ -188,6 +191,7 @@ namespace Montante
         }
         
         public string valueChance(int value, string playerMise){
+
             string[] color =  {"Rouge", "Noir"};
             string[] pairImpair =  {"Pair", "Impair"};
             string[] manquePasse =  {"Manque", "Passe"};
@@ -273,8 +277,7 @@ namespace Montante
                 }
 
                 (var newPlayerMise1, var newValue1, var newMise1,var newWin1 ) = play(chanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[0,3]), Int32.Parse(fictivec[0,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);
-                // Debug.Log("NewMise1 fictive : " +newMise1 );
-                
+
                 var inverseChanceTxt = inverse(chanceTxt);
 
                 (var newPlayerMise2, var newValue2, var newMise2,var newWin2 ) = play(inverseChanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[1,3]), Int32.Parse(fictivec[1,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);
@@ -302,7 +305,7 @@ namespace Montante
                         }else{
                             ret =newMise1/2+1;
                         }
-                        bilanGame1 += ret;
+                        bilanGame1 -= ret;
                     }else{
                         bilanGame1 -= newMise1;
                     }
@@ -316,9 +319,9 @@ namespace Montante
                         if ((newMise2)%2==0){
                             ret =newMise2/2;
                         }else{
-                            ret =newMise2/2+1;
+                            ret =(newMise2/2)+1;
                         }
-                        bilanGame2 += ret;
+                        bilanGame2-= ret;
                     }else{
                         bilanGame2 -= newMise2;
                     }
@@ -343,6 +346,10 @@ namespace Montante
         }
 
         private bool calculateGain(int value, string playerMise,int mise,int coinValueInt, int gain){
+            
+            if (playerMise.EndsWith("(sécu)")){
+                playerMise = playerMise.Split(" (sécu)")[0];
+            }
             var result = valueChance(value, playerMise);
             if (string.Compare(result,playerMise)==0){
                 gain +=mise;
