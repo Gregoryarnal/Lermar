@@ -143,7 +143,9 @@ namespace Montante
 
             if (mise>Math.Abs(bilan)){
                 if (Math.Abs(bilan-mise)>securityValue){
-                    return -(Math.Abs(bilan)+1);
+                    if (mise!=(Math.Abs(bilan)+1)){
+                        return -(Math.Abs(bilan)+1);
+                    }
                 }
             }
             if (bilan==0 && coup != 0){
