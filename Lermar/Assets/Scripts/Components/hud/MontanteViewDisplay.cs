@@ -166,34 +166,52 @@ namespace Components
             decouvertTotalInputStat.GetComponent<Text>().text =  "0";
             
         }
-        void setUpStat(int bilan, int parti, int mise, int nextMise, int coinValueInt){
+
+        (int, int,int,int, int) calculateStat(int bilan, int parti, int mise, int nextMise, int coinValueInt){
+            int miseStat = 0,bilanStat= 0,gameStat= 0 ,decouvertStat= 0,decouvertTotalStat = 0;
 
             var Oldmise = Int32.Parse(miseInputStat.GetComponent<Text>().text);
             if (mise>Oldmise){
-                miseInputStat.GetComponent<Text>().text = (mise).ToString();
+                miseStat = mise;
+            }else{
+                miseStat = Oldmise;
             }
             if (parti<0){
                 var OldDecouvert = Int32.Parse(decouvertInputStat.GetComponent<Text>().text);
                 var OldDecouvertTotal = Int32.Parse(decouvertTotalInputStat.GetComponent<Text>().text);
                 if (parti<OldDecouvert){
-                    decouvertInputStat.GetComponent<Text>().text = parti.ToString();
+                    decouvertStat = parti;
                     if (nextMise>-1){
-                        Debug.Log("OldDecouvertTotal : " + OldDecouvertTotal);
-                            Debug.Log("nextMise : " + nextMise);
-                            Debug.Log("OldDecouvert : " + OldDecouvert);
+                       
                         // if (OldDecouvertTotal==0){
                             // decouvertTotalInputStat.GetComponent<Text>().text = (Math.Abs(OldDecouvert)+nextMise).ToString();
                         // }else if (OldDecouvertTotal+nextMise > OldDecouvertTotal){
-                            decouvertTotalInputStat.GetComponent<Text>().text = (Math.Abs(parti)+nextMise).ToString();
+                            decouvertTotalStat = Math.Abs(parti)+nextMise;
+                            // decouvertTotalInputStat.GetComponent<Text>().text = (Math.Abs(parti)+nextMise).ToString();
                         // }
+                    }else{
+                            decouvertTotalStat = OldDecouvertTotal;
+
                     }
+                }else{
+                    decouvertStat = OldDecouvert;
+
                 }
 
             }
 
-            bilanInputStat.GetComponent<Text>().text = bilan.ToString();
-            gameInputStat.GetComponent<Text>().text = parti.ToString();
-            // decouvert.GetComponent<Text>().text = parti.ToString();
+
+            bilanStat = bilan;
+            gameStat = parti;
+            return (miseStat,bilanStat,gameStat ,decouvertStat,decouvertTotalStat);
+        }
+
+        void setUpStat(int miseStat, int bilanStat, int gameStat, int decouvertStat, int decouvertTotalStat){
+            miseInputStat.GetComponent<Text>().text = miseStat.ToString();
+            decouvertInputStat.GetComponent<Text>().text = decouvertStat.ToString();
+            decouvertTotalInputStat.GetComponent<Text>().text = decouvertTotalStat.ToString();
+            bilanInputStat.GetComponent<Text>().text = bilanStat.ToString();
+            gameInputStat.GetComponent<Text>().text = gameStat.ToString();
         }
 
         void LoadStat(string[,] result){
@@ -356,7 +374,7 @@ namespace Components
                 setUpResult(result,toBallInt,fromBallInt-1, stop);
 
                 if (SavePath!= ""){
-                    saveResult(SavePath,montanteManager,toBallInt);
+                    saveResult(SavePath,montanteManager,toBallInt,fromBallInt-1);
                 }
             }
         }
@@ -373,7 +391,8 @@ namespace Components
                 if (i< toBallInt-1){
                     nextMise = Int32.Parse(result[i+1, 3]);
                 }
-                setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),nextMise,Int32.Parse(result[i, 4]));        
+                // (int, int,int,int) ;
+                setUpStat(calculateStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),nextMise,Int32.Parse(result[i, 4])));        
                 if (stop){
                     ExecuteButton.onClick.RemoveAllListeners();
                     ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, stop));
@@ -415,7 +434,7 @@ namespace Components
             ExecuteButton.onClick.AddListener(() => setUpSauteuseSequence(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt));
         }
 
-        public void saveResult(string filename, Montantes montante, int toBallInt){
+        public void saveResult(string filename, Montantes montante, int toBallInt, int fromBallInt){
 
             var csv = new StringBuilder();
             var filePath = filename+".csv";
@@ -443,6 +462,14 @@ namespace Components
             }
 
             File.AppendAllText(filePath, csv.ToString());
+
+            //  for (int i = start; i < toBallInt; i++)
+            // {   
+
+            //     setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),nextMise,Int32.Parse(result[i, 4]));        
+  
+            // }
+
         }
 
         public void setUpResultView(){
