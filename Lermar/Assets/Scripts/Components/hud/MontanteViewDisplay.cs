@@ -392,7 +392,15 @@ namespace Components
                     nextMise = Int32.Parse(result[i+1, 3]);
                 }
                 // (int, int,int,int) ;
-                setUpStat(calculateStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),nextMise,Int32.Parse(result[i, 4])));        
+                int miseStat =0;
+                int bilanStat =0;
+                 int gameStat =0;
+                  int decouvertStat =0;
+                  int decouvertTotalStat  =0;
+
+                (miseStat, bilanStat, gameStat, decouvertStat, decouvertTotalStat) = calculateStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),nextMise,Int32.Parse(result[i, 4]));
+                setUpStat(miseStat, bilanStat, gameStat, decouvertStat, decouvertTotalStat);  
+
                 if (stop){
                     ExecuteButton.onClick.RemoveAllListeners();
                     ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, stop));

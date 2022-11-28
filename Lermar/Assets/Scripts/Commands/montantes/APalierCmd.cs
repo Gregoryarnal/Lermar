@@ -45,6 +45,7 @@ namespace Montante
             var coup = 0;
             var win = true;
             var value = -1;
+            var lastValue = -1;
             // lineGameObject.Clear();
             // int last = readPermanenceFile(permanenceSelectedTxt, -1);
             bool lauchGame = true;
@@ -92,17 +93,19 @@ namespace Montante
                         bilanTotal += mise;
                         coup += 1;
                     }else{
-                        if (value == 0){
+                        if (lastValue == 0){
                             var ret = 0;
                             if ((mise)%2==0){
                                 ret =mise/2;
                             }else{
-                                ret =mise/2+1;
+                                ret =(mise/2)+1;
                             }
                             gain -= ret;
                             bilanGame -= ret;
                             bilanTotal -= ret;
-                        }else{
+                            mise = ret;
+                        }
+                        else{
                             gain -= mise;
                             bilanGame -= mise;
                             bilanTotal -= mise;
@@ -112,7 +115,10 @@ namespace Montante
                     }
 
                     addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
+
+                    lastValue = value;
                     
+
                     if (fictive!=null){
            
 
@@ -140,11 +146,9 @@ namespace Montante
                         mise += 1;
                     }
 
-                    if (fictive != null){
-                        
-                    }
+                    
                    
-                    if (win && bilanGame>0){
+                    if (win && bilanGame>0 && gainResearchInt==0){
                         gain = 0;
                         mise = miseInitial;
 
@@ -159,7 +163,22 @@ namespace Montante
                             coup = 0;
                             bilanGame = 0;
                         }
-                    }            
+                    }else if (win && bilanGame>=gainResearchInt && gainResearchInt!=0){
+                        gain = 0;
+                        mise = miseInitial;
+
+                        if (fictive!=null && attaqueTxt == "différentielle directe"){
+                            bilanGame = 0;
+                        }else if(attaqueTxt == "différentielle compensée"){
+                            bilanGame = 0;
+                            fictive = null;
+                            coup = 0;
+
+                        }else if(!attaqueTxt.StartsWith("différentielle")){
+                            coup = 0;
+                            bilanGame = 0;
+                        }
+                    }        
 
                     // if (bilanTotal>=gainResearchInt && gainResearchInt!=0){
                     //     Debug.Log("End gainResearchInt");

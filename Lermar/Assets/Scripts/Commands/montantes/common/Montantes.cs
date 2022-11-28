@@ -140,14 +140,21 @@ namespace Montante
         }
 
         public int calculateSecurity(int mise, int bilan, int coup){
+            
 
             if (mise>Math.Abs(bilan)){
-                if (Math.Abs(bilan-mise)>securityValue){
+                if (Math.Abs(bilan-mise)>securityValue && securityValue!=0){
                     if (mise!=(Math.Abs(bilan)+1)){
                         return -(Math.Abs(bilan)+1);
                     }
                 }
-            }
+                else if (bilan < 0 && securityValue==0){
+                    return -(Math.Abs(bilan)+1);
+                }
+                
+            }else if (bilan < 0 && securityValue==0){
+                    return -(Math.Abs(bilan)+1);
+                }
             if (bilan==0 && coup != 0){
                 return -1;
             } 
