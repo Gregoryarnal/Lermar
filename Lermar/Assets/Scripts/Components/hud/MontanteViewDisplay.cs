@@ -43,6 +43,7 @@ namespace Components
         public Dropdown SecurityInput;
         public GameObject securityValueInput;
         public Dropdown gainOrLoos;
+        public Dropdown gainType;
 
         public GameObject gainResearch;
         public GameObject nbPalier;
@@ -250,6 +251,8 @@ namespace Components
             }
             var securityValue = Int32.Parse(securityValueInput.GetComponent<InputField>().text);
             var typeOfMise = gainOrLoos.options[gainOrLoos.value].text;
+            var typeOfGain = gainType.options[gainType.value].text;
+            
 
 
 
@@ -277,7 +280,7 @@ namespace Components
                     }
                     Debug.Log("lauchGame : " + lauchGame);
                     if (lauchGame){
-                        APalierCmd palier = new APalierCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security, securityValue, typeOfMise);
+                        APalierCmd palier = new APalierCmd(typeOfGain, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security, securityValue, typeOfMise);
                         
                         montanteManager = palier.getMontanteManager();
                         palier.run();

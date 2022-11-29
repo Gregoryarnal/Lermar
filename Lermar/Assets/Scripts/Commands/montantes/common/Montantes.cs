@@ -359,6 +359,11 @@ namespace Montante
             if (playerMise.EndsWith("(sécu)")){
                 playerMise = playerMise.Split(" (sécu)")[0];
             }
+            
+            if (value==0){
+                gain -= mise;
+                return false;
+            }
             var result = valueChance(value, playerMise);
             if (string.Compare(result,playerMise)==0){
                 gain +=mise;

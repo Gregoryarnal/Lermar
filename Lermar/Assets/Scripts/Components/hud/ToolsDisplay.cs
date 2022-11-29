@@ -106,9 +106,9 @@ namespace Components
             Reset();
         }
 
-        void Update(){
-            Debug.Log("update");
-        }
+        // void Update(){
+        //     Debug.Log("update");
+        // }
         
         void Reload(){
             Debug.Log("Reload");

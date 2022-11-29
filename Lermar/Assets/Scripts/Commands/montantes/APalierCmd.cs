@@ -17,16 +17,19 @@ namespace Montante
         public int nbPalierInt;
         public int timePalierInt;
         public string ifMaxPalierTxt;
+        public string typeOfGainTxt;
 
          
 
 
-        public APalierCmd(int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security,int securityValue,string typeOfMise) 
+        public APalierCmd(string typeOfGain, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security,int securityValue,string typeOfMise) 
         : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise)
         {
+            typeOfGainTxt=typeOfGain;
             nbPalierInt=nbPalierIntn;
             timePalierInt=timePalierIntn;
             ifMaxPalierTxt=ifMaxPalierTxtn;
+
         }
 
 
@@ -37,7 +40,7 @@ namespace Montante
             var mise = 1*coinValueInt;
             var gain = 0;
 
-
+            var firstWin = false;
 
             var index = 0;
             var bilanTotal = 0;
@@ -50,6 +53,10 @@ namespace Montante
             // int last = readPermanenceFile(permanenceSelectedTxt, -1);
             bool lauchGame = true;
             var playerMise = "";
+
+            // if (typeOfGainTxt=="Réel"){
+                var cptWin = 0;
+            // }
             
 
             string[,] fictive = null;
@@ -93,7 +100,7 @@ namespace Montante
                         bilanTotal += mise;
                         coup += 1;
                     }else{
-                        if (lastValue == 0){
+                        if (value == 0){
                             var ret = 0;
                             if ((mise)%2==0){
                                 ret =mise/2;
@@ -103,7 +110,7 @@ namespace Montante
                             gain -= ret;
                             bilanGame -= ret;
                             bilanTotal -= ret;
-                            mise = ret;
+                            // mise = ret;
                         }
                         else{
                             gain -= mise;
@@ -116,7 +123,7 @@ namespace Montante
 
                     addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
 
-                    lastValue = value;
+                    // lastValue = value;
                     
 
                     if (fictive!=null){
@@ -142,15 +149,44 @@ namespace Montante
                         
                     }
 
-                    if(win && typeOfMise=="En gain"){
-                        mise += 1;
-                    }
+                    if(win && typeOfMise=="En gain" ){
+                        if (typeOfGainTxt=="Normal"){
+                            mise += 1;
+                        }else if(typeOfGainTxt=="Réel" ){
+                            
+                            cptWin += 1;
 
+                            if (cptWin !=0 &&  cptWin%timePalierInt==0){
+                                mise += 1;
+                                cptWin =0;
+
+                               Debug.Log("upp mise : " + mise);
+
+                            }
+                        }else if(typeOfGainTxt=="Continue"){
+                            mise += 1;
+                            if (coup == 1){
+                                firstWin = true;
+                            } 
+                        }
+                    }else if (!win && typeOfMise=="En gain"){
+                        if (typeOfGainTxt=="Continue" && coup == 1 ){
+                            firstWin = false;
+                        }else if(typeOfGainTxt=="Réel" ){
+                             
+                            if (cptWin !=0 && cptWin%timePalierInt==0){
+                                mise += 1; 
+                                cptWin =0;
+                            }
+                        }
+                    }
                     
-                   
-                    if (win && bilanGame>0 && gainResearchInt==0){
+
+                    if ((win && bilanGame>0 && gainResearchInt==0 && (typeOfGainTxt!="Continue" || (typeOfGainTxt=="Continue" && !firstWin)))||(!win && typeOfGainTxt=="Continue" && firstWin)){
+                        // Debug.Log("here");
                         gain = 0;
                         mise = miseInitial;
+                            cptWin =0;
 
                         if (fictive!=null && attaqueTxt == "différentielle directe"){
                             bilanGame = 0;
@@ -158,7 +194,6 @@ namespace Montante
                             bilanGame = 0;
                             fictive = null;
                             coup = 0;
-
                         }else if(!attaqueTxt.StartsWith("différentielle")){
                             coup = 0;
                             bilanGame = 0;
