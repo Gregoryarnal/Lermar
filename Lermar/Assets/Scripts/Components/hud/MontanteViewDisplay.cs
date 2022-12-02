@@ -183,13 +183,7 @@ namespace Components
                 if (parti<OldDecouvert){
                     decouvertStat = parti;
                     if (nextMise>-1){
-                       
-                        // if (OldDecouvertTotal==0){
-                            // decouvertTotalInputStat.GetComponent<Text>().text = (Math.Abs(OldDecouvert)+nextMise).ToString();
-                        // }else if (OldDecouvertTotal+nextMise > OldDecouvertTotal){
                             decouvertTotalStat = Math.Abs(parti)+nextMise;
-                            // decouvertTotalInputStat.GetComponent<Text>().text = (Math.Abs(parti)+nextMise).ToString();
-                        // }
                     }else{
                             decouvertTotalStat = OldDecouvertTotal;
 

@@ -48,6 +48,8 @@ namespace Montante
 
         int fiboCpt1 = 4;
         int fiboCpt2 = 4;
+
+        int cptValuePlay = 0;
         // public List<string> sauteuseValue = new List<string>();
 
 
@@ -109,10 +111,15 @@ namespace Montante
             var lastValue = -1;
             int newMise = 0;
             var secu = false;
+             var newWin = false;
 
             if (mise<0){
                 mise = Math.Abs(mise);
                 secu = true;
+            }
+
+            if (coup==0){
+                 cptValuePlay  =0;
             }
 
             if (index > 0){
@@ -131,10 +138,13 @@ namespace Montante
 
             if (misecalc && newPlayerMise != null){
                 newMise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, newPlayerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, diff);
-                newMise = checkMaxMise(newMise);
+                newWin = calculateGain(newValue, newPlayerMise, newMise,coinValueInt, gain);
+
             }
 
-            var newWin = calculateGain(newValue, newPlayerMise, newMise,coinValueInt, gain);
+            newMise = checkMaxMise(newMise);
+
+
             
             return (newPlayerMise, newValue, newMise, newWin);
         }
@@ -144,19 +154,30 @@ namespace Montante
 
             if (mise>Math.Abs(bilan)){
                 if (Math.Abs(bilan-mise)>securityValue && securityValue!=0){
+                    
                     if (mise!=(Math.Abs(bilan)+1)){
+                    cptValuePlay  =0;
+
                         return -(Math.Abs(bilan)+1);
                     }
                 }
                 else if (bilan < 0 && securityValue==0){
+                    cptValuePlay =0;
+
                     return -(Math.Abs(bilan)+1);
                 }
                 
             }else if (bilan < 0 && securityValue==0){
+                    cptValuePlay  =0;
+
                     return -(Math.Abs(bilan)+1);
                 }
             if (bilan==0 && coup != 0){
-                return -1;
+                if (mise!=1){
+                    cptValuePlay  =0;
+
+                    return -1;
+                }
             } 
             
             return mise;
@@ -177,23 +198,25 @@ namespace Montante
         }
 
         public  int calculateMise(int coup, int mise, int timePalier, int nbPalierInt, string playerMise, int coinValueInt, int maxMiseInt, string ifMaxPalierTxt,string maxReachTxt, bool diff){
-            // Debug.Log("need to be declare in child");
             if (playerMise != null){
 
                 if (mise==0){
                     mise = 1;
                 }
 
-                if (coup!= 0 && coup%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
-                // if (coup!= 0 && coup%timePalier==0 && (!diff)){
+                // if (coup!= 0 && coup%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
+                if (cptValuePlay!= 0 && cptValuePlay%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
                     if (mise == nbPalierInt){
                         if (ifMaxPalierTxt.StartsWith("Recommencer")){
+                            cptValuePlay =0;
                             mise = 1 ;
                         }
                     }else{
+                        cptValuePlay +=1;
                         mise += 1;
                     }
                 }
+                cptValuePlay +=1;
                 return mise;
             }
             return 0;
@@ -344,12 +367,12 @@ namespace Montante
                 fictivec[0,3] = (Int32.Parse(fictivec[0,3]) + 1).ToString();// coup
 
                 fictivec[1,3] = (Int32.Parse(fictivec[1,3]) + 1).ToString();// coup
-                if (Int32.Parse(fictivec[0,2])>0){
-                    fictivec[0,3] = "0"; // coup
-                }
-                if (Int32.Parse(fictivec[1,2])>0){
-                    fictivec[1,3] = "0";// coup
-                }  
+                // if (Int32.Parse(fictivec[0,2])>0){
+                //     fictivec[0,3] = "0"; // coup
+                // }
+                // if (Int32.Parse(fictivec[1,2])>0){
+                //     fictivec[1,3] = "0";// coup
+                // }  
             }
             return (fictivec, value);
         }

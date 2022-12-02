@@ -23,6 +23,10 @@ using Commands;
 using System.IO;
 // using System.Windows.Forms;
 using SFB;
+
+// using IronXL;
+// using System.Linq;
+
 namespace Components
 {
     public class ToolsDisplay : MonoBehaviour
@@ -231,17 +235,23 @@ namespace Components
         public void MontanteAddButtonClicked(){
             Debug.Log("MontanteAddButtonClicked");
             var extensions = new [] {
-                new ExtensionFilter("Text Files", "txt" )
+                new ExtensionFilter("Text Files", "txt", "xlxs" )
             };
 
             var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", extensions, false);
 
             var permanencePath = Path.GetDirectoryName(Application.dataPath) +"/permanences/MC/";
-
+            
+            
             foreach (var file in paths)
             {   
+                
                 if (file.Length != 0){
-                    File.Copy(file, Path.Combine(permanencePath, Path.GetFileName(file)), true );
+                    if (file.EndsWith("xlxs")){
+                        readExcelFile(file);
+                    }else{
+                        File.Copy(file, Path.Combine(permanencePath, Path.GetFileName(file)), true );
+                    }
                 }
             }
 
@@ -249,6 +259,25 @@ namespace Components
             
 
         }
+
+        void readExcelFile(string filepath){
+            // WorkBook workbook = WorkBook.Load(filepath);
+            // WorkSheet sheet = workbook.WorkSheets.First();
+            // //Select cells easily in Excel notation and return the calculated value
+            // // int cellValue = sheet["A2"].IntValue;
+            // // Read from Ranges of cells elegantly.
+            // foreach (var cell in sheet["C1:C10"])
+            // {
+            //     Debug.Log("Cell {0} has value '{1}'", cell.AddressString, cell.Text);
+            // }   
+            ///Advanced Operations
+            //Calculate aggregate values such as Min, Max and Sum
+            // decimal sum = sheet["A2:A10"].Sum();
+            //Linq compatible
+            // decimal max = sheet["A2:A10"].Max(c => c.DecimalValue);
+
+        }
+
 
         int calculatePopUpYposition(int size){
             

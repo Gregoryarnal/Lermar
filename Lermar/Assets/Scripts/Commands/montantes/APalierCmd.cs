@@ -38,9 +38,13 @@ namespace Montante
 
             var miseInitial = 1*coinValueInt;
             var mise = 1*coinValueInt;
+            var mise1 = 1*coinValueInt;
+            var mise2 = 1*coinValueInt;
             var gain = 0;
 
             var firstWin = false;
+            var firstWin1 = false;
+            var firstWin2 = false;
 
             var index = 0;
             var bilanTotal = 0;
@@ -54,9 +58,9 @@ namespace Montante
             bool lauchGame = true;
             var playerMise = "";
 
-            // if (typeOfGainTxt=="Réel"){
-                var cptWin = 0;
-            // }
+            var cptWin = 0;
+            var cptWin1 = 0;
+            var cptWin2 = 0;
             
 
             string[,] fictive = null;
@@ -121,76 +125,54 @@ namespace Montante
                         coup += 1;
                     }
 
-                    addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
-
-                    // lastValue = value;
-                    
+                    addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);                    
 
                     if (fictive!=null){
            
 
-                        if(Convert.ToBoolean(fictive[0,4]) && typeOfMise=="En gain"){
-                           fictive[0,0] = (Int32.Parse(fictive[0,0]) + 1).ToString();
-                        }
+                        // if(Convert.ToBoolean(fictive[0,4]) && typeOfMise=="En gain"){
+                        (var nmise1,var ncptWin1,var nfirstWin1) =  calculeMise(Convert.ToBoolean(fictive[0,4]), typeOfMise, typeOfGainTxt, Int32.Parse(fictive[0,0]) , cptWin1, firstWin1, Int32.Parse(fictive[0,3]));
+                        mise1 = nmise1;
+                        cptWin1 = ncptWin1;
+                        firstWin1 = nfirstWin1;
+
+                        fictive[0,0] = (mise1).ToString();
+
+                        (var nmise2,var ncptWin2,var nfirstWin2) =  calculeMise(Convert.ToBoolean(fictive[1,4]), typeOfMise, typeOfGainTxt, Int32.Parse(fictive[1,0]) , cptWin2, firstWin2, Int32.Parse(fictive[1,3]));
+
+                        mise2 = nmise2;
+                        cptWin2 = ncptWin2;
+                        firstWin2 = nfirstWin2;
+
+                        fictive[1,0] = (mise2).ToString();
 
 
-                        if( Convert.ToBoolean(fictive[1,4]) && typeOfMise=="En gain"){
-                            fictive[1,0] = (Int32.Parse(fictive[1,0]) + 1).ToString();
-                        }
-
-                        if (Int32.Parse(fictive[0,2])>0){
-                            fictive[0,2] = "0";
+                        if ((Convert.ToBoolean(fictive[0,4]) && Int32.Parse(fictive[0,2])>0 && gainResearchInt==0 && (typeOfGainTxt!="Continue" || (typeOfGainTxt=="Continue" && !firstWin1)))||(!Convert.ToBoolean(fictive[0,4]) && typeOfGainTxt=="Continue" && firstWin1)){
+                            fictive[0,2] = "0"; //bilan
                             fictive[0,0] = "1"; // mise
+                            fictivec[0,3] = "0";
                         }
-                        if (Int32.Parse(fictive[1,2])>0){
-                            fictive[1,2]="0";
+                        if ((Convert.ToBoolean(fictive[1,4]) && Int32.Parse(fictive[1,2])>0 && gainResearchInt==0 && (typeOfGainTxt!="Continue" || (typeOfGainTxt=="Continue" && !firstWin2)))||(!Convert.ToBoolean(fictive[1,4]) && typeOfGainTxt=="Continue" && firstWin2)){
+                            fictive[1,2]="0";//bilan
                             fictive[1,0] = "1"; // mise
+                            fictivec[1,3] = "0";
+
                         }  
                         
                     }
 
-                    if(win && typeOfMise=="En gain" ){
-                        if (typeOfGainTxt=="Normal"){
-                            mise += 1;
-                        }else if(typeOfGainTxt=="Réel" ){
-                            
-                            cptWin += 1;
+                    (var nmise,var ncptWin,var nfirstWin) =  calculeMise(win, typeOfMise, typeOfGainTxt, mise, cptWin, firstWin, coup);
 
-                            if (cptWin !=0 &&  cptWin%timePalierInt==0){
-                                mise += 1;
-                                cptWin =0;
-
-                               Debug.Log("upp mise : " + mise);
-
-                            }
-                        }else if(typeOfGainTxt=="Continue"){
-                            mise += 1;
-                            if (coup == 1){
-                                firstWin = true;
-                            } 
-                        }
-                    }else if (!win && typeOfMise=="En gain"){
-                        if (typeOfGainTxt=="Continue" && coup == 1 ){
-                            firstWin = false;
-                        }else if(typeOfGainTxt=="Réel" ){
-                             
-                            if (cptWin !=0 && cptWin%timePalierInt==0){
-                                mise += 1; 
-                                cptWin =0;
-                            }
-                        }
-                    }
-                    
+                    mise = nmise;
+                    cptWin = ncptWin;
+                    firstWin = nfirstWin;
 
                     if ((win && bilanGame>0 && gainResearchInt==0 && (typeOfGainTxt!="Continue" || (typeOfGainTxt=="Continue" && !firstWin)))||(!win && typeOfGainTxt=="Continue" && firstWin)){
-                        // Debug.Log("here");
                         gain = 0;
                         mise = miseInitial;
-                            cptWin =0;
+                        cptWin =0;
 
-                        if (fictive!=null && attaqueTxt == "différentielle directe"){
-                            bilanGame = 0;
-                        }else if(attaqueTxt == "différentielle compensée"){
+                        if(attaqueTxt == "différentielle compensée"){
                             bilanGame = 0;
                             fictive = null;
                             coup = 0;
@@ -215,11 +197,6 @@ namespace Montante
                         }
                     }        
 
-                    // if (bilanTotal>=gainResearchInt && gainResearchInt!=0){
-                    //     Debug.Log("End gainResearchInt");
-                    //     break;
-                    // }
-                    
                     if (playerMise==null){
                         if(!attaqueTxt.StartsWith("différentielle")){        
                             coup = 0;
@@ -234,7 +211,38 @@ namespace Montante
                 }
         }
 
+        (int,int,bool) calculeMise(bool gamewin, string typeOfMisen, string typeOfGainTxtn, int misen,int cptWinn, bool firstWinn,  int coupn){
+            if(gamewin && typeOfMisen=="En gain" ){
+                if (typeOfGainTxtn=="Normal"){
+                    misen += 1;
+                }else if(typeOfGainTxtn=="Réel" ){
+                    
+                    cptWinn += 1;
 
+                    if (cptWinn%timePalierInt==0){
+                        misen += 1;
+                        cptWinn =0;
+                    }
+                }else if(typeOfGainTxtn=="Continue"){
+                    misen += 1;
+                    if (coupn == 1){
+                        firstWinn = true;
+                    } 
+                }
+            }else if (!gamewin && typeOfMisen=="En gain"){
+                if (typeOfGainTxtn=="Continue" && coupn == 1 ){
+                    firstWinn = false;
+                }else if(typeOfGainTxtn=="Réel" ){
+                        
+                    if (cptWinn%timePalierInt==0){
+                        misen += 1; 
+                        cptWinn =0;
+                    }
+                }
+            }
+
+            return (misen,cptWinn, firstWinn);
+        }
         // void setUpSauteuseSequence(int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt){
         //     Dropdown[] tempDropdown = sauteuseView.GetComponentsInChildren<Dropdown>();
         //     foreach (Dropdown item in tempDropdown)
