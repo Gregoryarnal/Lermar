@@ -37,6 +37,7 @@ namespace Montante
         public int coinValueInt;
         public int maxMiseInt;
         public string permanenceSelectedTxt;
+        public int timePalierInt;
              
         public bool security;
         public int securityValue;
@@ -79,7 +80,7 @@ namespace Montante
 
         }
 
-        public Montantes(int gainResearchIntn, string maxReachTxtn, string chanceTxtn, string attaqueTxtn, int fromBallIntn, int toBallIntn, string fileNameTxtn, int coinValueIntn, int maxMiseIntn,string permanenceSelectedTxtn, List<string> sauteuseValuen, bool securityn,int securityValuen, string typeOfMisen){
+        public Montantes(int gainResearchIntn, string maxReachTxtn, string chanceTxtn, string attaqueTxtn, int fromBallIntn, int toBallIntn, string fileNameTxtn, int coinValueIntn, int maxMiseIntn,string permanenceSelectedTxtn, List<string> sauteuseValuen, bool securityn,int securityValuen, string typeOfMisen, int timePalierIntn){
             gainResearchInt=gainResearchIntn;
             maxReachTxt=maxReachTxtn;
             chanceTxt=chanceTxtn;
@@ -94,7 +95,7 @@ namespace Montante
             security=securityn;
             securityValue=securityValuen;
             typeOfMise=typeOfMisen;
-
+            timePalierInt=timePalierIntn;
 
             if (attaqueTxt.StartsWith("")){
                 result = new string[readPermanenceFile(permanenceSelectedTxt, -1),16];
@@ -111,7 +112,10 @@ namespace Montante
             var lastValue = -1;
             int newMise = 0;
             var secu = false;
-             var newWin = false;
+            
+            var newWin = true;
+            // cptValuePlay  =0;
+
 
             if (mise<0){
                 mise = Math.Abs(mise);
@@ -119,7 +123,7 @@ namespace Montante
             }
 
             if (coup==0){
-                 cptValuePlay  =0;
+                cptValuePlay  =0;
             }
 
             if (index > 0){
@@ -138,44 +142,37 @@ namespace Montante
 
             if (misecalc && newPlayerMise != null){
                 newMise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, newPlayerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, diff);
-                newWin = calculateGain(newValue, newPlayerMise, newMise,coinValueInt, gain);
-
+                // newWin = calculateGain(newValue, newPlayerMise, newMise,coinValueInt, gain);
             }
+                
+            newWin = calculateGain(newValue, newPlayerMise, newMise,coinValueInt, gain);
 
             newMise = checkMaxMise(newMise);
-
-
             
             return (newPlayerMise, newValue, newMise, newWin);
         }
 
-        public int calculateSecurity(int mise, int bilan, int coup){
-            
 
+        public int calculateSecurity(int mise, int bilan, int coup){
             if (mise>Math.Abs(bilan)){
                 if (Math.Abs(bilan-mise)>securityValue && securityValue!=0){
-                    
                     if (mise!=(Math.Abs(bilan)+1)){
-                    cptValuePlay  =0;
-
+                        cptValuePlay  =0;
                         return -(Math.Abs(bilan)+1);
                     }
                 }
                 else if (bilan < 0 && securityValue==0){
                     cptValuePlay =0;
-
                     return -(Math.Abs(bilan)+1);
                 }
                 
             }else if (bilan < 0 && securityValue==0){
                     cptValuePlay  =0;
-
                     return -(Math.Abs(bilan)+1);
                 }
             if (bilan==0 && coup != 0){
                 if (mise!=1){
                     cptValuePlay  =0;
-
                     return -1;
                 }
             } 
@@ -196,6 +193,42 @@ namespace Montante
 
             return mise;
         }
+
+
+        public (int,int,bool) calculeMise(bool gamewin, string typeOfMisen, string typeOfGainTxtn, int misen,int cptWinn, bool firstWinn,  int coupn){
+            if(gamewin && typeOfMisen=="En gain" ){
+                if (typeOfGainTxtn=="Normal"){
+                    misen += 1;
+                }else if(typeOfGainTxtn=="Réel" ){
+                    
+                    cptWinn += 1;
+
+                    if (cptWinn%timePalierInt==0){
+                        misen += 1;
+                        cptWinn =0;
+                    }
+                }else if(typeOfGainTxtn=="Continue"){
+                    misen += 1;
+                    if (coupn == 1){
+                        firstWinn = true;
+                    } 
+                }
+            }else if (!gamewin && typeOfMisen=="En gain"){
+                if (typeOfGainTxtn=="Continue" && coupn == 1 ){
+                    firstWinn = false;
+                }else if(typeOfGainTxtn=="Réel" ){
+                        
+                    if (cptWinn%timePalierInt==0){
+                        misen += 1; 
+                        cptWinn =0;
+                    }
+                }
+            }
+
+            return (misen,cptWinn, firstWinn);
+        }
+
+
 
         public  int calculateMise(int coup, int mise, int timePalier, int nbPalierInt, string playerMise, int coinValueInt, int maxMiseInt, string ifMaxPalierTxt,string maxReachTxt, bool diff){
             if (playerMise != null){
@@ -384,15 +417,15 @@ namespace Montante
             }
             
             if (value==0){
-                gain -= mise;
+                // gain -= mise;
                 return false;
             }
             var result = valueChance(value, playerMise);
             if (string.Compare(result,playerMise)==0){
-                gain +=mise;
+                // gain +=mise;
                 return true;
             }else{
-                gain -= mise;
+                // gain -= mise;
                 return false;
             }
         }

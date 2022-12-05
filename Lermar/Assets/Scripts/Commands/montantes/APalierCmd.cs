@@ -15,7 +15,7 @@ namespace Montante
     {
         // public Montantes parent {get; set;}
         public int nbPalierInt;
-        public int timePalierInt;
+        // public int timePalierInt;
         public string ifMaxPalierTxt;
         public string typeOfGainTxt;
 
@@ -23,11 +23,11 @@ namespace Montante
 
 
         public APalierCmd(string typeOfGain, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security,int securityValue,string typeOfMise) 
-        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise)
+        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise,timePalierIntn)
         {
             typeOfGainTxt=typeOfGain;
             nbPalierInt=nbPalierIntn;
-            timePalierInt=timePalierIntn;
+            // timePalierInt=timePalierIntn;
             ifMaxPalierTxt=ifMaxPalierTxtn;
 
         }
@@ -94,10 +94,8 @@ namespace Montante
                             }
                         }
                     }
-                    
-
-                     
-                    
+  
+  
                     if (win){
                         gain += mise;
                         bilanGame += mise;
@@ -129,8 +127,6 @@ namespace Montante
 
                     if (fictive!=null){
            
-
-                        // if(Convert.ToBoolean(fictive[0,4]) && typeOfMise=="En gain"){
                         (var nmise1,var ncptWin1,var nfirstWin1) =  calculeMise(Convert.ToBoolean(fictive[0,4]), typeOfMise, typeOfGainTxt, Int32.Parse(fictive[0,0]) , cptWin1, firstWin1, Int32.Parse(fictive[0,3]));
                         mise1 = nmise1;
                         cptWin1 = ncptWin1;
@@ -156,7 +152,6 @@ namespace Montante
                             fictive[1,2]="0";//bilan
                             fictive[1,0] = "1"; // mise
                             fictivec[1,3] = "0";
-
                         }  
                         
                     }
@@ -184,9 +179,10 @@ namespace Montante
                         gain = 0;
                         mise = miseInitial;
 
-                        if (fictive!=null && attaqueTxt == "différentielle directe"){
-                            bilanGame = 0;
-                        }else if(attaqueTxt == "différentielle compensée"){
+                        // if (fictive!=null && attaqueTxt == "différentielle directe"){
+                        //     bilanGame = 0;
+                        // }else
+                        if(attaqueTxt == "différentielle compensée"){
                             bilanGame = 0;
                             fictive = null;
                             coup = 0;
@@ -211,39 +207,45 @@ namespace Montante
                 }
         }
 
-        (int,int,bool) calculeMise(bool gamewin, string typeOfMisen, string typeOfGainTxtn, int misen,int cptWinn, bool firstWinn,  int coupn){
-            if(gamewin && typeOfMisen=="En gain" ){
-                if (typeOfGainTxtn=="Normal"){
-                    misen += 1;
-                }else if(typeOfGainTxtn=="Réel" ){
+        // (int,int,bool) calculeMise(bool gamewin, string typeOfMisen, string typeOfGainTxtn, int misen,int cptWinn, bool firstWinn,  int coupn){
+        //     if(gamewin && typeOfMisen=="En gain" ){
+        //         if (typeOfGainTxtn=="Normal"){
+        //             misen += 1;
+        //         }else if(typeOfGainTxtn=="Réel" ){
                     
-                    cptWinn += 1;
+        //             cptWinn += 1;
 
-                    if (cptWinn%timePalierInt==0){
-                        misen += 1;
-                        cptWinn =0;
-                    }
-                }else if(typeOfGainTxtn=="Continue"){
-                    misen += 1;
-                    if (coupn == 1){
-                        firstWinn = true;
-                    } 
-                }
-            }else if (!gamewin && typeOfMisen=="En gain"){
-                if (typeOfGainTxtn=="Continue" && coupn == 1 ){
-                    firstWinn = false;
-                }else if(typeOfGainTxtn=="Réel" ){
+        //             if (cptWinn%timePalierInt==0){
+        //                 misen += 1;
+        //                 cptWinn =0;
+        //             }
+        //         }else if(typeOfGainTxtn=="Continue"){
+        //             misen += 1;
+        //             if (coupn == 1){
+        //                 firstWinn = true;
+        //             } 
+        //         }
+        //     }else if (!gamewin && typeOfMisen=="En gain"){
+        //         if (typeOfGainTxtn=="Continue" && coupn == 1 ){
+        //             firstWinn = false;
+        //         }else if(typeOfGainTxtn=="Réel" ){
                         
-                    if (cptWinn%timePalierInt==0){
-                        misen += 1; 
-                        cptWinn =0;
-                    }
-                }
-            }
+        //             if (cptWinn%timePalierInt==0){
+        //                 misen += 1; 
+        //                 cptWinn =0;
+        //             }
+        //         }
+        //     }
 
-            return (misen,cptWinn, firstWinn);
-        }
-        // void setUpSauteuseSequence(int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt){
+        //     return (misen,cptWinn, firstWinn);
+        // }
+        
+        
+        
+        
+        
+        
+                // void setUpSauteuseSequence(int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt){
         //     Dropdown[] tempDropdown = sauteuseView.GetComponentsInChildren<Dropdown>();
         //     foreach (Dropdown item in tempDropdown)
         //     {

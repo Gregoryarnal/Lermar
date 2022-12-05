@@ -168,45 +168,57 @@ namespace Components
             
         }
 
-        (int, int,int,int, int) calculateStat(int bilan, int parti, int mise, int nextMise, int coinValueInt){
-            int miseStat = 0,bilanStat= 0,gameStat= 0 ,decouvertStat= 0,decouvertTotalStat = 0;
+        (int, int,int,int, int) calculateStat(int bilan, int parti, int mise, int lastParti, int coinValueInt){
+            int miseStat = 0,bilanStat= 0,gameStat= 0 ,perteMax= 0,decouvertTotalStat = 0;
 
             var Oldmise = Int32.Parse(miseInputStat.GetComponent<Text>().text);
+            var OldPerteMax = Math.Abs(Int32.Parse(decouvertInputStat.GetComponent<Text>().text));
+            var OldDecouvertTotal = Int32.Parse(decouvertTotalInputStat.GetComponent<Text>().text);
+
             if (mise>Oldmise){
                 miseStat = mise;
             }else{
                 miseStat = Oldmise;
             }
             if (parti<0){
-                var OldDecouvert = Int32.Parse(decouvertInputStat.GetComponent<Text>().text);
-                var OldDecouvertTotal = Int32.Parse(decouvertTotalInputStat.GetComponent<Text>().text);
-                if (parti<OldDecouvert){
-                    decouvertStat = parti;
-                    if (nextMise>-1){
-                            decouvertTotalStat = Math.Abs(parti)+nextMise;
-                    }else{
-                            decouvertTotalStat = OldDecouvertTotal;
-
-                    }
+                
+                if (parti<(-OldDecouvertTotal)){
+                    decouvertTotalStat = parti;
+                    
                 }else{
-                    decouvertStat = OldDecouvert;
-
+                    perteMax = OldPerteMax;
+                    decouvertTotalStat = OldDecouvertTotal;
                 }
 
+               
+
+            }else{
+                perteMax = OldPerteMax;
+                decouvertTotalStat = OldDecouvertTotal;
             }
 
+            if (lastParti<0){
+                if(Math.Abs(lastParti)+mise>OldPerteMax){
+                    perteMax = Math.Abs(lastParti)+mise;
+                }else{
+                    perteMax = OldPerteMax;
+                }
+            }else{
+                perteMax = OldPerteMax;
+            }
 
             bilanStat = bilan;
             gameStat = parti;
-            return (miseStat,bilanStat,gameStat ,decouvertStat,decouvertTotalStat);
+
+            return (miseStat,bilanStat,gameStat ,perteMax,decouvertTotalStat);
         }
 
-        void setUpStat(int miseStat, int bilanStat, int gameStat, int decouvertStat, int decouvertTotalStat){
-            miseInputStat.GetComponent<Text>().text = miseStat.ToString();
-            decouvertInputStat.GetComponent<Text>().text = decouvertStat.ToString();
-            decouvertTotalInputStat.GetComponent<Text>().text = decouvertTotalStat.ToString();
+        void setUpStat(int miseStat, int bilanStat, int gameStat, int perteMax, int decouvertTotalStat){
             bilanInputStat.GetComponent<Text>().text = bilanStat.ToString();
             gameInputStat.GetComponent<Text>().text = gameStat.ToString();
+            miseInputStat.GetComponent<Text>().text = miseStat.ToString();
+            decouvertInputStat.GetComponent<Text>().text = (-perteMax).ToString();
+            decouvertTotalInputStat.GetComponent<Text>().text =  Math.Abs(decouvertTotalStat).ToString();
         }
 
         void LoadStat(string[,] result){
@@ -299,7 +311,7 @@ namespace Components
                     }
 
                     if (lauchGame){
-                        AlembertCmd alembert = new AlembertCmd(  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
+                        AlembertCmd alembert = new AlembertCmd( typeOfGain, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = alembert.getMontanteManager();
                         alembert.run();
                     }
@@ -381,21 +393,23 @@ namespace Components
             for (int i = start; i < toBallInt; i++)
             {   
                 start=i;
-                int nextMise = -1;
+                int lastBilan = 0;
                 addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                 Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
 
-                if (i< toBallInt-1){
-                    nextMise = Int32.Parse(result[i+1, 3]);
+                if (i>0 && i< toBallInt-1){
+                    lastBilan = Int32.Parse(result[i-1, 5]);
                 }
                 // (int, int,int,int) ;
                 int miseStat =0;
                 int bilanStat =0;
-                 int gameStat =0;
-                  int decouvertStat =0;
-                  int decouvertTotalStat  =0;
+                int gameStat =0;
+                int decouvertStat =0;
+                int decouvertTotalStat  =0;
 
-                (miseStat, bilanStat, gameStat, decouvertStat, decouvertTotalStat) = calculateStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),nextMise,Int32.Parse(result[i, 4]));
+
+                (miseStat, bilanStat, gameStat, decouvertStat, decouvertTotalStat) = calculateStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),lastBilan,Int32.Parse(result[i, 4]));
+                
                 setUpStat(miseStat, bilanStat, gameStat, decouvertStat, decouvertTotalStat);  
 
                 if (stop){

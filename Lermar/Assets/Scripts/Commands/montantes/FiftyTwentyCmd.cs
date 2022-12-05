@@ -21,7 +21,7 @@ namespace Montante
     {
         // public Montantes parent {get; set;}
         public int nbPalierInt;
-        public int timePalierInt;
+        // public int timePalierInt;
         public string ifMaxPalierTxt;
         public int startvalue;
         public string scheme;
@@ -30,10 +30,10 @@ namespace Montante
 
 
         public FiftyTwentyCmd(int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
-        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise)
+        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise,timePalierIntn)
         {
             nbPalierInt=nbPalierIntn;
-            timePalierInt=timePalierIntn;
+            // timePalierInt=timePalierIntn;
             ifMaxPalierTxt=ifMaxPalierTxtn;
             // if (startvaluen=="{1,1,2..}"){
             //     fiboCpt= 3;
@@ -149,9 +149,10 @@ namespace Montante
                     gain = 0;
                     mise = miseInitial;
 
-                    if (fictive!=null && attaqueTxt == "différentielle directe"){
-                        bilanGame = 0;
-                    }else if(attaqueTxt == "différentielle compensée"){
+                    // if (fictive!=null && attaqueTxt == "différentielle directe"){
+                    //     bilanGame = 0;
+                    // }else
+                    if(attaqueTxt == "différentielle compensée"){
                         bilanGame = 0;
                         fictive = null;
                          coup = 0;
