@@ -31,10 +31,10 @@ jobs:
       # Cache
       - uses: actions/cache@v2
         with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          path: Lermar/Library
+          key: Library-${{ hashFiles('Lermar/Assets/**', 'Lermar/Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-
+            Library-Lermar
 
       # # Test
       # - name: Run tests
