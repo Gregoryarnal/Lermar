@@ -17,18 +17,19 @@ namespace Montante
     {
         // public Montantes parent {get; set;}
         public int nbPalierInt;
-        // public int timePalierInt;
+        public string varianteTxt;
         public string ifMaxPalierTxt;
         public string typeOfGainTxt;
 
 
         
 
-        public AlembertCmd(string typeOfGain, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security,int securityValue,string typeOfMise) 
+        public AlembertCmd(string varianteTxtn, string typeOfGain, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security,int securityValue,string typeOfMise) 
         : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise,timePalierIntn)
         {
             typeOfGainTxt=typeOfGain;
             nbPalierInt=nbPalierIntn;
+            varianteTxt=varianteTxtn;
             // timePalierInt=timePalierIntn;
             ifMaxPalierTxt=ifMaxPalierTxtn;
         }
@@ -248,11 +249,14 @@ namespace Montante
        int calculMisePerte(int misen, bool winn){
             if (winn) {
                 if (misen > 1){
-                    misen -= 1;
+                    if (varianteTxt=="Augmenter"){
+                        misen -= 1;
+                    }
                 }
             }else{
-                misen += 1;
-
+                // if (varianteTxt=="Augmenter"){
+                    misen += 1;
+                // }
             }
 
             return misen;

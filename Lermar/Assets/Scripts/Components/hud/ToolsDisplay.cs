@@ -46,6 +46,7 @@ namespace Components
         public GameObject montantePopUpView;
         public GameObject palierView;
         public GameObject fiboView;
+        public GameObject alembertView;
 
 
         public GameObject methodePopUpView;
@@ -354,25 +355,32 @@ namespace Components
             switch (montante)
             {
                 case "Apaliers":
-                    palierView.SetActive(true);
+                    // palierView.SetActive(true);
                     fiboView.SetActive(false);
+                    alembertView.SetActive(false);
+
                     coinValueInput.GetComponent<InputField>().text = "1";
 
                     break;
                 case "D'Alembert":
                     // alembertView.SetActive(true);
+                    alembertView.SetActive(true);
                     fiboView.SetActive(false);
                     coinValueInput.GetComponent<InputField>().text = "1";
 
                     break;
                 case "Fibonaci":
                     fiboView.SetActive(true);
+                    alembertView.SetActive(false);
+
                     coinValueInput.GetComponent<InputField>().text = "1";
 
                     break;
 
                 case "50/20":
                     fiboView.SetActive(false);
+                    alembertView.SetActive(false);
+
                     coinValueInput.GetComponent<InputField>().text = "10";
                     
                     break;

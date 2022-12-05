@@ -34,6 +34,10 @@ namespace Components
         public GameObject coinValue;
         public GameObject maxMise;
 
+        //alembert
+        // public GameObject alembertView;
+        public Dropdown variante;
+
         //palier 
         public Dropdown chanceGame;
         public Dropdown Attaque;
@@ -227,6 +231,8 @@ namespace Components
 
         void run(bool first, List<String> sauteuseValue){
             setUpParamsView();
+            // alembertView.SetActive(false);
+
             var fromBallInt = Int32.Parse(fromBall.GetComponent<InputField>().text);
             var toBallInt = Int32.Parse(toBall.GetComponent<InputField>().text);
             // var fileNameTxt = fileName.GetComponent<InputField>().text;
@@ -259,44 +265,37 @@ namespace Components
             var typeOfMise = gainOrLoos.options[gainOrLoos.value].text;
             var typeOfGain = gainType.options[gainType.value].text;
             
-
-
-
             switch (montanteSelectedTxt)
             {
                 case "Apaliers":
                     setUpResultView();
                     
                     if (!first){
-                    Debug.Log("reset : " + first);
-
                         sauteuseValue= null;
                     }
-                    Debug.Log("lauchGame : " + lauchGame);
 
                     if (attaqueTxt=="Sauteuse"){
                         lauchGame = true;
-
-                        Debug.Log("sauteuseValue : " + sauteuseValue);
 
                         if(sauteuseValue==null){
                             getSauteuseValue(fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt, permanenceSelectedTxt);
                             lauchGame = false;
                         }
                     }
-                    Debug.Log("lauchGame : " + lauchGame);
+
                     if (lauchGame){
                         APalierCmd palier = new APalierCmd(typeOfGain, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security, securityValue, typeOfMise);
                         
                         montanteManager = palier.getMontanteManager();
                         palier.run();
-                        // setUpResult(montanteManager,toBallInt);
                     }
 
                     break;
                 case "D'Alembert":
                     setUpResultView();
                     
+                    // alembertView.SetActive(true);
+
                     if (!first){
                         sauteuseValue= null;
                     }
@@ -311,7 +310,9 @@ namespace Components
                     }
 
                     if (lauchGame){
-                        AlembertCmd alembert = new AlembertCmd( typeOfGain, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
+                        var varianteTxt = variante.options[variante.value].text;
+
+                        AlembertCmd alembert = new AlembertCmd( varianteTxt, typeOfGain, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = alembert.getMontanteManager();
                         alembert.run();
                     }
@@ -500,7 +501,7 @@ namespace Components
             CancelButton.onClick.AddListener(() => setUpParamsView());
         }
         void ClosePopUp(){
-            Debug.Log("BackgroundButtonClicked");
+            // Debug.Log("BackgroundButtonClicked");
             popUpView.SetActive(false);
             montantePopUpView.SetActive(false);
             popUpBackgroundBtn.gameObject.SetActive(false);
@@ -509,6 +510,9 @@ namespace Components
 
         public void setUpParamsView(){
             reset();
+
+            // alembertView.SetActive(false);
+
             resultView.SetActive(false);
             rightView.SetActive(true);
             leftView.SetActive(true);
