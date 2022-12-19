@@ -19,9 +19,9 @@ namespace Montante
     public class FibonaciCmd : Montantes
     {
         // public Montantes parent {get; set;}
-        public int nbPalierInt;
+        // public int nbPalierInt;
         // public int timePalierInt;
-        public string ifMaxPalierTxt;
+        // public string ifMaxPalierTxt;
         public int startvalue;
         public string scheme;
         int fiboCpt  ;
@@ -54,12 +54,12 @@ namespace Montante
         /// <param name="securityValue"></param>
         /// <param name="typeOfMise"></param>
 
-        public FibonaciCmd(string startvaluen, string schemen, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
-        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise, timePalierIntn)
+        public FibonaciCmd(string fictiveMaxReachTxtn, string startvaluen, string schemen, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
+        : base(fictiveMaxReachTxtn, gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise, timePalierIntn,ifMaxPalierTxtn, nbPalierIntn)
         {
-            nbPalierInt=nbPalierIntn;
+            // nbPalierInt=nbPalierIntn;
             // timePalierInt=timePalierIntn;
-            ifMaxPalierTxt=ifMaxPalierTxtn;
+            // ifMaxPalierTxt=ifMaxPalierTxtn;
             if (startvaluen=="{1,1,2..}"){
                 fiboCpt= 3;
                 startvalue=3;
@@ -100,10 +100,12 @@ namespace Montante
             int fiboCpt1 = 4;
             int fiboCpt2 = 4;
 
-            bool lauchGame = true;
+            // bool lauchGame = true;
             var playerMise = "";
             
-
+            int cptValuePlay = 0;
+            int cptValuePlay1 = 0;
+            int cptValuePlay2 = 0;
 
 
             string[,] fictive = null;
@@ -121,12 +123,12 @@ namespace Montante
                             int fmise;
                             int fbilan;
 
-                            (fmise,fiboCpt1,cumulValue1,fbilan) = calculMise(Convert.ToBoolean(fictive[0,4]), Int32.Parse(fictive[0,0]),  fiboCpt1, cumulValue1, Int32.Parse(fictive[0,2]));
+                            (fmise,fiboCpt1,cumulValue1,fbilan) = calculMise( Convert.ToBoolean(fictive[0,4]), Int32.Parse(fictive[0,0]),  fiboCpt1, cumulValue1, Int32.Parse(fictive[0,2]));
                             fictive[0,0] = fmise.ToString();
                             fictive[0,2] = fbilan.ToString();
                             
                             // Debug.Log("bef 2 " + i);
-                            (fmise,fiboCpt2,cumulValue2,fbilan) = calculMise(Convert.ToBoolean(fictive[1,4]), Int32.Parse(fictive[1,0]),  fiboCpt2, cumulValue2, Int32.Parse(fictive[1,2]));
+                            (fmise,fiboCpt2,cumulValue2,fbilan) = calculMise( Convert.ToBoolean(fictive[1,4]), Int32.Parse(fictive[1,0]),  fiboCpt2, cumulValue2, Int32.Parse(fictive[1,2]));
                             // Debug.Log("after calcukl mise : " + fmise);
                             fictive[1,0] = fmise.ToString();
                             fictive[1,2] = fbilan.ToString();
@@ -135,13 +137,14 @@ namespace Montante
                             value= -1;
                         }
 
-                        (fictive, value) = calculateFictive(this, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, "Fibonaci", fictive);
-                        // Debug.Log("after calculateFictive 2 " + fictive[1,0] + " at " + i);
+                        (fictive, value) = calculateFictive(this,cptValuePlay1,cptValuePlay2, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, "Fibonaci", fictive);
+                        cptValuePlay1 = Int32.Parse(fictive[0,5]);
+                        cptValuePlay2 = Int32.Parse(fictive[1,5]);
                         setFictiveLine(fictive);  
                     }
 
                     if (fictive==null){
-                        ( playerMise,value,mise,win ) = play(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, false);
+                        ( playerMise,value,mise,win,cptValuePlay ) =  play(cptValuePlay,chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, false);
                     }else{
                         if (Int32.Parse(fictive[0,0])==Int32.Parse(fictive[1,0])){
                             mise = 0;
@@ -152,11 +155,11 @@ namespace Montante
                             if (Int32.Parse(fictive[0,0])>Int32.Parse(fictive[1,0])){ //mise1 suppe
                                 mise = Int32.Parse(fictive[0,0])-Int32.Parse(fictive[1,0]);
                                 var chanceTxtf = fictive[0,1];
-                                ( playerMise,value,mise,win ) = play(chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
+                                ( playerMise,value,mise,win,cptValuePlay ) =  play(cptValuePlay,chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
                             }else{//mise2 suppe
                                 mise = Int32.Parse(fictive[1,0])-Int32.Parse(fictive[0,0]);
                                 var chanceTxtf = fictive[1,1];
-                                ( playerMise,value,mise,win ) = play(chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
+                                ( playerMise,value,mise,win,cptValuePlay ) =  play(cptValuePlay,chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
                             }
                         }
                     }
@@ -188,7 +191,7 @@ namespace Montante
                     addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
 
 
-                    (mise,fiboCpt,cumulValue, _) = calculMise(win, mise,fiboCpt, cumulValue, bilanGame);
+                    (mise,fiboCpt,cumulValue, _) = calculMise( win, mise,fiboCpt, cumulValue, bilanGame);
 
                     if (fictive!=null){
                         if (Int32.Parse(fictive[0,2])>0){
@@ -264,9 +267,9 @@ namespace Montante
                         }
                     }
 
-                    if (security){
-                        fiboCpt = calculateSecurity(mise,bilanGame,fiboCpt );
-                    }
+                    // if (security){
+                    //     fiboCpt = calculateSecurity(mise,bilanGame,fiboCpt );
+                    // }
 
                     index+=1;
 
@@ -426,9 +429,9 @@ namespace Montante
             return fibo;
         }
 
-        public new void calculFiboMise(){
-            Debug.Log("test");
-        }
+        // public new void calculFiboMise(){
+        //     Debug.Log("test");
+        // }
 
         int calculateFibonacci(int len){
              int a = 0, b = 1, c = 0;

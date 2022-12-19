@@ -18,7 +18,7 @@ namespace Components
         public char separatorAnchor;
 
         private bool isExecute = false;
-        Int32 count = 1;
+        // Int32 count = 1;
     
         void OnTriggerStay(Collider collider)
         {

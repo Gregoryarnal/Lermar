@@ -1,5 +1,6 @@
 
 
+
 // using System.Diagnostics;
 // using System.Diagnostics;
 using System.Threading.Tasks;
@@ -84,6 +85,7 @@ namespace Components
 
         public Button ExecuteButton;
         public Button CancelButton;
+        public Button SolveurButton;
 
         // private OpenFileDialog openFileDialog1;
 
@@ -107,7 +109,8 @@ namespace Components
             } 
             RemoveButton();
             ExecuteButton.interactable = false;
-   
+            SolveurButton.interactable = false;
+            // SolveurButton
             Reset();
         }
 
@@ -156,11 +159,7 @@ namespace Components
                 newButton.SetActive(true);
 
                 Button tempPopUpButton = newButton.GetComponent<Button>();
-                // Debug.Log("value : " + value);
-                // Debug.Log("newButton.GetComponentsInChildren<Text>() : " + newButton.GetComponentsInChildren<Text>()[0]);
                 Text contentTxt = newButton.GetComponentsInChildren<Text>()[0];
-                // Text contentTxt = newButton.GetComponentInChildren(Text);
-
 
                 if (contentTxt != null){
                     contentTxt.text = value;
@@ -175,6 +174,7 @@ namespace Components
 
         void highLightButton(Button btn, Color color){
             ExecuteButton.interactable = true;
+            SolveurButton.interactable = true;
             foreach (Button item in button_list_popup)
             {
                 if (item == btn){
@@ -236,17 +236,18 @@ namespace Components
         public void MontanteAddButtonClicked(){
             Debug.Log("MontanteAddButtonClicked");
             var extensions = new [] {
-                new ExtensionFilter("Text Files", "txt", "xlxs" )
+                new ExtensionFilter("Text Files", "txt")
             };
 
-            var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", extensions, false);
+            StandaloneFileBrowser.OpenFilePanelAsync("Open File", "", "", true,  (string[] paths) => { saveFile(paths); });
 
+        }
+
+        public void saveFile(string[] paths){
             var permanencePath = Path.GetDirectoryName(Application.dataPath) +"/permanences/MC/";
-            
             
             foreach (var file in paths)
             {   
-                
                 if (file.Length != 0){
                     if (file.EndsWith("xlxs")){
                         readExcelFile(file);
@@ -257,8 +258,6 @@ namespace Components
             }
 
             gameCmdFactory.PermanencesLoad(characterTable,characterTools).Execute(false, true);
-            
-
         }
 
         void readExcelFile(string filepath){
@@ -477,7 +476,6 @@ namespace Components
                 var value = data.Split("//")[0];
                 var type = data.Split("//")[1];
                 Button btn = null;
-                
                 
                 if (type=="permanence"){
                     btn  = addButton(value, type);

@@ -20,21 +20,21 @@ namespace Montante
     public class FiftyTwentyCmd : Montantes
     {
         // public Montantes parent {get; set;}
-        public int nbPalierInt;
+        // public int nbPalierInt;
         // public int timePalierInt;
-        public string ifMaxPalierTxt;
+        // public string ifMaxPalierTxt;
         public int startvalue;
         public string scheme;
         int fiboCpt  ; 
          
 
 
-        public FiftyTwentyCmd(int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
-        : base(gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise,timePalierIntn)
+        public FiftyTwentyCmd(string fictiveMaxReachTxtn, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
+        : base(fictiveMaxReachTxtn, gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise,timePalierIntn,ifMaxPalierTxtn, nbPalierIntn)
         {
-            nbPalierInt=nbPalierIntn;
+            // nbPalierInt=nbPalierIntn;
             // timePalierInt=timePalierIntn;
-            ifMaxPalierTxt=ifMaxPalierTxtn;
+            // ifMaxPalierTxt=ifMaxPalierTxtn;
             // if (startvaluen=="{1,1,2..}"){
             //     fiboCpt= 3;
             //     startvalue=3;
@@ -60,13 +60,15 @@ namespace Montante
             var coup = 0;
             var win = true;
             var value = -1;
-            int fiboCpt = 4;
+            // int fiboCpt = 4;
             // lineGameObject.Clear();
             // int last = readPermanenceFile(permanenceSelectedTxt, -1);
-            bool lauchGame = true;
+            // bool lauchGame = true;
             var playerMise = "";
             
-
+            int cptValuePlay = 0;
+            int cptValuePlay1 = 0;
+            int cptValuePlay2 = 0;
 
 
             string[,] fictive = null;
@@ -88,14 +90,15 @@ namespace Montante
                             fictive[1,0] = fmise.ToString();
                             value= -1;
                         }
-                    (fictive, value) = calculateFictive(this, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, null, fictive);
-                            Debug.Log("from calculateFictive after : " + fictive[0,0]);
+                    (fictive, value) = calculateFictive(this,cptValuePlay1,cptValuePlay2, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, null, fictive);
+                    cptValuePlay1 = Int32.Parse(fictive[0,5]);
+                    cptValuePlay2 = Int32.Parse(fictive[1,5]);
                     
                     setFictiveLine(fictive);
                 }
 
                 if (fictive==null){
-                    ( playerMise,value,mise,win ) = play(chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, false);
+                    ( playerMise,value,mise,win,cptValuePlay ) = play(cptValuePlay,chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, false);
                 }else{
                     if (Int32.Parse(fictive[0,0])==Int32.Parse(fictive[1,0])){
                         mise = 0;
@@ -105,12 +108,12 @@ namespace Montante
                         if (Int32.Parse(fictive[0,0])>Int32.Parse(fictive[1,0])){ //mise1 suppe
                             mise = Int32.Parse(fictive[0,0])-Int32.Parse(fictive[1,0]);
                             var chanceTxtf = fictive[0,1];
-                            ( playerMise,value,mise,win ) = play(chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
+                            ( playerMise,value,mise,win,cptValuePlay ) = play(cptValuePlay,chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
                         }else{//mise2 suppe
                         
                             mise = Int32.Parse(fictive[1,0])-Int32.Parse(fictive[0,0]);
                             var chanceTxtf = fictive[1,1];
-                            ( playerMise,value,mise,win ) = play(chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
+                            ( playerMise,value,mise,win,cptValuePlay ) = play(cptValuePlay,chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
                         }
                     }
                 }
@@ -173,9 +176,9 @@ namespace Montante
                     }
                 }
 
-                if (security){
-                    fiboCpt = calculateSecurity(mise,bilanGame, coup );
-                }
+                // if (security){
+                //     fiboCpt = calculateSecurity(mise,bilanGame, coup );
+                // }
 
                 index+=1;
             }

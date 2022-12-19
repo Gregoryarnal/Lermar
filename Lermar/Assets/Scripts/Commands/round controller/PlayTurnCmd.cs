@@ -38,7 +38,7 @@ namespace Commands
 
         public void Execute()
         {
-            int cpt = 0;
+            // int cpt = 0;
             if(characterTable.currentTableCount <= 0){
                 return;
             }

@@ -14,7 +14,7 @@ namespace Controllers
         public AudioSource _audioSourceFx;
         public AudioSource _audioSourceMusic;
         
-        private bool _isPlayingFx = false;
+        // private bool _isPlayingFx = false;
 
         private void Start()
         {

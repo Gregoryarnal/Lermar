@@ -38,6 +38,12 @@ namespace Montante
         public int maxMiseInt;
         public string permanenceSelectedTxt;
         public int timePalierInt;
+        public string fictiveMaxReachTxt;
+
+                public int nbPalierInt;
+        // public int timePalierInt;
+        public string ifMaxPalierTxt;
+
              
         public bool security;
         public int securityValue;
@@ -47,12 +53,8 @@ namespace Montante
         public string[,] fictivec = null;
         public List<string[,]> fictiveList = new List<string[,]>();
 
-        int fiboCpt1 = 4;
-        int fiboCpt2 = 4;
-
-        int cptValuePlay = 0;
-        // public List<string> sauteuseValue = new List<string>();
-
+        // int fiboCpt1 = 4;
+        // int fiboCpt2 = 4;
 
         public Montantes(){
             
@@ -80,7 +82,7 @@ namespace Montante
 
         }
 
-        public Montantes(int gainResearchIntn, string maxReachTxtn, string chanceTxtn, string attaqueTxtn, int fromBallIntn, int toBallIntn, string fileNameTxtn, int coinValueIntn, int maxMiseIntn,string permanenceSelectedTxtn, List<string> sauteuseValuen, bool securityn,int securityValuen, string typeOfMisen, int timePalierIntn){
+        public Montantes(string fictiveMaxReachTxtn, int gainResearchIntn, string maxReachTxtn, string chanceTxtn, string attaqueTxtn, int fromBallIntn, int toBallIntn, string fileNameTxtn, int coinValueIntn, int maxMiseIntn,string permanenceSelectedTxtn, List<string> sauteuseValuen, bool securityn,int securityValuen, string typeOfMisen, int timePalierIntn, string ifMaxPalierTxtn, int nbPalierIntn){
             gainResearchInt=gainResearchIntn;
             maxReachTxt=maxReachTxtn;
             chanceTxt=chanceTxtn;
@@ -96,6 +98,9 @@ namespace Montante
             securityValue=securityValuen;
             typeOfMise=typeOfMisen;
             timePalierInt=timePalierIntn;
+                        nbPalierInt=nbPalierIntn;
+            ifMaxPalierTxt=ifMaxPalierTxtn;
+fictiveMaxReachTxt = fictiveMaxReachTxtn;
 
             if (attaqueTxt.StartsWith("")){
                 result = new string[readPermanenceFile(permanenceSelectedTxt, -1),16];
@@ -107,15 +112,13 @@ namespace Montante
         }
 
 
-        public (string, int, int, bool) play(string chanceTxt, string attaqueTxt, int value, bool win, int index, string permanenceSelectedTxt, int coup,int mise,  int timePalierInt,int  nbPalierInt,int  coinValueInt, int maxMiseInt,string  ifMaxPalierTxt,string  maxReachTxt, int gain, bool diff, bool misecalc){
+        public (string, int, int, bool, int) play(int cptValue, string chanceTxt, string attaqueTxt, int value, bool win, int index, string permanenceSelectedTxt, int coup,int mise,  int timePalierInt,int  nbPalierInt,int  coinValueInt, int maxMiseInt,string  ifMaxPalierTxt,string  maxReachTxt, int gain, bool diff, bool misecalc){
             var newValue = readPermanenceFile(permanenceSelectedTxt,index);
             var lastValue = -1;
             int newMise = 0;
             var secu = false;
             
             var newWin = true;
-            // cptValuePlay  =0;
-
 
             if (mise<0){
                 mise = Math.Abs(mise);
@@ -123,7 +126,7 @@ namespace Montante
             }
 
             if (coup==0){
-                cptValuePlay  =0;
+                cptValue  =0;
             }
 
             if (index > 0){
@@ -141,50 +144,49 @@ namespace Montante
             }
 
             if (misecalc && newPlayerMise != null){
-                newMise = calculateMise(coup, mise,  timePalierInt, nbPalierInt, newPlayerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, diff);
-                // newWin = calculateGain(newValue, newPlayerMise, newMise,coinValueInt, gain);
+                (newMise, cptValue) = calculateMise(cptValue, coup, mise,  timePalierInt, nbPalierInt, newPlayerMise, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, diff);
             }
                 
             newWin = calculateGain(newValue, newPlayerMise, newMise,coinValueInt, gain);
 
             newMise = checkMaxMise(newMise);
             
-            return (newPlayerMise, newValue, newMise, newWin);
+            return (newPlayerMise, newValue, newMise, newWin, cptValue);
         }
 
 
-        public int calculateSecurity(int mise, int bilan, int coup){
-            if (mise>Math.Abs(bilan)){
+        public (int, int) calculateSecurity(int cptValue, int mise, int bilan, int coup){
+            if (mise>Math.Abs(bilan) && coup != 0){
                 if (Math.Abs(bilan-mise)>securityValue && securityValue!=0){
                     if (mise!=(Math.Abs(bilan)+1)){
-                        cptValuePlay  =0;
-                        return -(Math.Abs(bilan)+1);
+                        cptValue  =0;
+                        return (-(Math.Abs(bilan)+1), cptValue);
                     }
                 }
                 else if (bilan < 0 && securityValue==0){
-                    cptValuePlay =0;
-                    return -(Math.Abs(bilan)+1);
+                    cptValue =0;
+                    return  (-(Math.Abs(bilan)+1), cptValue);
                 }
                 
-            }else if (bilan < 0 && securityValue==0){
-                    cptValuePlay  =0;
-                    return -(Math.Abs(bilan)+1);
+            }else if (bilan < 0 && securityValue==0 && coup != 0){
+                    cptValue  =0;
+                    return  (-(Math.Abs(bilan)+1), cptValue);
                 }
             if (bilan==0 && coup != 0){
                 if (mise!=1){
-                    cptValuePlay  =0;
-                    return -1;
+                    cptValue  =0;
+                    return (-1, cptValue);
                 }
             } 
             
-            return mise;
+            return (mise, cptValue);
         }
 
         // public int checkMaxMise(int mise, int coinValueInt, string maxReachTxt, int maxMiseInt){
         public int checkMaxMise(int mise){
             if ((mise) > maxMiseInt && mise!=0){
                 if (maxReachTxt.StartsWith("Repartir")){
-                    mise = 1*coinValueInt;
+                    mise = coinValueInt;
                 }
                 else{
                     mise = maxMiseInt;
@@ -199,9 +201,21 @@ namespace Montante
             if(gamewin && typeOfMisen=="En gain" ){
                 if (typeOfGainTxtn=="Normal"){
                     misen += 1;
+
+                    if (coupn == 1){
+                        firstWinn = true;
+                    }
+                    // else{
+                    //     firstWinn = false;
+                    // }
+
                 }else if(typeOfGainTxtn=="Réel" ){
                     
                     cptWinn += 1;
+
+                    if (coupn == 1){
+                        firstWinn = true;
+                    }
 
                     if (cptWinn%timePalierInt==0){
                         misen += 1;
@@ -211,17 +225,31 @@ namespace Montante
                     misen += 1;
                     if (coupn == 1){
                         firstWinn = true;
-                    } 
+                    }
                 }
             }else if (!gamewin && typeOfMisen=="En gain"){
                 if (typeOfGainTxtn=="Continue" && coupn == 1 ){
                     firstWinn = false;
-                }else if(typeOfGainTxtn=="Réel" ){
-                        
-                    if (cptWinn%timePalierInt==0){
-                        misen += 1; 
-                        cptWinn =0;
-                    }
+                }
+            }else if (typeOfMisen=="En perte"){
+                if (coupn%timePalierInt==0){
+                    misen += 1; 
+                }
+            }
+
+            if (gamewin && typeOfMisen=="En perte"){
+                if (coupn == 1){
+                    firstWinn = true;
+                }
+            }
+            
+            misen = checkMaxMise(misen);
+
+            if ((misen-coinValueInt) >= nbPalierInt){
+                if (ifMaxPalierTxt.StartsWith("Recommencer")){
+                    misen = coinValueInt ;
+                }else{
+                    misen = nbPalierInt;
                 }
             }
 
@@ -229,8 +257,10 @@ namespace Montante
         }
 
 
+         
 
-        public  int calculateMise(int coup, int mise, int timePalier, int nbPalierInt, string playerMise, int coinValueInt, int maxMiseInt, string ifMaxPalierTxt,string maxReachTxt, bool diff){
+
+        public  (int, int) calculateMise(int cptValue, int coup, int mise, int timePalier, int nbPalierInt, string playerMise, int coinValueInt, int maxMiseInt, string ifMaxPalierTxt,string maxReachTxt, bool diff){
             if (playerMise != null){
 
                 if (mise==0){
@@ -238,21 +268,23 @@ namespace Montante
                 }
 
                 // if (coup!= 0 && coup%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
-                if (cptValuePlay!= 0 && cptValuePlay%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
+                if (cptValue!= 0 && cptValue%timePalier==0 && (!diff) && (typeOfMise == "En perte")){
                     if (mise == nbPalierInt){
                         if (ifMaxPalierTxt.StartsWith("Recommencer")){
-                            cptValuePlay =0;
+                            cptValue =0;
                             mise = 1 ;
                         }
                     }else{
-                        cptValuePlay +=1;
+                        cptValue +=1;
                         mise += 1;
                     }
+                }else{
+                    cptValue +=1;
+
                 }
-                cptValuePlay +=1;
-                return mise;
+                return (mise,cptValue);
             }
-            return 0;
+            return (0,cptValue);
         }
         
         public string valueChance(int value, string playerMise){
@@ -318,12 +350,13 @@ namespace Montante
             return a;
         }
         
-        public (string[,], int) calculateFictive(object child, string chanceTxt, string attaqueTxt, int value, bool win, int index, string permanenceSelectedTxt, int mise,  int timePalierInt,int  nbPalierInt,int  coinValueInt, int maxMiseInt,string  ifMaxPalierTxt,string  maxReachTxt, int gain,bool calculMise, string montantetype, string[,] fictiv   ){
+
+        public (string[,], int) calculateFictive(object child,int cptValue1, int cptValue2, string chanceTxt, string attaqueTxt, int value, bool win, int index, string permanenceSelectedTxt, int mise,  int timePalierInt,int  nbPalierInt,int  coinValueInt, int maxMiseInt,string  ifMaxPalierTxt,string  maxReachTxt, int gain,bool calculMise, string montantetype, string[,] fictiv   ){
 
             if (attaqueTxt.StartsWith("différentielle")){
                 if (fictivec==null || fictiv == null){
                     
-                    fictivec = new string[2,5];
+                    fictivec = new string[2,6];
                     fictivec[0,0] = mise.ToString(); //mise
                     fictivec[1,0] = mise.ToString(); //mise
 
@@ -333,22 +366,36 @@ namespace Montante
                     fictivec[0,3] = "0"; // coup
                     fictivec[1,3] = "0";// coup
 
-                     fictivec[0,4] = "false"; // win
+                    fictivec[0,4] = "false"; // win
                     fictivec[1,4] = "false";// win
+
+                    fictivec[0,5] = "0"; // cptValuePlay
+                    fictivec[1,5] = "0";// cptValuePlay
                 }
 
                 if (fictiv!=null){
                     fictivec = fictiv;
                 }
 
-                (var newPlayerMise1, var newValue1, var newMise1,var newWin1 ) = play(chanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[0,3]), Int32.Parse(fictivec[0,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);
+
+               
+
+                // cptValuePlay = cptValuePlay1;
+                (var newPlayerMise1, var newValue1, var newMise1,var newWin1, var ncptValue1 ) = play(cptValue1,chanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[0,3]), Int32.Parse(fictivec[0,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);
+                cptValue1 = ncptValue1;
 
                 var inverseChanceTxt = inverse(chanceTxt);
 
-                (var newPlayerMise2, var newValue2, var newMise2,var newWin2 ) = play(inverseChanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[1,3]), Int32.Parse(fictivec[1,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);
+                // cptValuePlay = cptValuePlay2;
+                (var newPlayerMise2, var newValue2, var newMise2,var newWin2, var ncptValue2 ) = play(cptValue2,inverseChanceTxt, attaqueTxt,value, win, index, permanenceSelectedTxt,Int32.Parse(fictivec[1,3]), Int32.Parse(fictivec[1,0]),  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, calculMise);
+                cptValue2 = ncptValue1;
                 
                 fictivec[0,4] = newWin1.ToString();
                 fictivec[1,4] = newWin2.ToString();
+
+                fictivec[0,5] = cptValue1.ToString();
+                fictivec[1,5] = cptValue2.ToString();
+
                 
                 fictivec[0,0] = newMise1.ToString();
                 fictivec[1,0] = newMise2.ToString();
@@ -400,12 +447,6 @@ namespace Montante
                 fictivec[0,3] = (Int32.Parse(fictivec[0,3]) + 1).ToString();// coup
 
                 fictivec[1,3] = (Int32.Parse(fictivec[1,3]) + 1).ToString();// coup
-                // if (Int32.Parse(fictivec[0,2])>0){
-                //     fictivec[0,3] = "0"; // coup
-                // }
-                // if (Int32.Parse(fictivec[1,2])>0){
-                //     fictivec[1,3] = "0";// coup
-                // }  
             }
             return (fictivec, value);
         }
@@ -450,7 +491,6 @@ namespace Montante
                 result[index, 13] = fictive[1,0];
                 result[index, 14] = fictive[1,1];
                 result[index, 15] = fictive[1,2];
-
             }
         }
 
