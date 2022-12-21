@@ -313,7 +313,9 @@ namespace Components
             var securityValue = Int32.Parse(securityValueInput.GetComponent<InputField>().text);
             var typeOfMise = gainOrLoos.options[gainOrLoos.value].text;
             var typeOfGain = gainType.options[gainType.value].text;
-            
+           
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
             switch (montanteSelectedTxt)
             {
                 case "Apaliers":
@@ -389,10 +391,9 @@ namespace Components
 
 
                     if (lauchGame){
-                        FibonaciCmd fibo = new FibonaciCmd( fictiveMaxReachTxt, fiboStartValueTxt, fiboSchemeTxt, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
+                        FibonaciCmd fibo = new FibonaciCmd( typeOfGain, fictiveMaxReachTxt, fiboStartValueTxt, fiboSchemeTxt, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = fibo.getMontanteManager();
                         fibo.run();
-                        // setUpResult(montanteManager,toBallInt);
                     }
                     break;
                 case "50/20":
@@ -412,18 +413,18 @@ namespace Components
                     }
 
                     if (lauchGame){
-                        FiftyTwentyCmd fiftyTwenty = new FiftyTwentyCmd(fictiveMaxReachTxt,  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
+                        FiftyTwentyCmd fiftyTwenty = new FiftyTwentyCmd(typeOfGain, fictiveMaxReachTxt,  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = fiftyTwenty.getMontanteManager();
                         fiftyTwenty.run();
                     }
                     break;
                 default:
-                    Debug.Log("non");
-                    break;
-
-            
-                
+                    break;   
             }
+            
+            watch.Stop();
+            Debug.Log("time : " + watch.ElapsedMilliseconds/1000 + "s");
+
             if (lauchGame){
                 bool stop = true;
                 AllExecuteButton.gameObject.SetActive(true);
@@ -441,9 +442,11 @@ namespace Components
         }
 
         void setUpResult(string[,] result, int toBallInt, int start, bool stop){
-
+            
             for (int i = start; i < toBallInt; i++)
             {   
+                // Canvas.ForceUpdateCanvases();
+                // Debug.Log(Int32.Parse(result[i, 0]));
                 start=i;
                 int lastBilan = 0;
                 if (showResult){
@@ -455,7 +458,7 @@ namespace Components
                 if (i>0 && i< toBallInt-1){
                     lastBilan = Int32.Parse(result[i-1, 5]);
                 }
-                // (int, int,int,int) ;
+
                 int miseStat =0;
                 int bilanStat =0;
                 int gameStat =0;
@@ -474,7 +477,7 @@ namespace Components
                                 if (bilanStat>res.Value.Item1){
                                     solveurResult.Clear();
                                     var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
-            var coinValueInt = Int32.Parse(coinValue.GetComponent<InputField>().text);
+                                    var coinValueInt = Int32.Parse(coinValue.GetComponent<InputField>().text);
 
                                     solveurResult.Add(coinValueInt,Tuple.Create(bilanStat,timePalierInt) );
                                     break;
@@ -482,33 +485,38 @@ namespace Components
                             }
                         }else{
                             var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
-            var coinValueInt = Int32.Parse(coinValue.GetComponent<InputField>().text);
+                            var coinValueInt = Int32.Parse(coinValue.GetComponent<InputField>().text);
 
                             solveurResult.Add(coinValueInt,Tuple.Create(bilanStat,timePalierInt) );
-
                         }
-                        
-                        
-                    // Debug.Log("gameStat : " + gameStat +", bilanStat : " + bilanStat);
                     }
                 }
 
+                // if (!stop && toBallInt>=500){
+                //     if (i%500==0){
+                //         stop = true;
+                //     }
+                // }
+
                 if (stop && showResult){
+                    // if (!stop && toBallInt>=500){
+                    //     if (i%500==0){
+                    //         stop = false;
+                    //     }
+                    // }
                     ExecuteButton.onClick.RemoveAllListeners();
                     ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, stop));
                     AllExecuteButton.onClick.RemoveAllListeners();
                     AllExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, false));
                     break;
                 }
-
-                
             }
 
             if (start+1==toBallInt){
                 ExecuteButton.interactable = false;
                 AllExecuteButton.interactable = false;
             }
-
+            
         }
 
         // public (bool, string) setSauteuse(bool first){
@@ -684,28 +692,14 @@ namespace Components
             }
 
             GameObject newLine = Instantiate(template);
-
+            // RectTransform rt = (RectTransform)newLine.transform;
             newLine.transform.localScale = new Vector3(1, 1, 1);
+            var chanceTxt = chanceGame.options[chanceGame.value].text;
+
             newLine.transform.position = new Vector2(0, calculateYposition(index));
+  
             newLine.transform.SetParent(resultContent.transform, false);
             newLine.SetActive(true);
-
-
-            /// <summary>
-            /// TODO
-            /// </summary>
-            /// <typeparam name="ScrollRect"></typeparam>
-            /// <returns></returns>
-
-            // if ( scrollRect.verticalNormalizedPosition != 0 )
-            // {   
-                // Debug.Log("bottom");
-                Canvas.ForceUpdateCanvases();
-                scrollRect.content.GetComponent<VerticalLayoutGroup>().CalculateLayoutInputVertical() ;
-                scrollRect.content.GetComponent<ContentSizeFitter>().SetLayoutVertical() ;
-                scrollRect.verticalNormalizedPosition = 0 ;
-            // }
-
             
 
             Text[] tempText = newLine.GetComponentsInChildren<Text>();
@@ -727,6 +721,12 @@ namespace Components
                 tempText[5].text = bilanTotal.ToString(); 
             }
             lineGameObject.Add(newLine);
+
+            scrollRect.content.GetComponent<VerticalLayoutGroup>().CalculateLayoutInputVertical() ;
+            scrollRect.content.GetComponent<ContentSizeFitter>().SetLayoutVertical() ;
+            scrollRect.verticalNormalizedPosition = 0 ;
+            Canvas.ForceUpdateCanvases();
+
         }
         
 

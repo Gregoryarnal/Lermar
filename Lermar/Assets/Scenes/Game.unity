@@ -48096,7 +48096,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Passe
       m_Image: {fileID: 0}
-    - m_Text: Mu:tiple
+    - m_Text: Multiple
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

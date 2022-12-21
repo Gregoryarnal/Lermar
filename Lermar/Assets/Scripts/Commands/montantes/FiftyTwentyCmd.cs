@@ -19,30 +19,10 @@ namespace Montante
 {    
     public class FiftyTwentyCmd : Montantes
     {
-        // public Montantes parent {get; set;}
-        // public int nbPalierInt;
-        // public int timePalierInt;
-        // public string ifMaxPalierTxt;
-        public int startvalue;
-        public string scheme;
-        int fiboCpt  ; 
-         
-
-
-        public FiftyTwentyCmd(string fictiveMaxReachTxtn, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
-        : base(fictiveMaxReachTxtn, gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise,timePalierIntn,ifMaxPalierTxtn, nbPalierIntn)
+        public FiftyTwentyCmd(string typeOfGain, string fictiveMaxReachTxtn, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
+        : base(typeOfGain, fictiveMaxReachTxtn, gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise,timePalierIntn,ifMaxPalierTxtn, nbPalierIntn)
         {
-            // nbPalierInt=nbPalierIntn;
-            // timePalierInt=timePalierIntn;
-            // ifMaxPalierTxt=ifMaxPalierTxtn;
-            // if (startvaluen=="{1,1,2..}"){
-            //     fiboCpt= 3;
-            //     startvalue=3;
-            // }else{
-            //     fiboCpt=4;
-            //     startvalue=4;
-            // }
-            // scheme=schemen;
+
         }
 
 
@@ -50,9 +30,9 @@ namespace Montante
 
             var miseInitial = 1*coinValueInt;
             var mise = 1 *coinValueInt ;
+            var mise1 = 1*coinValueInt;
+            var mise2 = 1*coinValueInt;
             var gain = 0;
-
-
 
             var index = 0;
             var bilanTotal = 0;
@@ -60,12 +40,18 @@ namespace Montante
             var coup = 0;
             var win = true;
             var value = -1;
-            // int fiboCpt = 4;
-            // lineGameObject.Clear();
-            // int last = readPermanenceFile(permanenceSelectedTxt, -1);
-            // bool lauchGame = true;
+
             var playerMise = "";
             
+            var cptWin = 0;
+            var cptWin1 = 0;
+            var cptWin2 = 0;
+
+            var firstWin = false;
+            var firstWin1 = false;
+            var firstWin2 = false;
+
+
             int cptValuePlay = 0;
             int cptValuePlay1 = 0;
             int cptValuePlay2 = 0;
@@ -79,17 +65,14 @@ namespace Montante
                 mise = checkMaxMise(mise);
 
                 if (attaqueTxt.StartsWith("différentielle")){
-                    if (fictive!=null){
-                            int fmise;
-                            Debug.Log("from fictive");
-                            fmise = calculMise(Convert.ToBoolean(fictive[0,4]), Int32.Parse(fictive[0,0]),miseInitial);
-                            Debug.Log("from fictive after : " + fmise);
-
-                            fictive[0,0] = fmise.ToString();
-                            fmise = calculMise(Convert.ToBoolean(fictive[1,4]), Int32.Parse(fictive[1,0]),miseInitial);
-                            fictive[1,0] = fmise.ToString();
-                            value= -1;
-                        }
+                    // if (fictive!=null){
+                        // int fmise;
+                        // fmise = calculMiseFiftyTwenty(Convert.ToBoolean(fictive[0,4]), Int32.Parse(fictive[0,0]),miseInitial);
+                        // fictive[0,0] = fmise.ToString();
+                        // fmise = calculMiseFiftyTwenty(Convert.ToBoolean(fictive[1,4]), Int32.Parse(fictive[1,0]),miseInitial);
+                        // fictive[1,0] = fmise.ToString();
+                        // value= -1;
+                    // }
                     (fictive, value) = calculateFictive(this,cptValuePlay1,cptValuePlay2, chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, null, fictive);
                     cptValuePlay1 = Int32.Parse(fictive[0,5]);
                     cptValuePlay2 = Int32.Parse(fictive[1,5]);
@@ -100,22 +83,7 @@ namespace Montante
                 if (fictive==null){
                     ( playerMise,value,mise,win,cptValuePlay ) = play(cptValuePlay,chanceTxt, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, false, false);
                 }else{
-                    if (Int32.Parse(fictive[0,0])==Int32.Parse(fictive[1,0])){
-                        mise = 0;
-                        playerMise = null;
-                        win = false;
-                    }else{
-                        if (Int32.Parse(fictive[0,0])>Int32.Parse(fictive[1,0])){ //mise1 suppe
-                            mise = Int32.Parse(fictive[0,0])-Int32.Parse(fictive[1,0]);
-                            var chanceTxtf = fictive[0,1];
-                            ( playerMise,value,mise,win,cptValuePlay ) = play(cptValuePlay,chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
-                        }else{//mise2 suppe
-                        
-                            mise = Int32.Parse(fictive[1,0])-Int32.Parse(fictive[0,0]);
-                            var chanceTxtf = fictive[1,1];
-                            ( playerMise,value,mise,win,cptValuePlay ) = play(cptValuePlay,chanceTxtf, attaqueTxt,value, win, i, permanenceSelectedTxt,coup, mise,  timePalierInt, nbPalierInt, coinValueInt, maxMiseInt, ifMaxPalierTxt, maxReachTxt, gain, true, false);
-                        }
-                    }
+                    (mise,playerMise, win,cptValuePlay,cptValuePlay1,cptValuePlay2, value ) = realGameWithFictive(fictive, mise, playerMise, win, cptValuePlay, cptValuePlay1, cptValuePlay2, bilanGame, coup, value, i, gain);
                 }
                 
                 if (win){
@@ -144,31 +112,45 @@ namespace Montante
 
                 addResult(i,coup, value, mise,coinValueInt,bilanGame,bilanTotal, playerMise, attaqueTxt,win, fictive);
                 
-                mise = calculMise(win, mise,miseInitial);
+                if (fictive!=null){
+                    
+                    var typeOfMise1 = typeOfMise;
+                    var typeOfMise2 = typeOfMise;
 
-
- 
-                if (win && bilanGame>0){
-                    gain = 0;
-                    mise = miseInitial;
-
-                    // if (fictive!=null && attaqueTxt == "différentielle directe"){
-                    //     bilanGame = 0;
-                    // }else
-                    if(attaqueTxt == "différentielle compensée"){
-                        bilanGame = 0;
-                        fictive = null;
-                         coup = 0;
-                    }else if(!attaqueTxt.StartsWith("différentielle")){
-                        coup = 0;
-                        bilanGame = 0;
+                    if (typeOfMise=="En perte et en gain"){
+                        typeOfMise1 = "En perte";
+                        typeOfMise2 = "En gain";
                     }
+
+                    (_,var ncptWin1,var nfirstWin1) =  calculeMise(Convert.ToBoolean(fictive[0,4]), typeOfMise1, Int32.Parse(fictive[0,0]) , cptWin1, firstWin1, Int32.Parse(fictive[0,3]));
+
+                    mise1 = calculMiseFiftyTwenty(Convert.ToBoolean(fictive[0,4]), Int32.Parse(fictive[0,0]),miseInitial);
+                    cptWin1 = ncptWin1;
+                    firstWin1 = nfirstWin1;
+
+                    fictive[0,0] = (mise1).ToString();
+
+                    (_,var ncptWin2,var nfirstWin2) =  calculeMise(Convert.ToBoolean(fictive[1,4]), typeOfMise2, Int32.Parse(fictive[1,0]) , cptWin2, firstWin2, Int32.Parse(fictive[1,3]));
+
+                    mise2 = calculMiseFiftyTwenty(Convert.ToBoolean(fictive[1,4]), Int32.Parse(fictive[1,0]),miseInitial);
+                    cptWin2 = ncptWin2;
+                    firstWin2 = nfirstWin2;
+
+                    fictive[1,0] = (mise2).ToString();
+
+                    
+                    (fictive, firstWin1,  firstWin2,  cptWin1,  cptWin2) = fictiveReset(fictive,  firstWin1,  firstWin2,  cptWin1,  cptWin2);
+                    
                 }
 
-                if (bilanTotal>=gainResearchInt && gainResearchInt!=0){
-                    Debug.Log("End gainResearchInt");
-                    break;
-                }
+                (_,var ncptWin,var nfirstWin) =  calculeMise( win, typeOfMise, mise, cptWin, firstWin, coup);
+
+                cptWin = ncptWin;
+                firstWin = nfirstWin;
+                mise = calculMiseFiftyTwenty(win, mise,miseInitial);
+
+
+                (bilanGame, firstWin, gain, mise, cptWin, cptWin1, cptWin2, coup, fictive) = gameReset(win, bilanGame, firstWin, gain, mise, cptWin, cptWin1, cptWin2, coup, fictive );
                 
                 if (playerMise==null){
                     if(!attaqueTxt.StartsWith("différentielle")){        
@@ -176,9 +158,9 @@ namespace Montante
                     }
                 }
 
-                // if (security){
-                //     fiboCpt = calculateSecurity(mise,bilanGame, coup );
-                // }
+                if (security){
+                    (mise, cptValuePlay) = calculateSecurity(cptValuePlay,mise,bilanGame,coup);
+                }
 
                 index+=1;
             }
@@ -197,10 +179,7 @@ namespace Montante
         //     return mise;
         // }
 
-            int calculMise(bool win,int mise, int miseInitial){
-                            // Debug.Log("from fictive : " + win);
-                            // Debug.Log("from fictive : " + mise);
-                            // Debug.Log("from fictive : " + typeOfMise);
+            int calculMiseFiftyTwenty(bool win,int mise, int miseInitial){
 
                 if (win){
                     if (mise==3){
@@ -208,8 +187,6 @@ namespace Montante
                     }
                     if (typeOfMise=="En gain"){
                         mise = mise + Convert.ToInt32(Math.Ceiling(mise*0.5));
-                            // Debug.Log("from fictive mise : " + mise);
-
                     }else{
                         if (mise>miseInitial){
                             mise = mise - Convert.ToInt32(Math.Ceiling(mise*0.2)); 
@@ -241,52 +218,17 @@ namespace Montante
         }
 
         public int calculateSecurity(int mise, int bilan,int fibo){
-                        // Debug.Log("calculateFibonacci in calculateSecurity");
             
              if (mise>Math.Abs(bilan)){
-                        // Debug.Log("fisrt if in calculateSecurity");
-
                 if (Math.Abs(bilan-mise)>securityValue){
-                        // Debug.Log("second if  in calculateSecurity");
-
                     int cpt = fibo;
-                    while (calculateFibonacci(cpt)>Math.Abs(bilan-mise)){
-                        // Debug.Log("calculateFibonacci in while");
-
-                        cpt -=1;
-                    }
-
-            // Debug.Log("return cpt " + cpt);
-
+                    // while (calculateFibonacci(cpt)>Math.Abs(bilan-mise)){
+                    //     cpt -=1;
+                    // }
                     return cpt;
                 }
-            }
-            // Debug.Log("return fibo " + fibo);
-            
+            }            
             return fibo;
         }
-
-        int calculateFibonacci(int len){
-             int a = 0, b = 1, c = 0;
-             for (int i = 2; i < len; i++)  
-            {  
-                c= a + b;  
-                a= b;  
-                b= c;  
-            } 
-
-            return a;
-        }
-
-        private int calculateYposition(int index){
-            var y = 10;
-            var ITEM_HEIGHT = 115;
-
-            y -= ITEM_HEIGHT*index;
-
-            return y;
-
-        }
-
     }
 }

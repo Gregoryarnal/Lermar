@@ -1338,7 +1338,7 @@ ScriptsOnlyBuild:
     className: ButtonTableInteractable
   - hash:
       serializedVersion: 2
-      Hash: a4708df71ac7b479c3e8015877a68a3c
+      Hash: 9205c85fbe6f8dd59aa414fb43cb81d9
     assemblyName: Scripts.dll
     namespaceName: Components
     className: ToolsDisplay
@@ -1482,7 +1482,7 @@ ScriptsOnlyBuild:
     className: GameRestoreInput
   - hash:
       serializedVersion: 2
-      Hash: 077ce9b6c35ad6aaa84930d07f402a45
+      Hash: b7560847136354dff2643d34e4fc81f0
     assemblyName: Scripts.dll
     namespaceName: Components
     className: MontanteViewDisplay
