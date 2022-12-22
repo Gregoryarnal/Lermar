@@ -77,7 +77,7 @@ namespace ViewModel
 
         public void AddSavePath(string path){
 
- string aux = characterSavePath.Value;
+        string aux = characterSavePath.Value;
                 
                 characterSavePath.Value = path;
         }

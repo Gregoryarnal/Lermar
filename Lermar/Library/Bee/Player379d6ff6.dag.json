@@ -172,7 +172,13 @@
         164,
         165,
         166,
-        167
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173
       ],
       "AllowUnexpectedOutput": true,
       "DebugActionIndex": 0
@@ -1765,6 +1771,50 @@
       "DebugActionIndex": 144
     },
     {
+      "Annotation": "CopyFiles lermarw/UnityCrashHandler64_s.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "/Applications/Unity/Hub/Editor/2021.3.9f1/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/UnityCrashHandler64_s.pdb"
+      ],
+      "Outputs": [
+        "lermarw/UnityCrashHandler64_s.pdb"
+      ],
+      "DebugActionIndex": 145
+    },
+    {
+      "Annotation": "CopyFiles lermarw/UnityPlayer_Win64_player_mono_x64.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "/Applications/Unity/Hub/Editor/2021.3.9f1/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/UnityPlayer_Win64_player_mono_x64.pdb"
+      ],
+      "Outputs": [
+        "lermarw/UnityPlayer_Win64_player_mono_x64.pdb"
+      ],
+      "DebugActionIndex": 146
+    },
+    {
+      "Annotation": "CopyFiles lermarw/WindowsPlayer_player_Master_mono_x64.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "/Applications/Unity/Hub/Editor/2021.3.9f1/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/WindowsPlayer_player_Master_mono_x64.pdb"
+      ],
+      "Outputs": [
+        "lermarw/WindowsPlayer_player_Master_mono_x64.pdb"
+      ],
+      "DebugActionIndex": 147
+    },
+    {
+      "Annotation": "CopyFiles lermarw/UnityPlayer_Win64_player_mono_x64_s.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "/Applications/Unity/Hub/Editor/2021.3.9f1/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/UnityPlayer_Win64_player_mono_x64_s.pdb"
+      ],
+      "Outputs": [
+        "lermarw/UnityPlayer_Win64_player_mono_x64_s.pdb"
+      ],
+      "DebugActionIndex": 148
+    },
+    {
       "Annotation": "CopyFiles lermarw/UnityPlayer.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
@@ -1773,7 +1823,7 @@
       "Outputs": [
         "lermarw/UnityPlayer.dll"
       ],
-      "DebugActionIndex": 145
+      "DebugActionIndex": 149
     },
     {
       "Annotation": "CopyFiles lermarw/UnityCrashHandler64.exe",
@@ -1784,7 +1834,29 @@
       "Outputs": [
         "lermarw/UnityCrashHandler64.exe"
       ],
-      "DebugActionIndex": 146
+      "DebugActionIndex": 150
+    },
+    {
+      "Annotation": "CopyFiles lermarw/WindowsPlayer_player_Master_mono_x64_s.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "/Applications/Unity/Hub/Editor/2021.3.9f1/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/WindowsPlayer_player_Master_mono_x64_s.pdb"
+      ],
+      "Outputs": [
+        "lermarw/WindowsPlayer_player_Master_mono_x64_s.pdb"
+      ],
+      "DebugActionIndex": 151
+    },
+    {
+      "Annotation": "CopyFiles lermarw/UnityCrashHandler64.pdb",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "/Applications/Unity/Hub/Editor/2021.3.9f1/PlaybackEngines/WindowsStandaloneSupport/Variations/win64_player_nondevelopment_mono/UnityCrashHandler64.pdb"
+      ],
+      "Outputs": [
+        "lermarw/UnityCrashHandler64.pdb"
+      ],
+      "DebugActionIndex": 152
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -1795,7 +1867,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll"
       ],
-      "DebugActionIndex": 147
+      "DebugActionIndex": 153
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll",
@@ -1806,7 +1878,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll"
       ],
-      "DebugActionIndex": 148
+      "DebugActionIndex": 154
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/config",
@@ -1817,7 +1889,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/config"
       ],
-      "DebugActionIndex": 149
+      "DebugActionIndex": 155
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/browscap.ini",
@@ -1828,7 +1900,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/browscap.ini"
       ],
-      "DebugActionIndex": 150
+      "DebugActionIndex": 156
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/web.config",
@@ -1839,7 +1911,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/2.0/web.config"
       ],
-      "DebugActionIndex": 151
+      "DebugActionIndex": 157
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/machine.config",
@@ -1850,7 +1922,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/2.0/machine.config"
       ],
-      "DebugActionIndex": 152
+      "DebugActionIndex": 158
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
@@ -1861,7 +1933,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 153
+      "DebugActionIndex": 159
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/settings.map",
@@ -1872,7 +1944,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/2.0/settings.map"
       ],
-      "DebugActionIndex": 154
+      "DebugActionIndex": 160
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/web.config",
@@ -1883,7 +1955,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/4.5/web.config"
       ],
-      "DebugActionIndex": 155
+      "DebugActionIndex": 161
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/machine.config",
@@ -1894,7 +1966,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/4.5/machine.config"
       ],
-      "DebugActionIndex": 156
+      "DebugActionIndex": 162
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
@@ -1905,7 +1977,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 157
+      "DebugActionIndex": 163
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/settings.map",
@@ -1916,7 +1988,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/4.5/settings.map"
       ],
-      "DebugActionIndex": 158
+      "DebugActionIndex": 164
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/mconfig/config.xml",
@@ -1927,7 +1999,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/mconfig/config.xml"
       ],
-      "DebugActionIndex": 159
+      "DebugActionIndex": 165
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/web.config",
@@ -1938,7 +2010,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/4.0/web.config"
       ],
-      "DebugActionIndex": 160
+      "DebugActionIndex": 166
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/machine.config",
@@ -1949,7 +2021,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/4.0/machine.config"
       ],
-      "DebugActionIndex": 161
+      "DebugActionIndex": 167
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
@@ -1960,7 +2032,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 162
+      "DebugActionIndex": 168
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/settings.map",
@@ -1971,7 +2043,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/4.0/settings.map"
       ],
-      "DebugActionIndex": 163
+      "DebugActionIndex": 169
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
@@ -1982,7 +2054,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 164
+      "DebugActionIndex": 170
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
@@ -1993,7 +2065,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 165
+      "DebugActionIndex": 171
     },
     {
       "Annotation": "CopyFiles lermarw/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
@@ -2004,7 +2076,7 @@
       "Outputs": [
         "lermarw/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 166
+      "DebugActionIndex": 172
     },
     {
       "Annotation": "Player",
@@ -2176,10 +2248,16 @@
         163,
         164,
         165,
-        166
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172
       ],
       "AllowUnexpectedOutput": true,
-      "DebugActionIndex": 167
+      "DebugActionIndex": 173
     }
   ],
   "FileSignatures": [
@@ -2382,7 +2460,7 @@
   "EmitDataForBeeWhy": 0,
         "NamedNodes": {
           "all_tundra_nodes": 0,
-          "Player": 167
+          "Player": 173
         }
 ,  "DefaultNodes": [
     0

@@ -25,8 +25,8 @@ namespace Montante
 
         
 
-        public AlembertCmd(string fictiveMaxReachTxtn, string varianteTxtn, string typeOfGain, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security,int securityValue,string typeOfMise) 
-        : base(typeOfGain, fictiveMaxReachTxtn,gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise,timePalierIntn, ifMaxPalierTxtn, nbPalierIntn)
+        public AlembertCmd(string m_Path, string fictiveMaxReachTxtn, string varianteTxtn, string typeOfGain, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security,int securityValue,string typeOfMise) 
+        : base(m_Path, typeOfGain, fictiveMaxReachTxtn,gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise,timePalierIntn, ifMaxPalierTxtn, nbPalierIntn)
         {
             // typeOfGainTxt=typeOfGain;
             // nbPalierInt=nbPalierIntns
@@ -159,8 +159,8 @@ namespace Montante
                     (bilanGame, firstWin, gain, mise, cptWin, cptWin1, cptWin2, coup, fictive) = gameReset(win, bilanGame, firstWin, gain, mise, cptWin, cptWin1, cptWin2, coup, fictive );
                    
                     
-                    if (playerMise==null){
-                        if(attaqueTxt!="différentielle directe"){        
+                   if (playerMise==null){
+                        if(!attaqueTxt.StartsWith("différentielle")){        
                             coup = 0;
                         }
                     }

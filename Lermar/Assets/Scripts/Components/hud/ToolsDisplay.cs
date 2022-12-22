@@ -252,7 +252,13 @@ namespace Components
                     if (file.EndsWith("xlxs")){
                         readExcelFile(file);
                     }else{
-                        File.Copy(file, Path.Combine(permanencePath, Path.GetFileName(file)), true );
+                        // try{
+                            File.Copy(file, Path.Combine(permanencePath, Path.GetFileName(file)), true );
+                        // }catch(UnauthorizedAccessException){
+                        //     System.Windows.Forms.MessageBox.Show("My message here");
+
+                        // }
+
                     }
                 }
             }

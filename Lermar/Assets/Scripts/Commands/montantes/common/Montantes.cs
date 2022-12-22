@@ -20,6 +20,7 @@ namespace Montante
 {    
     public class Montantes
     {
+        public string dataPath = "";
         //common
 
         public int[] redValue = new int[] {1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
@@ -82,7 +83,7 @@ namespace Montante
             fictiveList.Add(line);
         }
 
-        public Montantes(string typeOfGainn, string fictiveMaxReachTxtn, int gainResearchIntn, string maxReachTxtn, string chanceTxtn, string attaqueTxtn, int fromBallIntn, int toBallIntn, string fileNameTxtn, int coinValueIntn, int maxMiseIntn,string permanenceSelectedTxtn, List<string> sauteuseValuen, bool securityn,int securityValuen, string typeOfMisen, int timePalierIntn, string ifMaxPalierTxtn, int nbPalierIntn){
+        public Montantes(string m_Pathn, string typeOfGainn, string fictiveMaxReachTxtn, int gainResearchIntn, string maxReachTxtn, string chanceTxtn, string attaqueTxtn, int fromBallIntn, int toBallIntn, string fileNameTxtn, int coinValueIntn, int maxMiseIntn,string permanenceSelectedTxtn, List<string> sauteuseValuen, bool securityn,int securityValuen, string typeOfMisen, int timePalierIntn, string ifMaxPalierTxtn, int nbPalierIntn){
             gainResearchInt=gainResearchIntn;
             maxReachTxt=maxReachTxtn;
             chanceTxt=chanceTxtn;
@@ -102,6 +103,7 @@ namespace Montante
             ifMaxPalierTxt=ifMaxPalierTxtn;
             fictiveMaxReachTxt = fictiveMaxReachTxtn;
             typeOfGainTxt=typeOfGainn;
+            dataPath = m_Pathn;
 
             if (typeOfMise=="En perte"){
                 typeOfGainTxt="";
@@ -607,11 +609,15 @@ namespace Montante
             return (fictive, firstWin1,firstWin2, cptWin1, cptWin2);
         }
 
+        public void setDataPath(string path){
+            dataPath = path;
+        }
+
 
         public int readPermanenceFile(string nameFile, int index){
-            var  m_Path = Application.dataPath;
-
-            var permanencePath = Path.GetDirectoryName(Application.dataPath) +"/permanences/MC/" + nameFile;
+            // var  m_Path = Application.dataPath;
+            
+            var permanencePath = Path.GetDirectoryName(dataPath) +"/permanences/MC/" + nameFile;
 
             string[] lines = System.IO.File.ReadAllLines(permanencePath);
             if (index == -1){

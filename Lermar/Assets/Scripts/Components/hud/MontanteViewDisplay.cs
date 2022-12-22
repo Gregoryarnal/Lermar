@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+// using UnityEngine.UI;
 using UnityEngine.UI;
 using UnityEngine;
 using UniRx;
@@ -16,7 +17,11 @@ using System;
 using Controllers;
 using Montante;
 using System.Threading;
-
+// using System.Windows.Forms;
+using Button = UnityEngine.UI.Button;
+using Application = UnityEngine.Application;
+// using System.Windows.Forms;
+// 
 namespace Components
 {
     public class MontanteViewDisplay : MonoBehaviour
@@ -129,6 +134,7 @@ namespace Components
         bool lauchGame = true;
 
         public string SavePath = "";
+        public Button SaveButton;
 
         bool showResult = true;
 
@@ -166,7 +172,11 @@ namespace Components
 
         public void AddSavePath(string file){
             SavePath = file;
-
+            if (file == ""){
+                SaveButton.GetComponentsInChildren<Text>()[0].text = "Sauvegarder le résultat";
+            }else{
+                SaveButton.GetComponentsInChildren<Text>()[0].text= Path.GetFileName(file)+".csv";
+            }
         }
 
         public void reset(){
@@ -190,11 +200,9 @@ namespace Components
 
         (int, int,int,int, int) calculateStat(int bilan, int parti, int mise, int lastParti, int coinValueInt){
             int miseStat = 0,bilanStat= 0,gameStat= 0 ,perteMax= 0,decouvertTotalStat = 0;
-            // Debug.Log("parti : " + parti +", mise : " + mise + ", lastParti : " + lastParti);
             var Oldmise = Int32.Parse(miseInputStat.GetComponent<Text>().text);
             var OldPerteMax = Math.Abs(Int32.Parse(decouvertInputStat.GetComponent<Text>().text));
             var OldDecouvertTotal = Int32.Parse(decouvertTotalInputStat.GetComponent<Text>().text);
-            // Debug.Log("OldDecouvertTotal : " + OldDecouvertTotal +", OldPerteMax : " + OldPerteMax + ", Oldmise : " + Oldmise);
 
             if (mise>Oldmise){
                 miseStat = mise;
@@ -226,8 +234,6 @@ namespace Components
 
             bilanStat = bilan;
             gameStat = parti;
-
-            // Debug.Log("perteMax : " + perteMax +", decouvertTotalStat : " + decouvertTotalStat);
 
             return (miseStat,bilanStat,gameStat ,decouvertTotalStat, perteMax ); // inverser les deux derniers sur le reste
         }
@@ -316,6 +322,13 @@ namespace Components
            
             var watch = new System.Diagnostics.Stopwatch();
             watch.Start();
+
+            var  m_Path = Application.dataPath;
+            // Thread myThread = null;
+            
+            // string text = "This is some Text that I wanted to show";
+        //    System.Windows.Forms.MessageBox.Show("Hello World!");
+            
             switch (montanteSelectedTxt)
             {
                 case "Apaliers":
@@ -335,18 +348,18 @@ namespace Components
                     }
 
                     if (lauchGame){
-                        APalierCmd palier = new APalierCmd(fictiveMaxReachTxt, typeOfGain, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security, securityValue, typeOfMise);
-                        
+                        APalierCmd palier = new APalierCmd(m_Path, fictiveMaxReachTxt, typeOfGain, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security, securityValue, typeOfMise); 
                         montanteManager = palier.getMontanteManager();
+
+                        // StartCoroutine(palier.run());
                         palier.run();
+                        // myThread.Start();
                     }
 
                     break;
                 case "D'Alembert":
                     setUpResultView();
                     
-                    // alembertView.SetActive(true);
-
                     if (!first){
                         sauteuseValue= null;
                     }
@@ -364,10 +377,10 @@ namespace Components
                         var varianteTxt = variante.options[variante.value].text;
                         // var  startToInt = Int32.Parse(startTo.GetComponent<InputField>().text);
 
-
-                        AlembertCmd alembert = new AlembertCmd(fictiveMaxReachTxt, varianteTxt, typeOfGain, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
+                        AlembertCmd alembert = new AlembertCmd(m_Path,fictiveMaxReachTxt, varianteTxt, typeOfGain, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = alembert.getMontanteManager();
                         alembert.run();
+                        // myThread.Start();
                     }
                     break;
                 
@@ -391,9 +404,10 @@ namespace Components
 
 
                     if (lauchGame){
-                        FibonaciCmd fibo = new FibonaciCmd( typeOfGain, fictiveMaxReachTxt, fiboStartValueTxt, fiboSchemeTxt, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
+                        FibonaciCmd fibo = new FibonaciCmd(m_Path, typeOfGain, fictiveMaxReachTxt, fiboStartValueTxt, fiboSchemeTxt, nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = fibo.getMontanteManager();
                         fibo.run();
+                        // myThread.Start();
                     }
                     break;
                 case "50/20":
@@ -413,9 +427,10 @@ namespace Components
                     }
 
                     if (lauchGame){
-                        FiftyTwentyCmd fiftyTwenty = new FiftyTwentyCmd(typeOfGain, fictiveMaxReachTxt,  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
+                        FiftyTwentyCmd fiftyTwenty = new FiftyTwentyCmd(m_Path, typeOfGain, fictiveMaxReachTxt,  nbPalierInt,  timePalierInt,  ifMaxPalierTxt,  gainResearchInt,  maxReachTxt,  chanceTxt,  attaqueTxt,  fromBallInt,  toBallInt,  fileNameTxt,  coinValueInt,  maxMiseInt, permanenceSelectedTxt, sauteuseValue, security,securityValue, typeOfMise);
                         montanteManager = fiftyTwenty.getMontanteManager();
                         fiftyTwenty.run();
+                        // myThread.Start();
                     }
                     break;
                 default:
@@ -424,7 +439,7 @@ namespace Components
             
             watch.Stop();
             Debug.Log("time : " + watch.ElapsedMilliseconds/1000 + "s");
-
+            // myThread.Join();
             if (lauchGame){
                 bool stop = true;
                 AllExecuteButton.gameObject.SetActive(true);
@@ -432,8 +447,10 @@ namespace Components
                 ExecuteButton.onClick.RemoveAllListeners();
                 ExecuteButton.interactable = true;
                 AllExecuteButton.interactable = true;
-
-                setUpResult(result,toBallInt,fromBallInt-1, stop);
+                
+                // Thread thread = new Thread(() => setUpResult(result,toBallInt,fromBallInt-1, stop, montanteManager));
+                // thread.Start();
+                setUpResult(result,toBallInt,fromBallInt-1, stop, montanteManager);
 
                 if (SavePath!= ""){
                     saveResult(SavePath,montanteManager,toBallInt,fromBallInt-1);
@@ -441,17 +458,41 @@ namespace Components
             }
         }
 
-        void setUpResult(string[,] result, int toBallInt, int start, bool stop){
-            
+        IEnumerator WaitOneFrame(float timeToWait) {
+            //code
+            yield return new WaitForSeconds(timeToWait);
+            //code éventuel
+        }
+
+        void setUpResult(string[,] result, int toBallInt, int start, bool stop, Montantes montanteManager)
+        {
+            if (result[0, 8].StartsWith("différentielle")){
+                changeHeaderFictive();
+            }else{
+                changeHeader();
+            }
             for (int i = start; i < toBallInt; i++)
             {   
-                // Canvas.ForceUpdateCanvases();
-                // Debug.Log(Int32.Parse(result[i, 0]));
+                Debug.Log("line : " + i);
                 start=i;
                 int lastBilan = 0;
                 if (showResult){
-                    addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
-                    Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
+                    try{
+                        // StartCoroutine(
+                             addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
+                        Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
+                        // );
+                        // thread.Start();
+
+                        //     addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
+                        // Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
+                        // ); //on attendra donc 2,5 secondes
+
+                    }catch (ArgumentNullException){
+                        result  = montanteManager.getLines();
+                        setUpResult(result,toBallInt, start, stop, montanteManager);
+                        break;
+                    }
                 }
                 
 
@@ -492,31 +533,21 @@ namespace Components
                     }
                 }
 
-                // if (!stop && toBallInt>=500){
-                //     if (i%500==0){
-                //         stop = true;
-                //     }
-                // }
-
                 if (stop && showResult){
-                    // if (!stop && toBallInt>=500){
-                    //     if (i%500==0){
-                    //         stop = false;
-                    //     }
-                    // }
                     ExecuteButton.onClick.RemoveAllListeners();
-                    ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, stop));
+                    ExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, stop, montanteManager));
                     AllExecuteButton.onClick.RemoveAllListeners();
-                    AllExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, false));
+                    AllExecuteButton.onClick.AddListener(() => setUpResult(result, toBallInt, i+1, false,montanteManager));
                     break;
                 }
+                // yield return new WaitForSeconds(2.5f);
             }
 
             if (start+1==toBallInt){
                 ExecuteButton.interactable = false;
                 AllExecuteButton.interactable = false;
             }
-            
+            // yield return new WaitForSeconds(2.5f);  
         }
 
         // public (bool, string) setSauteuse(bool first){
@@ -534,7 +565,9 @@ namespace Components
 
         void getSauteuseValue(int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt){
             resultView.SetActive(false);
+
             rightView.SetActive(false);
+
             leftView.SetActive(false);
             sauteuseView.SetActive(true);
             ExecuteButton.interactable = true;
@@ -570,28 +603,23 @@ namespace Components
             }
 
             File.AppendAllText(filePath, csv.ToString());
-
-            //  for (int i = start; i < toBallInt; i++)
-            // {   
-
-            //     setUpStat(Int32.Parse(result[i, 6]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 3]),nextMise,Int32.Parse(result[i, 4]));        
-  
-            // }
-
         }
 
         public void setUpResultView(){
             resultView.SetActive(true);
             rightView.SetActive(false);
+            //  Color oldColor = rightView.GetComponent<Renderer>().material.color;
+            // Color newColor = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+            // rightView.GetComponent<Renderer>().material.SetColor("a", newColor);
+
             leftView.SetActive(false);
             sauteuseView.SetActive(false);
             CancelButton.onClick.RemoveAllListeners();
             CancelButton.onClick.AddListener(() => {
                 showResult = true;
-        SolveurView.SetActive(false);
-
+                SolveurView.SetActive(false);
                 setUpParamsView();
-                });
+            });
         }
         void ClosePopUp(){
             // Debug.Log("BackgroundButtonClicked");
@@ -610,6 +638,7 @@ namespace Components
             rightView.SetActive(true);
             leftView.SetActive(true);
             sauteuseView.SetActive(false);
+
             ExecuteButton.onClick.RemoveAllListeners();
             ExecuteButton.interactable = true;
             AllExecuteButton.onClick.RemoveAllListeners();
@@ -632,7 +661,7 @@ namespace Components
             run(true, sauteuseValue);
         }
 
-        private void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise,string attaqueTxt,string win, string[,] fictive  ){
+        public void addResult(int index, int coup, int value, int mise, int coinValueInt,int bilanGame, int bilanTotal, string playerMise,string attaqueTxt,string win, string[,] fictive  ){
  
             var color = montanteManager.valueChance(value, "Rouge");
             GameObject template;
@@ -646,7 +675,7 @@ namespace Components
             int bilanGame2 = 0;
 
             if (attaqueTxt.StartsWith("différentielle")){
-                changeHeaderFictive();
+                // changeHeaderFictive();
                 if (color == "Rouge"){
                      if (Convert.ToBoolean(win)){
                         template = templateLineRedFictive;
@@ -673,7 +702,7 @@ namespace Components
                  bilanGame2 = Int32.Parse(fictive[index,15]);
 
             }else{
-                changeHeader();
+                // changeHeader();
                 if (color == "Rouge"){
                     if (Convert.ToBoolean(win)){
                         template = templateLineRed;
@@ -692,7 +721,6 @@ namespace Components
             }
 
             GameObject newLine = Instantiate(template);
-            // RectTransform rt = (RectTransform)newLine.transform;
             newLine.transform.localScale = new Vector3(1, 1, 1);
             var chanceTxt = chanceGame.options[chanceGame.value].text;
 
@@ -726,7 +754,6 @@ namespace Components
             scrollRect.content.GetComponent<ContentSizeFitter>().SetLayoutVertical() ;
             scrollRect.verticalNormalizedPosition = 0 ;
             Canvas.ForceUpdateCanvases();
-
         }
         
 

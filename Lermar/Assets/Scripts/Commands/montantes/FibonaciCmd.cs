@@ -54,8 +54,8 @@ namespace Montante
         /// <param name="securityValue"></param>
         /// <param name="typeOfMise"></param>
 
-        public FibonaciCmd(string typeOfGain, string fictiveMaxReachTxtn, string startvaluen, string schemen, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
-        : base(typeOfGain, fictiveMaxReachTxtn, gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise, timePalierIntn,ifMaxPalierTxtn, nbPalierIntn)
+        public FibonaciCmd(string m_Path, string typeOfGain, string fictiveMaxReachTxtn, string startvaluen, string schemen, int nbPalierIntn, int timePalierIntn, string ifMaxPalierTxtn, int gainResearchInt, string maxReachTxt, string chanceTxt, string attaqueTxt, int fromBallInt, int toBallInt, string fileNameTxt, int coinValueInt, int maxMiseInt,string permanenceSelectedTxt, List<string> sauteuseValue, bool security, int securityValue, string typeOfMise) 
+        : base(m_Path, typeOfGain, fictiveMaxReachTxtn, gainResearchInt, maxReachTxt, chanceTxt,  attaqueTxt, fromBallInt, toBallInt, fileNameTxt, coinValueInt, maxMiseInt,permanenceSelectedTxt, sauteuseValue,security,securityValue, typeOfMise, timePalierIntn,ifMaxPalierTxtn, nbPalierIntn)
         {
             // nbPalierInt=nbPalierIntn;
             // timePalierInt=timePalierIntn;
