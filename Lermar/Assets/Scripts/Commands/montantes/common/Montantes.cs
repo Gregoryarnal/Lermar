@@ -549,6 +549,12 @@ namespace Montante
             return (mise,playerMise, win,cptValuePlay,cptValuePlay1,cptValuePlay2, value );
         }
         public (int, bool, int, int, int, int, int, int, string[,]) gameReset(bool win, int bilanGame, bool firstWin, int gain, int mise, int cptWin, int cptWin1, int cptWin2, int coup, string[,] fictive ){
+            var oldType = "";
+           
+            if (typeOfMise == "En perte et en gain"){
+                oldType = typeOfMise;
+                typeOfMise = "En gain";
+            }
             if (
                         
                 (win && bilanGame>=gainResearchInt && gainResearchInt!=0 && typeOfGainTxt!="Continue" ) || 
@@ -572,6 +578,9 @@ namespace Montante
                     coup = 0;
                     bilanGame = 0;
                 }
+            }
+            if (oldType != ""){
+                typeOfMise = oldType;
             }
             return (bilanGame, firstWin, gain, mise, cptWin, cptWin1, cptWin2, coup, fictive);
         }

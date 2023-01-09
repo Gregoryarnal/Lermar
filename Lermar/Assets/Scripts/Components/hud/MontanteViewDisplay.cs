@@ -107,6 +107,7 @@ namespace Components
         public GameObject MiseSolveur;
         public GameObject BilanSolveur;
         public GameObject DureeSolveur;
+        public GameObject nbPalierSolveur;
         
 
        //sauteuse
@@ -143,7 +144,7 @@ namespace Components
 
         // int solveurResult = -32767;
 
-        IDictionary<int,  Tuple<int, int>> solveurResult = new Dictionary<int,Tuple<int, int>>(){};
+        IDictionary<int,  Tuple<int, int,int>> solveurResult = new Dictionary<int,Tuple<int, int, int>>(){};
 
         public void changeHeaderFictive(){
             header.SetActive(false);
@@ -256,21 +257,23 @@ namespace Components
         void runSolveur(bool first, List<String> sauteuseValue){
             var coinValueInt = Int32.Parse(coinValue.GetComponent<InputField>().text);
             var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
+            var nbPalierInt = Int32.Parse(nbPalier.GetComponent<InputField>().text);
+
             // var gainResearchInt = Int32.Parse(gainResearch.GetComponent<InputField>().text);
 
-            solveurResult = new Dictionary<int,  Tuple<int, int>>(){};
+            solveurResult = new Dictionary<int,  Tuple<int, int, int>>(){};
             showResult = false;
             for (int coin = 1; coin <= coinValueInt; coin++)
             {
                 for (int i = 2; i <= timePalierInt; i++)
                 {
-                    // for (int max = coinValueInt; max <= gainResearchInt;max++)
-                    // {
+                    for (int max = 1; max <= nbPalierInt;max++)
+                    {
                         coinValue.GetComponent<InputField>().text = coin.ToString();
-                        timePalier.GetComponent<InputField>().text =i.ToString();
-                        // gainResearch.GetComponent<InputField>().text = max.ToString();
+                        timePalier.GetComponent<InputField>().text = i.ToString();
+                        nbPalier.GetComponent<InputField>().text = max.ToString();
                         run(true, null);
-                    // }
+                    }
                 }
             }
 
@@ -279,6 +282,7 @@ namespace Components
                 MiseSolveur.GetComponent<Text>().text = kvp.Key.ToString();
                 BilanSolveur.GetComponent<Text>().text = kvp.Value.Item1.ToString();
                 DureeSolveur.GetComponent<Text>().text = kvp.Value.Item2.ToString();
+                nbPalierSolveur.GetComponent<Text>().text = kvp.Value.Item3.ToString();
             }
                 
 
@@ -521,16 +525,18 @@ namespace Components
                                     solveurResult.Clear();
                                     var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
                                     var coinValueInt = Int32.Parse(coinValue.GetComponent<InputField>().text);
+                                    var nbPalierInt = Int32.Parse(nbPalier.GetComponent<InputField>().text);
 
-                                    solveurResult.Add(coinValueInt,Tuple.Create(bilanStat,timePalierInt) );
+                                    solveurResult.Add(coinValueInt,Tuple.Create(bilanStat,timePalierInt,nbPalierInt) );
                                     break;
                                 }
                             }
                         }else{
                             var  timePalierInt = Int32.Parse(timePalier.GetComponent<InputField>().text);
                             var coinValueInt = Int32.Parse(coinValue.GetComponent<InputField>().text);
+                            var nbPalierInt = Int32.Parse(nbPalier.GetComponent<InputField>().text);
 
-                            solveurResult.Add(coinValueInt,Tuple.Create(bilanStat,timePalierInt) );
+                            solveurResult.Add(coinValueInt,Tuple.Create(bilanStat,timePalierInt, nbPalierInt) );
                         }
                     }
                 }
