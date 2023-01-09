@@ -20542,6 +20542,7 @@ MonoBehaviour:
   MiseSolveur: {fileID: 0}
   BilanSolveur: {fileID: 0}
   DureeSolveur: {fileID: 0}
+  nbPalierSolveur: {fileID: 0}
   sauteuseView: {fileID: 0}
   fiboStartValue: {fileID: 0}
   fiboScheme: {fileID: 0}
@@ -55915,6 +55916,7 @@ MonoBehaviour:
   MiseSolveur: {fileID: 1797969014}
   BilanSolveur: {fileID: 1898133779}
   DureeSolveur: {fileID: 1358093713}
+  nbPalierSolveur: {fileID: 1137373810}
   sauteuseView: {fileID: 17376925}
   fiboStartValue: {fileID: 1251609283}
   fiboScheme: {fileID: 721421404}
