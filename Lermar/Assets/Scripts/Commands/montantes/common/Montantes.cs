@@ -300,6 +300,8 @@ namespace Montante
             string[] color =  {"Rouge", "Noir"};
             string[] pairImpair =  {"Pair", "Impair"};
             string[] manquePasse =  {"Manque", "Passe"};
+            string[] colonnes =  {"1er colonne", "2eme colonne", "3eme colonne"};
+            string[] douzaine =  {"1er douzaine", "2eme douzaine", "3eme douzaine"};
 
             if (Array.IndexOf(color, playerMise)>=0){
                 int indexRed = Array.IndexOf(redValue, value);
@@ -322,6 +324,22 @@ namespace Montante
                     return "Manque";
                 }else{
                     return "Passe";
+                }
+            }else if (Array.IndexOf(colonnes, playerMise)>=0){
+                if (value%3==1){
+                    return colonnes[0];
+                }else if (value%3==2){
+                    return colonnes[1];
+                }else{
+                    return colonnes[2];
+                }
+            }else if (Array.IndexOf(douzaine, playerMise)>=0){
+               if (value<=12){
+                    return douzaine[0];
+                }else if (value > 12 && value<=24){
+                    return douzaine[1];
+                }else{
+                    return douzaine[2];
                 }
             }else{
                 return "error";
@@ -558,21 +576,29 @@ namespace Montante
             return (bilanGame, firstWin, gain, mise, cptWin, cptWin1, cptWin2, coup, fictive);
         }
         public (string [,], bool, bool, int, int) fictiveReset(string [,] fictive, bool firstWin1, bool firstWin2, int cptWin1, int cptWin2){
+            var typeOfMise1 = typeOfMise;
+            var typeOfMise2 = typeOfMise;
+
+            if (typeOfMise=="En perte et en gain"){
+                typeOfMise1 ="En perte";
+                typeOfMise2 ="En gain";
+            }
+
             if (
                 (Convert.ToBoolean(fictive[0,4]) && fictiveMaxReachTxt!="En continue" && Int32.Parse(fictive[0,2])> 0 && typeOfGainTxt!="Continue" ) ||
-                (Convert.ToBoolean(fictive[0,4]) && fictiveMaxReachTxt!="En continue" && Int32.Parse(fictive[0,2])> 0 && typeOfMise=="En gain" && typeOfGainTxt=="Continue" && !firstWin1) ||
+                (Convert.ToBoolean(fictive[0,4]) && fictiveMaxReachTxt!="En continue" && Int32.Parse(fictive[0,2])> 0 && typeOfMise1=="En gain" && typeOfGainTxt=="Continue" && !firstWin1) ||
                 (!Convert.ToBoolean(fictive[0,4]) && typeOfGainTxt=="Continue" && firstWin1) ||
-                (Convert.ToBoolean(fictive[0,4]) && fictiveMaxReachTxt!="En continue" && firstWin1 && ((typeOfMise=="En gain" && typeOfGainTxt!="Continue") || typeOfMise=="En perte"  ))
+                (Convert.ToBoolean(fictive[0,4]) && fictiveMaxReachTxt!="En continue" && firstWin1 && ((typeOfMise1=="En gain" && typeOfGainTxt!="Continue") || typeOfMise1=="En perte"  ))
                 ){
 
-                if(attaqueTxt == "différentielle compensée"|| (attaqueTxt == "différentielle directe" && typeOfMise=="En gain") || (attaqueTxt == "différentielle directe" && Int32.Parse(fictive[0,2])>=gainResearchInt)){
+                if(attaqueTxt == "différentielle compensée"|| (attaqueTxt == "différentielle directe" && typeOfMise1=="En gain") || (attaqueTxt == "différentielle directe" && Int32.Parse(fictive[0,2])>=gainResearchInt)){
                     fictive[0,2] = "0"; //bilan
                     fictive[0,0] = coinValueInt.ToString(); //mise
                     fictive[0,3] = "0"; //coup
                     cptWin1 = 0;
-                firstWin1 = false;
+                    firstWin1 = false;
 
-                }else if(typeOfMise=="En perte" && ((attaqueTxt != "différentielle directe" &&Int32.Parse(fictive[0,2])<gainResearchInt)||firstWin1) ){
+                }else if(typeOfMise1=="En perte" && ((attaqueTxt != "différentielle directe" &&Int32.Parse(fictive[0,2])<gainResearchInt)||firstWin1) ){
                     fictive[0,2] = "0"; //bilan
                     fictive[0,0] = coinValueInt.ToString(); // mise
                     fictive[0,3] = "0";//coup
@@ -585,19 +611,19 @@ namespace Montante
             
             if (
                 (Convert.ToBoolean(fictive[1,4]) && fictiveMaxReachTxt!="En continue" && Int32.Parse(fictive[1,2])> 0  && typeOfGainTxt!="Continue" ) ||
-                (Convert.ToBoolean(fictive[1,4]) && fictiveMaxReachTxt!="En continue" && Int32.Parse(fictive[1,2])> 0 && typeOfMise=="En gain" && typeOfGainTxt=="Continue" && !firstWin2) ||
+                (Convert.ToBoolean(fictive[1,4]) && fictiveMaxReachTxt!="En continue" && Int32.Parse(fictive[1,2])> 0 && typeOfMise2=="En gain" && typeOfGainTxt=="Continue" && !firstWin2) ||
                 (!Convert.ToBoolean(fictive[1,4]) && typeOfGainTxt=="Continue" && firstWin2) ||
-                (Convert.ToBoolean(fictive[1,4]) && fictiveMaxReachTxt!="En continue" && firstWin2 && ((typeOfMise=="En gain" && typeOfGainTxt!="Continue") || typeOfMise=="En perte"))
+                (Convert.ToBoolean(fictive[1,4]) && fictiveMaxReachTxt!="En continue" && firstWin2 && ((typeOfMise2=="En gain" && typeOfGainTxt!="Continue") || typeOfMise2=="En perte"))
                 ){
 
-                if(attaqueTxt == "différentielle compensée" || (attaqueTxt == "différentielle directe" && typeOfMise=="En gain") || (attaqueTxt == "différentielle directe" &&Int32.Parse(fictive[1,2])>=gainResearchInt)){
+                if(attaqueTxt == "différentielle compensée" || (attaqueTxt == "différentielle directe" && typeOfMise2=="En gain") || (attaqueTxt == "différentielle directe" &&Int32.Parse(fictive[1,2])>=gainResearchInt)){
                     fictive[1,2]="0";//bilan
                     fictive[1,0] = coinValueInt.ToString(); // mise
                     fictive[1,3] = "0"; //coup
                     cptWin2 = 0;
                     firstWin2 = false;
 
-                } else if(typeOfMise=="En perte" && ((attaqueTxt != "différentielle directe" && Int32.Parse(fictive[1,2])<gainResearchInt)||firstWin2)){
+                } else if(typeOfMise2=="En perte" && ((attaqueTxt != "différentielle directe" && Int32.Parse(fictive[1,2])<gainResearchInt)||firstWin2)){
                     fictive[1,2]="0";//bilan
                     fictive[1,0] = coinValueInt.ToString(); // mise
                     fictive[1,3] = "0"; //coup

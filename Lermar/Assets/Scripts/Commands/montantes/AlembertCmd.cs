@@ -121,26 +121,26 @@ namespace Montante
 
                     if (fictive!=null){
 
-                                             var typeOfMise1 = typeOfMise;
+                        var typeOfMise1 = typeOfMise;
                         var typeOfMise2 = typeOfMise;
                         if (typeOfMise=="En perte et en gain"){
                             typeOfMise1 = "En perte";
                             typeOfMise2 = "En gain";
                         }
 
-                        (var nmise1,var ncptWin1,var nfirstWin1) =  calculeMise(Convert.ToBoolean(fictive[0,4]), typeOfMise, Int32.Parse(fictive[0,0]) , cptWin1, firstWin1, Int32.Parse(fictive[0,3]));
+                        (var nmise1,var ncptWin1,var nfirstWin1) =  calculeMise(Convert.ToBoolean(fictive[0,4]), typeOfMise1, Int32.Parse(fictive[0,0]) , cptWin1, firstWin1, Int32.Parse(fictive[0,3]));
                         cptWin1 = ncptWin1;
                         firstWin1 = nfirstWin1;
-                        mise1 = calculMisePerte(Int32.Parse(fictive[0,0]), Convert.ToBoolean(fictive[0,4]));
+                        mise1 = calculMisePerte(Int32.Parse(fictive[0,0]), Convert.ToBoolean(fictive[0,4]), typeOfMise1);
 
                         fictive[0,0] = (mise1).ToString();
 
 
-                        (var nmise2,var ncptWin2,var nfirstWin2) =  calculeMise(Convert.ToBoolean(fictive[1,4]), typeOfMise, Int32.Parse(fictive[1,0]) , cptWin2, firstWin2, Int32.Parse(fictive[1,3]));
+                        (var nmise2,var ncptWin2,var nfirstWin2) =  calculeMise(Convert.ToBoolean(fictive[1,4]), typeOfMise2, Int32.Parse(fictive[1,0]) , cptWin2, firstWin2, Int32.Parse(fictive[1,3]));
 
                         cptWin2 = ncptWin2;
                         firstWin2 = nfirstWin2;
-                        mise2 = calculMisePerte(Int32.Parse(fictive[1,0]), Convert.ToBoolean(fictive[1,4]));
+                        mise2 = calculMisePerte(Int32.Parse(fictive[1,0]), Convert.ToBoolean(fictive[1,4]), typeOfMise2);
 
                         fictive[1,0] = (mise2).ToString();
 
@@ -153,7 +153,7 @@ namespace Montante
                     
                     cptWin = ncptWin;
                     firstWin = nfirstWin;
-                    mise = calculMisePerte(mise, win);
+                    mise = calculMisePerte(mise, win, typeOfMise);
 
 
                     (bilanGame, firstWin, gain, mise, cptWin, cptWin1, cptWin2, coup, fictive) = gameReset(win, bilanGame, firstWin, gain, mise, cptWin, cptWin1, cptWin2, coup, fictive );
@@ -172,8 +172,8 @@ namespace Montante
                 }
         }
 
-       int calculMisePerte(int misen, bool winn){
-            if (typeOfMise=="En perte"){
+       int calculMisePerte(int misen, bool winn,string typeOfMisen){
+            if (typeOfMisen=="En perte"){
                 if (winn) {
                     if (misen > 1){
                         if (varianteTxt=="Augmenter"){
@@ -186,7 +186,7 @@ namespace Montante
                     // }
                 }
 
-            }else if(typeOfMise=="En gain"){
+            }else if(typeOfMisen=="En gain"){
                 if (winn) {
                     // if (misen > 1){
                     //     if (varianteTxt=="Augmenter"){

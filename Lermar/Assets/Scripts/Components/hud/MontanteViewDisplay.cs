@@ -120,6 +120,9 @@ namespace Components
         public ScrollRect scrollRect;
 
 
+        public GameObject headerInfo;
+
+
         public string maxReachTxt = "";
 
         Montantes montanteManager;
@@ -271,7 +274,7 @@ namespace Components
                 }
             }
 
-        SolveurView.SetActive(true);
+            SolveurView.SetActive(true);
             foreach(var kvp in solveurResult){
                 MiseSolveur.GetComponent<Text>().text = kvp.Key.ToString();
                 BilanSolveur.GetComponent<Text>().text = kvp.Value.Item1.ToString();
@@ -328,7 +331,7 @@ namespace Components
             
             // string text = "This is some Text that I wanted to show";
         //    System.Windows.Forms.MessageBox.Show("Hello World!");
-            
+            headerInfo.GetComponent<Text>().text = montanteSelectedTxt + " " + typeOfMise + " " + (typeOfMise=="En gain" ? typeOfGain : "");
             switch (montanteSelectedTxt)
             {
                 case "Apaliers":
@@ -466,7 +469,7 @@ namespace Components
 
         void setUpResult(string[,] result, int toBallInt, int start, bool stop, Montantes montanteManager)
         {
-            if (result[0, 8].StartsWith("différentielle")){
+            if (result[start, 8].StartsWith("différentielle")){
                 changeHeaderFictive();
             }else{
                 changeHeader();
@@ -478,15 +481,8 @@ namespace Components
                 int lastBilan = 0;
                 if (showResult){
                     try{
-                        // StartCoroutine(
                              addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
                         Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
-                        // );
-                        // thread.Start();
-
-                        //     addResult(Int32.Parse(result[i, 0]),Int32.Parse(result[i, 1]),Int32.Parse(result[i, 2]),Int32.Parse(result[i, 3]),
-                        // Int32.Parse(result[i, 4]),Int32.Parse(result[i, 5]),Int32.Parse(result[i, 6]),result[i, 7],result[i, 8],result[i, 9], result);
-                        // ); //on attendra donc 2,5 secondes
 
                     }catch (ArgumentNullException){
                         result  = montanteManager.getLines();
@@ -496,8 +492,14 @@ namespace Components
                 }
                 
 
-                if (i>0 && i< toBallInt-1){
+                if (i>=start && i< toBallInt-1){
+                    if (i>0){
                     lastBilan = Int32.Parse(result[i-1, 5]);
+
+                    }else{
+                    lastBilan = Int32.Parse(result[i, 5]);
+
+                    }
                 }
 
                 int miseStat =0;
@@ -608,10 +610,6 @@ namespace Components
         public void setUpResultView(){
             resultView.SetActive(true);
             rightView.SetActive(false);
-            //  Color oldColor = rightView.GetComponent<Renderer>().material.color;
-            // Color newColor = new Color(1.0f, 1.0f, 1.0f, 0.5f);
-            // rightView.GetComponent<Renderer>().material.SetColor("a", newColor);
-
             leftView.SetActive(false);
             sauteuseView.SetActive(false);
             CancelButton.onClick.RemoveAllListeners();
@@ -631,6 +629,7 @@ namespace Components
 
         public void setUpParamsView(){
             reset();
+            headerInfo.GetComponent<Text>().text = headerInfo.GetComponent<Text>().text.Split(" ")[0];
 
             // alembertView.SetActive(false);
 
