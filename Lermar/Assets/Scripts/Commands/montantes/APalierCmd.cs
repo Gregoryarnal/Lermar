@@ -70,9 +70,19 @@ namespace Montante
 
 
                 if (win){
+                    if (playerMise.Contains("colonne") || playerMise.Contains("douzaine")){
+                    gain += (mise*2);
+                    bilanGame += (mise*2);
+                    bilanTotal += (mise*2);
+
+                    }else{
                     gain += mise;
                     bilanGame += mise;
                     bilanTotal += mise;
+
+                    }
+                    // bilanGame += mise;
+                    // bilanTotal += mise;
                     coup += 1;
                 }else{
                     if (value == 0){
